@@ -54,7 +54,10 @@ class TTasks extends React.Component {
             default: return <Loader/>
         }
     };
-
+    handleChange = (event) => {
+        const { target: { name, value } } = event;
+        console.log(name, value);
+    }
     render() {
 
         const {user, currentTask} = this.state;

@@ -5,8 +5,6 @@ import PropTypes from 'prop-types';
 import t from "./language";
 import {TextField} from "@material-ui/core";
 
-const NAME = "name", EMAIL = "email";
-
 class Task0 extends React.Component {
 
     constructor(props) {
@@ -26,13 +24,14 @@ class Task0 extends React.Component {
         }
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        const user = this.props.result;
-        if (user.name !== this.state.name || user.email !== this.state.email) {
-            const {email, name} = user;
-            this.setState({email, name})
-        }
-    }
+    // componentDidUpdate(prevProps, prevState, snapshot) {
+    //     console.log("componentDidUpdate")
+    //     const user = this.props.result;
+    //     if (user.name !== this.state.name || user.email !== this.state.email) {
+    //         const {email, name} = user;
+    //         this.setState({email, name})
+    //     }
+    // }
 
     // onChangeValue = (type, value) => {
     //     console.log(value);
@@ -43,27 +42,32 @@ class Task0 extends React.Component {
     // };
 
 
-    handleChange = (event) => {
+    handleChange = async (event) => {
         const { target: { name, value } } = event;
-        this.setState({[name]: value});
-    }
+        // console.log(name, value)
+        await this.setState({[name]: value});
+
+        this.props.onChange(this.state);
+    };
 
     render() {
         const {email, name} = this.state;
         return (
             <div className={'task-0'}>
-                <div className="t-section">{t.description}</div>
-                <div className="t-section">
-                    <TextField label={t.name} name={"name"} variant={"outlined"} className={"text-field"}
-                               onChange={this.handleChange}
-                                />
-                </div>
-                <div className="t-section">
-                    <TextField label={t.email} name={"email"} variant={"outlined"} className={"text-field"}
-                               onChange={this.handleChange}
-                               />
-                </div>
-                <div className="t-section">{t.description_end}</div>
+                <form className={"form"} autoComplete="off">
+                    <div className="t-section">{t.description}</div>
+                    <div className="t-section">
+                        <TextField value={name} label={t.name} name={"name"} variant={"outlined"} className={"text-field"}
+                                   onChange={this.handleChange}
+                                    />
+                    </div>
+                    <div className="t-section">
+                        <TextField value={email} label={t.email} name={"email"} variant={"outlined"} className={"text-field"}
+                                   onChange={this.handleChange}
+                                   />
+                    </div>
+                    <div className="t-section">{t.description_end}</div>
+                </form>
             </div>
         );
     }
