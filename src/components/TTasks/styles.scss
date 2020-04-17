@@ -1,0 +1,36 @@
+.test-task {
+  width: 810px;
+  padding: 5px;
+  box-sizing: border-box;
+  background-color: white;
+  .task-container {
+    width: 100%;
+    //min-height: 300px;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  .button-container {
+    width: 100%;
+    padding: 8px 0;
+    display: flex;
+    justify-content: flex-end;
+    .button-finish {
+      padding: 10px;
+      width: 117px;
+      box-sizing: border-box;
+      font-size: 14px;
+      line-height: 16px;
+      text-transform: uppercase;
+      background-color: #E0E0E0;
+      color: #8B8B8B;
+      user-select: none;
+      cursor: pointer;
+      transition: all 150ms ease-in-out;
+      font-weight: 500;
+      &:hover {
+        background-color: #e9e9e9;
+        color: #858585;
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+.task-0 {
+  width: 100%;
+  padding: 53px 80px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  .t-section {
+    width: 100%;
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+    text-align: left;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 0.87);
+    /* or 171% */
+
+    letter-spacing: 0.15px;
+    margin-bottom: 30px;
+    .text-field {
+      width: 328px;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

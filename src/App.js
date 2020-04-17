@@ -1,26 +1,69 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './styles/App.css';
+import Loader from "./components/Loader";
+import TTasks from "./components/TTasks";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const TT_USER = "__sttuser";
+
+class App extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            user: undefined,
+            loaded: false
+        }
+    }
+
+    componentDidMount() {
+        let ttUserId = localStorage.getItem(TT_USER);
+
+        if (ttUserId !== null) {
+            //TODO: get user from server
+            let user = {
+                _id: "0",
+                name: "",
+                email: ""
+            };
+            this.setState({
+                user, loaded: true
+            });
+        } else {
+            this.setState({
+                loaded: true
+            });
+        }
+
+    }
+
+    save = async user => {
+
+        this.setState({user});
+
+        //TODO: save user to server
+
+    };
+
+    componentWillUnmount() {
+        const {user} = this.state;
+        if (user) {
+            localStorage.setItem(TT_USER, user);
+        }
+    }
+
+    render() {
+        const {loaded, user} = this.state;
+
+        return <div className="App">
+            {
+                !loaded ?
+                    <Loader/>
+                    :
+                    <TTasks user={user} save={this.save}/>
+            }
+        </div>
+    }
 }
 
 export default App;
