@@ -22,10 +22,6 @@ class Task0 extends React.Component {
         this.start();
     }
 
-    // componentDidUpdate(prevProps, prevState, snapshot) {
-    //     //     this.saveChanges();
-    //     // }
-
     start = async() => {
         const {result} = this.props;
         if (result) {
