@@ -12,7 +12,7 @@ import Task1_1 from "./Tasks/Task1/Task1_1";
 import Task1_2 from "./Tasks/Task1/Task1_2";
 import Task2 from "./Tasks/Task2";
 
-const MAX_TIMEOUT = 10;
+const MAX_TIMEOUT = 70;
 
 const defaultState = {
     currentTask: 0,
@@ -160,7 +160,7 @@ class TTasks extends React.Component {
                     <this.getTask/>
                 </div>
                 <div className="button-container">
-                    <div className="button" onClick={this.reset}>RESET</div>
+                    {/*<div className="button" onClick={this.reset}>RESET</div>*/}
                     {   currentTask === 7 || !timeOut ? null :
                         <div className={`button${nextEnabled ? "" : " --disabled"}`} onClick={this.save}>
                             {t.btn_next}
