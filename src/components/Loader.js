@@ -15,11 +15,13 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function CircularIndeterminate() {
+export default function CircularIndeterminate(props) {
     const classes = useStyles();
 
+    const height = props.fullScreen !== false ? '100vh' : "380px";
+
     return (
-            <div className={classes.root}>
+            <div className={classes.root} style={{height}}>
                 <CircularProgress color="primary" />
             </div>
     );

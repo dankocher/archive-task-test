@@ -3,18 +3,23 @@
   padding: 5px;
   box-sizing: border-box;
   background-color: white;
+  transition: all 2500ms ease-in-out;
   .task-container {
     width: 100%;
-    //min-height: 300px;
+    min-height: 380px;
     margin-top: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    display: flex;
+    //justify-content: center;
+    //align-items: center;
+    transition: all 2500ms ease-in-out;
   }
   .button-container {
     width: 100%;
-    padding: 8px 0;
+    padding: 13px 0;
     display: flex;
     justify-content: flex-end;
-    .button-finish {
+    .button {
       padding: 10px;
       width: 117px;
       box-sizing: border-box;
@@ -27,9 +32,15 @@
       cursor: pointer;
       transition: all 150ms ease-in-out;
       font-weight: 500;
-      &:hover {
+      margin-left: 13px;
+      &:not(.--disabled):hover {
         background-color: #e9e9e9;
         color: #858585;
+      }
+      &.--disabled {
+        cursor: default;
+        background-color: rgba(0, 0, 0, 0.12);
+        color: rgba(0, 0, 0, 0.3);
       }
     }
   }
