@@ -12,9 +12,14 @@ class TestTask extends React.Component {
     }
 
     render() {
-        const {result} = this.props;
+        const {result, timeOut} = this.props;
         return <div className="test-task">
-            <input value={result.value || ""} type="text" onChange={this.onChange}/>
+            <h2>Задача</h2>
+            {
+
+                timeOut === false ? <h3>WAIT FOR TIMEOUT</h3> :
+                <input value={result.value || ""} type="text" onChange={this.onChange}/>
+            }
         </div>
     }
 }

@@ -1,0 +1,49 @@
+.word-table {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+
+  .word-element {
+    width: 213px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 33px;
+    letter-spacing: 0.15px;
+    color: rgba(0, 0, 0, 0.87);
+    height: 33px;
+    padding-top: 4px;
+    box-sizing: border-box;
+
+    .word-input {
+
+      input {
+        padding: 5px 0;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0.15px;
+        color: rgba(0, 0, 0, 0.87);
+        mix-blend-mode: normal;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      &:after {
+        border-bottom: 0;
+      }
+
+      &.-filled:before {
+        border-bottom: 2px solid rgba(0, 0, 0, 0.87);
+      }
+    }
+  }
+}

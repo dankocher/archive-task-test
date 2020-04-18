@@ -10,7 +10,8 @@ class Header extends React.Component {
         super(props);
 
         this.state = {
-            all_time: 0
+            all_time: 0,
+            task_time: 0
         }
     }
 
@@ -30,29 +31,41 @@ class Header extends React.Component {
     }
 
     updateTimer = () => {
-        const {start_time} = this.props;
+        const {start_time, taskTime} = this.props;
         let endTime = this.props.end_time || new Date().getTime();
         let all_time = endTime - start_time;
-        this.setState({all_time});
-    }
+
+        let task_time = new Date().getTime() - taskTime;
+
+        this.setState({all_time, task_time});
+    };
 
     render() {
         const {all_time, task_time} = this.state;
-        const {currentTask} = this.props;
+        const {currentTask, leastTime, timeOut} = this.props;
         const showBar = [2, 3, 4, 5, 6].find(i => i === currentTask) !== undefined;
         return <div className={`header${!showBar ? " --under" : ""}`}>
             <div className="h-section h-left">
-                <span className={"text"}>{t.all_time}</span>
-                <span className={"time"}>{formatTime(all_time)}</span>
+                {   !timeOut ? null :
+                    <>
+                    <span className={"text"}>{t.all_time}</span>
+                    <span className={"time"}>{formatTime(all_time)}</span>
+                    </>
+                }
             </div>
             <div className="h-section h-center">
-                {   [4, 5].find(i => i === currentTask) !== undefined ?
-                    <span className={"time"}>{formatMinutes(0)}</span> : null
+                {   [4, 5].find(i => i === currentTask) !== undefined && !timeOut ?
+                    <span className={"time"}>{formatMinutes(leastTime)}</span> : null
                 }
             </div>
             <div className="h-section h-right">
-                <span className={"text"}>{t.task_time}</span>
-                <span className={"time"}>{"00:00:00"}</span>
+                {
+                    currentTask === 7 ? null : !timeOut ? null :
+                    <>
+                    <span className={"text"}>{t.task_time}</span>
+                    <span className={"time"}>{formatTime(task_time)}</span>
+                    </>
+                }
             </div>
             {
                 showBar ? <ProgressBar completed={(currentTask - 1) * 20}/> : null
@@ -64,14 +77,14 @@ class Header extends React.Component {
 Header.propTypes = {
     start_time: PropTypes.number.isRequired,
     taskTime: PropTypes.number,
+    timeOut: PropTypes.bool,
     leastTime: PropTypes.number,
     currentTask: PropTypes.number
 };
 
 export default Header;
 
-const formatMinutes = (milis) => {
-    let seconds = parseInt(milis / 1000);
+const formatMinutes = (seconds) => {
     let minutes = parseInt(seconds / 60);
     seconds = seconds % 60;
     return `${formatTwo(minutes)}:${formatTwo(seconds)}`;

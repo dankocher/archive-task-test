@@ -1,0 +1,77 @@
+.letter-inputs{
+  display: flex;
+  box-sizing: border-box;
+  padding-bottom: 20px;
+
+  .label {
+    height: 35px;
+    width: 30px;
+    min-width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 0.75px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    box-sizing: border-box;
+  }
+
+  .letter-input {
+    box-sizing: border-box;
+    width: 24px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid gainsboro;
+
+    .input {
+      height: 10px;
+      width: 100%;
+      border-left: 1px solid #9E9E9E;
+      &::before, &::after {
+        display: none;
+      }
+
+      input {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 0.15px;
+        text-align: center;
+      }
+
+      &.black {
+        input {
+          color: #212121;
+        }
+      }
+
+      &.red {
+        input {
+          color: #C63530;
+        }
+      }
+    }
+
+    &.first{
+      .input {
+        border-left: none;
+      }
+    }
+
+    &.last {
+      .input {
+        border-right: 1px solid #9E9E9E;
+      }
+    }
+
+  }
+}

@@ -43,7 +43,7 @@ class App extends React.Component {
 
     save = async user => {
         this.setState({user});
-        if (user.tasks.length === 7) {
+        if (user.tasks.length === 8) {
             user.end_time = new Date().getTime();
             localStorage.removeItem(TT_USER)
         } else {
