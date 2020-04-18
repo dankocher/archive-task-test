@@ -1,13 +1,18 @@
 .test-task {
   width: 810px;
-  padding: 5px;
+  padding: 0 5px;
   box-sizing: border-box;
   background-color: white;
   transition: all 2500ms ease-in-out;
+  .header-container {
+    position: fixed;
+    width: 800px;
+    z-index: 9;
+  }
   .task-container {
     width: 100%;
     min-height: 380px;
-    margin-top: 20px;
+    margin-top: 70px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     display: flex;
     //justify-content: center;

@@ -12,7 +12,7 @@ import Task1_1 from "./Tasks/Task1/Task1_1";
 import Task1_2 from "./Tasks/Task1/Task1_2";
 import Task2 from "./Tasks/Task2";
 
-const MAX_TIMEOUT = 70;
+const MAX_TIMEOUT = 10;
 
 const defaultState = {
     currentTask: 0,
@@ -55,8 +55,8 @@ class TTasks extends React.Component {
 
     reset = () => {
         const user = {
-            name: "Test User",
-            email: "example@example.com",
+            name: "",
+            email: "",
             start_time: new Date().getTime(),
             end_time: undefined,
             tasks: []
@@ -153,12 +153,14 @@ class TTasks extends React.Component {
 
         return (
             <div className={"test-task"}>
-                <Header startTime={user.start_time} currentTask={currentTask} taskTime={taskTime} start_time={user.start_time} leastTime={leastTime} timeOut={timeOut}/>
+                <div className="header-container">
+                    <Header startTime={user.start_time} currentTask={currentTask} taskTime={taskTime} start_time={user.start_time} leastTime={leastTime} timeOut={timeOut}/>
+                </div>
                 <div className="task-container">
                     <this.getTask/>
                 </div>
                 <div className="button-container">
-                    {/*<div className="button" onClick={this.reset}>RESET</div>*/}
+                    <div className="button" onClick={this.reset}>RESET</div>
                     {   currentTask === 7 || !timeOut ? null :
                         <div className={`button${nextEnabled ? "" : " --disabled"}`} onClick={this.save}>
                             {t.btn_next}
