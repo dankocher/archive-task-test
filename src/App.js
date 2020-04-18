@@ -42,11 +42,15 @@ class App extends React.Component {
     }
 
     save = async user => {
-
         this.setState({user});
-        localStorage.setItem(TT_USER, JSON.stringify(user));
-        //TODO: save to server only if las test finished
-        console.log("save to localStorage")
+        if (user.tasks.length === 7) {
+            user.end_time = new Date().getTime();
+            localStorage.removeItem(TT_USER)
+        } else {
+            localStorage.setItem(TT_USER, JSON.stringify(user));
+        }
+
+        //TODO: save to server
     };
 
     componentWillUnmount() {

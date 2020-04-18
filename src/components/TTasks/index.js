@@ -7,6 +7,7 @@ import Task0 from "./Tasks/Task0";
 import Loader from "../Loader";
 
 import TestTask from "./Tasks/TestTask";
+import FinishPage from "./Tasks/FinishPage";
 
 const defaultState = {
     currentTask: 0,
@@ -28,17 +29,10 @@ class TTasks extends React.Component {
         }
     }
 
-    // shouldComponentUpdate(nextProps, nextState, nextContext) {
-    //     const shouldUpdate =  this.state.currentTask !== nextState.currentTask
-    //                         || this.state.nextEnabled !== nextState.nextEnabled
-    //                         || this.state.completedTask !== nextState.nextEnabled
-    //                         || !compareObjects(this.state.user, nextProps.user);
-    //     console.log(shouldUpdate)
-    //     return shouldUpdate;
-    // }
-
     reset = () => {
-        const user = {...this.props.user,
+        const user = {
+            name: "Test User",
+            email: "example@example.com",
             start_time: new Date().getTime(),
             end_time: undefined,
             tasks: []
@@ -47,16 +41,20 @@ class TTasks extends React.Component {
             ...defaultState, user
         });
         this.props.save(user);
+        window.location = "/";
     };
 
     save = () => {
         let {user, currentTask, completedTask} = this.state;
         if (!completedTask) return;
 
-        this.props.save(user);
         if (currentTask < 7) {
             currentTask++;
         }
+        if (currentTask === 7) {
+            user.end_time = new Date().getTime()
+        }
+        this.props.save(user);
 
         this.setState({user, currentTask});
     };
@@ -81,10 +79,9 @@ class TTasks extends React.Component {
         const {user, currentTask} = this.state;
         const id = currentTask;
 
-        // console.log(user)
         let task = user.tasks[id];
         if (!task) {
-            task = { start_time: new Date().getTime(), id, result: {} }
+            task = { start_time: new Date().getTime(), id, result: {} };
             user.tasks[id] = task;
             // this.setState({user})
         }
@@ -99,7 +96,7 @@ class TTasks extends React.Component {
             case 5: return <TestTask result={task.result} onChange={data => this.onChangeTask(id, data)}/>;
             case 6: return <TestTask result={task.result} onChange={data => this.onChangeTask(id, data)}/>;
 
-            case 7: return <TestTask result={task.result} onChange={data => this.onChangeTask(id, data)}/>;
+            case 7: return <FinishPage />;
 
             default: return <Loader fullScreen={false}/>
         }
@@ -107,19 +104,21 @@ class TTasks extends React.Component {
 
     render() {
 
-        const {user, nextEnabled} = this.state;
+        const {user, nextEnabled, currentTask} = this.state;
 
         return (
             <div className={"test-task"}>
-                <Header startTime={user.start_time}/>
+                <Header startTime={user.start_time} currentTask={currentTask} start_time={user.start_time}/>
                 <div className="task-container">
                     <this.getTask/>
                 </div>
                 <div className="button-container">
                     <div className="button" onClick={this.reset}>RESET</div>
-                    <div className={`button${nextEnabled ? "" : " --disabled"}`} onClick={this.save}>
-                        {t.btn_next}
-                    </div>
+                    {   currentTask === 7 ? null :
+                        <div className={`button${nextEnabled ? "" : " --disabled"}`} onClick={this.save}>
+                            {t.btn_next}
+                        </div>
+                    }
                 </div>
             </div>
         );
