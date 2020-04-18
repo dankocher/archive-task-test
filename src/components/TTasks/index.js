@@ -44,7 +44,6 @@ class TTasks extends React.Component {
         const {user, currentTask} = this.state;
         if (currentTask === 4 || currentTask === 5) {
             if ((new Date().getTime() - user.tasks[currentTask].start_time) / 1000 < MAX_TIMEOUT) {
-                console.log(MAX_TIMEOUT - (new Date().getTime() - user.tasks[currentTask].start_time) / 1000)
                 await this.setState({
                     timeOut: false,
                     leastTime: parseInt(MAX_TIMEOUT - (new Date().getTime() - user.tasks[currentTask].start_time) / 1000)

@@ -29,6 +29,9 @@
       letter-spacing: 0.25px;
       color: rgba(0, 0, 0, 0.87);
       mix-blend-mode: normal;
+      &.-bold {
+        font-weight: 500;
+      }
     }
     &.h-left {
       justify-content: flex-start;

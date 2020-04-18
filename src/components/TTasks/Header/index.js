@@ -55,7 +55,7 @@ class Header extends React.Component {
             </div>
             <div className="h-section h-center">
                 {   [4, 5].find(i => i === currentTask) !== undefined && !timeOut ?
-                    <span className={"time"}>{formatMinutes(leastTime)}</span> : null
+                    <span className={"time -bold"}>{formatMinutes(leastTime)}</span> : null
                 }
             </div>
             <div className="h-section h-right">
