@@ -94,6 +94,7 @@ const formatTime = (milis) => {
     let minutes = parseInt(seconds / 60);
     seconds = seconds % 60;
     let hours = parseInt(minutes / 60);
+    minutes = minutes % 60;
     return `${formatTwo(hours)}:${formatTwo(minutes)}:${formatTwo(seconds)}`;
 };
 
