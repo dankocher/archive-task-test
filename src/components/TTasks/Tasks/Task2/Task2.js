@@ -16,6 +16,15 @@ export default class Task2 extends Component{
         timeOut: PropTypes.bool
     };
 
+    componentDidMount() {
+        const {result, onChange} = this.props;
+
+        onChange({
+            result,
+            completed: true
+        })
+    }
+
     onChange = async (v, i) => {
         const {onChange, result} = this.props;
 

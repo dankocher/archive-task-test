@@ -22,6 +22,15 @@ class Task0 extends React.Component {
         this.start();
     }
 
+    componentWillReceiveProps(nextProps, nextContext) {
+        if (this.props.recheck !== nextProps.recheck) {
+            this.setState({
+                nameBlurred: true,
+                emailBlurred: true,
+            })
+        }
+    }
+
     start = async() => {
         const {result} = this.props;
         if (result) {
@@ -93,6 +102,7 @@ class Task0 extends React.Component {
 Task0.propTypes = {
     result: PropTypes.object,
     screen: PropTypes.oneOf([0, 1]).isRequired,
+    recheck: PropTypes.bool.isRequired,
     onChange: PropTypes.func.isRequired,
     timeOut: PropTypes.bool,
     finished: PropTypes.bool,

@@ -8,7 +8,8 @@ const TT_USER = "__sttuser";
 const modelUser = {
     name: "",
     email: "",
-    start_time: new Date().getTime(),
+    start_time: undefined,
+    date: new Date().getTime(),
     tasks: []
 };
 

@@ -4,6 +4,10 @@ import './styles.scss';
 
 export default class WordTable extends Component{
 
+    state = {
+
+    };
+
     onChange = (v, i) => {
         const {onChange} = this.props;
 
@@ -14,6 +18,7 @@ export default class WordTable extends Component{
 
     render() {
         const {data, timeOut, result} = this.props;
+        const {focused} = this.state;
 
         return (
             <div className='word-table'>
@@ -22,9 +27,11 @@ export default class WordTable extends Component{
                         {
                             !timeOut ? w :
                                 <Input
-                                    className={`word-input${(result.words || [])[i] ? ' -filled' : ''}`}
+                                    className={`word-input${(result.words || [])[i] || focused === i ? ' -filled' : ''}`}
                                     value={(result.words || [])[i] || ''}
+                                    onFocus={() => this.setState({focused: i})}
                                     onChange={e => this.onChange(e.target.value, i)}
+                                    onBlur={() => this.setState({focused: undefined})}
                                 />
                         }
                     </div>)

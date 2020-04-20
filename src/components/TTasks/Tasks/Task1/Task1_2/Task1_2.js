@@ -17,6 +17,15 @@ export default class  Task1_2 extends Component{
         fResults: PropTypes.object,
     };
 
+    componentDidMount() {
+        const {result, onChange} = this.props;
+
+        onChange({
+            result,
+            completed: this.checkResult(result),
+        })
+    }
+
     onDelete = async (i, param) => {
         const {onChange} = this.props;
 
