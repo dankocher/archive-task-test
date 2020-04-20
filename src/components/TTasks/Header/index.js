@@ -65,7 +65,6 @@ class Header extends React.Component {
         let task_time = new Date().getTime() - taskTime;
 
         this.setState({all_time, task_time});
-        console.log({all_time, task_time});
     };
 
     render() {

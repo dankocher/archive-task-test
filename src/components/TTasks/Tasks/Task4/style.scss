@@ -1,0 +1,147 @@
+.illustration {
+    border: 1px solid gray;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    &__container {
+        margin: 0 auto;
+    }
+    &__description {
+        padding: 55px 80px 0 80px;
+    }
+    &__title {
+        margin-bottom: 29px;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 0.15px;
+        color: rgba(0, 0, 0, 0.87);
+    }
+    &__title-task {
+        margin-bottom: 7px;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 0.15px;
+        color: rgba(0, 0, 0, 0.87);
+    }
+    &__text {
+        margin-bottom: 9px;
+        font-family: Roboto;
+        font-style: normal;
+        font-size: 14px;
+        line-height: 24px;
+        letter-spacing: 0.15px;
+        color: rgba(0, 0, 0, 0.87);
+    }
+    &__text-task {
+        margin-bottom: 27px;
+        font-family: Roboto;
+        font-style: normal;
+        font-size: 14px;
+        line-height: 24px;
+        letter-spacing: 0.15px;
+        color: rgba(0, 0, 0, 0.87);
+    }
+    &__img-title {
+        margin-bottom: 13px;
+        margin-left: 80px;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 24px;
+        letter-spacing: 0.15px;
+        color: rgba(0, 0, 0, 0.87);
+    }
+    &__task-description {
+        padding: 0 80px;
+    }
+    &__img {
+        border-top: 1px solid rgba(0, 0, 0, 0.12);
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        width: 100%;
+        max-width: 800px;
+    }
+    &__img-screen {
+        margin-top: 15px;
+        margin-bottom: 30px;
+        width: 100%;
+        max-width: 640px;
+    }
+    &__form {
+        width: 100%;
+    }
+    &__form-container {
+        display: flex;
+        margin-bottom: 25px;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .MuiFormControl-root {
+        margin-bottom: 25px !important;
+        width: 100%;
+        height: 100%;
+        max-height: 108px;
+        max-width: 640px;
+    }
+    &__field-container {
+        margin-bottom: 15px;
+        margin-top: 18px;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+    }
+    &__text-container {
+        margin-bottom: 9px;
+    }
+    &__text-list {
+        font-family: Roboto;
+        font-style: normal;
+        font-size: 14px;
+        line-height: 24px;
+        letter-spacing: 0.15px;
+        color: rgba(0, 0, 0, 0.87);
+        &_indent {
+            text-indent: 17px;
+        } 
+    }
+    &__modal-img {
+        width: calc(100% - 100px);
+        z-index: 9999999999999;
+    }
+    &__modal-close-btn {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        top: 5px;
+        right: 10px;
+        border-radius: 20px;
+        background: url('../../assets/img/close.png') no-repeat;
+        cursor: pointer;
+        &:hover {
+            transition: all 0.3s ease-in-out;
+            opacity: 0.3;
+            background: url('../../assets/img/close.jpg') no-repeat;
+        }
+    }
+    &__bold {
+        font-weight: bolder;
+    }
+}
+
+.ReactModal__Overlay {
+    background-color: rgba(0, 0, 0, 0.43) !important;
+}
+
+.ReactModal__Content {
+    margin-right: -47% !important;
+}
+
+.MuiInputLabel-outlined {
+    z-index: 0 !important;
+}

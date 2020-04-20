@@ -12,8 +12,10 @@ import Task1_1 from "./Tasks/Task1/Task1_1";
 import Task1_2 from "./Tasks/Task1/Task1_2";
 import Task2 from "./Tasks/Task2";
 import AlertMessage from "../AlertMessage";
+import Task3 from "./Tasks/Task3";
+import Task4 from "./Tasks/Task4";
 
-const MAX_TIMEOUT = 70;
+const MAX_TIMEOUT = 5;
 
 const defaultState = {
     currentTask: 0,
@@ -35,7 +37,8 @@ class TTasks extends React.Component {
 
         this.state = {
             ...defaultState,
-            currentTask: length === 0 ? 0 : length < 8 ? length-1 : 7,
+            // currentTask: length === 0 ? 0 : length < 8 ? length-1 : 7,
+            currentTask: length === 0 ? 0 : length-1,
             user: props.user
         }
     }
@@ -157,8 +160,8 @@ class TTasks extends React.Component {
             case 3: return <Task1_2 result={task.result} onChange={data => this.onChangeTask(id, data)}/>;
             case 4: return <Task2 result={task.result} onChange={data => this.onChangeTask(id, data)} timeOut={task.time_out || timeOut}/>;
 
-            case 5: return <TestTask result={task.result} onChange={data => this.onChangeTask(id, data)} timeOut={task.time_out || timeOut}/>;
-            case 6: return <TestTask result={task.result} onChange={data => this.onChangeTask(id, data)}/>;
+            case 5: return <Task3 result={task.result} onChange={data => this.onChangeTask(id, data)} timeOut={task.time_out || timeOut}/>;
+            case 6: return <Task4 result={task.result} onChange={data => this.onChangeTask(id, data)}/>;
 
             case 7: return <FinishPage />;
 
