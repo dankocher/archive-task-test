@@ -1,9 +1,12 @@
 .remembrance {
-    border: 1px solid gray;
     max-width: 800px;
     max-height: 512px;
     margin: 0 auto;
     font-family: Roboto;
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
     &__container {
         /*padding: 55px 80px 60px 80px;*/
         margin: 0 auto;
@@ -23,6 +26,7 @@
         color: rgba(0, 0, 0, 0.87);
     }
     &__text {
+        text-align: left;
         margin-bottom: 27px;
         font-family: Roboto;
         font-style: normal;

@@ -102,7 +102,7 @@ class Task0 extends React.Component {
 Task0.propTypes = {
     result: PropTypes.object,
     screen: PropTypes.oneOf([0, 1]).isRequired,
-    recheck: PropTypes.bool.isRequired,
+    recheck: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
     timeOut: PropTypes.bool,
     finished: PropTypes.bool,

@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import task4Content from '../../api/task4Content.json';
-import Captions from '../../assets/img/screen2.jpg';
-import Keywords from '../../assets/img/screen1.jpg';
+import task4Content from './task4Content.json';
+import Captions from './assets/img/screen2.jpg';
+import Keywords from './assets/img/screen1.jpg';
 // import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import './style.scss';
-import avatarsImg from '../../assets/img/avatars.jpg';
-import sleepImg from '../../assets/img/sleep.jpg';
-import shoppingImg from '../../assets/img/shopping.jpg';
-import businessImg from '../../assets/img/business.jpg';
-import moneyImg from '../../assets/img/money.jpg';
+import avatarsImg from './assets/img/avatars.jpg';
+import sleepImg from './assets/img/sleep.jpg';
+import shoppingImg from './assets/img/shopping.jpg';
+import businessImg from './assets/img/business.jpg';
+import moneyImg from './assets/img/money.jpg';
 import Modal from 'react-modal';
 
 const customStyles = {
@@ -49,16 +49,7 @@ export default class Task4 extends Component {
     }
 
     getTaskState() {
-        const { timeOut, finished, results } = this.props;
-        const isResultsEmpty = !results || Object.keys(results).length === 0;
-
-        // if (isResultsEmpty && !timeOut && !finished) {
-        //     return TASK_STATE.initial;
-        // }
-
-        // if (timeOut) {
-        //     return TASK_STATE.editing;
-        // }
+        const { finished } = this.props;
 
         if (!finished) {
             return TASK_STATE.editing;
@@ -79,22 +70,24 @@ export default class Task4 extends Component {
         currentValues[key][propertyName] = target.value;
 
         this.props.onChange({
-            complited: true, 
-            results: currentValues,
+            completed: true,
+            result: currentValues,
         });
     }
 
     getCurrentValues() {
         const { initialValues } = task4Content;
-        const { results } = this.props;
+        const { result } = this.props;
 
         if (this.getTaskState() === TASK_STATE.initial) {
             return { ...task4Content.initialValues };
         }
 
         return Object.keys(initialValues).reduce((currentValues, key) => {
-            const captions = results && results[key] && results[key].captions || '';
-            const words = results && results[key] && results[key].words || '';
+            const resultCaptions = result && result[key] && result[key].captions;
+            const resultWords = result && result[key] && result[key].words;
+            const captions = resultCaptions || '';
+            const words = resultWords || '';
 
             return {
                 ...currentValues,
@@ -106,7 +99,6 @@ export default class Task4 extends Component {
     openImageModal = (event) => {
         const target = event.target;
         const src = target.src;
-
         this.setState({ isModalOpened: true, modalImgSrc: src });
     }
 
@@ -128,7 +120,7 @@ export default class Task4 extends Component {
                     alt="modal"
                     onClick={this.closeImageModel}
                     />
-                    <div onClick={this.closeImageModel} className="illustration__modal-close-btn"></div>
+                    <div onClick={this.closeImageModel} className="illustration__modal-close-btn" />
                 </div>
             </Modal>
         );
@@ -140,7 +132,6 @@ export default class Task4 extends Component {
 
         return valuesEntries.map(([key, item]) => {
             const { captions, words } = item;
-            const isInitial = this.getTaskState() === TASK_STATE.initial;
             const isEditable = this.getTaskState() === TASK_STATE.editing;
 
             return (
@@ -202,7 +193,7 @@ export default class Task4 extends Component {
                     <p className="illustration__text"><span className="illustration__bold">{task4Content.bold2}</span>{task4Content.text3}</p>
                     <div className="illustration__text-container">
                         <p className="illustration__text-list">{task4Content.text4}</p>
-                        <p className="illustration__text-list illustration__text-list_indent">{task4Content.text5}<a href={task4Content.href}>ссылке</a>{task4Content.text6}</p>
+                        <p className="illustration__text-list illustration__text-list_indent">{task4Content.text5}<a href={task4Content.href} target="_blank">ссылке</a>{task4Content.text6}</p>
                         <p className="illustration__text-list illustration__text-list_indent">{task4Content.text7}</p>
                         <p className="illustration__text-list illustration__text-list_indent">{task4Content.text8}</p>
                     </div>

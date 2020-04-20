@@ -46,10 +46,6 @@ export default class Task2 extends Component{
         }
     };
 
-    // checkResult = result => {
-    //     return  result.words.filter(w => w).length === 18
-    // };
-
     render() {
         const {finished, fResults, timeOut, result} = this.props;
 

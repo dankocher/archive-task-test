@@ -187,7 +187,7 @@ class TTasks extends React.Component {
                 </div>
                 <div className="button-container">
                     {/*<div className="button" onClick={() => this.setState({currentTask: currentTask-1})}>PREV</div>*/}
-                    {/*<div className="button" onClick={this.reset}>RESET</div>*/}
+                    <div className="button" onClick={this.reset}>RESET</div>
                     {/*<div className="button" onClick={() => this.setState({showMessage: true})}>SHOW</div>*/}
                     {   currentTask === 7 || !timeOut ? null :
                         <div className={`button${nextEnabled ? "" : " --disabled"}`} onClick={this.save}>

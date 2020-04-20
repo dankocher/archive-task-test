@@ -26,23 +26,9 @@ export default class  Task1_1 extends Component{
     }
 
     onDelete = async (i, param) => {
-        const {result, onChange} = this.props;
+        const {onChange} = this.props;
 
         if (onChange) {
-
-            // if (!not_focus) {
-            //     let arr = result[param] || [];
-            //     arr[i] = arr[i] === undefined ? undefined : '';
-            //     let newResult = {
-            //         ...result,
-            //         [param]: arr
-            //     };
-            //
-            //     await onChange(newResult);
-            // }
-
-            //console.log('DELETE')
-
 
             let input = document.getElementById(`input-${param}-${i-1 > 0 ? i-1 : 0}`);
 
