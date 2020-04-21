@@ -18,6 +18,7 @@
         padding: 0 80px;
     }
     &__title {
+        text-align: left;
         margin-bottom: 27px;
         font-weight: bold;
         font-size: 18px;
@@ -110,6 +111,7 @@
         &_initial {
             &:first-child {
                 margin-bottom: 8px;
+                margin-bottom: 25px;
             }
         }
         &_editable {
@@ -191,13 +193,13 @@
         border: none;
     }
     .remembrance__input-number:not(.remembrance__input-number_initial).remembrance__input-number_not-empty,
-    .remembrance__input-number.remembrance__input-number_editable:hover,
+    .remembrance__input-number.remembrance__input-number_editable:active,
     .remembrance__input-number.remembrance__input-number_editable:focus {
         border-bottom: 1px solid rgba(0, 0, 0, 0.87);
     }
 
     .remembrance__input-text:not(.remembrance__input-text_initial).remembrance__input-text_not-empty,
-    .remembrance__input-text.remembrance__input-text_editable:hover,
+    .remembrance__input-text.remembrance__input-text_editable:active,
     .remembrance__input-text.remembrance__input-text_editable:focus {
         border-bottom: 1px solid rgba(0, 0, 0, 0.87);
     }

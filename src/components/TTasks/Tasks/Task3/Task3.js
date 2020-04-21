@@ -17,23 +17,23 @@ export default class Task3 extends Component {
         const isResultsEmpty = !result || Object.keys(result).length === 0;
 
         if (isResultsEmpty && !timeOut && !finished) {
-            return TASK_STATE.initial;
             console.log('initial');
+            return TASK_STATE.initial;
+        }
+        if (finished) {
+            console.log('finished');
+            return TASK_STATE.finalResult;
         }
 
         if (timeOut) {
-            return TASK_STATE.editing;
             console.log('editing');
+            return TASK_STATE.editing;
         }
+
 
         if (!isResultsEmpty && !timeOut && !finished) {
-            return TASK_STATE.editingFinished;
             console.log('editingFinished');
-        }
-
-        if (finished) {
-            return TASK_STATE.finalResult;
-            console.log('finished');
+            return TASK_STATE.editingFinished;
         }
 
         throw new Error('Task3: invalid state');
@@ -45,19 +45,11 @@ export default class Task3 extends Component {
         const { key, propertyName } = target.dataset;
 
         const currentValues = this.getCurrentValues();
-        if ( target.value.length > 1) {
-            target.value =  target.value.slice(0,1);
-        } else {
+
+        const myRe = /\d/;
+
+        if (( myRe.exec(target.value) && target.value.length <= 1) || target.value === '') {
             currentValues[key][propertyName] = target.value;
-        }
-
-
-        this.props.onChange({
-            completed: false,
-            result: currentValues,
-        });
-
-        if (this.areAllValuesSet(currentValues)) {
             this.props.onChange({
                 completed: true,
                 result: currentValues,
@@ -66,7 +58,10 @@ export default class Task3 extends Component {
     }
 
     componentDidMount() {
-        this.getTaskState();
+        this.props.onChange({
+            completed: true,
+            result: this.props.result,
+        });
     }
 
     handleChangeField = (event, propertyName, key) => {
@@ -77,20 +72,8 @@ export default class Task3 extends Component {
         currentValues[key][propertyName] = target.value;
 
         this.props.onChange({
-            completed: false,
+            completed: true,
             result: currentValues,
-        });
-        if (this.areAllValuesSet(currentValues)) {
-            this.props.onChange({
-                completed: true,
-                result: currentValues,
-            });
-        }
-    }
-
-    areAllValuesSet(values) {
-        return Object.values(values).every((item) => {
-            return Boolean(item.number) && Boolean(item.text);
         });
     }
 
@@ -139,14 +122,13 @@ export default class Task3 extends Component {
             return (
                 <div key={key} className="remembrance__item">
                     <input
-                        type="number"
+                        type="text"
                         className={numberClasses} 
                         data-key={key} 
                         data-property-name="number" 
                         value={number} 
                         onChange={this.handleChange}
                         disabled={!isEditable}
-                        maxlength="1"
                     />
                     <div className={textClasses}>
                         <TextField
@@ -170,7 +152,7 @@ export default class Task3 extends Component {
         const isEditable = this.getTaskState() === TASK_STATE.editing;
 
         const numberClasses = classnames('remembrance__numbers', {
-            'remembrance__numbers_initial': !isInitial && !isEditable,
+            'remembrance__numbers_initial': isInitial && !isEditable,
             'remembrance__numbers_editable': isEditable,
         });
 

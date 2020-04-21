@@ -1,0 +1,47 @@
+$timeWidth: 90px;
+$correctWidth: 148px;
+$errorWidth: 121px;
+$emptyWidth: 128px;
+
+.r-table {
+  font-style: normal;
+  text-align: right;
+  letter-spacing: 0.25px;
+  display: flex;
+  flex-direction: column;
+  width: $timeWidth + $correctWidth + $errorWidth + $emptyWidth + 16px;
+  .r-table-header {
+    display: inline-flex;
+
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    color: rgba(0, 0, 0, 0.7);
+    mix-blend-mode: normal;
+    padding: 8px;
+  }
+  .r-table-results {
+    padding: 17px 8px;
+
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 15px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .r-table-header, .r-table-results {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }
+  .task-time {
+    width: $timeWidth;
+  }
+  .task-correct {
+    width: $correctWidth;
+  }
+  .task-error {
+    width: $errorWidth;
+  }
+  .task-empty {
+    width: $emptyWidth;
+  }
+}

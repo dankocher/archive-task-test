@@ -4,6 +4,7 @@ import Loader from "./components/Loader";
 import TTasks from "./components/TTasks";
 import ajax from "./utils/ajax";
 import {api} from "./constants/api";
+import Results from "./components/Results";
 
 const TT_USER = "__sttuser";
 
@@ -22,11 +23,33 @@ class App extends React.Component {
 
         this.state = {
             user: undefined,
+            s_user: undefined,
             loaded: false
         }
     }
 
     componentDidMount() {
+
+        let uid = window.location.pathname.replace('/', "");
+
+        if(uid !== "") {
+            this.getUser(uid)
+        } else {
+            this.loadUser()
+        }
+    }
+
+    getUser = async (ttuid) => {
+        let res = await ajax(api.tt_user, {ttuid});
+        if (res.ok) {
+            console.log(res.tUser);
+            this.setState({s_user: res.tUser, loaded: true})
+        } else {
+            window.location = "/";
+        }
+    };
+
+    loadUser = () => {
         let ttUser = localStorage.getItem(TT_USER);
 
         let user = modelUser;
@@ -37,14 +60,11 @@ class App extends React.Component {
                 user = modelUser
             }
         }
-        this.setState({
-            user,
-            loaded: true
-        });
+        this.setState({ user, loaded: true });
         if (user.tasks.length === 8) {
             this.save(user);
         }
-    }
+    };
 
     save = async user => {
         user = {
@@ -55,7 +75,7 @@ class App extends React.Component {
         if (user.tasks.length === 8 && !user.end_time) {
             user.end_time = new Date().getTime();
         }
-        // this.setState({user});
+
         let res = await ajax(api.tt_save, user);
         if (res.ok) {
             user = {
@@ -83,14 +103,21 @@ class App extends React.Component {
     }
 
     render() {
-        const {loaded, user} = this.state;
+        const {loaded, user, s_user} = this.state;
 
         return <div className="App">
             {
-                !loaded || !user ?
+                !loaded ?
                     <Loader/>
+                :
+                s_user ?
+                    <Results user={s_user}/>
                     :
+                user ?
                     <TTasks user={user} save={this.save}/>
+                :
+                    <Loader/>
+
             }
         </div>
     }

@@ -59,6 +59,7 @@ export default class Task2 extends Component{
                 </div>
                 <div className={'word-task'}>
                     <WordTable
+                        finished={finished}
                         data={words}
                         result={result}
                         timeOut={timeOut}

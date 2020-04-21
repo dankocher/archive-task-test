@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import ProgressBar from "./ProgressBar";
 import "./styles.scss";
 import t from '../language';
+import {formatMinutes, formatTime} from "../../../utils/timeFormat";
 
 class Header extends React.Component {
 
@@ -110,21 +111,3 @@ Header.propTypes = {
 };
 
 export default Header;
-
-const formatMinutes = (seconds) => {
-    let minutes = parseInt(seconds / 60);
-    seconds = seconds % 60;
-    return `${formatTwo(minutes)}:${formatTwo(seconds)}`;
-};
-const formatTime = (milis) => {
-    let seconds = parseInt(milis / 1000);
-    let minutes = parseInt(seconds / 60);
-    seconds = seconds % 60;
-    let hours = parseInt(minutes / 60);
-    minutes = minutes % 60;
-    return `${formatTwo(hours)}:${formatTwo(minutes)}:${formatTwo(seconds)}`;
-};
-
-const formatTwo = (value) => {
-    return value < 10 ? `0${value}` : value;
-};

@@ -102,7 +102,7 @@ export default class Task4 extends Component {
         this.setState({ isModalOpened: true, modalImgSrc: src });
     }
 
-    closeImageModel = (event) => {
+    closeImageModal = (event) => {
         this.setState({ isModalOpened: false, modalImgSrc: null });
     }
 
@@ -111,6 +111,8 @@ export default class Task4 extends Component {
             <Modal
                 isOpen={this.state.isModalOpened}
                 style={customStyles}
+                contentLabel="onRequestClose Example"
+                onRequestClose={this.closeImageModal}
                 shouldCloseOnOverlayClick={true}
             >
                 <div className="illustration__modal-container">
@@ -118,9 +120,8 @@ export default class Task4 extends Component {
                     src={this.state.modalImgSrc} 
                     className="illustration__modal-img" 
                     alt="modal"
-                    onClick={this.closeImageModel}
                     />
-                    <div onClick={this.closeImageModel} className="illustration__modal-close-btn" />
+                    <div onClick={this.closeImageModal} className="illustration__modal-close-btn" />
                 </div>
             </Modal>
         );
@@ -193,7 +194,7 @@ export default class Task4 extends Component {
                     <p className="illustration__text"><span className="illustration__bold">{task4Content.bold2}</span>{task4Content.text3}</p>
                     <div className="illustration__text-container">
                         <p className="illustration__text-list">{task4Content.text4}</p>
-                        <p className="illustration__text-list illustration__text-list_indent">{task4Content.text5}<a href={task4Content.href} target="_blank">ссылке</a>{task4Content.text6}</p>
+                        <p className="illustration__text-list illustration__text-list_indent">{task4Content.text5}<a href={task4Content.href} target="_blank" rel="noopener noreferrer">ссылке</a>{task4Content.text6}</p>
                         <p className="illustration__text-list illustration__text-list_indent">{task4Content.text7}</p>
                         <p className="illustration__text-list illustration__text-list_indent">{task4Content.text8}</p>
                     </div>

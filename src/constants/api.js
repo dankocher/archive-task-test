@@ -4,8 +4,7 @@ const host = {
 
 const api = {
     tt_save: {method: "POST", uri: "/api/test-task/save"},
-    tt_user: {method: "POST", uri: "/api/test-task/user/:tt_user_id"}
-
+    tt_user: {method: "POST", uri: "/api/test-task/user/:ttuid"}
 };
 
 

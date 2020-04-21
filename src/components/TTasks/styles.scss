@@ -3,7 +3,8 @@
   padding: 0 5px;
   box-sizing: border-box;
   background-color: white;
-  transition: all 2500ms ease-in-out;
+  transition: all 250ms ease-in-out;
+  margin-bottom: 40px;
   .header-container {
     margin-left: -5px;
     background-color: white;
@@ -19,7 +20,7 @@
     display: flex;
     //justify-content: center;
     //align-items: center;
-    transition: all 2500ms ease-in-out;
+    transition: all 200ms ease-in-out;
   }
   .button-container {
     width: 100%;

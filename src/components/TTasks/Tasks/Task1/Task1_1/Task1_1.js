@@ -91,9 +91,12 @@ export default class  Task1_1 extends Component{
                         finished ? fResults : translations.task1_1_description
                     }
                 </div>
-                <div className='task_image'>
-                    <img alt='' src={table}/>
-                </div>
+                {
+                    finished ? null :
+                        <div className='task_image'>
+                            <img alt='' src={table}/>
+                        </div>
+                }
                 <div className='answers_fields'>
                     <LetterInputs label={black} size={24} color={'black'} onChange={(v, i) => this.onChange(v, i, 'black')}
                                   onDelete={i => this.onDelete(i, 'black')}

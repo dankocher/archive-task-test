@@ -1,0 +1,21 @@
+
+.r-header {
+  width: 100%;
+  text-align: left;
+  padding: 76px 80px 54px;
+  box-sizing: border-box;
+  .u-name {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    padding-bottom: 12px;
+  }
+
+  .u-email, .u-date, .u-time {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+  }
+}
