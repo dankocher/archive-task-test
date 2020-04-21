@@ -1,11 +1,26 @@
 import React from "react";
 import "./RTable.scss";
 import t from "./language";
+import {formatMinutes} from "../../utils/timeFormat";
+import checkResults from "./checkResults";
 
 class RTable extends React.Component {
 
+    state = {
+        time: " ",
+        correct: " ",
+        error: " ",
+        empty: " "
+    };
+
+    componentDidMount() {
+        const {index, task} = this.props;
+        const results = checkResults(index, task);
+        this.setState({...results});
+    }
+
     render() {
-        const {task} = this.props;
+        const {time, correct, error, empty} = this.state;
         return (
             <div className={'r-table'}>
                 <div className="r-table-header">
@@ -15,10 +30,10 @@ class RTable extends React.Component {
                     <div className="task-empty">{t.empty}</div>
                 </div>
                 <div className="r-table-results">
-                    <div className="task-time">1:25</div>
-                    <div className="task-correct">15</div>
-                    <div className="task-error">4</div>
-                    <div className="task-empty">0</div>
+                    <div className="task-time">{time}</div>
+                    <div className="task-correct">{correct}</div>
+                    <div className="task-error">{error}</div>
+                    <div className="task-empty">{empty}</div>
                 </div>
             </div>
         );

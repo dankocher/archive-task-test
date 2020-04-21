@@ -19,7 +19,9 @@ const customStyles = {
         right                 : 'auto',
         bottom                : 'auto',
         marginRight           : '-50%',
-        transform             : 'translate(-50%, -50%)'
+        transform             : 'translate(-50%, -50%)',
+        width: '90vw',
+        height: '75%',
     }
 };
 
@@ -116,11 +118,13 @@ export default class Task4 extends Component {
                 shouldCloseOnOverlayClick={true}
             >
                 <div className="illustration__modal-container">
-                    <img 
-                    src={this.state.modalImgSrc} 
-                    className="illustration__modal-img" 
-                    alt="modal"
-                    />
+                    <div className="illustration__modal-img-container">
+                        <img 
+                            src={this.state.modalImgSrc} 
+                            className="illustration__modal-img" 
+                            alt="modal"
+                        />
+                    </div>
                     <div onClick={this.closeImageModal} className="illustration__modal-close-btn" />
                 </div>
             </Modal>
@@ -138,17 +142,19 @@ export default class Task4 extends Component {
             return (
                 <div key={key} className="illustration__item">
                     <h3 className="illustration__img-title">{`Картинка ${Number(key) + 1}`}</h3>
-                    <img 
-                        src={IMAGE[key]} 
-                        className="illustration__img" 
-                        alt="screen2"
-                        onClick={this.openImageModal}
-                    />
+                    <div className={`illustration__img-container illustration__img-container_${key}`}>
+                        <img 
+                            src={IMAGE[key]} 
+                            className="illustration__img" 
+                            alt="illustration"
+                            onClick={this.openImageModal}
+                        />
+                    </div>
                     <div className="illustration__field-container">
                         <TextField
                             value={captions}
                             onChange={(event) => this.handleChange(event, "captions", key)}
-                            disabled={!isEditable}
+                            readOnly={!isEditable}
                             label="Введите заголовки"
                             multiline
                             rows={4}
@@ -160,7 +166,7 @@ export default class Task4 extends Component {
                             data-property-name="words"
                             value={words}
                             onChange={(event) => this.handleChange(event, "words", key)}
-                            disabled={!isEditable}
+                            readOnly={!isEditable}
                             label="Введите ключевые слова"
                             multiline
                             rows={4}
@@ -198,11 +204,15 @@ export default class Task4 extends Component {
                         <p className="illustration__text-list illustration__text-list_indent">{task4Content.text7}</p>
                         <p className="illustration__text-list illustration__text-list_indent">{task4Content.text8}</p>
                     </div>
-                    <img src={Captions} alt="screen1" className="illustration__img-screen"/>
+                    <div className="illustration__screen-container illustration__screen-container_1">
+                        <img src={Captions} alt="screen1" className="illustration__img-screen"/>
+                    </div>
                     <div className="illustration__text-container">
                         <p className="illustration__text-list illustration__text-list_indent">{task4Content.text9}</p>
                     </div>
-                    <img src={Keywords} alt="screen2" className="illustration__img-screen"/>
+                    <div className="illustration__screen-container illustration__screen-container_2">
+                        <img src={Keywords} alt="screen2" className="illustration__img-screen"/>
+                    </div>
                 </div>
                 <div className="illustration__task-description">
                     <h2 className="illustration__title-task">Задание</h2>
@@ -214,7 +224,7 @@ export default class Task4 extends Component {
 
     render() {
         return (
-            <div className="illustration">
+            <div className="illustration" style={{marginBottom: this.props.marginBottom}}>
                 {this.renderTitleAndDescription()}
                 <div className="illustration__form">
                     <div className="illustration__form-container">

@@ -15,7 +15,8 @@ code {
 }
 
 html {
-  overflow: overlay;
+  overflow-y: overlay;
+  overflow-x: hidden;
 }
 html, body, #root {
   min-width: 100%;

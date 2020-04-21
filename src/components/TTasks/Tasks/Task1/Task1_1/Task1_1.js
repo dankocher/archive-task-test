@@ -14,6 +14,7 @@ export default class  Task1_1 extends Component{
         onChange: PropTypes.func.isRequired,
         finished: PropTypes.bool,
         fResults: PropTypes.object,
+        marginBottom: PropTypes.number
     };
 
     componentDidMount() {
@@ -81,12 +82,12 @@ export default class  Task1_1 extends Component{
     };
 
     render() {
-        const {finished, fResults, result} = this.props;
+        const {finished, fResults, result, marginBottom} = this.props;
 
         return (
-            <div className='task1_1'>
+            <div className='task1_1' style={{marginBottom}}>
                 <div className='name'>{translations.task1_1_name}</div>
-                <div className='description'>
+                <div className={`description${finished ? ' -finished' : ''}`}>
                     {
                         finished ? fResults : translations.task1_1_description
                     }

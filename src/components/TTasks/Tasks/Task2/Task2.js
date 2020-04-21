@@ -13,7 +13,8 @@ export default class Task2 extends Component{
         onChange: PropTypes.func.isRequired,
         finished: PropTypes.bool,
         fResults: PropTypes.object,
-        timeOut: PropTypes.bool
+        timeOut: PropTypes.bool,
+        marginBottom: PropTypes.number
     };
 
     componentDidMount() {
@@ -33,8 +34,7 @@ export default class Task2 extends Component{
             arr[i] = v;
             let newResult = {
                 ...result,
-                words: arr,
-                data: result.data ? result.data : words
+                words: arr
             };
 
             let data = {
@@ -47,10 +47,10 @@ export default class Task2 extends Component{
     };
 
     render() {
-        const {finished, fResults, timeOut, result} = this.props;
+        const {finished, fResults, timeOut, result, marginBottom} = this.props;
 
         return (
-            <div className='task2'>
+            <div className='task2' style={{marginBottom}}>
                 <div className='name'>{translations.task2_name}</div>
                 <div className='description'>
                     {

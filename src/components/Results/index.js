@@ -12,9 +12,8 @@ class Results extends React.Component {
 
     nothing = () => {};
 
-    getTable = task => {
-        task = this.props.user.tasks[task];
-        return <RTable task={task}/>;
+    getTable = index => {
+        return <RTable index={index} task={this.props.user.tasks[index]}/>;
     };
 
     render() {
@@ -22,11 +21,11 @@ class Results extends React.Component {
         return <div className="results">
             <div className="results-container">
                 <RHeader user={user}/>
-                <Task1_1 result={user.tasks[2].result} finished={true} fResults={this.getTable(2)} onChange={this.nothing} timeOut={true}/>
-                <Task1_2 result={user.tasks[3].result} finished={true} fResults={this.getTable(2)} onChange={this.nothing} timeOut={true}/>
-                <Task2 result={user.tasks[4].result} finished={true} fResults={this.getTable(2)} onChange={this.nothing} timeOut={true}/>
-                <Task3 result={user.tasks[5].result} finished={true} fResults={this.getTable(2)} onChange={this.nothing} timeOut={true}/>
-                <Task4 result={user.tasks[6].result} finished={true} fResults={null} onChange={this.nothing} timeOut={true}/>
+                <Task1_1 result={user.tasks[2].result} finished={true} fResults={this.getTable(2)} onChange={this.nothing} timeOut={true} marginBottom={-13}/>
+                <Task1_2 result={user.tasks[3].result} finished={true} fResults={this.getTable(3)} onChange={this.nothing} timeOut={true} marginBottom={-13}/>
+                <Task2 result={user.tasks[4].result} finished={true} fResults={this.getTable(4)} onChange={this.nothing} timeOut={true} marginBottom={51}/>
+                <Task3 result={user.tasks[5].result} finished={true} fResults={this.getTable(5)} onChange={this.nothing} timeOut={true} marginBottom={50}/>
+                <Task4 result={user.tasks[6].result} finished={true} fResults={null} onChange={this.nothing} timeOut={true} marginBottom={-15}/>
             </div>
         </div>
     }

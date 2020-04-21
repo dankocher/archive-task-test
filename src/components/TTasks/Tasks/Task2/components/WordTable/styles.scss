@@ -20,7 +20,7 @@
     box-sizing: border-box;
 
     .word-input {
-
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);;
       input {
         padding: 5px 0;
         font-family: Roboto;
@@ -37,16 +37,22 @@
         }
       }
 
+      &.-filled {
+        border-bottom: 1px solid black;
+      }
+
       &:hover:before {
-        border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+        border: 0;
+        //border-bottom: 1px solid rgba(0, 0, 0, 0.42);
       }
 
       &:after {
         border-bottom: 0;
       }
 
-      &.-filled:before {
-        border-bottom: 2px solid rgba(0, 0, 0, 0.87);
+      &:before {
+        border-bottom: 0;
+        //border-bottom: 1px solid rgba(0, 0, 0, 0.87);
       }
     }
   }

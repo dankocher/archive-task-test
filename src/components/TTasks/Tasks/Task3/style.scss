@@ -1,7 +1,6 @@
 .remembrance {
     max-width: 800px;
-    max-height: 512px;
-    margin: 0 auto;
+    // max-height: 512px;
     font-family: Roboto;
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {
@@ -9,7 +8,9 @@
     }
     &__container {
         /*padding: 55px 80px 60px 80px;*/
-        margin: 0 auto;
+        // margin: 0 auto;
+        margin-bottom: 60px;
+        margin-left: 80px;
     }
     &__description {
         padding: 56px 80px 0 80px;
@@ -58,14 +59,14 @@
     }
     &__input-number {
         max-height: 64px;
-        max-width: 60px;
+        max-width: 56px;
         font-weight: 500;
         font-size: 72px;
         line-height: 33px;
         text-align: center;
         letter-spacing: 0.15px;
         color: rgba(0, 0, 0, 0.87);
-        &_editable {
+        &_editable, &_final {
             border-bottom: 1px solid rgba(0, 0, 0, 0.12);
         }
     }
@@ -83,7 +84,7 @@
         text-align: center;
         letter-spacing: 0.15px;
         color: rgba(0, 0, 0, 0.87);
-        &_editable {
+        &_editable, &_final {
             border-bottom: 1px solid rgba(0, 0, 0, 0.12);
         }
     }
@@ -97,7 +98,6 @@
     }
     &__numbers-container {
         margin-left: 12px;
-        margin-bottom: 60px;
         display: flex;
         justify-content: left;
         flex-direction: column;
@@ -117,6 +117,13 @@
         &_editable {
             &:first-child {
                 margin-bottom: 25px;
+            }
+        }
+        &_finished {
+            margin-left: -73px;
+            &:first-child {
+                margin-bottom: 25px;
+                margin-top: 33px;
             }
         }
     }
@@ -200,6 +207,7 @@
 
     .remembrance__input-text:not(.remembrance__input-text_initial).remembrance__input-text_not-empty,
     .remembrance__input-text.remembrance__input-text_editable:active,
+    .remembrance__input-text.remembrance__input-text_editable:focus-within,
     .remembrance__input-text.remembrance__input-text_editable:focus {
         border-bottom: 1px solid rgba(0, 0, 0, 0.87);
     }

@@ -15,10 +15,12 @@ export default class  Task1_2 extends Component{
         timeOut: PropTypes.bool,
         finished: PropTypes.bool,
         fResults: PropTypes.object,
+        marginBottom: PropTypes.number
     };
 
     componentDidMount() {
         const {result, onChange} = this.props;
+
 
         onChange({
             result,
@@ -86,12 +88,12 @@ export default class  Task1_2 extends Component{
     };
 
     render() {
-        const {finished, fResults, result} = this.props;
+        const {finished, fResults, result, marginBottom} = this.props;
 
         return (
-            <div className='task1_2'>
+            <div className='task1_2' style={{marginBottom}}>
                 <div className='name'>{translations.task1_2_name}</div>
-                <div className='description'>
+                <div className={`description${finished ? ' -finished' : ''}`}>
                     {
                         finished ? fResults : translations.task1_2_description
                     }

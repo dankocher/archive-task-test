@@ -15,7 +15,7 @@ import AlertMessage from "../AlertMessage";
 import Task3 from "./Tasks/Task3";
 import Task4 from "./Tasks/Task4";
 
-const MAX_TIMEOUT = 5;
+const MAX_TIMEOUT = 70;
 
 const defaultState = {
     currentTask: 0,
@@ -187,7 +187,7 @@ class TTasks extends React.Component {
                 </div>
                 <div className="button-container">
                     {/*<div className="button" onClick={() => this.setState({currentTask: currentTask-1})}>PREV</div>*/}
-                    <div className="button" onClick={this.reset}>RESET</div>
+                    {/*<div className="button" onClick={this.reset}>RESET</div>*/}
                     {/*<div className="button" onClick={() => this.setState({showMessage: true})}>SHOW</div>*/}
                     {   currentTask === 7 || !timeOut ? null :
                         <div className={`button${nextEnabled ? "" : " --disabled"}`} onClick={this.save}>
