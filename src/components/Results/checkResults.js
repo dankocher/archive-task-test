@@ -16,13 +16,13 @@ const checkTask1 = (index, result) => {
 
 const checkTask2 = (result) => {
     const words = "лето,бремя,богатство,жизнь,холод,терпеливость,свобода,ужин,надёжность,вальс,энергия,скука,справедливость,движение,досада,надежда,виновность,счастье".split(",");
-    return compareArray(words, result.words);
+    return compareArray(words, result && result.words ? result.words : []);
 };
 
 const checkTask3 = (result) => {
     let model = "0,1,2,3,4,5,6,7,8,9,яйцо,свеча,утка,птица,парусник,детская горка,змея,овраг,снеговик,воздушный шарик".split(",");
 
-    result = Object.entries(result).map(r => r[1]);
+    result = result === undefined || result === null ? [] : Object.entries(result).map(r => r[1]);
     let _numbers = result.map(r => r.number);
     let _text = result.map(r => r.text);
     return compareArray(model, [..._numbers, ..._text]);

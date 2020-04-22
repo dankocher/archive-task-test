@@ -61,7 +61,7 @@ export default class Task2 extends Component{
                     <WordTable
                         finished={finished}
                         data={words}
-                        result={result}
+                        result={result || {}}
                         timeOut={timeOut}
                         onChange={this.onChange}
                     />

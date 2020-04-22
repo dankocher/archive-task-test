@@ -23,9 +23,9 @@ class Results extends React.Component {
                 <RHeader user={user}/>
                 <Task1_1 result={user.tasks[2].result} finished={true} fResults={this.getTable(2)} onChange={this.nothing} timeOut={true} marginBottom={-13}/>
                 <Task1_2 result={user.tasks[3].result} finished={true} fResults={this.getTable(3)} onChange={this.nothing} timeOut={true} marginBottom={-13}/>
-                <Task2 result={user.tasks[4].result} finished={true} fResults={this.getTable(4)} onChange={this.nothing} timeOut={true} marginBottom={51}/>
-                <Task3 result={user.tasks[5].result} finished={true} fResults={this.getTable(5)} onChange={this.nothing} timeOut={true} marginBottom={50}/>
-                <Task4 result={user.tasks[6].result} finished={true} fResults={null} onChange={this.nothing} timeOut={true} marginBottom={-15}/>
+                <Task2 result={user.tasks[4].result} finished={true} fResults={this.getTable(4)} onChange={this.nothing} timeOut={true} marginBottom={52}/>
+                <Task3 result={user.tasks[5].result} finished={true} fResults={this.getTable(5)} onChange={this.nothing} timeOut={true} marginBottom={-25}/>
+                <Task4 result={user.tasks[6].result} finished={true} fResults={null} onChange={this.nothing} timeOut={true} marginBottom={5}/>
             </div>
         </div>
     }

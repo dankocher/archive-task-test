@@ -6,7 +6,6 @@ import t from "./language";
 import Task0 from "./Tasks/Task0";
 import Loader from "../Loader";
 
-import TestTask from "./Tasks/TestTask";
 import FinishPage from "./Tasks/FinishPage";
 import Task1_1 from "./Tasks/Task1/Task1_1";
 import Task1_2 from "./Tasks/Task1/Task1_2";
@@ -15,7 +14,7 @@ import AlertMessage from "../AlertMessage";
 import Task3 from "./Tasks/Task3";
 import Task4 from "./Tasks/Task4";
 
-const MAX_TIMEOUT = 70;
+const MAX_TIMEOUT = 5;
 
 const defaultState = {
     currentTask: 0,
@@ -170,12 +169,8 @@ class TTasks extends React.Component {
     };
 
     render() {
-
         const {user, nextEnabled, currentTask, leastTime, timeOut, showMessage, message} = this.state;
-
         let taskTime = user.tasks[currentTask] !== undefined ? user.tasks[currentTask].start_time : user.start_time;
-
-        // currentTask
 
         return (
             <div className={"test-task"}>

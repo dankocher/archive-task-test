@@ -88,10 +88,11 @@ export default class Task3 extends Component {
         }, {});
     }
 
+    
     render() {
         return (
-            <div className="remembrance">
-                <div className="remembrance__container" style={{marginBottom: this.props.marginBottom}}>
+            <div className="remembrance" style={{marginBottom: this.props.marginBottom}}>
+                <div className="remembrance__container">
                     <Header
                         taskState={this.getTaskState()}
                         fResults={this.props.fResults}

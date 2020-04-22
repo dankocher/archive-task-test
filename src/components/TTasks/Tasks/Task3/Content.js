@@ -56,7 +56,9 @@ export default class Content extends Component {
                             data-key={key}
                             value={text}
                             onChange={(event) => this.props.handleTextChange(event, key)}
-                            readOnly={!this.isEditableState()}
+                            InputProps={{
+                                readOnly: !this.isEditableState()
+                            }}
                             multiline
                             rows={1}
                             rowsMax={2}
