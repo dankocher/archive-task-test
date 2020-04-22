@@ -1,4 +1,5 @@
 .illustration {
+    // border: 1px solid;;
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
@@ -11,7 +12,7 @@
     }
     &__title {
         text-align: left;
-        margin-bottom: 29px;
+        margin-bottom: 27px;
         font-family: Roboto;
         font-style: normal;
         font-weight: bold;
@@ -22,7 +23,7 @@
     }
     &__title-task {
         text-align: left;
-        margin-bottom: 7px;
+        margin-bottom: 6px;
         font-family: Roboto;
         font-style: normal;
         font-weight: bold;
@@ -44,12 +45,17 @@
     &__text-task {
         text-align: left;
         margin-bottom: 27px;
-        font-family: Roboto;
-        font-style: normal;
-        font-size: 14px;
-        line-height: 24px;
-        letter-spacing: 0.15px;
-        color: rgba(0, 0, 0, 0.87);
+        &-paragraph {
+            margin-bottom: 9px;
+            text-align: left;
+            font-family: Roboto;
+            font-weight: normal;
+            font-style: normal;
+            font-size: 14px;
+            line-height: 24px;
+            letter-spacing: 0.15px;
+            color: rgba(0, 0, 0, 0.87);
+        }
     }
     &__img-title {
         text-align: left;
@@ -100,22 +106,23 @@
         text-align: center;
     }
     &__text-container {
-        margin-bottom: 9px;
+        margin-bottom: 22px;
     }
     &__text-list {
         font-family: Roboto;
         font-style: normal;
         font-size: 14px;
+        font-weight: normal;
         line-height: 24px;
         letter-spacing: 0.15px;
         color: rgba(0, 0, 0, 0.87);
         &_indent {
-            text-indent: 17px;
+            text-indent: 18px;
         } 
     }
     &__modal-img {
         position: relative;
-        width: calc(100% - 18px);
+        width: 100%;
         z-index: 9999999999999;
     }
     &__modal-img-container {
@@ -123,18 +130,20 @@
         display: flex;
         justify-content: center;
         position: relative;
-        top: 50%;
+        /* top: 50%; */
+        /* bottom: 50%; */
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, 0%);
     }
     &__modal-close-btn {
         position: absolute;
         width: 20px;
         height: 20px;
         top: 5px;
-        right: 5px;
+        right: 14px;
         border-radius: 20px;
         background: url('./assets/img/close.png') no-repeat;
+        z-index: 9999999999;
         cursor: pointer;
         &:hover {
             transition: all 0.3s ease-in-out;
@@ -178,6 +187,7 @@
             height: 412px;
         }
         &_2 {
+            margin-bottom: 33px;
             height: 330px;
         }
     }
@@ -203,4 +213,15 @@
 .ReactModal__Body--open {
     overflow-y: overlay;
     position: fixed;
+}
+.MuiDialog-paperWidthSm {
+    min-width: 700px !important;
+    max-width: 1000px !important;
+}
+
+#root, body, html  {
+    min-width: 100%;
+    height: 100%;
+    overflow-y: overlay!important;
+    overflow-x: hidden!important;
 }

@@ -91,7 +91,7 @@ export default class Task3 extends Component {
     
     render() {
         return (
-            <div className="remembrance" style={{marginBottom: this.props.marginBottom}}>
+            <div className={this.getTaskState() === TASK_STATE.finalResult ? "remembrance remembrance_final" : "remembrance remembrance_not-final"} style={{marginBottom: this.props.marginBottom}}>
                 <div className="remembrance__container">
                     <Header
                         taskState={this.getTaskState()}
