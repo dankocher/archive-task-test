@@ -14,7 +14,7 @@ import AlertMessage from "../AlertMessage";
 import Task3 from "./Tasks/Task3";
 import Task4 from "./Tasks/Task4";
 
-const MAX_TIMEOUT = 5;
+const MAX_TIMEOUT = 70;
 
 const defaultState = {
     currentTask: 0,

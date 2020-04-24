@@ -1,7 +1,6 @@
 import React from "react";
 import "./RTable.scss";
 import t from "./language";
-import {formatMinutes} from "../../utils/timeFormat";
 import checkResults from "./checkResults";
 
 class RTable extends React.Component {

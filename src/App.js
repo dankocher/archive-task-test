@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles/App.css';
+import './styles/App.scss';
 import Loader from "./components/Loader";
 import TTasks from "./components/TTasks";
 import ajax from "./utils/ajax";
@@ -24,7 +24,8 @@ class App extends React.Component {
         this.state = {
             user: undefined,
             s_user: undefined,
-            loaded: false
+            loaded: false,
+            test_enabled: true
         }
     }
 
@@ -42,14 +43,20 @@ class App extends React.Component {
     getUser = async (ttuid) => {
         let res = await ajax(api.tt_user, {ttuid});
         if (res.ok) {
-            console.log(res.tUser);
             this.setState({s_user: res.tUser, loaded: true})
         } else {
             window.location = "/";
         }
     };
 
-    loadUser = () => {
+    loadUser = async () => {
+
+        let status = await ajax(api.tt_status, {id: 0});
+        if (!status.ok) {
+            document.title = "404 NOT FOUND";
+            return this.setState({loaded: true, test_enabled: false})
+        }
+
         let ttUser = localStorage.getItem(TT_USER);
 
         let user = modelUser;
@@ -103,13 +110,15 @@ class App extends React.Component {
     }
 
     render() {
-        const {loaded, user, s_user} = this.state;
+        const {loaded, user, s_user, test_enabled} = this.state;
 
         return <div className="App">
             {
                 !loaded ?
                     <Loader/>
                 :
+                !test_enabled ?
+                    <center><h1>404 NOT FOUND</h1></center> :
                 s_user ?
                     <Results user={s_user}/>
                     :

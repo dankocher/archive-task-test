@@ -25,9 +25,9 @@ export const TASK_STATE = {
 };
 
 export const IMAGE = {
-    0: avatarsImg,
-    1: shoppingImg,
-    2: sleepImg,
-    3: businessImg,
-    4: moneyImg,
+    0: { src: avatarsImg, width: 1742, height: 860 },
+    1: { src: shoppingImg, width: 1633, height: 918 },
+    2: { src: sleepImg, width: 1530, height: 979 },
+    3: { src: businessImg, width: 2284, height: 656 },
+    4: { src: moneyImg, width: 1843, height: 813 },
 }

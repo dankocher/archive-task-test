@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { TASK_STATE, IMAGE, customStyles } from './constants';
+import { TASK_STATE, IMAGE } from './constants';
 import TextField from '@material-ui/core/TextField';
-import Modal from '@material-ui/core/Modal';
 import Dialog from '@material-ui/core/Dialog';
+import CrossSVG from './CrossSVG';
+import throttle from './throttle';
 
 export default class Content extends Component {
     constructor(props) {
@@ -10,58 +11,80 @@ export default class Content extends Component {
 
         this.state = {
             isModalOpened: false,
-            modalImgSrc: null,
+            modalImgData: null,
+            clientWidth: document.documentElement.clientWidth,
+            clientHeight: document.documentElement.clientHeight,
         };
+
+        this.throttledHandleResize = throttle(this.handleResive, 300);
     }
+
+    componentDidMount() {
+        window.addEventListener('resize', this.throttledHandleResize);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.throttledHandleResize);
+    }
+
+    updateClientDimentions() {
+        this.setState({
+            clientWidth: document.documentElement.clientWidth,
+            clientHeight: document.documentElement.clientHeight,
+        });
+    }
+
+    handleResive = () => {
+        this.updateClientDimentions();
+    }
+
     openImageModal = (event) => {
         const target = event.target;
-        const src = target.src;
-        this.setState({ isModalOpened: true, modalImgSrc: src });
+        const key = target.dataset.key;
+        const imageData = IMAGE[key];
+
+        this.setState({ isModalOpened: true, modalImgData: imageData });
     }
 
     closeImageModal = (event) => {
-        this.setState({ isModalOpened: false, modalImgSrc: null });
+        this.setState({ isModalOpened: false });
+    }
+
+    getZoomCoef(imgWidth, imgHeight) {
+        const { clientWidth, clientHeight } = this.state;
+
+        const availableWidth = clientWidth - 64;
+        const availableHeight = clientHeight - 64;
+
+        return 1 / Math.max(imgWidth / availableWidth, imgHeight / availableHeight);
     }
 
     renderImageModal() {
-        return (
-            // <Modal
-            //     isOpen={this.state.isModalOpened}
-            //     style={customStyles}
-            //     contentLabel="onRequestClose Example"
-            //     onRequestClose={this.closeImageModal}
-            //     shouldCloseOnOverlayClick={true}
-            // >
-            //     <div className="illustration__modal-container">
-            //         <div className="illustration__modal-img-container">
-            //             <img 
-            //                 src={this.state.modalImgSrc} 
-            //                 className="illustration__modal-img" 
-            //                 alt="modal"
-            //             />
-            //         </div>
-            //         <div onClick={this.closeImageModal} className="illustration__modal-close-btn" />
-            //     </div>
-            // </Modal>
+        const modalImgData = this.state.modalImgData || {};
+        const { src = '', width = 0, height = 0 } = modalImgData;
+        const zoomKoef = this.getZoomCoef(width, height);
 
-            // <button type="button" onClick={handleOpen}>
-            //     Open Modal
-            // </button>
+        return (
             <Dialog
                 open={this.state.isModalOpened}
                 onClose={this.closeImageModal}
                 onBackdropClick={this.closeImageModal}
                 aria-labelledby="simple-dialog-title"
                 disableScrollLock={false}
+                maxWidth={false}
             >
                 <div className="illustration__modal-container">
-                     <div className="illustration__modal-img-container">
-                         <img 
-                             src={this.state.modalImgSrc} 
-                             className="illustration__modal-img" 
-                             alt="modal"
-                         />
-                         <div onClick={this.closeImageModal} className="illustration__modal-close-btn" />
+                    <img 
+                        src={src}
+                        style={{
+                            height: height * zoomKoef,
+                            width: width * zoomKoef,
+                        }}
+                        className="illustration__modal-img"
+                        alt="modal"
+                    />
+                    <div onClick={this.closeImageModal} className="illustration__modal-close-btn">
+                        <CrossSVG />
                     </div>
                 </div>
           </Dialog>
@@ -80,8 +103,9 @@ export default class Content extends Component {
                 <div key={key} className="illustration__item">
                     <h3 className="illustration__img-title">{`Картинка ${Number(key) + 1}`}</h3>
                     <div className={`illustration__img-container illustration__img-container_${key}`}>
-                        <img 
-                            src={IMAGE[key]} 
+                        <img
+                            data-key={key}
+                            src={IMAGE[key].src} 
                             className="illustration__img" 
                             alt="illustration"
                             onClick={this.openImageModal}

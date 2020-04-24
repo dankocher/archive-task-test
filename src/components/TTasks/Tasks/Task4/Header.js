@@ -23,7 +23,7 @@ export default class Header extends Component {
             <div className="illustration__container">
                 <div className="illustration__description">
                     <h2 className="illustration__title">{task4Content.title}</h2>
-                    <p className="illustration__text">{task4Content.description}</p>
+                    <p className="illustration__text-description">{task4Content.description}</p>
                     <p className="illustration__text"><span className="illustration__bold">{task4Content.bold1}</span>{task4Content.text2}</p>
                     <p className="illustration__text"><span className="illustration__bold">{task4Content.bold2}</span>{task4Content.text3}</p>
                     <div className="illustration__text-container">

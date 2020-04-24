@@ -1,5 +1,6 @@
 .remembrance {
     max-width: 800px;
+    width: 100%;
     min-height: 507px;
     font-family: Roboto;
     // margin: 0 auto;
@@ -15,7 +16,10 @@
         }
     }
     &_final {
-        margin-left: 80px;
+
+        .remembrance__container {
+            margin-left: 80px;
+        }
         .remembrance__title {
             margin-bottom: 24px;
         }
@@ -78,7 +82,7 @@
     }
     &__input-number {
         max-height: 64px;
-        max-width: 56px;
+        max-width: 54px;
         font-weight: 500;
         font-size: 72px;
         line-height: 33px;
@@ -150,6 +154,12 @@
 
 
 .remembrance {
+    .remembrance__input-number, .remembrance__input-text {
+        margin-right: 1px;
+    }
+    .remembrance__input-number {
+        padding-left: 4px;
+    }
     .remembrance__input-text_editable {
         position: relative;
         &:after {
@@ -289,6 +299,21 @@
             .MuiInputBase-input {
                 margin-left: -13.5px !important;
             }
+        }
+    }
+
+    .remembrance__item:last-child {
+        .remembrance__input-number {
+            margin-right: -1px;
+        }
+        .remembrance__input-text {
+            // margin-right: -1px;
+            margin-right: 2px;
+        }
+    }
+    .remembrance__item:last-child {
+        .remembrance__input-text_final {
+            margin-right: -1px;
         }
     }
     .remembrance__input-text_initial {

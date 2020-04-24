@@ -27,11 +27,12 @@
     width: 24px;
     height: 35px;
     display: flex;
-    align-items: center;
+    padding-top: 11px;
+    //align-items: center;
     border-bottom: 1px solid gainsboro;
 
     .input {
-      height: 10px;
+      height: 15px;
       width: 100%;
       border-left: 1px solid #9E9E9E;
       &::before, &::after {
