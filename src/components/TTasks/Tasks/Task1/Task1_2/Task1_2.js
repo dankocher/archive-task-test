@@ -91,9 +91,9 @@ export default class  Task1_2 extends Component{
         const {finished, fResults, result, marginBottom} = this.props;
 
         return (
-            <div className='task1_2' style={{marginBottom}}>
+            <div className={`task1_2${finished ? ' -finished' : ''}`} style={{marginBottom}}>
                 <div className='name'>{translations.task1_2_name}</div>
-                <div className={`description${finished ? ' -finished' : ''}`}>
+                <div className={`description`}>
                     {
                         finished ? fResults : translations.task1_2_description
                     }

@@ -32,4 +32,14 @@
   .word-task {
 
   }
+
+  &.-finished {
+    .name {
+      padding-bottom: 26px;
+    }
+
+    .description {
+      padding-bottom: 28px;
+    }
+  }
 }

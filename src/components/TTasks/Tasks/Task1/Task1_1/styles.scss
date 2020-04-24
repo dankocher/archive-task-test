@@ -26,10 +26,6 @@
     color: rgba(0, 0, 0, 0.87);
     text-align: left;
     white-space: pre-line;
-
-    &.-finished {
-      padding-bottom: 40px;
-    }
   }
 
   .task_image {
@@ -48,5 +44,16 @@
 
   .answers_fields {
     box-sizing: border-box;
+  }
+
+
+  &.-finished {
+    .name {
+      padding-bottom: 26px;
+    }
+
+    .description {
+      padding-bottom: 40px;
+    }
   }
 }
