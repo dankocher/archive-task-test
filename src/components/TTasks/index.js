@@ -46,6 +46,12 @@ class TTasks extends React.Component {
         this.checkRestart();
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevState.currentTask !== this.state.currentTask) {
+            document.getElementById('task-anchor').focus()
+        }
+    }
+
     checkRestart = async () => {
         const {user, currentTask} = this.state;
         if ((currentTask === 4 || currentTask === 5) && !user.tasks[currentTask].time_out) {
@@ -145,6 +151,7 @@ class TTasks extends React.Component {
     getTask = () => {
         const {user, currentTask, timeOut, recheck} = this.state;
         const id = currentTask;
+        //const id = 4;
 
         let task = user.tasks[id];
         if (!task) {
@@ -178,6 +185,7 @@ class TTasks extends React.Component {
                     <Header currentTask={currentTask} taskTime={taskTime} start_time={user.start_time} leastTime={leastTime} timeOut={timeOut}/>
                 </div>
                 <div className="task-container">
+                    <div tabIndex='0' id={'task-anchor'}></div>
                     <this.getTask/>
                 </div>
                 <div className="button-container">

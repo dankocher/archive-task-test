@@ -36,7 +36,7 @@ export default class Content extends Component {
 
     handleResive = () => {
         this.updateClientDimentions();
-    }
+    };
 
     openImageModal = (event) => {
         const target = event.target;
@@ -44,11 +44,11 @@ export default class Content extends Component {
         const imageData = IMAGE[key];
 
         this.setState({ isModalOpened: true, modalImgData: imageData });
-    }
+    };
 
     closeImageModal = (event) => {
         this.setState({ isModalOpened: false });
-    }
+    };
 
     getZoomCoef(imgWidth, imgHeight) {
         const { clientWidth, clientHeight } = this.state;
@@ -58,6 +58,24 @@ export default class Content extends Component {
 
         return 1 / Math.max(imgWidth / availableWidth, imgHeight / availableHeight);
     }
+
+    makeImageName = i => {
+
+        switch (+i) {
+            case 0:
+                return 'People avatars set';
+            case 1:
+                return 'People shopping in the mall';
+            case 2:
+                return 'Sleep control';
+            case 3:
+                return 'Strategy concept';
+            case 4:
+                return 'People with money';
+            default:
+                break;
+        }
+    };
 
     renderImageModal() {
         const modalImgData = this.state.modalImgData || {};
@@ -101,7 +119,7 @@ export default class Content extends Component {
 
             return (
                 <div key={key} className="illustration__item">
-                    <h3 className="illustration__img-title">{`Картинка ${Number(key) + 1}`}</h3>
+                    <h3 className="illustration__img-title">{this.makeImageName(key)}</h3>
                     <div className={`illustration__img-container illustration__img-container_${key}`}>
                         <img
                             data-key={key}

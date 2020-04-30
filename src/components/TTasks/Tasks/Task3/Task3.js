@@ -22,14 +22,14 @@ export default class Task3 extends Component {
 
         const myRe = /\d/;
 
-        if (( myRe.exec(target.value) && target.value.length <= 1) || target.value === '') {
+        if (( myRe.exec(target.value) && target.value.length <= 2) || target.value === '') {
             currentValues[key].number = target.value;
             this.props.onChange({
                 completed: true,
                 result: currentValues,
             });
         }
-    }
+    };
 
     handleTextChange = (event, key) => {
         const target = event.target;
@@ -42,7 +42,7 @@ export default class Task3 extends Component {
             completed: true,
             result: currentValues,
         });
-    }
+    };
 
     getTaskState() {
         const { timeOut, finished, result } = this.props;

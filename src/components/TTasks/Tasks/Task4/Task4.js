@@ -32,7 +32,7 @@ export default class Task4 extends Component {
             completed: true,
             result: currentValues,
         });
-    }
+    };
 
     getCurrentValues() {
         const { initialValues } = task4Content;
@@ -53,7 +53,7 @@ export default class Task4 extends Component {
                 [key]: { captions, words },
             };
         }, {});
-    }
+    };
 
     render() {
         return (

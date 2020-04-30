@@ -62,12 +62,16 @@
         color: rgba(0, 0, 0, 0.87);
     }
     &__item {
-        margin-left: 13px;
-        width: 90px;
+        margin-left: 40px;
+        width: 100px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
+        &:first-child {
+            margin-left: 30px;
+        }
     }
     &__input-number,
     &__input-text {
@@ -79,11 +83,14 @@
         -webkit-box-shadow: none;
         -moz-box-shadow: none;
         box-shadow: none;
+
+
     }
     &__input-number {
         max-height: 64px;
-        max-width: 54px;
+        max-width: 100px;
         font-weight: 500;
+        padding-left: 0 !important;
         font-size: 72px;
         line-height: 33px;
         text-align: center;
@@ -99,9 +106,10 @@
         overflow: visible;
         resize: none;
         //border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-        max-width: 60px;
+        max-width: 100px;
         //height: 43px;
-        width: 60px;
+        width: 100px;
+        //padding-left: 0;
         font-weight: 500;
         font-size: 14px;
         text-align: center;
@@ -109,6 +117,14 @@
         color: rgba(0, 0, 0, 0.87);
         &_editable, &_final {
             border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+        }
+
+        .MuiTextField-root {
+            width: 100%;
+            textarea:first-child {
+                margin-left: 0 !important;
+                width: 100% !important;
+            }
         }
     }
     &__number {
@@ -126,10 +142,12 @@
         flex-direction: column;
     }
     &__numbers {
-        max-width: 499px;
         display: flex;
+        justify-content: flex-start;
+        //max-width: 499px;
+        //display: flex;
         align-items: baseline;
-        justify-content: center;
+        //justify-content: center;
         flex-direction: row;
         &_initial {
             &:first-child {
@@ -155,7 +173,7 @@
 
 .remembrance {
     .remembrance__input-number, .remembrance__input-text {
-        margin-right: 1px;
+        //margin-right: 1px;
     }
     .remembrance__input-number {
         padding-left: 4px;
