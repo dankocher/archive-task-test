@@ -126,7 +126,6 @@ class App extends React.Component {
                     <TTasks user={user} save={this.save}/>
                 :
                     <Loader/>
-
             }
         </div>
     }
