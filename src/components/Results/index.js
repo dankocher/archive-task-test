@@ -65,14 +65,14 @@ class Results extends React.Component {
 
     getTable = index => {
         return <RTable index={index} task={
-            //this.props.user.tasks[index]
-            __user__.tasks[index]
+            this.props.user.tasks[index]
+            //__user__.tasks[index]
         }/>;
     };
 
     render() {
-        //const {user} = this.props;
-        const user = __user__;
+        const {user} = this.props;
+        //const user = __user__;
         return <div className="results">
             <div className="results-container">
                 <RHeader user={user}/>
