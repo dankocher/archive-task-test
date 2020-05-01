@@ -23,13 +23,24 @@
   }
 
   .letter-input {
+    position: relative;
     box-sizing: border-box;
-    width: 24px;
+    width: 23px;
     height: 35px;
     display: flex;
+    //padding: 3px 0;
     padding-top: 11px;
     //align-items: center;
     border-bottom: 1px solid gainsboro;
+
+    .input-container {
+      position: absolute;
+      width: 20px;
+      height: 26px;
+      top: 5px;
+      left: 2px;
+      background-color: #E6A4A4;
+    }
 
     .input {
       height: 15px;

@@ -45,9 +45,9 @@ export default class LetterInputs extends Component{
     };
 
     render() {
-        const {answers, enabled, color, label, disabled} = this.props;
+        const {answers, enabled, color, label, disabled, checking} = this.props;
         const {arr} = this.state;
-
+        //console.log(color.toUpperCase(), checking, arr)
         return arr === null ? null :(
             <div className='letter-inputs'>
                 <div className='label'
@@ -64,6 +64,11 @@ export default class LetterInputs extends Component{
                                  borderColor: answers[i] || !enabled(i) ? color === 'black' ? '#212121' : '#C63530' : ''
                              }}
                         >
+                            {
+                                disabled && el !== checking[i] ?
+                                <div className={`input-container`}>
+                                </div> : null
+                            }
                             <Input
                                 className={`input ${color}`}
                                 onChange={e => this.onChange(e.target.value, i)}

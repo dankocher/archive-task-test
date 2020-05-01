@@ -15,7 +15,8 @@ export default class  Task1_2 extends Component{
         timeOut: PropTypes.bool,
         finished: PropTypes.bool,
         fResults: PropTypes.object,
-        marginBottom: PropTypes.number
+        marginBottom: PropTypes.number,
+        checking: PropTypes.object
     };
 
     componentDidMount() {
@@ -88,7 +89,7 @@ export default class  Task1_2 extends Component{
     };
 
     render() {
-        const {finished, fResults, result, marginBottom} = this.props;
+        const {finished, fResults, result, marginBottom, checking} = this.props;
 
         return (
             <div className={`task1_2${finished ? ' -finished' : ''}`} style={{marginBottom}}>
@@ -107,10 +108,12 @@ export default class  Task1_2 extends Component{
                 <div className='answers_fields'>
                     <LetterInputs label={red} size={25} color={'red'} onChange={(v, i) => this.onChange(v, i, 'red')}
                                   onDelete={i => this.onDelete(i, 'red')}
+                                  checking={checking.model.filter((el, i) => i >=24)}
                                   disabled={finished}
                                   answers={result.red || []} enabled={i => this.makeEnabled(i, result, 'red')}/>
                     <LetterInputs label={black} size={24} color={'black'} onChange={(v, i) => this.onChange(v, i, 'black')}
                                   onDelete={i => this.onDelete(i, 'black')}
+                                  checking={checking.model.filter((el, i) => i < 24)}
                                   disabled={finished}
                                   answers={result.black || []} enabled={i => this.makeEnabled(i, result, 'black')}/>
                 </div>

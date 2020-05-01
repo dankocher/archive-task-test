@@ -45,7 +45,7 @@ const compareArray = (model, data) => {
             error++;
         }
     }
-    return {correct, error, empty};
+    return {correct, error, empty, model};
 };
 
 const checkResults = (index, task) => {

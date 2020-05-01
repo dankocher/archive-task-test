@@ -18,6 +18,7 @@ export default class Content extends Component {
 
     renderNumbers(start, end) {
         const valuesEntries = Object.entries(this.props.values).slice(start, end);
+        const {checking, finished} = this.props;
 
         return valuesEntries.map(([key, item]) => {
             const { number, text } = item;
@@ -43,15 +44,21 @@ export default class Content extends Component {
 
             return (
                 <div key={key} className="remembrance__item">
-                    <input
-                        type="text"
-                        className={numberClasses} 
-                        data-key={key} 
-                        value={number} 
-                        onChange={this.props.handleNumberChange}
-                        readOnly={!this.isEditableState()}
-                    />
-                    <div className={textClasses}>
+                    {
+                        // !this.isEditableState() ?
+                        //     <div className={`${numberClasses}${!this.isEditableState() && checking.model[+key] !== (number || '').trim() ? ' -error' : ''}`}>
+                        //         {number}
+                        //     </div> :
+                            <input
+                                type="text"
+                                className={`${numberClasses}${!this.isEditableState() && checking.model[+key] !== (number || '').trim() ? ' -error' : ''}`}
+                                data-key={key}
+                                value={number}
+                                onChange={this.props.handleNumberChange}
+                                readOnly={!this.isEditableState()}
+                            />
+                    }
+                    <div className={`${textClasses}${!this.isEditableState() && checking.model[+key+10] !== (text || '').trim() ? ' -error' : ''}`}>
                         <TextField
                             data-key={key}
                             value={text}

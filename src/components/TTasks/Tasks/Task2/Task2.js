@@ -14,7 +14,8 @@ export default class Task2 extends Component{
         finished: PropTypes.bool,
         fResults: PropTypes.object,
         timeOut: PropTypes.bool,
-        marginBottom: PropTypes.number
+        marginBottom: PropTypes.number,
+        checking: PropTypes.object
     };
 
     componentDidMount() {
@@ -47,7 +48,7 @@ export default class Task2 extends Component{
     };
 
     render() {
-        const {finished, fResults, timeOut, result, marginBottom} = this.props;
+        const {finished, fResults, timeOut, result, marginBottom, checking} = this.props;
 
         return (
             <div className={`task2${finished ? ' -finished' : ''}`} style={{marginBottom}}>
@@ -59,6 +60,7 @@ export default class Task2 extends Component{
                 </div>
                 <div className={'word-task'}>
                     <WordTable
+                        checking={checking.model}
                         finished={finished}
                         data={words}
                         result={result || {}}
