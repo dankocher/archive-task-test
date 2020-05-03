@@ -114,18 +114,18 @@ class App extends React.Component {
 
         return <div className="App">
             {
-                // !loaded ?
-                //     <Loader/>
-                // :
-                // !test_enabled ?
-                //     <center><h1>404 NOT FOUND</h1></center> :
-                // s_user ?
+                !loaded ?
+                    <Loader/>
+                :
+                !test_enabled ?
+                    <center><h1>404 NOT FOUND</h1></center> :
+                s_user ?
                     <Results user={s_user}/>
-                //     :
-                // user ?
-                //     <TTasks user={user} save={this.save}/>
-                // :
-                //     <Loader/>
+                    :
+                user ?
+                    <TTasks user={user} save={this.save}/>
+                :
+                    <Loader/>
             }
         </div>
     }
