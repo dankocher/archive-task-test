@@ -20,9 +20,10 @@ export default class Task3 extends Component {
 
         const currentValues = this.getCurrentValues();
 
-        const myRe = /\d/;
+        //const myRe = /\d/;
 
-        if (( myRe.exec(target.value) && target.value.length <= 2) || target.value === '') {
+        if (( //myRe.exec(target.value)
+            !isNaN(+target.value) && target.value.length <= 2) || target.value === '') {
             currentValues[key].number = target.value;
             this.props.onChange({
                 completed: true,
