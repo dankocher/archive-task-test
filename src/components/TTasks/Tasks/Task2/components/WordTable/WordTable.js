@@ -30,7 +30,7 @@ export default class WordTable extends Component{
                                     {
                                         finished &&
                                         ((result.words || [])[i] || '').trim() !== '' &&
-                                        ((result.words || [])[i] || '').trim() !== (checking[i] || '').trim() ?
+                                        ((result.words || [])[i] || '').trim().toLowerCase() !== (checking[i] || '').trim().toLocaleLowerCase() ?
                                             <div className={`task2-error`}>{((result.words || [])[i] || '').trim()}</div>  :
                                             null
                                     }

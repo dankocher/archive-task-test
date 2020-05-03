@@ -32,7 +32,7 @@ class Header extends React.Component {
         }
         if (nextProps.currentTask > 1) {
             if (!nextProps.timeOut && this.timer !== null) {
-                console.log(nextProps.timeOut, this.timer);
+                //console.log(nextProps.timeOut, this.timer);
                 clearInterval(this.timer);
                 this.timer = null;
                 this.setState({all_time: nextProps.all_time, task_time: 0});

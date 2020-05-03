@@ -50,7 +50,7 @@ export default class Content extends Component {
                             (number || '').trim() !== '' ?
                                 <div className={`input-container`}>
                                 <div className={`-error`}>
-                                    {number || 9}
+                                    {number}
                                 </div>
                                 </div>:
                                 <input
@@ -69,7 +69,7 @@ export default class Content extends Component {
                             (text || '').trim() !== '' ?
                                 <div className={'text-area-container'}>
                                 <div className={`-error`}>
-                                    {text || 'детская горка'}
+                                    {text}
                                 </div>
                                 </div>:
                                 <TextField

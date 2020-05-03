@@ -65,7 +65,7 @@ export default class LetterInputs extends Component{
                              }}
                         >
                             {
-                                disabled && (el || '').trim() !== (checking[i] || '').trim() ?
+                                disabled && (answers[i] || '').trim() !== (checking[i] || '').trim() ?
                                 <div className={`input-container`}>
                                 </div> : null
                             }
