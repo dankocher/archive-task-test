@@ -22,6 +22,8 @@
 
     .task2-error {
       box-sizing: border-box;
+      overflow: hidden;
+      max-width: 197px;
       left: -2px;
       top: 7px;
       position: absolute;

@@ -23,8 +23,8 @@ const checkTask3 = (result) => {
     let model = "0,1,2,3,4,5,6,7,8,9,яйцо,свеча,утка,птица,парусник,детская горка,змея,овраг,снеговик,воздушный шарик".split(",");
 
     result = result === undefined || result === null ? [] : Object.entries(result).map(r => r[1]);
-    let _numbers = result.map(r => r.number);
-    let _text = result.map(r => r.text);
+    let _numbers = result.map(r => (r.number || '').trim().toLowerCase());
+    let _text = result.map(r => (r.text || '').trim().toLowerCase());
     return compareArray(model, [..._numbers, ..._text]);
 };
 

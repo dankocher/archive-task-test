@@ -65,7 +65,7 @@ export default class Content extends Component {
                     <div className={`${textClasses}`}>
                         {
                             finished &&
-                            ((checking || {}).model || [])[+key+10] !== (text || '').trim() &&
+                            ((checking || {}).model || [])[+key+10].toLowerCase() !== (text || '').trim().toLowerCase() &&
                             (text || '').trim() !== '' ?
                                 <div className={'text-area-container'}>
                                 <div className={`-error`}>
