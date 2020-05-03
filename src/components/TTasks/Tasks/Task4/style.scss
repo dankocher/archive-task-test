@@ -125,6 +125,25 @@
         display: inline-block;
         width: 100%;
         text-align: center;
+
+        .text-field-counter {
+            position: relative;
+            min-width: 640px;
+
+            .Mui-disabled {
+                color: black;
+            }
+
+            .counter {
+                position: absolute;
+                right: calc((100% - 640px)/2 + 17px);
+                bottom: 25px;
+
+                .-big-counter {
+                    color: #C63530;
+                }
+            }
+        }
     }
     &__text-container {
         margin-bottom: 22px;

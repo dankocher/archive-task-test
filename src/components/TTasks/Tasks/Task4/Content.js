@@ -5,6 +5,8 @@ import Dialog from '@material-ui/core/Dialog';
 import CrossSVG from './CrossSVG';
 import throttle from './throttle';
 
+const maxSymbols = 200, maxWords = 10;
+
 export default class Content extends Component {
     constructor(props) {
         super(props);
@@ -130,32 +132,51 @@ export default class Content extends Component {
                         />
                     </div>
                     <div className="illustration__field-container">
-                        <TextField
-                            value={isEditable ? captions : captions || ' '}
-                            onChange={(event) => this.props.handleChange(event, "captions", key)}
-                            InputProps={{
-                                disabled: !isEditable
-                            }}
-                            label="Введите заголовки"
-                            multiline
-                            rows={4}
-                            rowsMax={30}
-                            variant="outlined"
-                        />
-                        <TextField
-                            data-key={key} 
-                            data-property-name="words"
-                            value={isEditable ? words : words || ' '}
-                            onChange={(event) => this.props.handleChange(event, "words", key)}
-                            InputProps={{
-                                disabled: !isEditable
-                            }}
-                            label="Введите ключевые слова"
-                            multiline
-                            rows={4}
-                            rowsMax={30}
-                            variant="outlined"
-                        />
+                        <div className='text-field-counter'>
+                            <TextField
+                                value={isEditable ? captions : captions || ' '}
+                                onChange={(event) => this.props.handleChange(event, "captions", key)}
+                                InputProps={{
+                                    disabled: !isEditable
+                                }}
+                                label="Введите заголовки"
+                                multiline
+                                rows={4}
+                                rowsMax={30}
+                                variant="outlined"
+                            />
+                            <span className={'counter'}>
+                                <span className={`${(captions || '').length > maxSymbols ? ' -big-counter' : ''}`}>
+                                    {(captions || '').length}
+                                </span>
+                                /{maxSymbols}
+                            </span>
+                        </div>
+                        <div className='text-field-counter'>
+                            <TextField
+                                data-key={key}
+                                data-property-name="words"
+                                value={isEditable ? words : words || ' '}
+                                onChange={(event) => this.props.handleChange(event, "words", key)}
+                                InputProps={{
+                                    disabled: !isEditable
+                                }}
+                                label="Введите ключевые слова"
+                                multiline
+                                rows={4}
+                                rowsMax={30}
+                                variant="outlined"
+                            />
+                            <span className={'counter'}>
+                                <span className={`${(words || '')
+                                    .split(',')
+                                    .filter(w => w.trim() !== '')
+                                    .length > maxWords ? ' -big-counter' : ''}`}>
+                                    {(words || '').split(',').filter(w => w.trim() !== '').length}
+                                </span>
+                                /{maxWords}
+                            </span>
+                        </div>
                     </div>
                 </div>
             );
