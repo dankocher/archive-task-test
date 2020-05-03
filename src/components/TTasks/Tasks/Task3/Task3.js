@@ -99,6 +99,7 @@ export default class Task3 extends Component {
                     />
                     <Content
                         checking={this.props.checking}
+                        finished={this.props.finished}
                         taskState={this.getTaskState()}
                         values={this.getCurrentValues()}
                         handleNumberChange={this.handleNumberChange}

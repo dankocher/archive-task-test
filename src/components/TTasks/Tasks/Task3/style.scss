@@ -75,6 +75,7 @@
     }
     &__input-number,
     &__input-text {
+        //position: relative;
         font-family: Roboto;
         outline: none;
         border: none;
@@ -99,12 +100,45 @@
         &_editable, &_final {
             border-bottom: 1px solid rgba(0, 0, 0, 0.12);
         }
+    }
 
-        &.-error {
+    .input-container {
+        box-sizing: border-box;
+        height: 67px;
+        //padding-bottom: 7px;
+        width: 100%;
+        max-width: 100px;
+        font-weight: 500;
+        padding-left: 0 !important;
+        font-size: 72px;
+        line-height: 33px;
+        text-align: center;
+        letter-spacing: 0.15px;
+        color: rgba(0, 0, 0, 0.87);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.87);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .-error {
+            height: calc(100% - 3.5px);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #E6A4A4;
+
+        }
+    }
+    .text-area-container {
+        padding: 13px 10px 3px;
+
+        .-error {
             background-color: #E6A4A4;
         }
     }
     &__input-text {
+        position: relative;
         //margin-top: 6px;
         //max-height: 32px;
         overflow: visible;
@@ -125,17 +159,15 @@
 
         .MuiTextField-root {
             width: 100%;
-            textarea:first-child {
-                margin-left: 0 !important;
-                width: 100% !important;
-            }
-        }
 
-        &.-error {
-            .MuiTextField-root {
-                //textarea:first-child {
-                    background-color: #E6A4A4;
-                //}
+            .MuiInputBase-root {
+                display: flex;
+                justify-content: center;
+                textarea:first-child {
+                    margin-left: 0 !important;
+                    min-height: 16px;
+                    //width: 100% !important;
+                }
             }
         }
     }
@@ -213,6 +245,7 @@
     }
 
     .MuiOutlinedInput-notchedOutline {
+        display: none;
         border-radius: unset !important;
         border-left: none !important;
         border-right: none !important;

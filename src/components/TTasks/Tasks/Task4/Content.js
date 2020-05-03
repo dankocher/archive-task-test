@@ -134,7 +134,7 @@ export default class Content extends Component {
                             value={isEditable ? captions : captions || ' '}
                             onChange={(event) => this.props.handleChange(event, "captions", key)}
                             InputProps={{
-                                readOnly: !isEditable
+                                disabled: !isEditable
                             }}
                             label="Введите заголовки"
                             multiline
@@ -148,7 +148,7 @@ export default class Content extends Component {
                             value={isEditable ? words : words || ' '}
                             onChange={(event) => this.props.handleChange(event, "words", key)}
                             InputProps={{
-                                readOnly: !isEditable
+                                disabled: !isEditable
                             }}
                             label="Введите ключевые слова"
                             multiline

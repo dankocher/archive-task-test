@@ -44,33 +44,47 @@ export default class Content extends Component {
 
             return (
                 <div key={key} className="remembrance__item">
-                    {
-                        // !this.isEditableState() ?
-                        //     <div className={`${numberClasses}${!this.isEditableState() && checking.model[+key] !== (number || '').trim() ? ' -error' : ''}`}>
-                        //         {number}
-                        //     </div> :
-                            <input
-                                type="text"
-                                className={`${numberClasses}${!this.isEditableState() && checking.model[+key] !== (number || '').trim() ? ' -error' : ''}`}
-                                data-key={key}
-                                value={number}
-                                onChange={this.props.handleNumberChange}
-                                readOnly={!this.isEditableState()}
-                            />
-                    }
-                    <div className={`${textClasses}${!this.isEditableState() && checking.model[+key+10] !== (text || '').trim() ? ' -error' : ''}`}>
-                        <TextField
-                            data-key={key}
-                            value={text}
-                            onChange={(event) => this.props.handleTextChange(event, key)}
-                            InputProps={{
-                                readOnly: !this.isEditableState()
-                            }}
-                            multiline
-                            rows={1}
-                            rowsMax={2}
-                            variant="outlined"
-                        />
+                        {
+                            finished &&
+                            ((checking || {}).model || [])[+key] !== (number || '').trim() &&
+                            (number || '').trim() !== '' ?
+                                <div className={`input-container`}>
+                                <div className={`-error`}>
+                                    {number || 9}
+                                </div>
+                                </div>:
+                                <input
+                                    type="text"
+                                    className={`${numberClasses}`}
+                                    data-key={key}
+                                    value={finished ? (number || '').trim() : number}
+                                    onChange={this.props.handleNumberChange}
+                                    readOnly={!this.isEditableState()}
+                                />
+                        }
+                    <div className={`${textClasses}`}>
+                        {
+                            finished &&
+                            ((checking || {}).model || [])[+key+10] !== (text || '').trim() &&
+                            (text || '').trim() !== '' ?
+                                <div className={'text-area-container'}>
+                                <div className={`-error`}>
+                                    {text || 'детская горка'}
+                                </div>
+                                </div>:
+                                <TextField
+                                    data-key={key}
+                                    value={finished ? (text || '').trim() : text}
+                                    onChange={(event) => this.props.handleTextChange(event, key)}
+                                    InputProps={{
+                                        readOnly: !this.isEditableState()
+                                    }}
+                                    multiline
+                                    rows={1}
+                                    rowsMax={2}
+                                    variant="outlined"
+                                />
+                        }
                     </div>
                 </div>
             );

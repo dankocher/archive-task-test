@@ -65,14 +65,14 @@ export default class LetterInputs extends Component{
                              }}
                         >
                             {
-                                disabled && el !== checking[i] ?
+                                disabled && (el || '').trim() !== (checking[i] || '').trim() ?
                                 <div className={`input-container`}>
                                 </div> : null
                             }
                             <Input
                                 className={`input ${color}`}
                                 onChange={e => this.onChange(e.target.value, i)}
-                                value={answers[i] || ''}
+                                value={(answers[i] || '').trim()}
                                 disabled={disabled || enabled(i)}
                                 onKeyDown={e => this.onDelete(e.key, i, answers[i] || '')}
                             />

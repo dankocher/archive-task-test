@@ -60,7 +60,7 @@ export default class Task2 extends Component{
                 </div>
                 <div className={'word-task'}>
                     <WordTable
-                        checking={checking.model}
+                        checking={(checking || {}).model || []}
                         finished={finished}
                         data={words}
                         result={result || {}}

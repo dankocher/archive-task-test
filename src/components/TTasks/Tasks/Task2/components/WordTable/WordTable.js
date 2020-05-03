@@ -30,13 +30,13 @@ export default class WordTable extends Component{
                                     {
                                         finished &&
                                         ((result.words || [])[i] || '').trim() !== '' &&
-                                        ((result.words || [])[i] || '').trim() !== checking[i] ?
-                                            <div className={`task2-error`}>{(result.words || [])[i] || ''}</div>  :
+                                        ((result.words || [])[i] || '').trim() !== (checking[i] || '').trim() ?
+                                            <div className={`task2-error`}>{((result.words || [])[i] || '').trim()}</div>  :
                                             null
                                     }
                                     <Input
                                         className={`word-input${(result.words || [])[i] || (focused === i && !finished) ? ' -filled' : ''}`}
-                                        value={(result.words || [])[i] || ''}
+                                        value={((result.words || [])[i] || '').trim()}
                                         readOnly={finished}
                                         onFocus={() => this.setState({focused: i})}
                                         onChange={e => this.onChange(e.target.value, i)}
