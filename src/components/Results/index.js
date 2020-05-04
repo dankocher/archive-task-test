@@ -21,7 +21,7 @@ class Results extends React.Component {
     getTable = index => {
         return <RTable index={index} task={
             this.props.user.tasks[index]
-            //_user__.tasks[index]
+            //__user__.tasks[index]
         }/>;
     };
 

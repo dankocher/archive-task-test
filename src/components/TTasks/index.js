@@ -151,7 +151,7 @@ class TTasks extends React.Component {
     getTask = () => {
         const {user, currentTask, timeOut, recheck} = this.state;
         const id = currentTask;
-        //const id = 6;
+        //const id = 5;
 
         let task = user.tasks[id];
         if (!task) {

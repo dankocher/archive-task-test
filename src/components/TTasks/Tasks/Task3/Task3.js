@@ -48,7 +48,7 @@ export default class Task3 extends Component {
     getTaskState() {
         const { timeOut, finished, result } = this.props;
         const isResultsEmpty = !result || Object.keys(result).length === 0;
-
+        //console.log(timeOut)
         if (isResultsEmpty && !timeOut && !finished) {
             return TASK_STATE.initial;
         }

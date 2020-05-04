@@ -33,6 +33,12 @@
     //align-items: center;
     border-bottom: 1px solid gainsboro;
 
+    &:last-child {
+      .input-container {
+        width: 19px;
+      }
+    }
+
     .input-container {
       position: absolute;
       width: 20px;
