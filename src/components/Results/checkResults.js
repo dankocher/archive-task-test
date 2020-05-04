@@ -39,7 +39,7 @@ const compareArray = (model, data) => {
             continue;
         }
 
-        if (model[i].toLocaleLowerCase() === data[i].toLocaleLowerCase()) {
+        if ((model[i] || '').trim().toLocaleLowerCase() === (data[i] || '').trim().toLocaleLowerCase()) {
             correct++;
         } else {
             error++;
