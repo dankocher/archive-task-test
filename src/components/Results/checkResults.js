@@ -35,7 +35,7 @@ const compareArray = (model, data) => {
     for (let i = 0; i < model.length; i++) {
         if (data[i] === "" || data[i] === undefined || data[i] === null) {
             empty++;
-            error++;
+            //error++;
             continue;
         }
 
