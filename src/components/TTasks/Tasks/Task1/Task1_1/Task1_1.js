@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 import LetterInputs from "../components/LetterInputs";
 import table from './table1.jpg';
+import Loader from "../../../../Loader";
 
 const red = 'к', black = 'ч';
 
@@ -16,6 +17,10 @@ export default class  Task1_1 extends Component{
         fResults: PropTypes.object,
         marginBottom: PropTypes.number,
         checking: PropTypes.object
+    };
+
+    state = {
+        show: false
     };
 
     componentDidMount() {
@@ -84,6 +89,7 @@ export default class  Task1_1 extends Component{
 
     render() {
         const {finished, fResults, result, marginBottom, checking} = this.props;
+        const {show} = this.state;
         //console.log(checking)
         return (
             <div className={`task1_1${finished ? ' -finished' : ''}`} style={{marginBottom}}>
@@ -96,7 +102,20 @@ export default class  Task1_1 extends Component{
                 {
                     finished ? null :
                         <div className='task_image'>
-                            <img alt='' src={table}/>
+                            <img alt=''
+                                 src={table}
+                                 onLoad={() => this.setState({show: true})}
+                                 style={show ? undefined :{
+                                     position: 'absolute',
+                                     zIndex: -10000
+                                 }}
+                            />
+                            {
+                                show ? null :
+                                <div style={{width: 340, height:340}}>
+                                    <Loader fullScreen={false} height={340}/>
+                                </div>
+                            }
                         </div>
                 }
                 <div className='answers_fields'>

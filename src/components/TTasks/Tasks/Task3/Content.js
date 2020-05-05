@@ -4,6 +4,11 @@ import classnames from 'classnames';
 import TextField from '@material-ui/core/TextField';
 
 export default class Content extends Component {
+
+    state = {
+      text: {}
+    };
+
     isInitialState() {
         return (this.props.taskState === TASK_STATE.initial);
     }
@@ -15,6 +20,17 @@ export default class Content extends Component {
     isFinalResultState() {
         return (this.props.taskState === TASK_STATE.finalResult);
     }
+
+    changeText = async (event, key) => {
+        const value = event.target.value;
+        await this.setState({text: {...this.state.text, [key]: value}});
+        // console.log(event.target.value)
+        // console.log(this.state)
+        // console.log(this[`Text_${key}`])
+        if (this[`Text_${key}`].clientHeight <= 34) {
+            this.props.handleTextChange({target: {value}}, key)
+        }
+    };
 
     renderNumbers(start, end) {
         const valuesEntries = Object.entries(this.props.values).slice(start, end);
@@ -72,10 +88,12 @@ export default class Content extends Component {
                                     {text}
                                 </div>
                                 </div>:
+                                <>
+                                    <div className={'restriction-div'} ref={inp => this[`Text_${key}`] = inp}>{this.state.text[key]}</div>
                                 <TextField
                                     data-key={key}
                                     value={finished ? (text || '').trim() : text}
-                                    onChange={(event) => this.props.handleTextChange(event, key)}
+                                    onChange={(event) => this.changeText(event, key)}
                                     InputProps={{
                                         readOnly: !this.isEditableState()
                                     }}
@@ -84,6 +102,7 @@ export default class Content extends Component {
                                     rowsMax={2}
                                     variant="outlined"
                                 />
+                                </>
                         }
                     </div>
                 </div>

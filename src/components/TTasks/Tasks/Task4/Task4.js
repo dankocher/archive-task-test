@@ -26,12 +26,14 @@ export default class Task4 extends Component {
 
         const currentValues = this.getCurrentValues();
 
-        currentValues[key][propertyName] = target.value;
+        if (target.value.length <= 300) {
+            currentValues[key][propertyName] = target.value;
 
-        this.props.onChange({
-            completed: true,
-            result: currentValues,
-        });
+            this.props.onChange({
+                completed: true,
+                result: currentValues,
+            });
+        }
     };
 
     getCurrentValues() {

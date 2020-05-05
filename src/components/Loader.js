@@ -21,7 +21,7 @@ export default function CircularIndeterminate(props) {
     const height = props.fullScreen !== false ? '100vh' : "380px";
 
     return (
-            <div className={classes.root} style={{height}}>
+            <div className={classes.root} style={{height: props.height || height}}>
                 <CircularProgress color="primary" />
             </div>
     );

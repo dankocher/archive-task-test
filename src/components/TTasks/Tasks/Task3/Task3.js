@@ -34,7 +34,7 @@ export default class Task3 extends Component {
 
     handleTextChange = (event, key) => {
         const target = event.target;
-
+        console.log(target.value)
         const currentValues = this.getCurrentValues();
 
         currentValues[key].text = target.value;

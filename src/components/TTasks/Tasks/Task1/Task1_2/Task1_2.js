@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 import LetterInputs from "../components/LetterInputs";
 import table from './table2.jpg';
+import Loader from "../../../../Loader";
 
 const red = 'к', black = 'ч';
 
@@ -18,6 +19,10 @@ export default class  Task1_2 extends Component{
         marginBottom: PropTypes.number,
         checking: PropTypes.object
     };
+
+    state = {
+        show: false
+    }
 
     componentDidMount() {
         const {result, onChange} = this.props;
@@ -90,6 +95,7 @@ export default class  Task1_2 extends Component{
 
     render() {
         const {finished, fResults, result, marginBottom, checking} = this.props;
+        const {show} = this.state;
 
         return (
             <div className={`task1_2${finished ? ' -finished' : ''}`} style={{marginBottom}}>
@@ -101,9 +107,22 @@ export default class  Task1_2 extends Component{
                 </div>
                 {
                     finished ? null :
-                    <div className='task_image'>
-                        <img alt='' src={table}/>
-                    </div>
+                        <div className='task_image'>
+                            <img alt=''
+                                 src={table}
+                                 onLoad={() => this.setState({show: true})}
+                                 style={show ? undefined :{
+                                     position: 'absolute',
+                                     zIndex: -10000
+                                 }}
+                            />
+                            {
+                                show ? null :
+                                    <div style={{width: 340, height:340}}>
+                                        <Loader fullScreen={false} height={340}/>
+                                    </div>
+                            }
+                        </div>
                 }
                 <div className='answers_fields'>
                     <LetterInputs label={red} size={25} color={'red'} onChange={(v, i) => this.onChange(v, i, 'red')}

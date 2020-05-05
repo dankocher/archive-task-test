@@ -70,6 +70,7 @@
         align-items: center;
 
         &:first-child {
+            //margin-left: 0;
             margin-left: 30px;
         }
     }
@@ -85,7 +86,12 @@
         -moz-box-shadow: none;
         box-shadow: none;
 
-
+        .restriction-div {
+            max-width: 90px;
+            word-break: break-word;
+            position: absolute;
+            z-index: -200;
+        }
     }
     &__input-number {
         max-height: 64px;
@@ -131,7 +137,7 @@
         }
     }
     .text-area-container {
-        padding: 13px 10px 3px;
+        padding: 13px 5px 3px;
 
         .-error {
             word-break: break-word;
@@ -167,6 +173,7 @@
                 textarea:first-child {
                     margin-left: 0 !important;
                     min-height: 16px;
+                    overflow: hidden;
                     //width: 100% !important;
                 }
             }
@@ -372,7 +379,7 @@
         }
         .remembrance__input-text {
             // margin-right: -1px;
-            margin-right: 2px;
+            //margin-right: 2px;
         }
     }
     .remembrance__item:last-child {
