@@ -139,6 +139,16 @@
                 right: calc((100% - 640px)/2 + 17px);
                 bottom: 25px;
                 color: #757575;
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 12px;
+                line-height: 14px;
+                /* identical to box height */
+
+                display: flex;
+                align-items: center;
+                text-align: right;
 
                 .-big-counter {
                     color: #C63530;
