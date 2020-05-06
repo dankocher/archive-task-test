@@ -168,8 +168,8 @@ class TTasks extends React.Component {
 
             case 5: return <Task3 result={task.result} onChange={data => this.onChangeTask(id, data)}
                                   timeOut={
-                                      false
-                                      //task.time_out || timeOut
+                                      // false
+                                      task.time_out || timeOut
                                   }
             />;
             case 6: return <Task4 result={task.result} onChange={data => this.onChangeTask(id, data)}/>;
