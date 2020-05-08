@@ -59,8 +59,11 @@ class Task0 extends React.Component {
     handleChange = async (event) => {
         const { target: { name, value } } = event;
         // console.log(name, value)
-        await this.setState({[name]: value});
-        this.saveChanges();
+
+        if (value.length <= 30) {
+            await this.setState({[name]: value});
+            this.saveChanges();
+        }
     };
 
     render() {
