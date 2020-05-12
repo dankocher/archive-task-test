@@ -10,7 +10,8 @@ const checkTask1 = (index, result) => {
         3: "р,в,ч,п,н,б,т,о,а,х,л,ф,ж,м,р,е,т,ц,з,с,ш,д,и,г,к"
     };
     let model = [...BLACK[index].split(","), ...RED[index].split(",")];
-    let toCheck = [...result.black, ...result.red];
+    let toCheck = [...(result.black || []).map(l => (l || '').trim().toLowerCase()),
+        ...(result.red || []).map(l => (l || '').trim().toLowerCase())];
     return compareArray(model, toCheck);
 };
 
