@@ -23,12 +23,18 @@ export default class Content extends Component {
 
     changeText = async (event, key) => {
         const value = event.target.value;
+        if (value.match(/\n/) || value.match("  ") || value.match(/^\s/)) {
+            return;
+        }
+        const oldValue = this.state.text[key];
         await this.setState({text: {...this.state.text, [key]: value}});
         // console.log(event.target.value)
         // console.log(this.state)
         // console.log(this[`Text_${key}`])
         if (this[`Text_${key}`].clientHeight <= 34) {
             this.props.handleTextChange({target: {value}}, key)
+        } else {
+            this.setState({text: {...this.state.text, [key]: oldValue}});
         }
     };
 
@@ -37,7 +43,9 @@ export default class Content extends Component {
         const {checking, finished} = this.props;
 
         return valuesEntries.map(([key, item]) => {
-            const { number, text } = item;
+            let { number, text } = item;
+
+            text = text || "";
 
             const notEmptyClassnameEditNumber = Boolean(number) && this.isEditableState();
             const notEmptyClassnameFinalNumber = Boolean(number) && this.isFinalResultState();
@@ -81,8 +89,8 @@ export default class Content extends Component {
                     <div className={`${textClasses}`}>
                         {
                             finished &&
-                            ((checking || {}).model || [])[+key+10].toLowerCase() !== (text || '').trim().toLowerCase() &&
-                            (text || '').trim() !== '' ?
+                            ((checking || {}).model || [])[+key+10].toLowerCase() !== text.toLowerCase() &&
+                            text !== '' ?
                                 <div className={'text-area-container'}>
                                 <div className={`-error`}>
                                     {text}
@@ -92,13 +100,12 @@ export default class Content extends Component {
                                     <div className={'restriction-div'} ref={inp => this[`Text_${key}`] = inp}>{this.state.text[key]}</div>
                                 <TextField
                                     data-key={key}
-                                    value={finished ? (text || '').trim() : text}
+                                    value={text}
                                     onChange={(event) => this.changeText(event, key)}
                                     InputProps={{
                                         readOnly: !this.isEditableState()
                                     }}
                                     multiline
-                                    rows={1}
                                     rowsMax={2}
                                     variant="outlined"
                                 />
