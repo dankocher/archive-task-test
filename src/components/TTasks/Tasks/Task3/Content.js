@@ -23,19 +23,22 @@ export default class Content extends Component {
 
     changeText = async (event, key) => {
         const value = event.target.value;
-        if (value.match(/\n/) || value.match("  ") || value.match(/^\s/)) {
+        if (value.match(/\n/) || value.match("  ") || value.match(/^\s/) || value.length > 30) {
             return;
         }
-        const oldValue = this.state.text[key];
-        await this.setState({text: {...this.state.text, [key]: value}});
+        // const oldValue = this.state.text[key];
+        // await this.setState({text: {...this.state.text, [key]: value}});
+        this.setState({text: {...this.state.text, [key]: value}});
         // console.log(event.target.value)
         // console.log(this.state)
         // console.log(this[`Text_${key}`])
-        if (this[`Text_${key}`].clientHeight <= 34) {
-            this.props.handleTextChange({target: {value}}, key)
-        } else {
-            this.setState({text: {...this.state.text, [key]: oldValue}});
-        }
+
+        this.props.handleTextChange({target: {value}}, key)
+        // if (this[`Text_${key}`].clientHeight <= 34) {
+        //     this.props.handleTextChange({target: {value}}, key)
+        // } else {
+        //     this.setState({text: {...this.state.text, [key]: oldValue}});
+        // }
     };
 
     renderNumbers(start, end) {
