@@ -23,10 +23,10 @@ export default class Content extends Component {
 
     changeText = async (event, key) => {
         const value = event.target.value;
-        if (value.match(/\n/) || value.match("  ") || value.match(/^\s/)) {
+        if (value.match(/\n/) || value.match("  ") || value.match(/^\s/) || value.length > 30) {
             return;
         }
-        const oldValue = this.state.text[key];
+        // const oldValue = this.state.text[key];
         // await this.setState({text: {...this.state.text, [key]: value}});
         this.setState({text: {...this.state.text, [key]: value}});
         // console.log(event.target.value)
@@ -109,7 +109,7 @@ export default class Content extends Component {
                                         readOnly: !this.isEditableState()
                                     }}
                                     multiline
-                                    // rowsMax={2}
+                                    rowsMax={2}
                                     variant="outlined"
                                 />
                                 </>
