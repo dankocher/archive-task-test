@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0431321d.chunk.css",
+    "main.js": "/static/js/main.19fc1961.chunk.js",
+    "main.js.map": "/static/js/main.19fc1961.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.b192f3f6.js",
+    "runtime-main.js.map": "/static/js/runtime-main.b192f3f6.js.map",
+    "static/js/2.7475bf7e.chunk.js": "/static/js/2.7475bf7e.chunk.js",
+    "static/js/2.7475bf7e.chunk.js.map": "/static/js/2.7475bf7e.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.5473e3df25cf0acc4a0543c211e332c5.js": "/precache-manifest.5473e3df25cf0acc4a0543c211e332c5.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.0431321d.chunk.css.map": "/static/css/main.0431321d.chunk.css.map",
+    "static/js/2.7475bf7e.chunk.js.LICENSE.txt": "/static/js/2.7475bf7e.chunk.js.LICENSE.txt",
+    "static/media/index.scss": "/static/media/KFOmCnqEu92Fr1Mu7mxKOzY.57993e70.woff2",
+    "static/media/avatars.jpg": "/static/media/avatars.0ed9061f.jpg",
+    "static/media/business.jpg": "/static/media/business.a252ec07.jpg",
+    "static/media/money.jpg": "/static/media/money.50283693.jpg",
+    "static/media/noImgBig.png": "/static/media/noImgBig.7a16386e.png",
+    "static/media/rectangle.png": "/static/media/rectangle.b5bfd092.png",
+    "static/media/screen1.jpg": "/static/media/screen1.a0573791.jpg",
+    "static/media/screen2.jpg": "/static/media/screen2.7a82da57.jpg",
+    "static/media/shopping.jpg": "/static/media/shopping.332e7c4c.jpg",
+    "static/media/sleep.jpg": "/static/media/sleep.acba0a60.jpg",
+    "static/media/table1.jpg": "/static/media/table1.b1f95b6c.jpg",
+    "static/media/table2.jpg": "/static/media/table2.eb31b3a9.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b192f3f6.js",
+    "static/js/2.7475bf7e.chunk.js",
+    "static/css/main.0431321d.chunk.css",
+    "static/js/main.19fc1961.chunk.js"
+  ]
+}
