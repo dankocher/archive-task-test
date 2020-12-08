@@ -30,15 +30,9 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-
-        //let uid = window.location.pathname.replace('/', "");
         let [__empty__, uid] = window.location.pathname.split('/');
-        //console.log(uid)
-        if ((uid || '').trim() === '') {
-            this.setState({ type: 0, loaded: true })
-        } else {
-            this.getTest(uid)
-        }
+
+        this.getTest(uid)
     }
 
     getTest = async (tt_id) => {
