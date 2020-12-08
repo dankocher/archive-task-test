@@ -1,0 +1,7 @@
+{
+  "headerLable": "Перед началом теста введите свои данные",
+  "nameLabel": "Фамилия и имя",
+  "mailLabel": "Почта",
+  "buttonLabelStart": "Начать тест",
+  "buttonLabelNext": "Далее"
+}

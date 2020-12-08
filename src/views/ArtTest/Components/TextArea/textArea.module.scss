@@ -1,0 +1,25 @@
+@import "../../../../asserts/styles/foundations.scss";
+
+.textField {
+	display: block;
+	height: 2.6rem;
+	width: 100%;
+	border: 0;
+	border-bottom: 0.1rem solid $neutral-2;
+	resize: none;
+	outline: none;
+	// max-height: 300rem;
+	// transition: all 2s;
+
+	font-size: 16px;
+	line-height: 22px;
+	color: $neutral-5;
+
+	&:focus:not(.error) {
+		border-color: $blue;
+	}
+}
+
+.error {
+	border-bottom: 0.15rem solid $red;
+}

@@ -1,0 +1,15 @@
+@import "../../../../asserts/styles/foundations.scss";
+
+.container {
+	display: flex;
+	justify-content: space-between;
+	width: 32.4rem;
+
+	& > :first-child {
+		font-style: normal;
+		font-weight: normal;
+		font-size: 18px;
+		line-height: 22px;
+		color: $neutral-6;
+	}
+}

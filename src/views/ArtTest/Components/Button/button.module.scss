@@ -1,0 +1,35 @@
+@import "../../../../asserts/styles/foundations.scss";
+
+.btn {
+	height: 6.1rem;
+	width: 32.4rem;
+	border-radius: 0.5rem;
+	outline: none;
+	cursor: pointer;
+
+	font-size: 2rem;
+	font-weight: 500;
+	line-height: 24px;
+}
+
+.black {
+	border: 0.1rem solid $white;
+	background: $neutral-5;
+	color: $white;
+
+	&:hover {
+		border: 0.1rem solid $neutral-6;
+		background-color: $neutral-6;
+	}
+}
+
+.white {
+	border: 0.1rem solid $neutral-5;
+	background: $white;
+	color: $neutral-5;
+
+	&:hover {
+		background: $neutral-5;
+		color: $white;
+	}
+}

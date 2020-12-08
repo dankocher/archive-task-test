@@ -5,6 +5,8 @@ import TTasks from "./components/TTasks";
 import ajax from "./utils/ajax";
 import {api} from "./constants/api";
 import Results from "./components/Results";
+import TestForAttention from "./views/TestForAttention/TestForAttention";
+import ArtTest from "./views/ArtTest/ArtTest";
 
 const TT_USER = "__sttuser";
 
@@ -22,8 +24,6 @@ class App extends React.Component {
         super(props);
 
         this.state = {
-            user: undefined,
-            s_user: undefined,
             loaded: false,
             test_enabled: true
         }
@@ -31,101 +31,51 @@ class App extends React.Component {
 
     componentDidMount() {
 
-        let uid = window.location.pathname.replace('/', "");
-
-        if(uid !== "") {
-            this.getUser(uid)
+        //let uid = window.location.pathname.replace('/', "");
+        let [__empty__, uid] = window.location.pathname.split('/');
+        //console.log(uid)
+        if ((uid || '').trim() === '') {
+            this.setState({ type: 0, loaded: true })
         } else {
-            this.loadUser()
+            this.getTest(uid)
         }
     }
 
-    getUser = async (ttuid) => {
-        let res = await ajax(api.tt_user, {ttuid});
+    getTest = async (tt_id) => {
+        const res = await ajax(api.td_get_tasks, { tt_id });
+        //console.log(res)
         if (res.ok) {
-            this.setState({s_user: res.tUser, loaded: true})
+            this.setState({ type: res.ttask.id, loaded: true })
         } else {
-            window.location = "/";
+            this.setState({ loaded: true, test_enabled: false })
         }
     };
 
-    loadUser = async () => {
+    showTest = () => {
+        const { type } = this.state;
+        //console.log(type)
 
-        let status = await ajax(api.tt_status, {id: 0});
-        if (!status.ok) {
-            document.title = "404 NOT FOUND";
-            return this.setState({loaded: true, test_enabled: false})
-        }
-
-        let ttUser = localStorage.getItem(TT_USER);
-
-        let user = modelUser;
-        if (ttUser !== null) {
-            try {
-                user = JSON.parse(ttUser)
-            } catch (e) {
-                user = modelUser
-            }
-        }
-        this.setState({ user, loaded: true });
-        if (user.tasks.length === 8) {
-            this.save(user);
-        }
-    };
-
-    save = async user => {
-        user = {
-            ...this.state.user,
-            ...user
-        };
-
-        if (user.tasks.length === 8 && !user.end_time) {
-            user.end_time = new Date().getTime();
-        }
-
-        let res = await ajax(api.tt_save, user);
-        if (res.ok) {
-            user = {
-                ...res.user,
-                ...user
-            };
-        }
-        this.setState({user});
-        if (user.tasks.length === 8 && res.ok) {
-            localStorage.removeItem(TT_USER)
-        } else if (user.tasks.length === 8 && !res.ok) {
-            localStorage.setItem(TT_USER, JSON.stringify(user));
-            alert("ERROR connection lost")
-        } else {
-            localStorage.setItem(TT_USER, JSON.stringify(user));
-        }
-
-    };
-
-    componentWillUnmount() {
-        const {user} = this.state;
-        if (user) {
-            localStorage.setItem(TT_USER, JSON.stringify(user));
+        switch (type) {
+            case 0:
+                return <TestForAttention/>
+            case 1:
+                return <ArtTest/>
+            default:
+                return null
         }
     }
 
     render() {
-        const {loaded, user, s_user, test_enabled} = this.state;
+        const { loaded, test_enabled} = this.state;
 
         return <div className="App">
             {
                 !loaded ?
                     <Loader/>
-                :
-                !test_enabled ?
-                    <center><h1>404 NOT FOUND</h1></center> :
-                s_user ?
-                    <Results user={s_user}/>
                     :
-                user ?
-                    <TTasks user={user} save={this.save}/>
-                :
-                    <Loader/>
+                    !test_enabled ?
+                        <center><h1>404 NOT FOUND</h1></center> :
+                        this.showTest()
             }
         </div>
     }

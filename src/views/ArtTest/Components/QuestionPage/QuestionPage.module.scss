@@ -1,0 +1,41 @@
+@import "../../../../asserts/styles/foundations.scss";
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	padding: 3.2rem 6.4rem 0 3.2rem;
+	margin-bottom: 3.4rem;
+}
+
+.centredWrapper {
+	display: flex;
+	justify-content: center;
+
+	&__container {
+		display: flex;
+		flex-direction: column;
+		width: 81.2rem;
+
+		& > :last-child {
+			align-self: flex-end;
+		}
+
+		h2 {
+			padding-left: 4rem;
+			margin-bottom: 3.6rem;
+			font-weight: bold;
+			font-size: 42px;
+			line-height: 50px;
+			letter-spacing: 0.4px;
+			color: $neutral-6;
+		}
+
+		&__body {
+			margin-bottom: 3.6rem;
+
+			& > :not(:last-child) {
+				margin-bottom: 2.7rem;
+			}
+		}
+	}
+}

@@ -1,0 +1,35 @@
+.container {
+	display: flex;
+	position: relative;
+	height: calc(100vh - 17.6rem);
+	width: 100%;
+
+	&:hover {
+		.container__leftArrow,
+		.container__rightArrow {
+			visibility: visible;
+		}
+	}
+
+	img {
+		margin: auto;
+		max-width: 100%;
+		max-height: 100%;
+	}
+
+	&__leftArrow {
+		left: 0;
+	}
+
+	&__rightArrow {
+		right: 0;
+	}
+
+	&__leftArrow,
+	&__rightArrow {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		visibility: hidden;
+	}
+}

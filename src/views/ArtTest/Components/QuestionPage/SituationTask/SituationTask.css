@@ -1,0 +1,28 @@
+.container--SituationTask {
+	margin-bottom: 2.8rem;
+}
+
+.container--SituationTask > :not(:last-child) {
+	margin-bottom: 1.6rem;
+}
+
+.heading-font--SituationTask {
+	font-style: normal;
+	font-weight: bold;
+	font-size: 24px;
+	line-height: 28px;
+	letter-spacing: 0.4px;
+	color: #323232;
+}
+
+.description-font--SituationTask {
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 22px;
+	color: #323232;
+}
+
+.container--SituationTask h3 {
+	margin-bottom: 0.8rem;
+}

@@ -1,0 +1,87 @@
+@import "../../../../asserts/styles/foundations.scss";
+
+.container {
+	display: flex;
+
+	&__centeredContainer {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+		width: 50%;
+	}
+
+	&__imgContainer {
+		width: 50%;
+		height: 100vh;
+		display: flex;
+
+		img {
+			margin: auto;
+			max-width: 100%;
+			max-height: 100%;
+		}
+	}
+
+	.wrapper {
+		width: 32.4rem;
+
+		& > :first-child {
+			margin-bottom: 3.2rem;
+		}
+
+		& > :last-child {
+			margin-top: 6.4rem;
+		}
+
+		&__field {
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+
+			& > :first-child {
+				margin-bottom: 0.8rem;
+			}
+
+			position: relative;
+			display: flex;
+			flex-direction: column;
+
+			&__errorMessage {
+				position: absolute;
+				display: flex;
+				align-items: center;
+				top: 9.4rem;
+
+				span {
+					padding-left: 0.4rem;
+					height: 2.1rem;
+					font-size: 14px;
+					line-height: 19px;
+					color: #ff4a4a;
+				}
+			}
+
+			input {
+				height: 6rem;
+				border: 0.1rem solid $neutral-2;
+				border-radius: 0.5rem;
+				outline: none !important;
+
+				&:focus:not(.error) {
+					border: 0.2rem solid $blue;
+				}
+			}
+
+			label {
+				font-size: 18px;
+				line-height: 21px;
+				color: $neutral-6;
+			}
+
+			.error {
+				border: 0.2rem solid $red;
+			}
+		}
+	}
+}

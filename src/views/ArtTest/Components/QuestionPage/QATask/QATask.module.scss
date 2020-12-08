@@ -1,0 +1,56 @@
+@import "../../../../../asserts/styles/foundations.scss";
+
+.container {
+	padding: 4.4rem 4rem;
+	border: 0.1rem solid $neutral-2;
+	border-radius: 0.4rem;
+
+	font-style: normal;
+	font-size: 16px;
+	line-height: 22px;
+
+	& > :first-child {
+		margin-bottom: 0.8rem;
+	}
+
+	& > :nth-child(2) {
+		margin-bottom: 2.8rem;
+	}
+
+	&__question {
+		font-weight: 500;
+		color: $neutral-6;
+	}
+
+	&__description {
+		color: $neutral-4;
+	}
+}
+
+.errorWrapper {
+	height: 0;
+	position: relative;
+
+	&__errorMessage {
+		position: absolute;
+		display: flex;
+		align-items: center;
+		top: 0.5rem;
+
+		i {
+			height: 1.8rem;
+		}
+
+		span {
+			padding-left: 0.4rem;
+			height: 2.1rem;
+			font-size: 14px;
+			line-height: 19px;
+			color: $red;
+		}
+	}
+}
+
+.error {
+	border-color: $red;
+}

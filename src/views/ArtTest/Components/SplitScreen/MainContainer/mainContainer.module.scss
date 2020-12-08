@@ -1,0 +1,30 @@
+.container {
+	height: 100%;
+	width: 100%;
+	display: grid;
+	grid-template:
+		8.8rem
+		1fr
+		8.8rem /
+		minmax(5.5rem, 12.8rem)
+		minmax(80.4rem, 185.2rem)
+		minmax(5.5rem, 12.8rem);
+
+	&__header {
+		grid-area: 1/1/2/4;
+		margin-left: 3.2rem;
+		margin-top: 3.2rem;
+	}
+
+	&__body {
+		grid-area: 2/2/3/3;
+	}
+
+	&__footer {
+		display: flex;
+		align-items: flex-end;
+		grid-area: 3/1/4/4;
+		margin-left: 1.6rem;
+		margin-bottom: 2.1rem;
+	}
+}

@@ -1,0 +1,25 @@
+.centered-container--deviceError {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.header--deviceError {
+	font-weight: bold;
+	font-size: 48px;
+	line-height: 74px;
+	text-align: center;
+	letter-spacing: 1px;
+	color: #323232;
+}
+
+.error--deviceError {
+	margin-top: 0.8rem;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 19px;
+	text-align: center;
+	color: #484848;
+}

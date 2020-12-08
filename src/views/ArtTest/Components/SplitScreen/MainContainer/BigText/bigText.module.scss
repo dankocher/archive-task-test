@@ -1,0 +1,35 @@
+@import "../../../../../../asserts/styles/foundations.scss";
+
+.container {
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	&__bigText {
+		font-style: normal;
+		font-weight: 500;
+		font-size: calc(12.292rem + (1vw - 0.452rem));
+		color: $neutral-6;
+	}
+}
+
+/* font-size transition between (small window and hd) / (HD and full-HD) */
+@media screen and (max-width: 2240px) {
+	.container__bigText {
+		font-size: calc(8.132rem + (1vw - 0.452rem));
+	}
+}
+
+@media screen and (max-width: 1643px) {
+	.container__bigText {
+		font-size: calc(6.286rem + (1vw - 0.452rem));
+	}
+}
+
+/* font-size transition on HD window */
+/* @media screen and (max-width: 1920px) {
+  .bigText-splitPage {
+    font-size: calc(6.286rem + (1vw - 0.452rem));
+  }
+} */

@@ -1,0 +1,86 @@
+@import "../../../../asserts/styles/foundations.scss";
+
+.container {
+	height: 100vh;
+	display: grid;
+	grid-template:
+		minmax(4.8rem, 13.6rem)
+		minmax(52.9rem, 106.8rem)
+		minmax(4.8rem, 13.6rem) /
+		minmax(10.4rem, 18.8rem)
+		minmax(119.8rem, 226rem)
+		minmax(6.4rem, 11.2rem);
+}
+
+.contentContainer {
+	width: 100%;
+	height: 100%;
+	grid-area: 2/2/3/3;
+	display: grid;
+	grid-template-columns:
+		minmax(43.6rem, 66.8rem)
+		minmax(4.4rem, 13.6rem)
+		minmax(71.8rem, 145.6rem);
+
+	&__sideContainer {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		color: $neutral-6;
+
+		& > :first-child {
+			margin-bottom: 4rem;
+		}
+
+		& > :last-child {
+			margin-top: 4rem;
+		}
+
+		h1 {
+			font-size: 78px;
+			line-height: 74px;
+			letter-spacing: 1px;
+		}
+
+		p {
+			font-size: 24px;
+			line-height: 29px;
+		}
+	}
+
+	&__imgContainer {
+		height: 100%;
+		grid-area: 1/3/2/4;
+		display: flex;
+
+		img {
+			margin: auto;
+			max-width: 100%;
+			max-height: 100%;
+		}
+	}
+}
+
+.containerOneContent {
+	grid-template-columns:
+		1fr
+		minmax(43.6rem, 66.8rem)
+		1fr;
+}
+
+.oneContentArea {
+	grid-area: 1/2/2/3;
+}
+
+@media screen and (max-width: 2442px) {
+	.contentContainer__sideContainer h1 {
+		font-size: 48px;
+		line-height: 50px;
+		letter-spacing: 1px;
+	}
+	.contentContainer__sideContainer p {
+		font-size: 18px;
+		line-height: 22px;
+	}
+}
