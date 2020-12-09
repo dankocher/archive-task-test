@@ -55,7 +55,7 @@ class App extends React.Component {
             case 1:
                 return <ArtTest/>
             default:
-                return null
+                return <center><h1>404 NOT FOUND</h1></center>
         }
     }
 
