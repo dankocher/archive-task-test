@@ -30,6 +30,7 @@ class App extends React.Component {
     }
 
     componentDidMount() {
+        //console.log(window.location.pathname)
         let [__empty__, uid] = window.location.pathname.split('/');
 
         this.getTest(uid)

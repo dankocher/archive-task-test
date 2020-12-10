@@ -31,9 +31,9 @@ class TestForAttention extends React.Component {
 
     componentDidMount() {
 
-        let uid = window.location.pathname.replace('/', "");
-
-        if(uid !== "") {
+        let [__empty__, test_id, uid] = window.location.pathname.split('/');
+        //console.log(uid)
+        if((uid || '').trim() !== "") {
             this.getUser(uid)
         } else {
             this.loadUser()
@@ -45,7 +45,8 @@ class TestForAttention extends React.Component {
         if (res.ok) {
             this.setState({s_user: res.tUser, loaded: true})
         } else {
-            window.location = "/";
+            this.setState({test_enabled: false, loaded: true})
+           // window.location = "/";
         }
     };
 

@@ -1,5 +1,5 @@
 const host = {
-    uri: window.location.port === "3000" ? "https://wpdev.goodstudio.by" : "https://wp.goodstudio.by"
+    uri: window.location.host === "test.goodstudio.by" ? "https://wp.goodstudio.by" : "https://wpdev.goodstudio.by"
 };
 
 const api = {
