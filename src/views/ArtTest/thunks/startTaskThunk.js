@@ -21,7 +21,7 @@ const startTaskThunk = (taskId, resultIndex, taskList, radioButtonTaskList) => {
 		}
 
 		const startDate = isTimeConsidered ? new Date().getTime() : undefined;
-		dispatch(startTask(taskId, startDate, taskList, radioButtonTaskList));
+		dispatch(startTask(taskId, startDate, taskList, task, radioButtonTaskList));
 	};
 };
 

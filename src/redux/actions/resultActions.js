@@ -15,10 +15,11 @@ export const startTask = (
 	taskId,
 	startData,
 	taskList,
+	task,
 	radioButtonTaskList
 ) => ({
 	type: START_TASK,
-	payload: { taskId, startData, taskList, radioButtonTaskList },
+	payload: { taskId, startData, taskList, task, radioButtonTaskList },
 });
 
 export const addWelcomePage = (taskId, startDate) => ({

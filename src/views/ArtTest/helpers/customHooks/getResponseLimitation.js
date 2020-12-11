@@ -12,7 +12,10 @@ export const useGetResponseLimitation = () => {
 	);
 
 	if (isAnswerSizeLimited) {
-		return responseLimitation;
+		return {
+			from: responseLimitation?.from || FROM,
+			to: responseLimitation?.to || TO,
+		};
 	} else {
 		return {
 			from: FROM,
