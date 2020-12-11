@@ -39,7 +39,7 @@ class App extends React.Component {
     getTest = async (tt_id) => {
         const res = await ajax(api.td_get_tasks, { tt_id });
         //console.log(res)
-        if (res.ok) {
+        if (res.ok && (res.ttask || {}).enabled) {
             this.setState({ type: res.ttask.id, loaded: true })
         } else {
             this.setState({ loaded: true, test_enabled: false })
