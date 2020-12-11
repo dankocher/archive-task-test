@@ -3,7 +3,13 @@ import update from "react-addons-update";
 import { result } from "./initialStates";
 
 export const getPreparedTask = (state, action) => {
-	const { taskId, startData, taskList, radioButtonTaskList } = action.payload;
+	const {
+		taskId,
+		startData,
+		taskList,
+		radioButtonTaskList,
+		task,
+	} = action.payload;
 
 	state = update(state, {
 		results: {
@@ -12,6 +18,7 @@ export const getPreparedTask = (state, action) => {
 					...result,
 					task_id: taskId,
 					start_date: startData,
+					task: task,
 				},
 			],
 		},

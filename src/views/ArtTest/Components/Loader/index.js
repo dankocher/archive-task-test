@@ -76,9 +76,9 @@ function Loader() {
 		});
 	}, []);
 
-	useEffect(() => {
-		console.log(state);
-	}, [state]);
+	// useEffect(() => {
+	// 	console.log(state);
+	// }, [state]);
 
 	useEffect(() => {
 		console.log(currentTaskId);

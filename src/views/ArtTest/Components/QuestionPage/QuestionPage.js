@@ -47,10 +47,13 @@ function QuestionPage() {
 		if (resultIndex !== -1) return;
 
 		const startDate = task.isTimeConsidered ? new Date().getTime() : undefined;
-		dispatch(startTask(taskId, startDate, QAList));
+		dispatch(startTask(taskId, startDate, QAList, task));
 
 		if (!isAnswerSizeLimited) return;
-		setLocalResponseLimitation(responseLimitation);
+		setLocalResponseLimitation({
+			from: responseLimitation?.from || FROM,
+			to: responseLimitation?.to || TO,
+		});
 	}, []);
 
 	const toNextTask = () => {
