@@ -1,15 +1,15 @@
 @import "../../../../assets/styles/foundations.scss";
 
 .container {
-	display: flex;
-	justify-content: space-between;
-	width: 32.4rem;
+  display: flex;
+  justify-content: space-between;
+  width: 20.25rem; //new
 
-	& > :first-child {
-		font-style: normal;
-		font-weight: normal;
-		font-size: 18px;
-		line-height: 22px;
-		color: $neutral-6;
-	}
+  & > :first-child {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    color: $neutral-6;
+  }
 }

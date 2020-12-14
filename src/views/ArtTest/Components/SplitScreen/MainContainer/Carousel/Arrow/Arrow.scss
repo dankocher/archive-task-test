@@ -1,45 +1,43 @@
-// .arrowIcon-left,
-// .arrowIcon-right {
-// 	content: url(../../../utils/img/arrow-icon.png);
-// }
+@import "../../../../../../../assets/styles/foundations.scss";
 
 .arrowIcon-left {
-	transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 .carouselArrow-left,
 .carouselArrow-right {
-	display: flex;
-	height: 4.8rem;
-	width: 4.8rem;
-	border-radius: 0.4rem;
+  display: flex;
+  height: $px48;
+  width: $px48;
+  border-radius: $px4;
 
-	i {
-		height: inherit;
-		width: inherit;
-	}
+  i {
+    height: inherit;
+    width: inherit;
+    display: block;
+  }
 }
 
 .light--carouselArrow {
-	rect {
-		fill: #d1d1d9;
-	}
+  rect {
+    fill: $neutral-2;
+  }
 }
 
 .light--carouselArrow:hover {
-	rect {
-		fill: #6b6b6c;
-	}
+  rect {
+    fill: $neutral-4;
+  }
 }
 
 .dark--carouselArrow {
-	rect {
-		fill: #6b6b6c;
-	}
+  rect {
+    fill: $neutral-4;
+  }
 }
 
 .dark--carouselArrow:hover {
-	rect {
-		fill: #484848;
-	}
+  rect {
+    fill: $neutral-5;
+  }
 }

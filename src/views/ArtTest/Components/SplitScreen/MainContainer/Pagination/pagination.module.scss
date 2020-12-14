@@ -1,39 +1,39 @@
 @import "../../../../../../assets/styles/foundations.scss";
 
 .container {
-	display: flex;
-	align-items: center;
-	height: 4rem;
+  display: flex;
+  align-items: center;
+  height: $px40;
 
-	button {
-		height: 4rem;
-		cursor: pointer;
+  button {
+    height: $px40;
+    cursor: pointer;
 
-		i {
-			height: inherit;
-		}
+    i {
+      display: block;
+    }
 
-		&:hover {
-			path {
-				fill: $neutral-6;
-			}
-		}
+    &:hover {
+      path {
+        fill: $neutral-6;
+      }
+    }
 
-		&:disabled {
-			path {
-				fill: $neutral-2;
-			}
-		}
-	}
+    &:disabled {
+      path {
+        fill: $neutral-2;
+      }
+    }
+  }
 
-	&__paginationInfo {
-		font-size: 18px;
-		line-height: 22px;
-		color: $neutral-6;
-		margin: 0 1.2rem;
-	}
+  &__paginationInfo {
+    font-size: 18px;
+    line-height: 22px;
+    color: $neutral-6;
+    margin: 0 $px12;
+  }
 
-	&__rightArrow {
-		transform: rotate(180deg);
-	}
+  &__rightArrow {
+    transform: rotate(180deg);
+  }
 }

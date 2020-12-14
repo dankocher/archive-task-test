@@ -1,25 +1,25 @@
 @import "../../../../../assets/styles/foundations.scss";
 
 .zoom-controller-button {
-	height: 4.4rem;
-	width: 4.4rem;
+  height: $px44;
+  width: $px44;
 
-	&:hover {
-		background-color: $neutral-5;
-	}
+  &:hover {
+    background-color: $neutral-5;
+  }
 
-	i {
-		margin: auto;
-		height: 2.4rem;
-		width: 2.4rem;
-	}
+  i {
+    margin: auto;
+    height: $px24;
+    width: $px24;
+  }
 }
 
 .activeColor {
-	path {
-		fill: $white;
-	}
-	rect {
-		fill: $white;
-	}
+  path {
+    fill: $white;
+  }
+  rect {
+    fill: $white;
+  }
 }

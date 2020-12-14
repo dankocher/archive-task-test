@@ -1,19 +1,17 @@
-import styles from "./index.module.scss";
+import "./index.scss";
 import React from "react";
 import { useSelector } from "react-redux";
 
 import Loader from "./Components/Loader";
 
 function ArtTest() {
-	const isRehydrated = useSelector(
-		(state) => state.rehydrateStorage.isRehydrated
-	);
+  const isRehydrated = useSelector(
+    (state) => state.rehydrateStorage.isRehydrated
+  );
 
-	return (
-		<div className={styles.mainContainer}>
-			{isRehydrated ? <Loader /> : null}
-		</div>
-	);
+  return (
+    <div className="mainContainer">{isRehydrated ? <Loader /> : null}</div>
+  );
 }
 
 export default ArtTest;
