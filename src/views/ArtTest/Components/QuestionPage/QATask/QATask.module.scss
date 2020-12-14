@@ -1,20 +1,20 @@
 @import "../../../../../assets/styles/foundations.scss";
 
 .container {
-	padding: 4.4rem 4rem;
-	border: 0.1rem solid $neutral-2;
-	border-radius: 0.4rem;
+	padding: $px44 $px40;
+	border: $px1 solid $neutral-2;
+	border-radius: $radius;
 
 	font-style: normal;
 	font-size: 16px;
 	line-height: 22px;
 
 	& > :first-child {
-		margin-bottom: 0.8rem;
+		margin-bottom: $px8;
 	}
 
 	& > :nth-child(2) {
-		margin-bottom: 2.8rem;
+		margin-bottom: $px28;
 	}
 
 	&__question {
@@ -35,15 +35,15 @@
 		position: absolute;
 		display: flex;
 		align-items: center;
-		top: 0.5rem;
+		top: $px5;
 
 		i {
 			height: 1.8rem;
 		}
 
 		span {
-			padding-left: 0.4rem;
-			height: 2.1rem;
+			padding-left: $px4;
+			height: $px21;
 			font-size: 14px;
 			line-height: 19px;
 			color: $red;

@@ -24,14 +24,14 @@
 	}
 
 	.wrapper {
-		width: 32.4rem;
+		width: 20.25rem; //new
 
 		& > :first-child {
-			margin-bottom: 3.2rem;
+			margin-bottom: $px32;
 		}
 
 		& > :last-child {
-			margin-top: 6.4rem;
+			margin-top: $px64;
 		}
 
 		&__field {
@@ -40,7 +40,7 @@
 			width: 100%;
 
 			& > :first-child {
-				margin-bottom: 0.8rem;
+				margin-bottom: $px8;
 			}
 
 			position: relative;
@@ -51,11 +51,11 @@
 				position: absolute;
 				display: flex;
 				align-items: center;
-				top: 9.4rem;
+				top: $px94;
 
 				span {
-					padding-left: 0.4rem;
-					height: 2.1rem;
+					padding-left: $px4;
+					height: $px21;
 					font-size: 14px;
 					line-height: 19px;
 					color: #ff4a4a;
@@ -63,13 +63,13 @@
 			}
 
 			input {
-				height: 6rem;
-				border: 0.1rem solid $neutral-2;
-				border-radius: 0.5rem;
+				height: $px60;
+				border: $px1 solid $neutral-2;
+				border-radius: $px5;
 				outline: none !important;
 
 				&:focus:not(.error) {
-					border: 0.2rem solid $blue;
+					border: $px2 solid $blue;
 				}
 			}
 
@@ -80,7 +80,7 @@
 			}
 
 			.error {
-				border: 0.2rem solid $red;
+				border: $px2 solid $red;
 			}
 		}
 	}

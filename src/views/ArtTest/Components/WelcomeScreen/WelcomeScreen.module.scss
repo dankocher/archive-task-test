@@ -3,13 +3,12 @@
 .container {
 	height: 100vh;
 	display: grid;
-	grid-template:
-		minmax(4.8rem, 13.6rem)
-		minmax(52.9rem, 106.8rem)
-		minmax(4.8rem, 13.6rem) /
-		minmax(10.4rem, 18.8rem)
-		minmax(119.8rem, 226rem)
-		minmax(6.4rem, 11.2rem);
+	grid-template: minmax($px48, 8.5rem) //new
+		minmax(33.0625rem, 66.75rem) //new
+		minmax($px48, 8.5rem) / //new
+		minmax(6.5rem, 11.75rem) //new
+		minmax(74.875rem, 141.25rem) //new
+		minmax($px64, 7rem);
 }
 
 .contentContainer {
@@ -17,10 +16,9 @@
 	height: 100%;
 	grid-area: 2/2/3/3;
 	display: grid;
-	grid-template-columns:
-		minmax(43.6rem, 66.8rem)
-		minmax(4.4rem, 13.6rem)
-		minmax(71.8rem, 145.6rem);
+	grid-template-columns: minmax(27.25rem, 41.75rem) //new
+		minmax($px44, 8.5rem) //new
+		minmax(44.875rem, 91rem); //new
 
 	&__sideContainer {
 		height: 100%;
@@ -30,11 +28,11 @@
 		color: $neutral-6;
 
 		& > :first-child {
-			margin-bottom: 4rem;
+			margin-bottom: $px40;
 		}
 
 		& > :last-child {
-			margin-top: 4rem;
+			margin-top: $px40;
 		}
 
 		h1 {
@@ -65,7 +63,7 @@
 .containerOneContent {
 	grid-template-columns:
 		1fr
-		minmax(43.6rem, 66.8rem)
+		minmax(27.25rem, 41.75rem) //new
 		1fr;
 }
 
