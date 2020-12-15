@@ -1,44 +1,44 @@
-@import "../../../../../asserts/styles/foundations.scss";
+@import "../../../../../assets/styles/foundations.scss";
 
 .contentWrapper {
-	width: auto;
-	padding: 3.2rem 6.4rem;
-	overflow-y: auto;
-	box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.1);
+  width: auto;
+  padding: $px32 $px64;
+  overflow-y: auto;
+  box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.1);
 
-	&__body {
-		margin: 4.8rem 0;
+  &__body {
+    margin: $px48 0;
 
-		// textarea {
-		// 	transition: all 2s;
-		// }
+    // textarea {
+    // 	transition: all 2s;
+    // }
 
-		.container {
-			margin-bottom: 4rem;
-			color: $neutral-6;
+    .container {
+      margin-bottom: $px40;
+      color: $neutral-6;
 
-			& :first-child {
-				margin-bottom: 2.4rem;
-			}
+      & :first-child {
+        margin-bottom: $px24;
+      }
 
-			h2 {
-				font-weight: bold;
-				font-size: 24px;
-				line-height: 28px;
-				letter-spacing: 0.4px;
-			}
+      h2 {
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 28px;
+        letter-spacing: 0.4px;
+      }
 
-			p {
-				font-weight: normal;
-				font-size: 16px;
-				line-height: 22px;
-			}
-		}
+      p {
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 22px;
+      }
+    }
 
-		&__answersField {
-			& > :not(:last-child) {
-				margin-bottom: 3.6rem;
-			}
-		}
-	}
+    &__answersField {
+      & > :not(:last-child) {
+        margin-bottom: $px36;
+      }
+    }
+  }
 }

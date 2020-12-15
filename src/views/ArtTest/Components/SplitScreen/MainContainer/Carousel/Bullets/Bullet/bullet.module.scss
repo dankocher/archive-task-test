@@ -1,30 +1,30 @@
-@import "../../../../../../../../asserts/styles/foundations.scss";
+@import "../../../../../../../../assets/styles/foundations.scss";
 
 .active,
 .default {
-	height: 1rem;
-	width: 1rem;
-	border-radius: 50%;
-	box-shadow: 0px 0px 20px 8px rgba(255, 255, 255, 0.25);
+  height: $px10;
+  width: $px10;
+  border-radius: 50%;
+  box-shadow: 0px 0px 20px 8px rgba(255, 255, 255, 0.25);
 
-	svg {
-		max-height: 100%;
-	}
+  svg {
+    max-height: 100%;
+  }
 
-	i {
-		height: inherit;
-		width: inherit;
-	}
+  i {
+    height: inherit;
+    width: inherit;
+  }
 }
 
 .active {
-	circle {
-		fill: $neutral-4;
-	}
+  circle {
+    fill: $neutral-4;
+  }
 }
 
 .default {
-	circle {
-		fill: $neutral-1;
-	}
+  circle {
+    fill: $neutral-1;
+  }
 }

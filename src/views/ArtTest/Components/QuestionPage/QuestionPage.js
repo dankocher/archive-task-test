@@ -71,7 +71,7 @@ function QuestionPage() {
 					inline: "center",
 				});
 
-				return console.log("qwe");
+				// return console.log("qwe");
 			}
 		}
 

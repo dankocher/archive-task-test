@@ -65,7 +65,7 @@ function PhotoModal({ currentImgUrl, isOneImg }) {
 						<div className={styles.container__imgContainer}>
 							<TransformComponent>
 								<img
-									style={{ maxWidth: "100%", maxHeight: "100%" }}
+									style={{ width: "100%", height: "auto" }}
 									src={currentImgUrl}
 									alt={""}
 								/>

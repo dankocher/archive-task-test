@@ -57,7 +57,7 @@ function Authorization() {
 			setIsEmailValid(isEmail(email));
 		}
 		if (!isEmail(email)) return;
-		console.log("SOHRANILSIA");
+		// console.log("SOHRANILSIA");
 	};
 
 	return (

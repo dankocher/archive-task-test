@@ -1,4 +1,4 @@
-@import "../../../../asserts/styles/foundations.scss";
+@import "../../../../assets/styles/foundations.scss";
 
 .container {
 	position: fixed;
@@ -10,23 +10,23 @@
 
 	display: grid;
 	grid-template-rows:
-		minmax(5.3rem, 6.4rem)
-		minmax(51.9rem, 121.2rem)
-		minmax(5.3rem, 6.4rem);
+		minmax($px53, $px64)
+		minmax(32.4375rem, 75.75rem) //new
+		minmax($px53, $px64);
 
 	background-color: rgba(50, 50, 50, 0.65);
-	backdrop-filter: blur(0.4rem);
+	backdrop-filter: blur(4px);
 	z-index: 50;
 
 	&__wrapperRelative {
 		position: relative;
 
 		&__closeBtn {
-			height: 4.8rem;
-			width: 4.8rem;
+			height: $px48;
+			width: $px48;
 
 			position: absolute;
-			right: 4.8rem;
+			right: $px48;
 			bottom: 0;
 
 			border-radius: 0.4rem;
@@ -48,11 +48,11 @@
 	}
 
 	&__leftArrow {
-		left: 4.8rem;
+		left: $px48;
 	}
 
 	&__rightArrow {
-		right: 4.8rem;
+		right: $px48;
 	}
 
 	&__imgContainer {
@@ -61,12 +61,12 @@
 		width: 100%;
 
 		& > :first-child {
-			height: 100%;
 			margin: auto;
 			box-shadow: 0px 0px 25px 7px rgba(50, 50, 50, 0.15);
+			max-height: 100%;
 
 			:first-child {
-				height: 100%;
+				max-height: 100%;
 			}
 		}
 	}
@@ -74,7 +74,7 @@
 	&__zoomWrapper {
 		position: relative;
 		display: flex;
-		height: 8rem;
+		height: 5rem; //new
 
 		&__zoomContainer {
 			position: absolute;
@@ -83,14 +83,14 @@
 			left: calc(100vw - 50%);
 			transform: translateX(-50%);
 			background-color: $neutral-4;
-			border-radius: 0.4rem;
+			border-radius: $radius;
 
 			& > :first-child {
-				border-radius: 0.4rem 0 0 0.4rem;
+				border-radius: $px4 0 0 $px4;
 			}
 
 			& > :last-child {
-				border-radius: 0 0.4rem 0.4rem 0;
+				border-radius: 0 $px4 $px4 0;
 			}
 		}
 	}

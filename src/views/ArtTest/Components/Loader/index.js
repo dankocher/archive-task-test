@@ -1,10 +1,7 @@
+import "./index.scss";
+
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
-import {
-	persistConfig,
-	testStoragePersistConfig,
-} from "../../../../redux/reducer/rootReducer";
 
 import {
 	WELCOME_SCREEN,
