@@ -1,11 +1,12 @@
 import styles from "./authorization.module.scss";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { setCurrentTaskId } from "../../../../redux/actions/testActions";
 import { login } from "../../../../redux/actions/resultActions";
 
 import { isEmail } from "../../utils/validators/isEmail";
+import { isName } from "../../utils/validators/isName";
 
 import Button from "../Button/Button";
 import labels from "../../utils/labelText/lable.json";
@@ -24,41 +25,52 @@ function Authorization() {
 	const currentTestId = useSelector((state) => state.testStorage.currentTestId);
 
 	const startTestHandler = () => {
-		if (name === "") {
-			setIsNameValid(false);
-			if (!onBlured) {
-				setOnBlured(true);
-				setIsEmailValid(isEmail(email));
-			}
-			return;
-		} else if (!isEmailValid) return;
+		console.log(isEmailValid, isNameValid);
+		debugger;
+		if (!onBlured) {
+			setOnBlured(true);
+			const _isNameValid = isName(name);
+			const _isEmailValid = isEmail(email);
+
+			setIsNameValid(_isNameValid);
+			setIsEmailValid(_isEmailValid);
+
+			if (!_isNameValid || !_isEmailValid) return;
+		} else if (!isEmailValid || !isNameValid) return;
+
 		dispatch(login(name, email, currentTestId));
 		dispatch(setCurrentTaskId(taskList[0]));
 	};
 
 	const onChangeNameHandler = (event) => {
-		const value = event.target.validity.valid ? event.target.value : name;
+		const value = event.target.value;
+
 		if (value.length > 100) return;
-		if (!isNameValid) setIsNameValid(true);
+		if (onBlured) setIsNameValid(isName(value));
+
 		setLocalName(value);
 	};
 
+	// const onBlureNameHandler = () => {
+	// 	if (onBlured) return;
+	// 	setOnBlured(true);
+	// 	setIsNameValid(isName(name));
+	// };
+
 	const onChangeEmailHandler = (event) => {
 		const value = event.target.value;
+
 		if (value.length > 50) return;
 		if (onBlured) setIsEmailValid(isEmail(value));
 
 		setLocalEmail(value);
 	};
 
-	const onBlureEmailHandler = () => {
-		if (!onBlured) {
-			setOnBlured(true);
-			setIsEmailValid(isEmail(email));
-		}
-		if (!isEmail(email)) return;
-		// console.log("SOHRANILSIA");
-	};
+	// const onBlureEmailHandler = () => {
+	// 	if (onBlured) return;
+	// 	setOnBlured(true);
+	// 	setIsEmailValid(isEmail(email));
+	// };
 
 	return (
 		<div className={styles.container}>
@@ -74,12 +86,14 @@ function Authorization() {
 							className={!isNameValid ? styles.error : null}
 							value={name}
 							onChange={onChangeNameHandler}
-							pattern="^[a-zA-Z\s]*$"
+
+							// onBlur={onBlureNameHandler}
+							// pattern="^[a-zA-Z\s]*$"
 						/>
 						{!isNameValid ? (
 							<div className={styles.wrapper__field__errorMessage}>
 								<i>{errorIcon}</i>
-								<span>Please enter name</span>
+								<span>Неверое имя</span>
 							</div>
 						) : null}
 					</div>
@@ -90,12 +104,12 @@ function Authorization() {
 							className={!isEmailValid ? styles.error : null}
 							value={email}
 							onChange={onChangeEmailHandler}
-							onBlur={onBlureEmailHandler}
+							// onBlur={onBlureEmailHandler}
 						/>
 						{!isEmailValid ? (
 							<div className={styles.wrapper__field__errorMessage}>
 								<i>{errorIcon}</i>
-								<span>Invalid mail</span>
+								<span>Неверная почта</span>
 							</div>
 						) : null}
 					</div>
