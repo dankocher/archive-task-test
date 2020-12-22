@@ -25,8 +25,6 @@ function Authorization() {
 	const currentTestId = useSelector((state) => state.testStorage.currentTestId);
 
 	const startTestHandler = () => {
-		console.log(isEmailValid, isNameValid);
-		debugger;
 		if (!onBlured) {
 			setOnBlured(true);
 			const _isNameValid = isName(name);
