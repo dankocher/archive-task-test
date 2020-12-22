@@ -24,7 +24,7 @@ function WelcomeScreen() {
 
 	const header = task?.name;
 	const description = task?.description;
-	const img = task?.data.imgUrl;
+	const img = task?.data?.imgUrl;
 	const imgUrl = getImgPath(img);
 
 	useEffect(() => {
@@ -38,7 +38,7 @@ function WelcomeScreen() {
 		[styles.containerOneContent]: img == null || img === "",
 	});
 
-	const contant = classNames(styles.contentContainer__sideContainer, {
+	const content = classNames(styles.contentContainer__sideContainer, {
 		[styles.oneContentArea]: img == null || img === "",
 	});
 
@@ -49,7 +49,7 @@ function WelcomeScreen() {
 	return (
 		<div className={styles.container}>
 			<div className={contentContainer}>
-				<div className={contant}>
+				<div className={content}>
 					<h1>{header}</h1>
 					<p>{description}</p>
 
