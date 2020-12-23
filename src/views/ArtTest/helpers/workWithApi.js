@@ -36,3 +36,12 @@ export const saveResults = async (results) => {
 	}
 	return res;
 };
+
+export const getCurrentTime = async () => {
+	const res = await ajax(api.get_time);
+	if (!res.ok) {
+		console.log("Bad response");
+		return;
+	}
+	return res.date;
+};

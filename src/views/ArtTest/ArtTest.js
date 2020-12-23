@@ -23,12 +23,7 @@ function ArtTest() {
 		}
 	};
 
-	return (
-		<>
-			{console.log(windowSize.width, windowSize.height)}
-			{checkWindowSize()}
-		</>
-	);
+	return <>{checkWindowSize()}</>;
 }
 
 export default ArtTest;

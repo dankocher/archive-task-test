@@ -5,6 +5,8 @@ import {
 } from "../../../redux/actions/testActions";
 import { QUSETION_ANSWER } from "../helpers/taskTypes";
 
+import { getCurrentTime } from "../helpers/workWithApi";
+
 const startTaskThunk = (taskId, resultIndex, taskList, radioButtonTaskList) => {
 	return (dispatch, getState) => {
 		const state = getState();
@@ -20,8 +22,17 @@ const startTaskThunk = (taskId, resultIndex, taskList, radioButtonTaskList) => {
 			dispatch(setMaxOpenedSubTaskIndex(0));
 		}
 
-		const startDate = isTimeConsidered ? new Date().getTime() : undefined;
-		dispatch(startTask(taskId, startDate, taskList, task, radioButtonTaskList));
+		if (isTimeConsidered) {
+			getCurrentTime().then((startDate) => {
+				dispatch(
+					startTask(taskId, startDate, taskList, task, radioButtonTaskList)
+				);
+			});
+		} else {
+			dispatch(
+				startTask(taskId, undefined, taskList, task, radioButtonTaskList)
+			);
+		}
 	};
 };
 

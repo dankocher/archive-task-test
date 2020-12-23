@@ -2,7 +2,12 @@ import {
 	setCurrentTaskId,
 	setIsNextBtnClicked,
 } from "../../../redux/actions/testActions";
-import { setTaskEndDate, setTestEndDate } from "../../../redux/actions/resultActions";
+import {
+	setTaskEndDate,
+	setTestEndDate,
+} from "../../../redux/actions/resultActions";
+
+import { getCurrentTime } from "../helpers/workWithApi";
 
 const setNextTaskId = (currentResultIndex) => {
 	return (dispatch, getState) => {
@@ -16,16 +21,21 @@ const setNextTaskId = (currentResultIndex) => {
 		dispatch(setIsNextBtnClicked(false));
 
 		//Save end_date
-		const endDate = isTimeConsidered ? new Date().getTime() : undefined;
-		dispatch(setTaskEndDate(endDate, currentResultIndex));
+		if (isTimeConsidered) {
+			getCurrentTime().then((endDate) => {
+				dispatch(setTaskEndDate(endDate, currentResultIndex));
+			});
+		}
 
 		if (indexCurrentTaskId === -1) return;
 		const nextIndex = indexCurrentTaskId + 1;
 
 		if (nextIndex >= taskList.length) {
-			//Set end date
-			dispatch(setTestEndDate());
-			console.log("test okonchilsia davaite novii");
+			//Set test end_date
+			getCurrentTime().then((endDate) => {
+				dispatch(setTestEndDate(endDate));
+			});
+			// console.log("test okonchilsia davaite novii");
 			return;
 		}
 

@@ -7,6 +7,7 @@ import TaskInformation from "../TaskInformation/TaskInformation";
 import Button from "../Button/Button";
 import QATask from "./QATask/QATask";
 
+import { getCurrentTime } from "../../helpers/workWithApi";
 import { startTask } from "../../../../redux/actions/resultActions";
 import { setIsNextBtnClicked } from "../../../../redux/actions/testActions";
 import setNextTaskId from "../../thunks/setNextTaskId";
@@ -46,8 +47,15 @@ function QuestionPage() {
 	useEffect(() => {
 		if (resultIndex !== -1) return;
 
-		const startDate = task.isTimeConsidered ? new Date().getTime() : undefined;
-		dispatch(startTask(taskId, startDate, QAList, task));
+		// const startDate = task.isTimeConsidered ? new Date().getTime() : undefined;
+
+		if (task.isTimeConsidered) {
+			getCurrentTime().then((startDate) => {
+				dispatch(startTask(taskId, startDate, QAList, task));
+			});
+		} else {
+			dispatch(startTask(taskId, undefined, QAList, task));
+		}
 
 		if (!isAnswerSizeLimited) return;
 		setLocalResponseLimitation({

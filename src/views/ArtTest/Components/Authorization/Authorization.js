@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { setCurrentTaskId } from "../../../../redux/actions/testActions";
 import { login } from "../../../../redux/actions/resultActions";
+import { getCurrentTime } from "../../helpers/workWithApi";
 
 import { isEmail } from "../../utils/validators/isEmail";
 import { isName } from "../../utils/validators/isName";
@@ -36,8 +37,10 @@ function Authorization() {
 			if (!_isNameValid || !_isEmailValid) return;
 		} else if (!isEmailValid || !isNameValid) return;
 
-		dispatch(login(name, email, currentTestId));
-		dispatch(setCurrentTaskId(taskList[0]));
+		getCurrentTime().then((startDate) => {
+			dispatch(login(name, email, currentTestId, startDate));
+			dispatch(setCurrentTaskId(taskList[0]));
+		});
 	};
 
 	const onChangeNameHandler = (event) => {
