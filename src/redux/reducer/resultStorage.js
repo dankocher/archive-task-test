@@ -16,12 +16,13 @@ import { initialState } from "../initialStates";
 function resultStorage(state = initialState, action) {
 	switch (action.type) {
 		case LOGIN:
+			const { name, email, currentTestId, startDate } = action.payload;
 			return {
 				...state,
-				name: action.payload.name,
-				email: action.payload.email,
-				test_id: action.payload.currentTestId,
-				start_date: new Date().getTime(),
+				name: name,
+				email: email,
+				test_id: currentTestId,
+				start_date: startDate,
 			};
 		case START_TASK:
 			return getPreparedTask(state, action);
@@ -79,7 +80,7 @@ function resultStorage(state = initialState, action) {
 				},
 			});
 		case SET_TEST_END_DATE:
-			return { ...state, end_date: new Date().getTime() };
+			return { ...state, end_date: action.payload.endDate };
 		default:
 			return state;
 	}

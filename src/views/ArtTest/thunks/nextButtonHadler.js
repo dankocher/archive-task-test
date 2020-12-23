@@ -50,7 +50,7 @@ const nextButtonHadler = (currentResultIndex, responseLimitation) => {
 			} else {
 				// go to next task
 				dispatch(setNextTaskId(currentResultIndex));
-				console.log("ia poshel na sledushee zadanie");
+				// console.log("ia poshel na sledushee zadanie");
 			}
 		} else {
 			dispatch(setCurrentSubTaskIndex(currentSubTaskIndex + 1));

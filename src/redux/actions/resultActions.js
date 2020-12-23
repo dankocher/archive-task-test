@@ -6,9 +6,9 @@ export const SET_TASK_END_DATE = "SET_TASK_END_DATE";
 export const ADD_WELCOME_PAGE = "ADD_WELCOME_PAGE";
 export const SET_TEST_END_DATE = "SET_TEST_END_DATE";
 
-export const login = (name, email, currentTestId) => ({
+export const login = (name, email, currentTestId, startDate) => ({
 	type: LOGIN,
-	payload: { name, email, currentTestId },
+	payload: { name, email, currentTestId, startDate },
 });
 
 export const startTask = (
@@ -53,6 +53,7 @@ export const setTaskEndDate = (date, resultIndex) => ({
 	resultIndex,
 });
 
-export const setTestEndDate = () => ({
+export const setTestEndDate = (endDate) => ({
 	type: SET_TEST_END_DATE,
+	payload: endDate,
 });

@@ -3,10 +3,13 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 import { useGetResultIndex } from "../../helpers/customHooks/getResultIndex";
+import { getCurrentTime } from "../../helpers/workWithApi";
 
 function Timer({ type }) {
 	const resultIndex = useGetResultIndex();
 
+	// const [startTime, setStartTime] = useState(undefined);
+	const [currentTimerMS, setCurrentTimerMS] = useState(undefined);
 	const [currentTimer, setCurrentTimer] = useState(undefined);
 	const testStart = useSelector((state) => state.resultStorage.start_date);
 	const taskStart = useSelector(
@@ -17,19 +20,22 @@ function Timer({ type }) {
 		(state) => state.testStorage.currentTask.isTimeConsidered
 	);
 
-	const tick = () => {
+	useEffect(() => {
 		const startDate = type === "test" ? testStart : taskStart;
 
-		// console.log(`SEICHAS Происходит TICK ${startDate}`);
+		getCurrentTime().then((time) => {
+			setCurrentTimerMS(time - startDate);
+		});
+	}, []);
 
-		if (startDate == null) return;
+	const tick = () => {
+		if (currentTimerMS == null) return;
 
-		const currentDate = new Date().getTime();
-		const timer = currentDate - startDate;
+		setCurrentTimerMS((timer) => timer + 1000);
 
-		if (timer < 0) return;
+		// if (currentTimerMS < 0) return;
 
-		const timerInSeconds = timer / 1000;
+		const timerInSeconds = currentTimerMS / 1000;
 		const seconds = Math.floor(timerInSeconds % 60);
 
 		const timerInMinutes = timerInSeconds / 60;
@@ -63,8 +69,10 @@ function Timer({ type }) {
 
 		const interval = setInterval(tick, 1000);
 
-		return () => clearInterval(interval);
-	}, [taskStart, isTimeConsidered]);
+		return () => {
+			clearInterval(interval);
+		};
+	}, [taskStart, isTimeConsidered, currentTimerMS]);
 
 	return (
 		<>

@@ -7,6 +7,8 @@ import { useGetResultIndex } from "../../helpers/customHooks/getResultIndex";
 import setNextTaskId from "../../thunks/setNextTaskId";
 import { addWelcomePage } from "../../../../redux/actions/resultActions";
 
+import { getCurrentTime } from "../../helpers/workWithApi";
+
 import staticText from "../../utils/labelText/lable.json";
 
 import Button from "../Button/Button";
@@ -24,21 +26,26 @@ function WelcomeScreen() {
 
 	const header = task?.name;
 	const description = task?.description;
-	const img = task?.data.imgUrl;
+	const img = task?.data?.imgUrl;
 	const imgUrl = getImgPath(img);
 
 	useEffect(() => {
 		if (resultIndex !== -1) return;
 
-		const startDate = isTimeConsidered ? new Date().getTime() : undefined;
-		dispatch(addWelcomePage(taskId, startDate));
+		if (isTimeConsidered) {
+			getCurrentTime().then((startDate) => {
+				dispatch(addWelcomePage(taskId, startDate));
+			});
+		} else {
+			dispatch(addWelcomePage(taskId, undefined));
+		}
 	}, []);
 
 	const contentContainer = classNames(styles.contentContainer, {
 		[styles.containerOneContent]: img == null || img === "",
 	});
 
-	const contant = classNames(styles.contentContainer__sideContainer, {
+	const content = classNames(styles.contentContainer__sideContainer, {
 		[styles.oneContentArea]: img == null || img === "",
 	});
 
@@ -49,7 +56,7 @@ function WelcomeScreen() {
 	return (
 		<div className={styles.container}>
 			<div className={contentContainer}>
-				<div className={contant}>
+				<div className={content}>
 					<h1>{header}</h1>
 					<p>{description}</p>
 
