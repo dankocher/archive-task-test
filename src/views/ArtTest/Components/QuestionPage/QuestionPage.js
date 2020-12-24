@@ -15,6 +15,7 @@ import { useGetResultIndex } from "../../helpers/customHooks/getResultIndex";
 
 const FROM = 1;
 const TO = 2000;
+const [__empty__, test_id] = window.location.pathname.split('/')
 
 function QuestionPage() {
 	const dispatch = useDispatch();
@@ -35,7 +36,8 @@ function QuestionPage() {
 	const resultIndex = useGetResultIndex();
 
 	const results = useSelector(
-		(state) => state.resultStorage.results[resultIndex]?.data
+		(state) => state.resultStorage[test_id].results[resultIndex]?.data
+		//(state) => state.resultStorage.results[resultIndex]?.data
 	);
 
 	useEffect(() => {

@@ -9,6 +9,8 @@ import RadioButton from "../../../RadioButton/RadioButton";
 import { setAnswerOfWordsRadioButtons } from "../../../../../../redux/actions/resultActions";
 import { useGetResultIndex } from "../../../../helpers/customHooks/getResultIndex";
 
+const [__empty__, test_id] = window.location.pathname.split('/');
+
 function RadioButtonAnswers(props) {
 	const { index, radioButtonTask } = props;
 
@@ -21,8 +23,11 @@ function RadioButtonAnswers(props) {
 		(state) => state.testStorage.currentSubTaskIndex
 	);
 	const checkedValue = useSelector(
+		// (state) =>
+		// 	state.resultStorage?.results[resultIndex]?.data[currentSubTaskIndex]
+		// 		?.answers[index]?.optionId
 		(state) =>
-			state.resultStorage?.results[resultIndex]?.data[currentSubTaskIndex]
+			state.resultStorage[test_id]?.results[resultIndex]?.data[currentSubTaskIndex]
 				?.answers[index]?.optionId
 	);
 

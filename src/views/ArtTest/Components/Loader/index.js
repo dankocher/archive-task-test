@@ -33,6 +33,8 @@ import {
 	saveResults,
 } from "../../helpers/workWithApi";
 
+const [__empty__, test_id] = window.location.pathname.split('/');
+
 const getPage = (taskType) => {
 	switch (taskType) {
 		case WELCOME_SCREEN:
@@ -60,7 +62,8 @@ function Loader() {
 		(state) => state?.testStorage?.currentTaskId
 	);
 	const taskType = useSelector((state) => state.testStorage.currentTask?.type);
-	const resultStorage = useSelector((state) => state.resultStorage);
+	const resultStorage = useSelector((state) => state.resultStorage[test_id]);
+	//const resultStorage = useSelector((state) => state.resultStorage);
 	const endDate = resultStorage.end_date;
 
 	useEffect(() => {

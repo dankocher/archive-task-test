@@ -8,6 +8,8 @@ import { setTextAreaAnswer } from "../../../../../../redux/actions/resultActions
 
 import TextArea from "../../../TextArea/TextArea";
 
+const [__empty__, test_id] = window.location.pathname.split('/')
+
 function TextAreaSettings() {
 	const dispatch = useDispatch();
 
@@ -23,7 +25,8 @@ function TextAreaSettings() {
 
 	const answer = useSelector(
 		(state) =>
-			state.resultStorage.results[resultIndex]?.data[currentSubTaskIndex].answer
+			state.resultStorage[test_id].results[resultIndex]?.data[currentSubTaskIndex].answer
+			//state.resultStorage.results[resultIndex]?.data[currentSubTaskIndex].answer
 	);
 
 	const isNextBtnClicked = useSelector(

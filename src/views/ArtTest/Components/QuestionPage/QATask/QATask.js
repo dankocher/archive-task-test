@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { setTextAreaAnswer } from "../../../../../redux/actions/resultActions";
 
+const [__empty__, test_id] = window.location.pathname.split('/')
+
 const classNames = require("classnames");
 
 function QATask(props) {
@@ -23,7 +25,8 @@ function QATask(props) {
 	);
 
 	const answer = useSelector(
-		(state) => state.resultStorage.results[resultIndex]?.data[index].answer
+		//(state) => state.resultStorage.results[resultIndex]?.data[index].answer
+		(state) => state.resultStorage[test_id]?.results[resultIndex]?.data[index].answer
 	);
 
 	const saveAnswer = (localAnswer) => {

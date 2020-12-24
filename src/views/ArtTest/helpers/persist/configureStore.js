@@ -11,10 +11,10 @@ export default () => {
 		persistedReducer,
 		compose(
 			applyMiddleware(thunk),
-			window.location.port === "5000" || window.location.port === "3000"
-				? window.__REDUX_DEVTOOLS_EXTENSION__ &&
-						window.__REDUX_DEVTOOLS_EXTENSION__()
-				: undefined
+			// window.location.port === "5000" || window.location.port === "3000"
+			// 	? window.__REDUX_DEVTOOLS_EXTENSION__ &&
+			// 			window.__REDUX_DEVTOOLS_EXTENSION__()
+			// 	: undefined
 		)
 	);
 

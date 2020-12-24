@@ -8,6 +8,8 @@ import { ILLUSTRATIONS_ANSWERS } from "../helpers/taskTypes";
 
 import setNextTaskId from "./setNextTaskId";
 
+const [__empty__, test_id] = window.location.pathname.split('/')
+
 const nextButtonHadler = (currentResultIndex, responseLimitation) => {
 	return (dispatch, getState) => {
 		const state = getState();
@@ -16,14 +18,18 @@ const nextButtonHadler = (currentResultIndex, responseLimitation) => {
 		const maxOpenedSubTaskIndex = state.testStorage.maxOpenedSubTaskIndex;
 
 		const subTaskLength =
-			state.resultStorage.results[currentResultIndex].data.length - 1;
+			//state.resultStorage.results[currentResultIndex].data.length - 1;
+			state.resultStorage[test_id].results[currentResultIndex].data.length - 1;
 
 		const subTaskAnswersRB =
-			state.resultStorage.results[currentResultIndex].data[currentSubTaskIndex]
+			// state.resultStorage.results[currentResultIndex].data[currentSubTaskIndex]
+			// 	.answers;
+			state.resultStorage[test_id].results[currentResultIndex].data[currentSubTaskIndex]
 				.answers;
 
 		const subTaskAnswersIA =
-			state.resultStorage.results[currentResultIndex].data[currentSubTaskIndex]
+			//state.resultStorage.results[currentResultIndex].data[currentSubTaskIndex]
+			state.resultStorage[test_id].results[currentResultIndex].data[currentSubTaskIndex]
 				.answer;
 
 		const taskType = state.testStorage.currentTask.type;

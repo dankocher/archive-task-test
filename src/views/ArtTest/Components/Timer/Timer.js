@@ -5,19 +5,27 @@ import { useSelector } from "react-redux";
 import { useGetResultIndex } from "../../helpers/customHooks/getResultIndex";
 import { getCurrentTime } from "../../helpers/workWithApi";
 
+const [__empty__, test_id] = window.location.pathname.split('/');
+
 function Timer({ type }) {
 	const resultIndex = useGetResultIndex();
 
 	// const [startTime, setStartTime] = useState(undefined);
 	const [currentTimerMS, setCurrentTimerMS] = useState(undefined);
 	const [currentTimer, setCurrentTimer] = useState(undefined);
-	const testStart = useSelector((state) => state.resultStorage.start_date);
+	// const testStart = useSelector((state) => state.resultStorage.start_date);
+	// const taskStart = useSelector(
+	// 	(state) => state.resultStorage[resultIndex]?.results.start_date
+	// );
+
+	const testStart = useSelector((state) => state.resultStorage[test_id].start_date);
 	const taskStart = useSelector(
-		(state) => state.resultStorage.results[resultIndex]?.start_date
+		(state) => (state.resultStorage[test_id] || {})[resultIndex]?.results.start_date
 	);
 
 	const isTimeConsidered = useSelector(
-		(state) => state.testStorage.currentTask.isTimeConsidered
+		//(state) => state.testStorage.currentTask.isTimeConsidered
+		(state) => state.testStorage[test_id]?.currentTask.isTimeConsidered
 	);
 
 	useEffect(() => {

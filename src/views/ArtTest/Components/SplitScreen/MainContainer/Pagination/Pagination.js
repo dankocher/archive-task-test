@@ -10,6 +10,8 @@ import subTaskArrow from "../../../../helpers/icons/subTask-arrow";
 import setNextSubTaskThunk from "../../../../thunks/setNextSubTaskThunk";
 import setPreveusSubTaskThunk from "../../../../thunks/setPreveusSubTaskThunk";
 
+const [__empty__, test_id] = window.location.pathname.split('/');
+
 function Pagination() {
 	const dispatch = useDispatch();
 	const currentSubTaskIndex = useSelector(
@@ -23,7 +25,8 @@ function Pagination() {
 	const responseLimitation = useGetResponseLimitation();
 
 	const subTaskLength = useSelector(
-		(state) => state.resultStorage.results[currentResultIndex]?.data.length
+		//(state) => state.resultStorage.results[currentResultIndex]?.data.length
+		(state) => state.resultStorage[test_id]?.results[currentResultIndex]?.data.length
 	);
 
 	const getIsDisabledLefftArrow = () => {
