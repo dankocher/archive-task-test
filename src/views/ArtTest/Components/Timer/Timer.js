@@ -13,19 +13,19 @@ function Timer({ type }) {
 	// const [startTime, setStartTime] = useState(undefined);
 	const [currentTimerMS, setCurrentTimerMS] = useState(undefined);
 	const [currentTimer, setCurrentTimer] = useState(undefined);
-	// const testStart = useSelector((state) => state.resultStorage.start_date);
-	// const taskStart = useSelector(
-	// 	(state) => state.resultStorage[resultIndex]?.results.start_date
-	// );
-
-	const testStart = useSelector((state) => state.resultStorage[test_id].start_date);
+	const testStart = useSelector((state) => state.resultStorage.start_date);
 	const taskStart = useSelector(
-		(state) => (state.resultStorage[test_id] || {})[resultIndex]?.results.start_date
+		(state) => state.resultStorage[resultIndex]?.results.start_date
 	);
+
+	// const testStart = useSelector((state) => state.resultStorage[test_id].start_date);
+	// const taskStart = useSelector(
+	// 	(state) => (state.resultStorage[test_id] || {})[resultIndex]?.results.start_date
+	// );
 
 	const isTimeConsidered = useSelector(
 		//(state) => state.testStorage.currentTask.isTimeConsidered
-		(state) => state.testStorage[test_id]?.currentTask.isTimeConsidered
+		(state) => state.testStorage?.currentTask.isTimeConsidered
 	);
 
 	useEffect(() => {

@@ -16,23 +16,26 @@ const nextButtonHadler = (currentResultIndex, responseLimitation) => {
 
 		const currentSubTaskIndex = state.testStorage.currentSubTaskIndex;
 		const maxOpenedSubTaskIndex = state.testStorage.maxOpenedSubTaskIndex;
+		// const currentSubTaskIndex = state.testStorage.currentSubTaskIndex;
+		// const maxOpenedSubTaskIndex = state.testStorage.maxOpenedSubTaskIndex;
 
 		const subTaskLength =
-			//state.resultStorage.results[currentResultIndex].data.length - 1;
-			state.resultStorage[test_id].results[currentResultIndex].data.length - 1;
+			state.resultStorage.results[currentResultIndex].data.length - 1;
+			//state.resultStorage[test_id].results[currentResultIndex].data.length - 1;
 
 		const subTaskAnswersRB =
-			// state.resultStorage.results[currentResultIndex].data[currentSubTaskIndex]
-			// 	.answers;
-			state.resultStorage[test_id].results[currentResultIndex].data[currentSubTaskIndex]
+			state.resultStorage.results[currentResultIndex].data[currentSubTaskIndex]
 				.answers;
+			// state.resultStorage[test_id].results[currentResultIndex].data[currentSubTaskIndex]
+			// 	.answers;
 
 		const subTaskAnswersIA =
-			//state.resultStorage.results[currentResultIndex].data[currentSubTaskIndex]
-			state.resultStorage[test_id].results[currentResultIndex].data[currentSubTaskIndex]
-				.answer;
+			state.resultStorage.results[currentResultIndex].data[currentSubTaskIndex]
+			// state.resultStorage[test_id].results[currentResultIndex].data[currentSubTaskIndex]
+			// 	.answer;
 
 		const taskType = state.testStorage.currentTask.type;
+		//const taskType = state.testStorage.currentTask.type;
 
 		dispatch(setIsNextBtnClicked(true));
 

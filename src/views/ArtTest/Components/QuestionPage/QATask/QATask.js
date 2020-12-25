@@ -22,11 +22,12 @@ function QATask(props) {
 
 	const isNextBtnClicked = useSelector(
 		(state) => state.testStorage.isNextBtnClicked
+		//(state) => state.testStorage.isNextBtnClicked
 	);
 
 	const answer = useSelector(
-		//(state) => state.resultStorage.results[resultIndex]?.data[index].answer
-		(state) => state.resultStorage[test_id]?.results[resultIndex]?.data[index].answer
+		(state) => state.resultStorage.results[resultIndex]?.data[index].answer
+		//(state) => state.resultStorage[test_id]?.results[resultIndex]?.data[index].answer
 	);
 
 	const saveAnswer = (localAnswer) => {

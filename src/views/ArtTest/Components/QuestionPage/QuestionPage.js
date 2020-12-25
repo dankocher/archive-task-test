@@ -27,6 +27,7 @@ function QuestionPage() {
 	});
 
 	const task = useSelector((state) => state.testStorage.currentTask);
+	//const task = useSelector((state) => state.testStorage.currentTask);
 	const taskId = task._id;
 	const description = task.description;
 	const isAnswerSizeLimited = task.data.isAnswerSizeLimited;
@@ -36,8 +37,8 @@ function QuestionPage() {
 	const resultIndex = useGetResultIndex();
 
 	const results = useSelector(
-		(state) => state.resultStorage[test_id].results[resultIndex]?.data
-		//(state) => state.resultStorage.results[resultIndex]?.data
+		//(state) => state.resultStorage[test_id].results[resultIndex]?.data
+		(state) => state.resultStorage.results[resultIndex]?.data
 	);
 
 	useEffect(() => {

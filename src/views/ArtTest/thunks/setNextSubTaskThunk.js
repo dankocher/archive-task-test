@@ -10,13 +10,16 @@ const setNextSubTaskThunk = (currentResultIndex, responseLimitation) => {
 
 		const currentSubTaskIndex = state.testStorage.currentSubTaskIndex;
 		const maxOpenedSubTaskIndex = state.testStorage.maxOpenedSubTaskIndex;
+		// const currentSubTaskIndex = state.testStorage.currentSubTaskIndex;
+		// const maxOpenedSubTaskIndex = state.testStorage.maxOpenedSubTaskIndex;
 
 		const subTaskAnswersIA =
-			//state.resultStorage.results[currentResultIndex].data[currentSubTaskIndex]
-			state.resultStorage[test_id].results[currentResultIndex].data[currentSubTaskIndex]
-				.answer;
+			state.resultStorage.results[currentResultIndex].data[currentSubTaskIndex]
+			// state.resultStorage[test_id].results[currentResultIndex].data[currentSubTaskIndex]
+			// 	.answer;
 
 		const taskType = state.testStorage.currentTask.type;
+		//const taskType = state.testStorage.currentTask.type;
 
 		if (taskType === ILLUSTRATIONS_ANSWERS) {
 			if (

@@ -13,6 +13,8 @@ import Button from "../Button/Button";
 import labels from "../../utils/labelText/lable.json";
 import errorIcon from "../../helpers/icons/error-icon";
 
+const [__empty__, test_id] = window.location.pathname.split('/')
+
 function Authorization() {
 	const dispatch = useDispatch();
 
@@ -23,7 +25,9 @@ function Authorization() {
 	const [isEmailValid, setIsEmailValid] = useState(true);
 
 	const taskList = useSelector((state) => state.testStorage.taskList);
+	//const taskList = useSelector((state) => state.testStorage.taskList);
 	const currentTestId = useSelector((state) => state.testStorage.currentTestId);
+	//const currentTestId = useSelector((state) => state.testStorage.currentTestId);
 
 	const startTestHandler = () => {
 		if (!onBlured) {

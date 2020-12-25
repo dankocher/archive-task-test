@@ -13,9 +13,12 @@ import Button from "../../Button/Button";
 import RadioButtonAnswers from "./RadioButtonAnswers/RadioButtonAnswers";
 import TextAreaSettings from "./TextAreaSettings/TextAreaSettings";
 
+const [__empty__, test_id] = window.location.pathname.split('/');
+
 function SideContainer() {
 	const dispatch = useDispatch();
 	const task = useSelector((state) => state.testStorage.currentTask);
+	//const task = useSelector((state) => state.testStorage.currentTask);
 	const title = task.name;
 	const description = task.description;
 	const radioButtonTaskList = task.data?.radioButtonTaskList;

@@ -21,18 +21,20 @@ function RadioButtonAnswers(props) {
 	const resultIndex = useGetResultIndex();
 	const currentSubTaskIndex = useSelector(
 		(state) => state.testStorage.currentSubTaskIndex
+		//(state) => state.testStorage.currentSubTaskIndex
 	);
 	const checkedValue = useSelector(
-		// (state) =>
-		// 	state.resultStorage?.results[resultIndex]?.data[currentSubTaskIndex]
-		// 		?.answers[index]?.optionId
 		(state) =>
-			state.resultStorage[test_id]?.results[resultIndex]?.data[currentSubTaskIndex]
+			state.resultStorage?.results[resultIndex]?.data[currentSubTaskIndex]
 				?.answers[index]?.optionId
+		// (state) =>
+		// 	state.resultStorage[test_id]?.results[resultIndex]?.data[currentSubTaskIndex]
+		// 		?.answers[index]?.optionId
 	);
 
 	const isNextBtnClicked = useSelector(
 		(state) => state.testStorage.isNextBtnClicked
+		//(state) => state.testStorage.isNextBtnClicked
 	);
 
 	const chooseOption = (event) => {

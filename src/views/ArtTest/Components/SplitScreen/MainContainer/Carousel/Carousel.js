@@ -16,6 +16,8 @@ import Arrow from "./Arrow/Arrow";
 import Bullets from "./Bullets/Bullets";
 import PhotoModal from "../../../PhotoModal/PhotoModal";
 
+const [__empty__, test_id] = window.location.pathname.split('/');
+
 function Carousel() {
 	const dispatch = useDispatch();
 
@@ -29,14 +31,17 @@ function Carousel() {
 	);
 
 	const task = useSelector((state) => state.testStorage.currentTask);
+	//const task = useSelector((state) => state.testStorage.currentTask);
 	const taskId = task._id;
 	const imgGrid = task.data.imgGrid;
 	const currentSubTaskIndex = useSelector(
 		(state) => state.testStorage.currentSubTaskIndex
+		//(state) => state.testStorage.currentSubTaskIndex
 	);
 	const radioButtonTaskList = task.data.radioButtonTaskList;
 
 	const currentTask = useSelector((state) => state.testStorage.currentTask);
+	//const currentTask = useSelector((state) => state.testStorage.currentTask);
 
 	const imageList = imgGrid[currentSubTaskIndex]?.imgColumnList;
 

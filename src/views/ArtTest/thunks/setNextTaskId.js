@@ -9,12 +9,17 @@ import {
 
 import { getCurrentTime } from "../helpers/workWithApi";
 
+const [__empty__, test_id] = window.location.pathname.split('/');
+
 const setNextTaskId = (currentResultIndex) => {
 	return (dispatch, getState) => {
 		const state = getState();
 		const taskList = state.testStorage.taskList;
 		const currentTaskId = state.testStorage.currentTaskId;
 		const isTimeConsidered = state.testStorage.currentTask.isTimeConsidered;
+		// const taskList = state.testStorage.taskList;
+		// const currentTaskId = state.testStorage.currentTaskId;
+		// const isTimeConsidered = state.testStorage.currentTask.isTimeConsidered;
 
 		const indexCurrentTaskId = taskList.indexOf(currentTaskId);
 

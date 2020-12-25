@@ -7,11 +7,14 @@ import { QUSETION_ANSWER } from "../helpers/taskTypes";
 
 import { getCurrentTime } from "../helpers/workWithApi";
 
+const [__empty__, test_id] = window.location.pathname.split('/');
+
 const startTaskThunk = (taskId, resultIndex, taskList, radioButtonTaskList) => {
 	return (dispatch, getState) => {
 		const state = getState();
 
 		const task = state.testStorage.currentTask;
+		//const task = state.testStorage.currentTask;
 		const isTimeConsidered = task.isTimeConsidered;
 		const taskType = task.type;
 

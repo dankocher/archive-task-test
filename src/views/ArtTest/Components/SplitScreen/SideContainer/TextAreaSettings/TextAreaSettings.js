@@ -21,16 +21,18 @@ function TextAreaSettings() {
 
 	const currentSubTaskIndex = useSelector(
 		(state) => state.testStorage.currentSubTaskIndex
+		//(state) => state.testStorage.currentSubTaskIndex
 	);
 
 	const answer = useSelector(
 		(state) =>
-			state.resultStorage[test_id].results[resultIndex]?.data[currentSubTaskIndex].answer
-			//state.resultStorage.results[resultIndex]?.data[currentSubTaskIndex].answer
+			//state.resultStorage[test_id].results[resultIndex]?.data[currentSubTaskIndex].answer
+			state.resultStorage.results[resultIndex]?.data[currentSubTaskIndex].answer
 	);
 
 	const isNextBtnClicked = useSelector(
 		(state) => state.testStorage.isNextBtnClicked
+		//(state) => state.testStorage.isNextBtnClicked
 	);
 
 	const saveAnswer = (localAnswer) => {

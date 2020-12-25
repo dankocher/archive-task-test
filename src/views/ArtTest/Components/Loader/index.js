@@ -62,8 +62,9 @@ function Loader() {
 		(state) => state?.testStorage?.currentTaskId
 	);
 	const taskType = useSelector((state) => state.testStorage.currentTask?.type);
-	const resultStorage = useSelector((state) => state.resultStorage[test_id]);
-	//const resultStorage = useSelector((state) => state.resultStorage);
+	//const taskType = useSelector((state) => state.testStorage.currentTask?.type);
+	//const resultStorage = useSelector((state) => state.resultStorage[test_id]);
+	const resultStorage = useSelector((state) => state.resultStorage);
 	const endDate = resultStorage.end_date;
 
 	useEffect(() => {

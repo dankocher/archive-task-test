@@ -13,6 +13,7 @@ import staticText from "../../utils/labelText/lable.json";
 
 import Button from "../Button/Button";
 
+const [__empty__, test_id] = window.location.pathname.split('/');
 const classNames = require("classnames");
 
 function WelcomeScreen() {
@@ -21,6 +22,7 @@ function WelcomeScreen() {
 	const resultIndex = useGetResultIndex();
 
 	const task = useSelector((state) => state.testStorage.currentTask);
+	//const task = useSelector((state) => state.testStorage.currentTask);
 	const taskId = task._id;
 	const isTimeConsidered = task.isTimeConsidered;
 

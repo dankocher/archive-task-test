@@ -16,17 +16,19 @@ function Pagination() {
 	const dispatch = useDispatch();
 	const currentSubTaskIndex = useSelector(
 		(state) => state.testStorage.currentSubTaskIndex
+		//(state) => state.testStorage.currentSubTaskIndex
 	);
 	const maxOpenedSubTaskIndex = useSelector(
 		(state) => state.testStorage.maxOpenedSubTaskIndex
+		//(state) => state.testStorage.maxOpenedSubTaskIndex
 	);
 
 	const currentResultIndex = useGetResultIndex();
 	const responseLimitation = useGetResponseLimitation();
 
 	const subTaskLength = useSelector(
-		//(state) => state.resultStorage.results[currentResultIndex]?.data.length
-		(state) => state.resultStorage[test_id]?.results[currentResultIndex]?.data.length
+		(state) => state.resultStorage.results[currentResultIndex]?.data.length
+		//(state) => state.resultStorage[test_id]?.results[currentResultIndex]?.data.length
 	);
 
 	const getIsDisabledLefftArrow = () => {
