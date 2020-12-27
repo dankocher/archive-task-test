@@ -17,23 +17,28 @@ function RadioButtonAnswers(props) {
 	// const [checkedValue, setCheckedValue] = useState("");
 
 	const resultIndex = useGetResultIndex();
+
+	const currentTestId = useSelector((state) => state.testStorage.currentTestId);
+
 	const currentSubTaskIndex = useSelector(
-		(state) => state.testStorage.currentSubTaskIndex
+		(state) => state.testStorage[currentTestId].currentSubTaskIndex
 	);
 	const checkedValue = useSelector(
 		(state) =>
-			state.resultStorage?.results[resultIndex]?.data[currentSubTaskIndex]
-				?.answers[index]?.optionId
+			state.resultStorage[currentTestId]?.results[resultIndex]?.data[
+				currentSubTaskIndex
+			]?.answers[index]?.optionId
 	);
 
 	const isNextBtnClicked = useSelector(
-		(state) => state.testStorage.isNextBtnClicked
+		(state) => state.testStorage[currentTestId].isNextBtnClicked
 	);
 
 	const chooseOption = (event) => {
 		const value = parseInt(event.target.value);
 		dispatch(
 			setAnswerOfWordsRadioButtons(
+				currentTestId,
 				value,
 				resultIndex,
 				currentSubTaskIndex,

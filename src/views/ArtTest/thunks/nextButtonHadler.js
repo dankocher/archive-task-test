@@ -12,19 +12,26 @@ const nextButtonHadler = (currentResultIndex, responseLimitation) => {
 	return (dispatch, getState) => {
 		const state = getState();
 
-		const currentSubTaskIndex = state.testStorage.currentSubTaskIndex;
-		const maxOpenedSubTaskIndex = state.testStorage.maxOpenedSubTaskIndex;
+		const currentTestId = state.testStorage.currentTestId;
+
+		const currentSubTaskIndex =
+			state.testStorage[currentTestId].currentSubTaskIndex;
+		const maxOpenedSubTaskIndex =
+			state.testStorage[currentTestId].maxOpenedSubTaskIndex;
 
 		const subTaskLength =
-			state.resultStorage.results[currentResultIndex].data.length - 1;
+			state.resultStorage[currentTestId].results[currentResultIndex].data
+				.length - 1;
 
 		const subTaskAnswersRB =
-			state.resultStorage.results[currentResultIndex].data[currentSubTaskIndex]
-				.answers;
+			state.resultStorage[currentTestId].results[currentResultIndex].data[
+				currentSubTaskIndex
+			].answers;
 
 		const subTaskAnswersIA =
-			state.resultStorage.results[currentResultIndex].data[currentSubTaskIndex]
-				.answer;
+			state.resultStorage[currentTestId].results[currentResultIndex].data[
+				currentSubTaskIndex
+			].answer;
 
 		const taskType = state.testStorage.currentTask.type;
 

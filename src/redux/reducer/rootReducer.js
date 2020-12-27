@@ -13,18 +13,13 @@ import { DESTROY_SESSION } from "../actions/rootActions";
 export const persistConfig = {
 	key: "root",
 	storage,
-	blacklist: ["testStorage", "caruselReducer"],
+	blacklist: ["caruselReducer", "testStorage"],
 };
 
 export const testStoragePersistConfig = {
 	key: "testStorage",
-	storage: storage,
-	whitelist: [
-		"currentTaskId",
-		"isNextBtnClicked",
-		"currentSubTaskIndex",
-		"maxOpenedSubTaskIndex",
-	],
+	storage,
+	blacklist: ["taskList", "currentTestId", "currentTask"],
 };
 
 const appReducer = combineReducers({

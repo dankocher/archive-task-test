@@ -12,18 +12,23 @@ import setPreveusSubTaskThunk from "../../../../thunks/setPreveusSubTaskThunk";
 
 function Pagination() {
 	const dispatch = useDispatch();
+
+	const currentTestId = useSelector((state) => state.testStorage.currentTestId);
+
 	const currentSubTaskIndex = useSelector(
-		(state) => state.testStorage.currentSubTaskIndex
+		(state) => state.testStorage[currentTestId].currentSubTaskIndex
 	);
 	const maxOpenedSubTaskIndex = useSelector(
-		(state) => state.testStorage.maxOpenedSubTaskIndex
+		(state) => state.testStorage[currentTestId].maxOpenedSubTaskIndex
 	);
 
 	const currentResultIndex = useGetResultIndex();
 	const responseLimitation = useGetResponseLimitation();
 
 	const subTaskLength = useSelector(
-		(state) => state.resultStorage.results[currentResultIndex]?.data.length
+		(state) =>
+			state.resultStorage[currentTestId].results[currentResultIndex]?.data
+				.length
 	);
 
 	const getIsDisabledLefftArrow = () => {

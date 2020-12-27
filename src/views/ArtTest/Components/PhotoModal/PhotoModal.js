@@ -32,6 +32,10 @@ function PhotoModal({ currentImgUrl, isOneImg }) {
 			defaultScale={1}
 			zoomIn={{ step: 6 }}
 			zoomOut={{ step: 7.5 }}
+			defaultPositionX={0}
+			defaultPositionY={0}
+			positionX={0}
+			positionY={0}
 		>
 			{({
 				setScale,

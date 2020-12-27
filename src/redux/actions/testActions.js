@@ -6,10 +6,16 @@ export const SET_IS_NEXT_BUTTON_CLICKED = "SET_IS_NEXT_BUTTON_CLICKED";
 export const SET_CURRENT_SUBTASK_INDEX = "SET_CURRENT_SUBTASK_INDEX";
 export const SET_MAX_OPENED_SUBTASK_INDEX = "SET_MAX_OPENED_SUBTASK_INDEX";
 export const SET_LAST_TASK_NUMBER = "SET_LAST_TASK_NUMBER";
+export const SESSION_START = "SESSION_START";
 
-export const setTaskList = (TaskList) => ({
+export const setTaskList = (taskList) => ({
 	type: SET_TASK_LIST,
-	payload: TaskList,
+	payload: taskList,
+});
+
+export const sesionStart = (lastTaskNumber, currentTestId, taskList) => ({
+	type: SESSION_START,
+	payload: { lastTaskNumber, currentTestId, taskList },
 });
 
 export const setCurrentTestId = (currentTestId) => ({

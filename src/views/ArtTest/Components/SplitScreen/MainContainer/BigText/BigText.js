@@ -10,19 +10,26 @@ function BigTextMainContainer() {
 
 	const resultIndex = useGetResultIndex();
 
+	const currentTestId = useSelector((state) => state.testStorage.currentTestId);
 	const task = useSelector((state) => state.testStorage.currentTask);
 	const taskId = task._id;
 	const wordList = task.data.wordList;
 	const radioButtonTaskList = task.data.radioButtonTaskList;
 	const currentSubTaskIndex = useSelector(
-		(state) => state.testStorage.currentSubTaskIndex
+		(state) => state.testStorage[currentTestId].currentSubTaskIndex
 	);
 
 	const word = wordList[currentSubTaskIndex]?.word;
 
 	useEffect(() => {
 		dispatch(
-			startTaskThunk(taskId, resultIndex, wordList, radioButtonTaskList)
+			startTaskThunk(
+				currentTestId,
+				taskId,
+				resultIndex,
+				wordList,
+				radioButtonTaskList
+			)
 		);
 	}, []);
 

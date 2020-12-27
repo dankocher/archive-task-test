@@ -5,8 +5,10 @@ import Timer from "../Timer/Timer";
 import { useSelector } from "react-redux";
 
 function TaskInformation() {
+	const currentTestId = useSelector((state) => state.testStorage.currentTestId);
+
 	const lastTaskNumber = useSelector(
-		(state) => state.testStorage.lastTaskNumber
+		(state) => state.testStorage[currentTestId].lastTaskNumber
 	);
 
 	const currentTaskNumber = useSelector(

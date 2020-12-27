@@ -1,5 +1,5 @@
 import update from "react-addons-update";
-import { getPreparedTask } from "../reducerHelpers";
+import { getPreparedTask, login } from "../reducerHelpers";
 
 import {
 	LOGIN,
@@ -16,24 +16,19 @@ import { initialState } from "../initialStates";
 function resultStorage(state = initialState, action) {
 	switch (action.type) {
 		case LOGIN:
-			const { name, email, currentTestId, startDate } = action.payload;
-			return {
-				...state,
-				name: name,
-				email: email,
-				test_id: currentTestId,
-				start_date: startDate,
-			};
+			return login(state, action);
 		case START_TASK:
 			return getPreparedTask(state, action);
 		case SET_TEXT_AREA_DATA:
 			return update(state, {
-				results: {
-					[action.resultIndex]: {
-						data: {
-							[action.index]: {
-								answer: {
-									$set: action.payload,
+				[action.currentTestId]: {
+					results: {
+						[action.resultIndex]: {
+							data: {
+								[action.index]: {
+									answer: {
+										$set: action.payload,
+									},
 								},
 							},
 						},
@@ -42,14 +37,16 @@ function resultStorage(state = initialState, action) {
 			});
 		case SET_WORD_ANSWER:
 			return update(state, {
-				results: {
-					[action.resultIndex]: {
-						data: {
-							[action.dataIndex]: {
-								answers: {
-									[action.answersIndex]: {
-										optionId: {
-											$set: action.payload,
+				[action.currentTestId]: {
+					results: {
+						[action.resultIndex]: {
+							data: {
+								[action.dataIndex]: {
+									answers: {
+										[action.answersIndex]: {
+											optionId: {
+												$set: action.payload,
+											},
 										},
 									},
 								},
@@ -60,10 +57,12 @@ function resultStorage(state = initialState, action) {
 			});
 		case SET_TASK_END_DATE:
 			return update(state, {
-				results: {
-					[action.resultIndex]: {
-						end_date: {
-							$set: action.payload,
+				[action.currentTestId]: {
+					results: {
+						[action.resultIndex]: {
+							end_date: {
+								$set: action.payload,
+							},
 						},
 					},
 				},
@@ -80,7 +79,12 @@ function resultStorage(state = initialState, action) {
 				},
 			});
 		case SET_TEST_END_DATE:
-			return { ...state, end_date: action.payload.endDate };
+			return update(state, {
+				[action.currentTestId]: {
+					end_date: { $set: action.payload },
+				},
+			});
+		// return { ...state, end_date: action.payload };
 		default:
 			return state;
 	}

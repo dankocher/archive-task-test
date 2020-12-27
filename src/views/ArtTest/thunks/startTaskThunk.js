@@ -7,7 +7,13 @@ import { QUSETION_ANSWER } from "../helpers/taskTypes";
 
 import { getCurrentTime } from "../helpers/workWithApi";
 
-const startTaskThunk = (taskId, resultIndex, taskList, radioButtonTaskList) => {
+const startTaskThunk = (
+	currentTestId,
+	taskId,
+	resultIndex,
+	taskList,
+	radioButtonTaskList
+) => {
 	return (dispatch, getState) => {
 		const state = getState();
 
@@ -25,12 +31,26 @@ const startTaskThunk = (taskId, resultIndex, taskList, radioButtonTaskList) => {
 		if (isTimeConsidered) {
 			getCurrentTime().then((startDate) => {
 				dispatch(
-					startTask(taskId, startDate, taskList, task, radioButtonTaskList)
+					startTask(
+						currentTestId,
+						taskId,
+						startDate,
+						taskList,
+						task,
+						radioButtonTaskList
+					)
 				);
 			});
 		} else {
 			dispatch(
-				startTask(taskId, undefined, taskList, task, radioButtonTaskList)
+				startTask(
+					currentTestId,
+					taskId,
+					undefined,
+					taskList,
+					task,
+					radioButtonTaskList
+				)
 			);
 		}
 	};

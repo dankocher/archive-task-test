@@ -21,6 +21,8 @@ function Carousel() {
 
 	const resultIndex = useGetResultIndex();
 
+	const currentTestId = useSelector((state) => state.testStorage.currentTestId);
+
 	const currentImageIndex = useSelector(
 		(state) => state.caruselReducer.current
 	);
@@ -32,7 +34,7 @@ function Carousel() {
 	const taskId = task._id;
 	const imgGrid = task.data.imgGrid;
 	const currentSubTaskIndex = useSelector(
-		(state) => state.testStorage.currentSubTaskIndex
+		(state) => state.testStorage[currentTestId].currentSubTaskIndex
 	);
 	const radioButtonTaskList = task.data.radioButtonTaskList;
 
@@ -47,10 +49,16 @@ function Carousel() {
 
 	useEffect(() => {
 		if (radioButtonTaskList == null) {
-			dispatch(startTaskThunk(taskId, resultIndex, imgGrid));
+			dispatch(startTaskThunk(currentTestId, taskId, resultIndex, imgGrid));
 		} else {
 			dispatch(
-				startTaskThunk(taskId, resultIndex, imgGrid, radioButtonTaskList)
+				startTaskThunk(
+					currentTestId,
+					taskId,
+					resultIndex,
+					imgGrid,
+					radioButtonTaskList
+				)
 			);
 		}
 		// setImageList(currentImageList);

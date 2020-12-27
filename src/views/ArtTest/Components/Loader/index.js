@@ -23,6 +23,7 @@ import {
 	setCurrentTask,
 	setCurrentTestId,
 	setLastTaskNumber,
+	sesionStart,
 } from "../../../../redux/actions/testActions";
 
 import { logout } from "../../../../redux/actions/rootActions";
@@ -54,28 +55,27 @@ const getPage = (taskType) => {
 function Loader() {
 	const dispatch = useDispatch();
 
-	const state = useSelector((state) => state);
+	const currentTestId = useSelector((state) => state.testStorage.currentTestId);
 
 	const currentTaskId = useSelector(
-		(state) => state?.testStorage?.currentTaskId
+		(state) => state?.testStorage?.[currentTestId]?.currentTaskId
 	);
 	const taskType = useSelector((state) => state.testStorage.currentTask?.type);
-	const resultStorage = useSelector((state) => state.resultStorage);
-	const endDate = resultStorage.end_date;
+	const resultStorage = useSelector(
+		(state) => state.resultStorage[currentTestId]
+	);
+	const endDate = resultStorage?.end_date;
 
 	useEffect(() => {
 		// if (currentTaskId != null) return;
 		getTaskIdListFromServer().then((res) => {
-			dispatch(setLastTaskNumber(res.ttask.tasksCounter));
-			dispatch(setTaskList(res.tasks));
-			dispatch(setCurrentTestId(res.ttask._id));
-			// console.log(res);
+			console.log(res);
+			dispatch(sesionStart(res.ttask.tasksCounter, res.ttask._id, res.tasks));
+			// dispatch(setLastTaskNumber(res.ttask.tasksCounter));
+			// dispatch(setTaskList(res.tasks));
+			// dispatch(setCurrentTestId(res.ttask._id));
 		});
 	}, []);
-
-	// useEffect(() => {
-	// 	console.log(state);
-	// }, [state]);
 
 	useEffect(() => {
 		console.log(currentTaskId);
@@ -89,6 +89,7 @@ function Loader() {
 	//End task
 	useEffect(() => {
 		if (endDate == null) return;
+		console.log(endDate);
 		saveResults(resultStorage).then((res) => {
 			if (!res.ok) return;
 			dispatch(logout());

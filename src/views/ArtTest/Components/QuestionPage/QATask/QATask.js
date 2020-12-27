@@ -18,17 +18,21 @@ function QATask(props) {
 	// console.log(itemsRef);
 	const [localAnswer, setLocalAnswer] = useState("");
 
+	const currentTestId = useSelector((state) => state.testStorage.currentTestId);
+
 	const isNextBtnClicked = useSelector(
-		(state) => state.testStorage.isNextBtnClicked
+		(state) => state.testStorage[currentTestId].isNextBtnClicked
 	);
 
 	const answer = useSelector(
-		(state) => state.resultStorage.results[resultIndex]?.data[index].answer
+		(state) =>
+			state.resultStorage[currentTestId].results[resultIndex]?.data[index]
+				.answer
 	);
 
 	const saveAnswer = (localAnswer) => {
 		if (answer === localAnswer) return;
-		dispatch(setTextAreaAnswer(localAnswer, resultIndex, index));
+		dispatch(setTextAreaAnswer(currentTestId, localAnswer, resultIndex, index));
 	};
 
 	const validationAnswer = () => {
