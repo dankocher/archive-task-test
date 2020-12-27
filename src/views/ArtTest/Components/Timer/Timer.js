@@ -11,9 +11,15 @@ function Timer({ type }) {
 	// const [startTime, setStartTime] = useState(undefined);
 	const [currentTimerMS, setCurrentTimerMS] = useState(undefined);
 	const [currentTimer, setCurrentTimer] = useState(undefined);
-	const testStart = useSelector((state) => state.resultStorage.start_date);
+
+	const currentTestId = useSelector((state) => state.testStorage.currentTestId);
+
+	const testStart = useSelector(
+		(state) => state.resultStorage[currentTestId].start_date
+	);
 	const taskStart = useSelector(
-		(state) => state.resultStorage.results[resultIndex]?.start_date
+		(state) =>
+			state.resultStorage[currentTestId].results[resultIndex]?.start_date
 	);
 
 	const isTimeConsidered = useSelector(

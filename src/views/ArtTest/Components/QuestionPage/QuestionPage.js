@@ -20,6 +20,8 @@ function QuestionPage() {
 	const dispatch = useDispatch();
 	const itemsRef = useRef([]);
 
+	const currentTestId = useSelector((state) => state.testStorage.currentTestId);
+
 	const [localResponseLimitation, setLocalResponseLimitation] = useState({
 		from: FROM,
 		to: TO,
@@ -35,7 +37,7 @@ function QuestionPage() {
 	const resultIndex = useGetResultIndex();
 
 	const results = useSelector(
-		(state) => state.resultStorage.results[resultIndex]?.data
+		(state) => state.resultStorage[currentTestId].results[resultIndex]?.data
 	);
 
 	useEffect(() => {
@@ -51,10 +53,10 @@ function QuestionPage() {
 
 		if (task.isTimeConsidered) {
 			getCurrentTime().then((startDate) => {
-				dispatch(startTask(taskId, startDate, QAList, task));
+				dispatch(startTask(currentTestId, taskId, startDate, QAList, task));
 			});
 		} else {
-			dispatch(startTask(taskId, undefined, QAList, task));
+			dispatch(startTask(currentTestId, taskId, undefined, QAList, task));
 		}
 
 		if (!isAnswerSizeLimited) return;
@@ -67,9 +69,12 @@ function QuestionPage() {
 	const toNextTask = () => {
 		dispatch(setIsNextBtnClicked(true));
 		for (const [index, result] of results.entries()) {
-			if (result.answer == null) return;
-			if (result.answer.length < localResponseLimitation.from) {
-				itemsRef.current[index].children[2].children[0].focus({
+			// if (result.answer == null || result.answer == "") return;
+			if (
+				result.answer?.length < localResponseLimitation.from ||
+				result.answer == null
+			) {
+				itemsRef.current[index].children[2].focus({
 					preventScroll: true,
 				});
 
@@ -79,7 +84,7 @@ function QuestionPage() {
 					inline: "center",
 				});
 
-				// return console.log("qwe");
+				return;
 			}
 		}
 

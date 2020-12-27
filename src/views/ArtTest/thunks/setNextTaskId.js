@@ -12,8 +12,11 @@ import { getCurrentTime } from "../helpers/workWithApi";
 const setNextTaskId = (currentResultIndex) => {
 	return (dispatch, getState) => {
 		const state = getState();
+
+		const currentTestId = state.testStorage.currentTestId;
+
 		const taskList = state.testStorage.taskList;
-		const currentTaskId = state.testStorage.currentTaskId;
+		const currentTaskId = state.testStorage[currentTestId].currentTaskId;
 		const isTimeConsidered = state.testStorage.currentTask.isTimeConsidered;
 
 		const indexCurrentTaskId = taskList.indexOf(currentTaskId);
@@ -23,7 +26,7 @@ const setNextTaskId = (currentResultIndex) => {
 		//Save end_date
 		if (isTimeConsidered) {
 			getCurrentTime().then((endDate) => {
-				dispatch(setTaskEndDate(endDate, currentResultIndex));
+				dispatch(setTaskEndDate(currentTestId, endDate, currentResultIndex));
 			});
 		}
 
@@ -33,7 +36,7 @@ const setNextTaskId = (currentResultIndex) => {
 		if (nextIndex >= taskList.length) {
 			//Set test end_date
 			getCurrentTime().then((endDate) => {
-				dispatch(setTestEndDate(endDate));
+				dispatch(setTestEndDate(currentTestId, endDate));
 			});
 			// console.log("test okonchilsia davaite novii");
 			return;

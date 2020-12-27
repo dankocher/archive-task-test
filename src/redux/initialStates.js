@@ -9,5 +9,5 @@ export const initialState = {
 	name: undefined,
 	email: undefined,
 	test_id: undefined,
-	results: [],
+	// results: [],
 };

@@ -4,7 +4,10 @@ const setPreveusSubTaskThunk = (currentResultIndex) => {
 	return (dispatch, getState) => {
 		const state = getState();
 
-		const currentSubTaskIndex = state.testStorage.currentSubTaskIndex;
+		const currentTestId = state.testStorage.currentTestId;
+
+		const currentSubTaskIndex =
+			state.testStorage[currentTestId].currentSubTaskIndex;
 
 		if (currentSubTaskIndex === 0) return;
 		dispatch(setCurrentSubTaskIndex(currentSubTaskIndex - 1));

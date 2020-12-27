@@ -13,26 +13,37 @@ function TextAreaSettings() {
 
 	const resultIndex = useGetResultIndex();
 
+	const currentTestId = useSelector((state) => state.testStorage.currentTestId);
+
 	const [localAnswer, setLocalAnswer] = useState("");
 
 	const responseLimitation = useGetResponseLimitation();
 
 	const currentSubTaskIndex = useSelector(
-		(state) => state.testStorage.currentSubTaskIndex
+		(state) => state.testStorage[currentTestId].currentSubTaskIndex
 	);
 
 	const answer = useSelector(
 		(state) =>
-			state.resultStorage.results[resultIndex]?.data[currentSubTaskIndex].answer
+			state.resultStorage[currentTestId].results[resultIndex]?.data[
+				currentSubTaskIndex
+			].answer
 	);
 
 	const isNextBtnClicked = useSelector(
-		(state) => state.testStorage.isNextBtnClicked
+		(state) => state.testStorage[currentTestId].isNextBtnClicked
 	);
 
 	const saveAnswer = (localAnswer) => {
 		if (answer === localAnswer) return;
-		dispatch(setTextAreaAnswer(localAnswer, resultIndex, currentSubTaskIndex));
+		dispatch(
+			setTextAreaAnswer(
+				currentTestId,
+				localAnswer,
+				resultIndex,
+				currentSubTaskIndex
+			)
+		);
 	};
 
 	const validationAnswer = () => {
