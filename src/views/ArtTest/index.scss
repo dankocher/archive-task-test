@@ -1,35 +1,35 @@
 @import "../../assets/fonts/golostext/golostext.css";
 
 .mainContainer {
-	height: 100%;
-	width: 100%;
-	text-align: initial;
+  height: 100%;
+  width: 100%;
+  text-align: initial;
 
-	* {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-		font-family: "Golos Text";
-		line-break: anywhere;
-	}
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Golos Text";
+    line-break: anywhere;
+  }
 
-	textarea {
-		font-family: "Golos Text";
-	}
+  textarea {
+    font-family: "Golos Text";
+  }
 
-	// i {
-	//   display: contents;
-	// }
+  // i {
+  //   display: contents;
+  // }
 
-	.hidden-button {
-		display: flex;
-		border: none;
-		background-color: transparent;
-		line-height: 0;
-		cursor: pointer;
-	}
+  .hidden-button {
+    display: flex;
+    border: none;
+    background-color: transparent;
+    line-height: 0;
+    cursor: pointer;
+  }
 
-	.hidden-button:focus {
-		outline: 0;
-	}
+  .hidden-button:focus {
+    outline: 0;
+  }
 }

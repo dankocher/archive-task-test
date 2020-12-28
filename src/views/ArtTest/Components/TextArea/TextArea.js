@@ -49,9 +49,6 @@ function TextArea(props) {
   const defaultStyles = classNames(styles.textField, {
     [styles.error]: error,
   });
-  useEffect(() => {
-    console.log(textAreaHeight.replace("px", ""));
-  });
 
   return (
     <textarea

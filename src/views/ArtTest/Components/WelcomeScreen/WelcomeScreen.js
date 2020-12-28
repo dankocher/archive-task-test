@@ -16,63 +16,65 @@ import Button from "../Button/Button";
 const classNames = require("classnames");
 
 function WelcomeScreen() {
-	const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-	const resultIndex = useGetResultIndex();
+  const resultIndex = useGetResultIndex();
 
-	const task = useSelector((state) => state.testStorage.currentTask);
-	const taskId = task._id;
-	const isTimeConsidered = task.isTimeConsidered;
+  const currentTestId = useSelector((state) => state.testStorage.currentTestId);
 
-	const header = task?.name;
-	const description = task?.description;
-	const img = task?.data?.imgUrl;
-	const imgUrl = getImgPath(img);
+  const task = useSelector((state) => state.testStorage.currentTask);
+  const taskId = task._id;
+  const isTimeConsidered = task.isTimeConsidered;
 
-	useEffect(() => {
-		if (resultIndex !== -1) return;
+  const header = task?.name;
+  const description = task?.description;
+  const img = task?.data?.imgUrl;
+  const imgUrl = getImgPath(img);
 
-		if (isTimeConsidered) {
-			getCurrentTime().then((startDate) => {
-				dispatch(addWelcomePage(taskId, startDate));
-			});
-		} else {
-			dispatch(addWelcomePage(taskId, undefined));
-		}
-	}, []);
+  useEffect(() => {
+    if (resultIndex !== -1) return;
 
-	const contentContainer = classNames(styles.contentContainer, {
-		[styles.containerOneContent]: img == null || img === "",
-	});
+    if (isTimeConsidered) {
+      getCurrentTime().then((startDate) => {
+        dispatch(addWelcomePage(currentTestId, taskId, startDate));
+      });
+    } else {
+      dispatch(addWelcomePage(currentTestId, taskId, undefined));
+    }
+  }, []);
 
-	const content = classNames(styles.contentContainer__sideContainer, {
-		[styles.oneContentArea]: img == null || img === "",
-	});
+  const contentContainer = classNames(styles.contentContainer, {
+    [styles.containerOneContent]: img == null || img === "",
+  });
 
-	const nextTaskHandler = () => {
-		dispatch(setNextTaskId(resultIndex));
-	};
+  const content = classNames(styles.contentContainer__sideContainer, {
+    [styles.oneContentArea]: img == null || img === "",
+  });
 
-	return (
-		<div className={styles.container}>
-			<div className={contentContainer}>
-				<div className={content}>
-					<h1>{header}</h1>
-					<p>{description}</p>
+  const nextTaskHandler = () => {
+    dispatch(setNextTaskId(resultIndex));
+  };
 
-					<Button
-						label={staticText.buttonLabelNext}
-						onClick={nextTaskHandler}
-					/>
-				</div>
-				{img != null ? (
-					<div className={styles.contentContainer__imgContainer}>
-						<img src={imgUrl} />
-					</div>
-				) : null}
-			</div>
-		</div>
-	);
+  return (
+    <div className={styles.container}>
+      <div className={contentContainer}>
+        <div className={content}>
+          <h1>{header}</h1>
+          <p>{description}</p>
+
+          <Button
+            label={staticText.buttonLabelNext}
+            onClick={nextTaskHandler}
+          />
+        </div>
+        {img != null ? (
+          <div className={styles.contentContainer__imgContainer}>
+            <img src={imgUrl} />
+          </div>
+        ) : null}
+      </div>
+    </div>
+  );
 }
 
 export default WelcomeScreen;
