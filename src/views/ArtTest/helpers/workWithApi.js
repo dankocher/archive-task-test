@@ -1,10 +1,6 @@
 import ajax from "../utils/ajax";
 import { api } from "../../../constants/api";
-
-const getUrlId = () => {
-	const [__empty__, test_id] = window.location.pathname.split("/");
-	return test_id;
-};
+import { getUrlId } from "../helpers/getUrlId";
 
 const _ID = "5f5f6162de1af368a21e299a";
 
