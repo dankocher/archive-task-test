@@ -28,6 +28,11 @@
 		justify-content: center;
 		color: $neutral-6;
 
+		-webkit-user-select: none; /* Safari */
+		-moz-user-select: none; /* Firefox */
+		-ms-user-select: none; /* IE10+/Edge */
+		user-select: none; /* Standard */
+
 		& > :first-child {
 			margin-bottom: $px40;
 		}
@@ -37,7 +42,8 @@
 		}
 
 		h1 {
-			font-size: 78px;
+			font-family: "Golos-Bold";
+			font-size: 74px;
 			line-height: 74px;
 			letter-spacing: 1px;
 			line-break: anywhere;

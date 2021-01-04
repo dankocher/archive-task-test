@@ -17,7 +17,7 @@ function RadioButton(props) {
 	};
 
 	return (
-		<div className={styles.container}>
+		<label className={styles.container} htmlFor={props.id}>
 			<div>
 				<label
 					style={{ borderColor: color }}
@@ -45,7 +45,7 @@ function RadioButton(props) {
 				value={props.value}
 				onChange={(event) => onChange(event)}
 			/>
-		</div>
+		</label>
 	);
 }
 

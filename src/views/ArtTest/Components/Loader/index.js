@@ -21,10 +21,7 @@ import BigTextMainContainer from "../SplitScreen/MainContainer/BigText/BigText";
 import Carousel from "../SplitScreen/MainContainer/Carousel/Carousel";
 
 import {
-	setTaskList,
 	setCurrentTask,
-	setCurrentTestId,
-	setLastTaskNumber,
 	sesionStart,
 } from "../../../../redux/actions/testActions";
 
@@ -76,19 +73,14 @@ function Loader() {
 		if (testId === currentTaskId || currentTaskId != null) return;
 
 		getTaskIdListFromServer().then((res) => {
-			// console.log(res);
 			dispatch(sesionStart(res.ttask.tasksCounter, res.ttask._id, res.tasks));
-			// dispatch(setLastTaskNumber(res.ttask.tasksCounter));
-			// dispatch(setTaskList(res.tasks));
-			// dispatch(setCurrentTestId(res.ttask._id));
 		});
 	}, [currentTestId]);
 
 	useEffect(() => {
-		console.log(state);
 		if (currentTaskId == null) return;
+
 		getTaskFromServer(currentTaskId).then((res) => {
-			// console.log(res.task);
 			dispatch(setCurrentTask(res.task));
 		});
 	}, [currentTaskId]);
@@ -96,12 +88,11 @@ function Loader() {
 	//End task
 	useEffect(() => {
 		if (endDate == null) return;
-		console.log(endDate);
+
 		saveResults(resultStorage).then((res) => {
 			if (!res.ok) return;
 			dispatch(deleteTest(currentTestId));
 			dispatch(deleteResult(currentTestId));
-			// dispatch(logout());
 		});
 	}, [endDate]);
 

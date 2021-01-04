@@ -1,34 +1,35 @@
 @import "../../../../assets/styles/foundations.scss";
 
 input[type="radio"] {
-  display: none;
+	display: none;
 }
 
 .container {
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
 
-  label {
-    cursor: pointer;
-  }
+	* {
+		cursor: pointer;
+	}
 
-  & > :first-child {
-    margin-right: $px12;
-  }
+	& > :first-child {
+		margin-right: $px20;
+	}
 
-  &__radioButton {
-    display: flex;
-    height: $px20;
-    width: $px20;
-    border: $px1 solid;
-    border-radius: 50%;
+	&__radioButton {
+		display: flex;
+		height: $px20;
+		width: $px20;
+		border: $px1 solid;
+		border-radius: 50%;
 
-    &__checked {
-      display: inline-block;
-      height: $px18;
-      width: $px18;
-      border: $px2 solid white;
-      border-radius: 50%;
-    }
-  }
+		&__checked {
+			display: inline-block;
+			height: $px18;
+			width: $px18;
+			border: $px2 solid white;
+			border-radius: 50%;
+		}
+	}
 }
