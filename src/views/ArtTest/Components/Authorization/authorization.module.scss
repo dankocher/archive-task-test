@@ -1,93 +1,97 @@
 @import "../../../../assets/styles/foundations.scss";
 
 .container {
-  display: flex;
+	display: flex;
 
-  &__centeredContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 50%;
-  }
+	&__centeredContainer {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+		width: 50%;
+	}
 
-  &__imgContainer {
-    width: 50%;
-    height: 100vh;
-    display: flex;
+	&__imgContainer {
+		width: 50%;
+		height: 100vh;
+		display: flex;
 
-    img {
-      margin: auto;
-      max-width: 100%;
-      max-height: 100%;
-    }
-  }
+		img {
+			margin: auto;
+			max-width: 100%;
+			max-height: 100%;
+		}
+	}
 
-  .wrapper {
-    width: 20.25rem; //new
+	.wrapper {
+		width: 20.25rem; //new
 
-    & > :first-child {
-      margin-bottom: $px32;
-    }
+		& > :first-child {
+			margin-bottom: $px32;
+		}
 
-    & > :last-child {
-      margin-top: $px64;
-    }
+		& > :last-child {
+			margin-top: $px64;
+		}
 
-    &__field {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
+		&__field {
+			display: flex;
+			flex-direction: column;
+			width: 100%;
 
-      & > :first-child {
-        margin-bottom: $px8;
-      }
+			& > :first-child {
+				margin-bottom: $px8;
+			}
 
-      input {
-        font-size: 16px;
-        line-height: 28px;
-      }
+			input {
+				font-size: 16px;
+				line-height: 28px;
+			}
 
-      position: relative;
-      display: flex;
-      flex-direction: column;
+			position: relative;
+			display: flex;
+			flex-direction: column;
 
-      &__errorMessage {
-        position: absolute;
-        display: flex;
-        align-items: center;
-        top: $px94;
+			&__errorMessage {
+				position: absolute;
+				display: flex;
+				align-items: center;
+				top: 93px;
 
-        span {
-          padding-left: $px4;
-          height: $px21;
-          font-size: 14px;
-          line-height: 19px;
-          color: #ff4a4a;
-        }
-      }
+				i {
+					display: contents;
+				}
 
-      input {
-        height: $px60;
-        border: $px1 solid $neutral-2;
-        border-radius: $radius;
-        outline: none !important;
-        padding: $px16;
+				span {
+					padding-left: $px4;
+					font-size: 14px;
+					line-height: 18px;
+					color: #ff4a4a;
+				}
+			}
 
-        &:focus:not(.error) {
-          border: $px2 solid $blue;
-        }
-      }
+			input {
+				height: $px60;
+				border: $px1 solid $neutral-2;
+				border-radius: $radius;
+				outline: none !important;
+				padding: $px16;
 
-      label {
-        font-size: 18px;
-        line-height: 21px;
-        color: $neutral-6;
-      }
+				&:focus:not(.error) {
+					border: $px1 solid $blue;
+				}
+			}
 
-      .error {
-        border: $px2 solid $red;
-      }
-    }
-  }
+			label {
+				font-family: "Golos-Medium";
+				font-size: 18px;
+				line-height: 21px;
+				color: $neutral-6;
+			}
+
+			.error {
+				border: $px1 solid $red;
+			}
+		}
+	}
 }
