@@ -27,15 +27,19 @@ function Timer({ type }) {
 	);
 
 	useEffect(() => {
+		if ((type === "test" && testStart == null) || taskStart == null) return;
+
 		const startDate = type === "test" ? testStart : taskStart;
+		console.log(startDate);
 
 		getCurrentTime().then((time) => {
 			setCurrentTimerMS(time - startDate);
 		});
-	}, []);
+	}, [testStart, taskStart]);
 
 	const tick = () => {
 		if (currentTimerMS == null) return;
+		console.log(currentTimerMS);
 
 		setCurrentTimerMS((timer) => timer + 1000);
 
