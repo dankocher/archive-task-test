@@ -8,7 +8,7 @@ function MainContainer(props) {
 	return (
 		<div className={styles.container}>
 			<div className={styles.container__header}>
-				{/* <Timer type={"test"} /> */}
+				<Timer type={"test"} />
 			</div>
 			<div className={styles.container__body}>{props.mainContainerBody}</div>
 			<div className={styles.container__footer}>
