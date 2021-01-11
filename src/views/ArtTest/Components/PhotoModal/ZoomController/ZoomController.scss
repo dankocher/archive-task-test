@@ -4,6 +4,8 @@
   height: $px44;
   width: $px44;
 
+  transition: background-color $transitionS;
+
   &:hover {
     background-color: $neutral-5;
   }

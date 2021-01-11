@@ -27,7 +27,7 @@ function TextAreaSettings() {
 		(state) =>
 			state.resultStorage[currentTestId].results[resultIndex]?.data[
 				currentSubTaskIndex
-			].answer
+			]?.answer
 	);
 
 	const isNextBtnClicked = useSelector(

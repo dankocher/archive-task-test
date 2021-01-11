@@ -5,21 +5,29 @@
   height: $px26;
   width: 100%;
   border: 0;
-  border-bottom: $px1 solid $neutral-2;
+  border-bottom: $border1 solid $neutral-2;
   resize: none;
   outline: none;
+  padding-bottom: $px4;
   // max-height: 300rem;
   // transition: all 2s;
 
   font-size: 16px;
   line-height: 22px;
-  color: $neutral-5;
+  font-weight: 400;
+  color: $neutral-4;
+
+  transition: $transitionF;
 
   &:focus:not(.error) {
-    border-color: $blue;
+    border-bottom: $border2 solid $blue;
+  }
+
+  &:focus {
+    color: $neutral-5;
   }
 }
 
 .error {
-  border-bottom: $px1 solid $red;
+  border-bottom: $border2 solid $red;
 }

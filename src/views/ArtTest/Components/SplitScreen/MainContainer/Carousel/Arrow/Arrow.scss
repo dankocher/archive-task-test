@@ -11,6 +11,10 @@
   width: $px48;
   border-radius: $px4;
 
+  rect {
+    transition: fill $transitionS;
+  }
+
   i {
     height: inherit;
     width: inherit;

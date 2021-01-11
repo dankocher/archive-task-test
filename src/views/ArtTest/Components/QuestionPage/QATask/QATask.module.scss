@@ -1,56 +1,57 @@
 @import "../../../../../assets/styles/foundations.scss";
 
 .container {
-	padding: $px44 $px39;
-	border: $px1 solid $neutral-2;
-	border-radius: $radius;
+  padding: $px44 $px39;
+  border: $px1 solid $neutral-2;
+  border-radius: $radius;
 
-	font-style: normal;
-	font-size: 16px;
-	line-height: 22px;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 22px;
 
-	& > :first-child {
-		margin-bottom: $px8;
-	}
+  & > :first-child {
+    margin-bottom: $px8;
+  }
 
-	& > :nth-child(2) {
-		margin-bottom: $px28;
-	}
+  & > :nth-child(2) {
+    margin-bottom: $px28;
+  }
 
-	&__question {
-		font-family: "Golos-Medium";
-		font-weight: 500;
-		color: $neutral-6;
-	}
+  &__question {
+    font-family: "Golos-Medium";
+    font-weight: 500;
+    color: $neutral-6;
+  }
 
-	&__description {
-		color: $neutral-4;
-	}
+  &__description {
+    font-weight: 400;
+    color: $neutral-4;
+  }
 }
 
 .errorWrapper {
-	height: 0;
-	position: relative;
+  height: 0;
+  position: relative;
 
-	&__errorMessage {
-		position: absolute;
-		display: flex;
-		align-items: center;
-		top: $px5;
+  &__errorMessage {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: $px5;
 
-		i {
-			display: contents;
-		}
+    i {
+      display: contents;
+    }
 
-		span {
-			padding-left: $px4;
-			font-size: 14px;
-			line-height: 18px;
-			color: $red;
-		}
-	}
+    span {
+      padding-left: $px4;
+      font-size: 14px;
+      line-height: 18px;
+      color: $red;
+    }
+  }
 }
 
 .error {
-	border-color: $red;
+  border-color: $red;
 }

@@ -13,6 +13,10 @@
       display: block;
     }
 
+    path {
+      transition: fill $transitionS;
+    }
+
     &:hover {
       path {
         fill: $neutral-6;
@@ -29,6 +33,7 @@
   &__paginationInfo {
     font-size: 18px;
     line-height: 22px;
+    font-weight: 400;
     color: $neutral-6;
     margin: 0 $px12;
   }

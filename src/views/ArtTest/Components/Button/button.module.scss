@@ -1,36 +1,40 @@
 @import "../../../../assets/styles/foundations.scss";
 
 .btn {
-	height: $px61;
-	width: 20.25rem; //new
-	border-radius: $px5;
-	outline: none;
-	border: none;
-	cursor: pointer;
+  height: $px61;
+  width: 20.25rem; //new
+  border-radius: $px5;
+  outline: none;
+  border: none;
+  cursor: pointer;
 
-	font-family: "Golos-Medium";
-	font-size: 20px;
-	font-weight: 500;
-	line-height: 24px;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+  font-family: "Golos-Medium";
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
 }
 
 .black {
-	background: $neutral-5;
-	color: $white;
+  background: $neutral-5;
+  color: $white;
+  transition: $transitionS;
 
-	&:hover {
-		background-color: $neutral-6;
-	}
+  &:hover {
+    background-color: $neutral-6;
+  }
 }
 
 .white {
-	border: $px1 solid $neutral-5;
-	background: $white;
-	color: $neutral-5;
+  border: $px1 solid $neutral-5;
+  background: $white;
+  color: $neutral-5;
+  transition: $transitionS;
 
-	&:hover {
-		border: none;
-		background: $neutral-5;
-		color: $white;
-	}
+  &:hover {
+    border: none;
+    background: $neutral-5;
+    color: $white;
+  }
 }

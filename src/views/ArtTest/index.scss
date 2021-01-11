@@ -1,35 +1,36 @@
 @import "../../assets/fonts/golostext/golostext.scss";
 
 .mainContainer {
-	height: 100%;
-	width: 100%;
-	text-align: initial;
+  height: 100%;
+  width: 100%;
+  text-align: initial;
 
-	* {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-		font-family: "Golos-Regular";
-		line-break: anywhere;
-	}
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Golos-Regular";
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+  }
 
-	textarea {
-		font-family: "Golos-Regular";
-	}
+  textarea {
+    font-family: "Golos-Regular";
+  }
 
-	// i {
-	//   display: contents;
-	// }
+  // i {
+  //   display: contents;
+  // }
 
-	.hidden-button {
-		display: flex;
-		border: none;
-		background-color: transparent;
-		line-height: 0;
-		cursor: pointer;
-	}
+  .hidden-button {
+    display: flex;
+    border: none;
+    background-color: transparent;
+    line-height: 0;
+    cursor: pointer;
+  }
 
-	.hidden-button:focus {
-		outline: 0;
-	}
+  .hidden-button:focus {
+    outline: 0;
+  }
 }

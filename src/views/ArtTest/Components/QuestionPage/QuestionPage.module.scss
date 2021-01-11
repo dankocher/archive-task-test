@@ -1,42 +1,44 @@
 @import "../../../../assets/styles/foundations.scss";
 
 .header {
-	display: flex;
-	justify-content: space-between;
-	padding: $px32 $px64 0 $px32;
-	margin-bottom: $px34;
+  display: flex;
+  justify-content: space-between;
+  padding: $px32 $px64 0 $px32;
+  margin-bottom: $px34;
 }
 
 .centredWrapper {
-	display: flex;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
 
-	&__container {
-		display: flex;
-		flex-direction: column;
-		width: 50.75rem; //new
+  padding-bottom: $px72;
 
-		& > :last-child {
-			align-self: flex-end;
-		}
+  &__container {
+    display: flex;
+    flex-direction: column;
+    width: 50.75rem; //new
 
-		h2 {
-			font-family: "Golos-Bold";
-			padding-left: $px40;
-			margin-bottom: $px36;
-			font-weight: bold;
-			font-size: 42px;
-			line-height: 50px;
-			letter-spacing: 0.4px;
-			color: $neutral-6;
-		}
+    & > :last-child {
+      align-self: flex-end;
+    }
 
-		&__body {
-			margin-bottom: $px36;
+    h2 {
+      font-family: "Golos-Bold";
+      padding-left: $px40;
+      margin-bottom: $px36;
+      font-weight: bold;
+      font-size: 42px;
+      line-height: 50px;
+      letter-spacing: 0.4px;
+      color: $neutral-6;
+    }
 
-			& > :not(:last-child) {
-				margin-bottom: $px27;
-			}
-		}
-	}
+    &__body {
+      margin-bottom: $px36;
+
+      & > :not(:last-child) {
+        margin-bottom: $px27;
+      }
+    }
+  }
 }

@@ -56,10 +56,10 @@ function TextArea(props) {
       ref={textAreaRef}
       rows={rows ? rows : 1}
       style={{
-        height:
-          parseInt(textAreaHeight.replace("px", "")) < 26
-            ? "26px"
-            : textAreaHeight,
+        height: textAreaHeight,
+        // parseInt(textAreaHeight.replace("px", "")) < 26
+        //   ? "26px"
+        // : textAreaHeight,
         overflow: "hidden",
       }}
       value={text}
