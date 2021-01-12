@@ -83,17 +83,22 @@ function Carousel() {
   };
 
   const isRightArrowVisible = () => {
-    return isOneImg() || currentImageIndex >= imageList.length;
+    return isOneImg() || currentImageIndex >= imageList.length - 1;
   };
 
   return (
     <>
       {!isHiddenPhotoModal ? (
-        <PhotoModal currentImgUrl={currentImgUrl} isOneImg={isOneImg} />
+        <PhotoModal
+          currentImgUrl={currentImgUrl}
+          isOneImg={isOneImg}
+          isLeftArrowVisible={isLeftArrowVisible}
+          isRightArrowVisible={isRightArrowVisible}
+        />
       ) : null}
 
       <div className={styles.container}>
-        {isOneImg() ? null : (
+        {isLeftArrowVisible() ? null : (
           <div className={styles.container__leftArrow}>
             <Arrow isToLeft={true} isDark={true} />
           </div>
@@ -104,14 +109,14 @@ function Carousel() {
           src={currentImgUrl}
           alt={""}
         />
-        {isOneImg() ? null : (
+        {isRightArrowVisible() ? null : (
           <div className={styles.container__rightArrow}>
             <Arrow isDark={true} />
           </div>
         )}
 
         {isOneImg() ? null : (
-          <Bullets arrOfImages={imageList} active={currentImageIndex} />
+          <Bullets arrOfImages={imageList} currentImageIndex={currentImageIndex} />
         )}
       </div>
     </>

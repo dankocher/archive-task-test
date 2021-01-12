@@ -15,7 +15,12 @@ import closeIcon from "../../helpers/icons/close-icon";
 
 const MAX_SCALE_COUNTER = 3;
 
-function PhotoModal({ currentImgUrl, isOneImg }) {
+function PhotoModal({
+  currentImgUrl,
+  isOneImg,
+  isLeftArrowVisible,
+  isRightArrowVisible,
+}) {
   const dispatch = useDispatch();
 
   const handlerCloseButton = (event) => {
@@ -56,7 +61,7 @@ function PhotoModal({ currentImgUrl, isOneImg }) {
               </button>
             </div>
 
-            {isOneImg() ? null : (
+            {isLeftArrowVisible() ? null : (
               <div className={styles.container__leftArrow}>
                 <Arrow
                   isDark={true}
@@ -76,7 +81,7 @@ function PhotoModal({ currentImgUrl, isOneImg }) {
               </TransformComponent>
             </div>
 
-            {isOneImg() ? null : (
+            {isRightArrowVisible() ? null : (
               <div className={styles.container__rightArrow}>
                 <Arrow isDark={true} resetTransform={setDefaultState} />
               </div>
