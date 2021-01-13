@@ -39,8 +39,8 @@ function PhotoModal({
       zoomOut={{ step: 7.5 }}
       defaultPositionX={0}
       defaultPositionY={0}
-      positionX={0}
-      positionY={0}
+      // positionX={0}
+      // positionY={0}
     >
       {({
         setScale,
@@ -73,11 +73,7 @@ function PhotoModal({
 
             <div className={styles.container__imgContainer}>
               <TransformComponent>
-                <img
-                  style={{ width: "100%", height: "auto" }}
-                  src={currentImgUrl}
-                  alt={""}
-                />
+                <img src={currentImgUrl} alt={""} />
               </TransformComponent>
             </div>
 
