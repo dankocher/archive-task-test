@@ -1,100 +1,100 @@
 @import "../../../../assets/styles/foundations.scss";
 
 .container {
-	display: flex;
+  display: flex;
 
-	&__centeredContainer {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		height: 100vh;
-		width: 50%;
-	}
+  &__centeredContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 50%;
+  }
 
-	&__imgContainer {
-		width: 50%;
-		height: 100vh;
-		// display: flex;
+  &__imgContainer {
+    width: 50%;
+    height: 100vh;
+    // display: flex;
 
-		img {
-			// margin: auto;
-			object-fit: cover;
-			height: 100%;
-			width: 100%;
-			// max-width: 100%;
-			// max-height: 100%;
-		}
-	}
+    img {
+      // margin: auto;
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+      // max-width: 100%;
+      // max-height: 100%;
+    }
+  }
 
-	.wrapper {
-		width: 20.25rem; //new
+  .wrapper {
+    width: 20.25rem; //new
 
-		& > :first-child {
-			margin-bottom: $px28;
-		}
+    & > :first-child {
+      margin-bottom: $px28;
+    }
 
-		& > :last-child {
-			margin-top: $px64;
-		}
+    & > :last-child {
+      margin-top: $px64;
+    }
 
-		&__field {
-			display: flex;
-			flex-direction: column;
-			width: 100%;
+    &__field {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
 
-			& > :first-child {
-				margin-bottom: $px8;
-			}
+      & > :first-child {
+        margin-bottom: $px8;
+      }
 
-			input {
-				font-size: 16px;
-				line-height: 28px;
-			}
+      input {
+        font-size: 16px;
+        line-height: 28px;
+      }
 
-			position: relative;
-			display: flex;
-			flex-direction: column;
+      position: relative;
+      display: flex;
+      flex-direction: column;
 
-			&__errorMessage {
-				position: absolute;
-				display: flex;
-				align-items: center;
-				top: 93px;
+      &__errorMessage {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        top: 93px;
 
-				i {
-					display: contents;
-				}
+        i {
+          display: contents;
+        }
 
-				span {
-					padding-left: $px4;
-					font-size: 14px;
-					line-height: 18px;
-					color: $red;
-				}
-			}
+        span {
+          padding-left: $px4;
+          font-size: 14px;
+          line-height: 18px;
+          color: $red;
+        }
+      }
 
-			input {
-				height: $px60;
-				border: $px1 solid $neutral-2;
-				border-radius: $radius;
-				outline: none !important;
-				padding: $px16;
+      input {
+        height: $px60;
+        border: $borderDefault;
+        border-radius: $radius;
+        outline: none !important;
+        padding: $px16;
 
-				&:focus:not(.error) {
-					border: $px1 solid $blue;
-				}
-			}
+        &:focus:not(.error) {
+          border: $borderFocus;
+        }
+      }
 
-			label {
-				font-family: "Golos-Medium";
-				font-size: 18px;
-				line-height: 21px;
-				color: $neutral-6;
-			}
+      label {
+        font-family: "Golos-Medium";
+        font-size: 18px;
+        line-height: 21px;
+        color: $neutral-6;
+      }
 
-			.error {
-				border: $px1 solid $red;
-			}
-		}
-	}
+      .error {
+        border: $borderError;
+      }
+    }
+  }
 }

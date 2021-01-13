@@ -2,7 +2,7 @@
 
 .container {
   padding: $px44 $px39;
-  border: $px1 solid $neutral-2;
+  border: $borderDefault;
   border-radius: $radius;
 
   font-style: normal;
@@ -53,5 +53,5 @@
 }
 
 .error {
-  border-color: $red;
+  border: $borderError;
 }

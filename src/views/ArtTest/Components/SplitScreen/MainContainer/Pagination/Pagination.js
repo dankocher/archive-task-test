@@ -32,24 +32,14 @@ function Pagination() {
   );
 
   const getIsUnvisibleLefftArrow = () => {
-    if (currentSubTaskIndex === 0) return true;
-    return false;
+    return currentSubTaskIndex === 0;
   };
 
   const getIsUnvisibleRightArrow = () => {
-    if (currentSubTaskIndex === subTaskLength - 1) return true;
-    return false;
-  };
-
-  const getIsDisabledLefftArrow = () => {
-    if (currentSubTaskIndex === 0) return true;
-    return false;
-  };
-
-  const getIsDisabledRightArrow = () => {
-    if (currentSubTaskIndex === subTaskLength - 1) return true;
-    if (currentSubTaskIndex === maxOpenedSubTaskIndex) return true;
-    return false;
+    return (
+      currentSubTaskIndex === subTaskLength - 1 ||
+      currentSubTaskIndex === maxOpenedSubTaskIndex
+    );
   };
 
   const setNextSubTask = () => {
@@ -68,7 +58,7 @@ function Pagination() {
             visibility: getIsUnvisibleLefftArrow() ? "hidden" : "visible",
           }}
           className={"hidden-button"}
-          disabled={getIsDisabledLefftArrow()}
+          // disabled={getIsDisabledLefftArrow()}
           onClick={setPreveusSubTask}
         >
           <i>{subTaskArrow}</i>
@@ -80,7 +70,7 @@ function Pagination() {
         </span>
         <button
           className={"hidden-button"}
-          disabled={getIsDisabledRightArrow()}
+          // disabled={getIsDisabledRightArrow()}
           style={{
             visibility: getIsUnvisibleRightArrow() ? "hidden" : "visible",
           }}

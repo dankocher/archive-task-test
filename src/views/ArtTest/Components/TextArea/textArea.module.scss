@@ -5,7 +5,7 @@
   height: $px26;
   width: 100%;
   border: 0;
-  border-bottom: $border1 solid $neutral-2;
+  border-bottom: $borderDefault;
   resize: none;
   outline: none;
   padding-bottom: $px4;
@@ -15,19 +15,19 @@
   font-size: 16px;
   line-height: 22px;
   font-weight: 400;
-  color: $neutral-4;
+  color: $neutral-5;
 
   transition: $transitionF;
 
   &:focus:not(.error) {
-    border-bottom: $border2 solid $blue;
+    border-bottom: $borderFocus;
   }
 
-  &:focus {
-    color: $neutral-5;
-  }
+  // &:focus {
+  //   color: $neutral-5;
+  // }
 }
 
 .error {
-  border-bottom: $border2 solid $red;
+  border-bottom: $borderError;
 }
