@@ -14,13 +14,13 @@ function ArtTest() {
   );
 
   const checkWindowSize = () => {
-    // if (windowSize.width < 1366 || windowSize.height < 625) {
-    //   return <DeviceError />;
-    // } else {
+    if (windowSize.width < 1366 || windowSize.height < 625) {
+      return <DeviceError />;
+    } else {
       return (
         <div className="mainContainer">{isRehydrated ? <Loader /> : null}</div>
       );
-    // }
+    }
   };
 
   return <>{checkWindowSize()}</>;
