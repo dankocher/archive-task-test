@@ -1,23 +1,24 @@
 @import "../../../../../../assets/styles/foundations.scss";
 
 .title {
-	margin-bottom: $px24;
+  margin-bottom: $px24;
 
-	font-family: "Golos-DemiBold";
-	font-weight: 600;
-	font-size: 20px;
-	line-height: 20px;
+  font-family: "Golos-DemiBold";
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 20px;
 }
 
 .container {
-	margin-bottom: $px36;
+  margin-bottom: $px36;
 
-	& > label {
-		padding: $px4 0;
-	}
+  & > label {
+    padding: $px4 0;
+  }
 
-	label {
-		font-size: 16px;
-		line-height: 22px;
-	}
+  label {
+    font-family: "Golos-Regular";
+    font-size: 16px;
+    line-height: 22px;
+  }
 }

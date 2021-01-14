@@ -1,40 +1,33 @@
 @import "../../../../../../../../assets/styles/foundations.scss";
 
-.active,
-.default {
-  // height: $px10;
-  // width: $px10;
-  border-radius: 50%;
-  // box-shadow: 0px 0px 20px 8px rgba(255, 255, 255, 0.25);
+.container {
+  display: flex;
+  height: $px12;
+  width: $px12;
 
-  // svg {
-  //   max-height: 100%;
-  // }
+  .active,
+  .default {
+    margin: auto;
+    border-radius: 50%;
+  }
 
-  i {
-    display: contents;
-    // height: inherit;
-    // width: inherit;
+  .active {
+    height: $px10;
+    width: $px10;
 
-    circle {
-      transition: fill $transitionS;
+    background-color: $neutral-4;
+    box-shadow: 0px 0px 1px rgba(255, 255, 255, 0.5);
+  }
+
+  .default {
+    height: $px6;
+    width: $px6;
+
+    background-color: $neutral-1;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
+    
+    &:hover {
+      background-color: $neutral-4;
     }
-  }
-}
-
-// .active {
-//   circle {
-//     fill: $neutral-4;
-//   }
-// }
-
-.default {
-  circle {
-    // fill: $neutral-1;
-  }
-  &:hover {
-    // circle {
-    //   fill: $neutral-4;
-    // }
   }
 }

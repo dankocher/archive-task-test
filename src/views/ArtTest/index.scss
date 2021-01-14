@@ -1,4 +1,4 @@
-@import "../../assets/fonts/golostext/golostext.scss";
+@import "../../assets/styles/foundations.scss";
 
 .mainContainer {
   height: 100%;
@@ -9,18 +9,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Golos-Regular";
     overflow-wrap: break-word;
     white-space: pre-wrap;
   }
-
-  textarea {
-    font-family: "Golos-Regular";
-  }
-
-  // i {
-  //   display: contents;
-  // }
 
   .hidden-button {
     display: flex;

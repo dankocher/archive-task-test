@@ -3,9 +3,6 @@ import "./index.scss";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import Scrollbar from "perfect-scrollbar-react";
-import "perfect-scrollbar-react/dist/style.min.css";
-
 import { getUrlId } from "../../helpers/getUrlId";
 
 import {
@@ -99,13 +96,7 @@ function Loader() {
     });
   }, [endDate]);
 
-  return (
-    <>
-      <Scrollbar>
-        {currentTaskId != null ? getPage(taskType) : <Authorization />}
-      </Scrollbar>
-    </>
-  );
+  return <>{currentTaskId != null ? getPage(taskType) : <Authorization />}</>;
 }
 
 export default Loader;

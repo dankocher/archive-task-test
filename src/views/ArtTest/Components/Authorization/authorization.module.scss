@@ -47,6 +47,7 @@
       }
 
       input {
+        font-family: "Golos-Regular";
         font-size: 16px;
         line-height: 28px;
       }
@@ -67,6 +68,8 @@
 
         span {
           padding-left: $px4;
+
+          font-family: "Golos-Regular";
           font-size: 14px;
           line-height: 18px;
           color: $red;

@@ -1,21 +1,18 @@
 @import "../../../../assets/styles/foundations.scss";
 
 .container {
-	position: relative;
-	// display: flex;
-	// justify-content: space-between;
-	width: 20.25rem; //new
+  position: relative;
+  width: 20.25rem; //new
 
-	& > :first-child {
-		font-style: normal;
-		font-weight: normal;
-		font-size: 18px;
-		line-height: 22px;
-		color: $neutral-6;
-	}
+  & > :first-child {
+    font-family: "Golos-Regular";
+    font-size: 18px;
+    line-height: 22px;
+    color: $neutral-6;
+  }
 
-	& > :last-child {
-		position: absolute;
-		left: 15.375rem;
-	}
+  & > :last-child {
+    position: absolute;
+    left: 15.375rem;
+  }
 }

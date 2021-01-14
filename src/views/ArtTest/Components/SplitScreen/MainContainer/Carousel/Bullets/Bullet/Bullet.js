@@ -28,9 +28,11 @@ function Bullet({ active, index }) {
 
   return (
     <>
-      <button className={bullet} onClick={handleSetImageIndex}>
-        <i>{active ? bigBulletIcon : smallBulletIcon}</i>
-      </button>
+      <div className={styles.container}>
+        <button className={bullet} onClick={handleSetImageIndex}>
+          {/* <i>{active ? bigBulletIcon : smallBulletIcon}</i> */}
+        </button>
+      </div>
     </>
   );
 }
