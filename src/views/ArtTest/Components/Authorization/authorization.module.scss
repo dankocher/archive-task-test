@@ -84,6 +84,7 @@
         padding: $px16;
 
         &:focus:not(.error) {
+          padding: $px16 $px15;
           border: $borderFocus;
         }
       }
@@ -96,6 +97,7 @@
       }
 
       .error {
+        padding: $px16 $px15;
         border: $borderError;
       }
     }

@@ -68,12 +68,16 @@ function Loader() {
   const endDate = resultStorage?.end_date;
 
   useEffect(() => {
+    // debugger;
+
     const testId = getUrlId();
 
-    if (testId === currentTaskId || currentTaskId != null) return;
+    if (testId === currentTestId) return;
 
     getTaskIdListFromServer().then((res) => {
+      //{ lastTaskNumber, currentTestId, taskList }
       dispatch(sesionStart(res.ttask.tasksCounter, res.ttask._id, res.tasks));
+      console.log(res.ttask.tasksCounter, res.ttask._id, res.tasks);
     });
   }, [currentTestId]);
 
