@@ -21,8 +21,6 @@ function Carousel() {
 
   const resultIndex = useGetResultIndex();
 
-  const currentTestId = useSelector((state) => state.testStorage.currentTestId);
-
   const currentImageIndex = useSelector(
     (state) => state.caruselReducer.current
   );
@@ -30,15 +28,20 @@ function Carousel() {
     (state) => state.caruselReducer.isHiddenPhotoModal
   );
 
-  const task = useSelector((state) => state.testStorage.currentTask);
+  const currentTestId = useSelector((state) => state.testStorage.currentTestId);
+  const currentTaskIndex = useSelector(
+    (state) => state?.testStorage?.[currentTestId]?.currentTaskIndex
+  );
+
+  const task = useSelector(
+    (state) => state.testStorage[currentTestId]?.taskList?.[currentTaskIndex]
+  );
   const taskId = task._id;
   const imgGrid = task.data.imgGrid;
   const currentSubTaskIndex = useSelector(
     (state) => state.testStorage[currentTestId].currentSubTaskIndex
   );
   const radioButtonTaskList = task.data.radioButtonTaskList;
-
-  const currentTask = useSelector((state) => state.testStorage.currentTask);
 
   const imageList = imgGrid[currentSubTaskIndex]?.imgColumnList;
 
@@ -49,20 +52,13 @@ function Carousel() {
 
   useEffect(() => {
     if (radioButtonTaskList == null) {
-      dispatch(startTaskThunk(currentTestId, taskId, resultIndex, imgGrid));
+      dispatch(startTaskThunk(taskId, resultIndex, imgGrid));
     } else {
       dispatch(
-        startTaskThunk(
-          currentTestId,
-          taskId,
-          resultIndex,
-          imgGrid,
-          radioButtonTaskList
-        )
+        startTaskThunk(taskId, resultIndex, imgGrid, radioButtonTaskList)
       );
     }
-    // setImageList(currentImageList);
-  }, [currentTask]);
+  }, [task]);
 
   useEffect(() => {
     if (imageList == null) return;
@@ -116,7 +112,10 @@ function Carousel() {
         )}
 
         {isOneImg() ? null : (
-          <Bullets arrOfImages={imageList} currentImageIndex={currentImageIndex} />
+          <Bullets
+            arrOfImages={imageList}
+            currentImageIndex={currentImageIndex}
+          />
         )}
       </div>
     </>

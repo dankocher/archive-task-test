@@ -1,59 +1,57 @@
 import { startTask } from "../../../redux/actions/resultActions";
 import {
-	setCurrentSubTaskIndex,
-	setMaxOpenedSubTaskIndex,
+  setCurrentSubTaskIndex,
+  setMaxOpenedSubTaskIndex,
 } from "../../../redux/actions/testActions";
 import { QUSETION_ANSWER } from "../helpers/taskTypes";
 
 import { getCurrentTime } from "../helpers/workWithApi";
 
-const startTaskThunk = (
-	currentTestId,
-	taskId,
-	resultIndex,
-	taskList,
-	radioButtonTaskList
-) => {
-	return (dispatch, getState) => {
-		const state = getState();
+const startTaskThunk = (taskId, resultIndex, taskList, radioButtonTaskList) => {
+  return (dispatch, getState) => {
+    const state = getState();
 
-		const task = state.testStorage.currentTask;
-		const isTimeConsidered = task.isTimeConsidered;
-		const taskType = task.type;
+    const currentTestId = state.testStorage.currentTestId;
+    const currentTaskIndex = state.testStorage?.[currentTestId]?.currentTaskIndex;
 
-		if (resultIndex !== -1) return;
+    const task = state.testStorage[currentTestId]?.taskList?.[currentTaskIndex];
 
-		if (taskType !== QUSETION_ANSWER) {
-			dispatch(setCurrentSubTaskIndex(0));
-			dispatch(setMaxOpenedSubTaskIndex(0));
-		}
+    const isTimeConsidered = task.isTimeConsidered;
+    const taskType = task.type;
 
-		if (isTimeConsidered) {
-			getCurrentTime().then((startDate) => {
-				dispatch(
-					startTask(
-						currentTestId,
-						taskId,
-						startDate,
-						taskList,
-						task,
-						radioButtonTaskList
-					)
-				);
-			});
-		} else {
-			dispatch(
-				startTask(
-					currentTestId,
-					taskId,
-					undefined,
-					taskList,
-					task,
-					radioButtonTaskList
-				)
-			);
-		}
-	};
+    if (resultIndex !== -1) return;
+
+    if (taskType !== QUSETION_ANSWER) {
+      dispatch(setCurrentSubTaskIndex(0));
+      dispatch(setMaxOpenedSubTaskIndex(0));
+    }
+
+    if (isTimeConsidered) {
+      getCurrentTime().then((startDate) => {
+        dispatch(
+          startTask(
+            currentTestId,
+            taskId,
+            startDate,
+            taskList,
+            task,
+            radioButtonTaskList
+          )
+        );
+      });
+    } else {
+      dispatch(
+        startTask(
+          currentTestId,
+          taskId,
+          undefined,
+          taskList,
+          task,
+          radioButtonTaskList
+        )
+      );
+    }
+  };
 };
 
 export default startTaskThunk;

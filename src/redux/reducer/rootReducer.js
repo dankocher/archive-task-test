@@ -16,7 +16,7 @@ export const persistConfig = {
 export const testStoragePersistConfig = {
   key: "testStorage",
   storage,
-  blacklist: ["taskList", "currentTestId", "currentTask"],
+  blacklist: ["taskList", "currentTestId"],
 };
 
 const rootReducer = combineReducers({

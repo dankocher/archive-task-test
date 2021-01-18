@@ -3,34 +3,37 @@ import { setCurrentSubTaskIndex } from "../../../redux/actions/testActions";
 import { ILLUSTRATIONS_ANSWERS } from "../helpers/taskTypes";
 
 const setNextSubTaskThunk = (currentResultIndex, responseLimitation) => {
-	return (dispatch, getState) => {
-		const state = getState();
+  return (dispatch, getState) => {
+    const state = getState();
 
-		const currentTestId = state.testStorage.currentTestId;
+    const currentTestId = state.testStorage.currentTestId;
+    const currentTaskIndex = state.testStorage?.[currentTestId]?.currentTaskIndex;
 
-		const currentSubTaskIndex =
-			state.testStorage[currentTestId].currentSubTaskIndex;
-		const maxOpenedSubTaskIndex =
-			state.testStorage[currentTestId].maxOpenedSubTaskIndex;
+    const currentSubTaskIndex =
+      state.testStorage[currentTestId].currentSubTaskIndex;
+    const maxOpenedSubTaskIndex =
+      state.testStorage[currentTestId].maxOpenedSubTaskIndex;
 
-		const subTaskAnswersIA =
-			state.resultStorage[currentTestId].results[currentResultIndex].data[
-				currentSubTaskIndex
-			].answer;
+    const subTaskAnswersIA =
+      state.resultStorage[currentTestId].results[currentResultIndex].data[
+        currentSubTaskIndex
+      ].answer;
 
-		const taskType = state.testStorage.currentTask.type;
+    const task = state.testStorage[currentTestId]?.taskList?.[currentTaskIndex];
 
-		if (taskType === ILLUSTRATIONS_ANSWERS) {
-			if (
-				subTaskAnswersIA == null ||
-				subTaskAnswersIA.length < responseLimitation.from
-			)
-				return;
-		}
+    const taskType = task.type;
 
-		if (currentSubTaskIndex === maxOpenedSubTaskIndex) return;
-		dispatch(setCurrentSubTaskIndex(currentSubTaskIndex + 1));
-	};
+    if (taskType === ILLUSTRATIONS_ANSWERS) {
+      if (
+        subTaskAnswersIA == null ||
+        subTaskAnswersIA.length < responseLimitation.from
+      )
+        return;
+    }
+
+    if (currentSubTaskIndex === maxOpenedSubTaskIndex) return;
+    dispatch(setCurrentSubTaskIndex(currentSubTaskIndex + 1));
+  };
 };
 
 export default setNextSubTaskThunk;

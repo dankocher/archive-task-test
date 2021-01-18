@@ -20,17 +20,13 @@ import SplitScreen from "../SplitScreen/SplitScreen";
 import BigTextMainContainer from "../SplitScreen/MainContainer/BigText/BigText";
 import Carousel from "../SplitScreen/MainContainer/Carousel/Carousel";
 
-import {
-  setCurrentTask,
-  sesionStart,
-} from "../../../../redux/actions/testActions";
+import { sesionStart } from "../../../../redux/actions/testActions";
 
 import { deleteResult } from "../../../../redux/actions/resultActions";
 import { deleteTest } from "../../../../redux/actions/testActions";
 
 import {
   getTaskIdListFromServer,
-  getTaskFromServer,
   saveResults,
 } from "../../helpers/workWithApi";
 
@@ -57,37 +53,30 @@ function Loader() {
   const state = useSelector((state) => state);
 
   const currentTestId = useSelector((state) => state.testStorage.currentTestId);
-
-  const currentTaskId = useSelector(
-    (state) => state?.testStorage?.[currentTestId]?.currentTaskId
+  const currentTaskIndex = useSelector(
+    (state) => state?.testStorage?.[currentTestId]?.currentTaskIndex
   );
-  const taskType = useSelector((state) => state.testStorage.currentTask?.type);
+
+  const task = useSelector(
+    (state) => state.testStorage[currentTestId]?.taskList[currentTaskIndex]
+  );
+  const taskType = task?.type;
+
   const resultStorage = useSelector(
     (state) => state.resultStorage[currentTestId]
   );
   const endDate = resultStorage?.end_date;
 
   useEffect(() => {
-    // debugger;
-
     const testId = getUrlId();
 
     if (testId === currentTestId) return;
 
     getTaskIdListFromServer().then((res) => {
-      //{ lastTaskNumber, currentTestId, taskList }
+      //{ tasksCounter, currentTestId, taskList }
       dispatch(sesionStart(res.ttask.tasksCounter, res.ttask._id, res.tasks));
-      console.log(res.ttask.tasksCounter, res.ttask._id, res.tasks);
     });
   }, [currentTestId]);
-
-  useEffect(() => {
-    if (currentTaskId == null) return;
-
-    getTaskFromServer(currentTaskId).then((res) => {
-      dispatch(setCurrentTask(res.task));
-    });
-  }, [currentTaskId]);
 
   //End task
   useEffect(() => {
@@ -100,7 +89,9 @@ function Loader() {
     });
   }, [endDate]);
 
-  return <>{currentTaskId != null ? getPage(taskType) : <Authorization />}</>;
+  return (
+    <>{currentTaskIndex != null ? getPage(taskType) : <Authorization />}</>
+  );
 }
 
 export default Loader;

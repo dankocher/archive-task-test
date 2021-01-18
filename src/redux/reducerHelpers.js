@@ -104,23 +104,27 @@ const setAnswers = (state, resultIndex, radioButtonTaskList, currentTestId) => {
 };
 
 export const sessionStart = (state, action) => {
-  const { lastTaskNumber, currentTestId, taskList } = action.payload;
+  const { tasksCounter, currentTestId, taskList } = action.payload;
   if (currentTestId in state) {
-    state = update(state, {
-      taskList: { $set: taskList },
-      currentTestId: { $set: currentTestId },
-      [currentTestId]: {
-        lastTaskNumber: {
-          $set: lastTaskNumber,
-        },
-      },
-    });
+    state = {
+      ...state,
+      currentTestId,
+    };
+    // state = update(state, {
+    //   taskList: { $set: taskList },
+    //   currentTestId: { $set: currentTestId },
+    //   [currentTestId]: {
+    //     lastTaskNumber: {
+    //       $set: lastTaskNumber,
+    //     },
+    //   },
+    // });
   } else {
     state = {
       ...state,
-      taskList,
+      // taskList,
       currentTestId,
-      [currentTestId]: { lastTaskNumber, isNextBtnClicked: false },
+      [currentTestId]: { taskList, tasksCounter, isNextBtnClicked: false },
     };
   }
   return state;

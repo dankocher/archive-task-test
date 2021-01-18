@@ -6,38 +6,38 @@ import { useGetResultIndex } from "../../../../helpers/customHooks/getResultInde
 import startTaskThunk from "../../../../thunks/startTaskThunk";
 
 function BigTextMainContainer() {
-	const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-	const resultIndex = useGetResultIndex();
+  const resultIndex = useGetResultIndex();
 
-	const currentTestId = useSelector((state) => state.testStorage.currentTestId);
-	const task = useSelector((state) => state.testStorage.currentTask);
-	const taskId = task._id;
-	const wordList = task.data.wordList;
-	const radioButtonTaskList = task.data.radioButtonTaskList;
-	const currentSubTaskIndex = useSelector(
-		(state) => state.testStorage[currentTestId].currentSubTaskIndex
-	);
+  const currentTestId = useSelector((state) => state.testStorage.currentTestId);
+  const currentTaskIndex = useSelector(
+    (state) => state.testStorage?.[currentTestId]?.currentTaskIndex
+  );
 
-	const word = wordList[currentSubTaskIndex]?.word;
+  const task = useSelector(
+    (state) => state.testStorage[currentTestId]?.taskList?.[currentTaskIndex]
+  );
+  const taskId = task._id;
+  const wordList = task.data.wordList;
+  const radioButtonTaskList = task.data.radioButtonTaskList;
+  const currentSubTaskIndex = useSelector(
+    (state) => state.testStorage[currentTestId].currentSubTaskIndex
+  );
 
-	useEffect(() => {
-		dispatch(
-			startTaskThunk(
-				currentTestId,
-				taskId,
-				resultIndex,
-				wordList,
-				radioButtonTaskList
-			)
-		);
-	}, []);
+  const word = wordList[currentSubTaskIndex]?.word;
 
-	return (
-		<div className={styles.container}>
-			<h1 className={styles.container__bigText}>{word}</h1>
-		</div>
-	);
+  useEffect(() => {
+    dispatch(
+      startTaskThunk(taskId, resultIndex, wordList, radioButtonTaskList)
+    );
+  }, []);
+
+  return (
+    <div className={styles.container}>
+      <h1 className={styles.container__bigText}>{word}</h1>
+    </div>
+  );
 }
 
 export default BigTextMainContainer;

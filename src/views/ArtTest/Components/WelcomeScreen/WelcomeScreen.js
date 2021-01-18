@@ -21,8 +21,13 @@ function WelcomeScreen() {
   const resultIndex = useGetResultIndex();
 
   const currentTestId = useSelector((state) => state.testStorage.currentTestId);
+  const currentTaskIndex = useSelector(
+    (state) => state.testStorage?.[currentTestId]?.currentTaskIndex
+  );
 
-  const task = useSelector((state) => state.testStorage.currentTask);
+  const task = useSelector(
+    (state) => state.testStorage[currentTestId]?.taskList?.[currentTaskIndex]
+  );
   const taskId = task._id;
   const isTimeConsidered = task.isTimeConsidered;
 

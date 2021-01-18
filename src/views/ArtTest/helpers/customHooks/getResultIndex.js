@@ -1,17 +1,18 @@
 import { useSelector } from "react-redux";
 
 export const useGetResultIndex = () => {
-	// const taskId = useSelector((state) => state.testStorage.currentTaskId);
-	const currentTestId = useSelector((state) => state.testStorage.currentTestId);
-	const currentTaskId = useSelector(
-		(state) => state?.testStorage?.[currentTestId]?.currentTaskId
-	);
+  const currentTestId = useSelector((state) => state.testStorage.currentTestId);
 
-	return useSelector((state) => {
-		// debugger;
-		const results = state.resultStorage[currentTestId].results;
-		// debugger;
-		if (results == null || results.length === 0) return -1;
-		return results.findIndex((element) => element.task_id === currentTaskId);
-	});
+  const currentTest = useSelector((state) => state.testStorage[currentTestId]);
+
+  const currentTaskIndex = currentTest.currentTaskIndex;
+
+  const currentTaskId = currentTest.taskList[currentTaskIndex]._id;
+
+  return useSelector((state) => {
+    const results = state.resultStorage[currentTestId].results;
+
+    if (results == null || results.length === 0) return -1;
+    return results.findIndex((element) => element.task_id === currentTaskId);
+  });
 };

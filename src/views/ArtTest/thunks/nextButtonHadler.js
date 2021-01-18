@@ -1,7 +1,7 @@
 import {
-	setCurrentSubTaskIndex,
-	setMaxOpenedSubTaskIndex,
-	setIsNextBtnClicked,
+  setCurrentSubTaskIndex,
+  setMaxOpenedSubTaskIndex,
+  setIsNextBtnClicked,
 } from "../../../redux/actions/testActions";
 
 import { ILLUSTRATIONS_ANSWERS } from "../helpers/taskTypes";
@@ -9,60 +9,63 @@ import { ILLUSTRATIONS_ANSWERS } from "../helpers/taskTypes";
 import setNextTaskId from "./setNextTaskId";
 
 const nextButtonHadler = (currentResultIndex, responseLimitation) => {
-	return (dispatch, getState) => {
-		const state = getState();
+  return (dispatch, getState) => {
+    const state = getState();
 
-		const currentTestId = state.testStorage.currentTestId;
+    const currentTestId = state.testStorage.currentTestId;
+    const currentTaskIndex = state.testStorage?.[currentTestId]?.currentTaskIndex;
 
-		const currentSubTaskIndex =
-			state.testStorage[currentTestId].currentSubTaskIndex;
-		const maxOpenedSubTaskIndex =
-			state.testStorage[currentTestId].maxOpenedSubTaskIndex;
+    const currentSubTaskIndex =
+      state.testStorage[currentTestId].currentSubTaskIndex;
+    const maxOpenedSubTaskIndex =
+      state.testStorage[currentTestId].maxOpenedSubTaskIndex;
 
-		const subTaskLength =
-			state.resultStorage[currentTestId].results[currentResultIndex].data
-				.length - 1;
+    const subTaskLength =
+      state.resultStorage[currentTestId].results[currentResultIndex].data
+        .length - 1;
 
-		const subTaskAnswersRB =
-			state.resultStorage[currentTestId].results[currentResultIndex].data[
-				currentSubTaskIndex
-			].answers;
+    const subTaskAnswersRB =
+      state.resultStorage[currentTestId].results[currentResultIndex].data[
+        currentSubTaskIndex
+      ].answers;
 
-		const subTaskAnswersIA =
-			state.resultStorage[currentTestId].results[currentResultIndex].data[
-				currentSubTaskIndex
-			].answer;
+    const subTaskAnswersIA =
+      state.resultStorage[currentTestId].results[currentResultIndex].data[
+        currentSubTaskIndex
+      ].answer;
 
-		const taskType = state.testStorage.currentTask.type;
+    const task = state.testStorage[currentTestId]?.taskList?.[currentTaskIndex];
 
-		dispatch(setIsNextBtnClicked(true));
+    const taskType = task.type;
 
-		if (taskType === ILLUSTRATIONS_ANSWERS) {
-			if (
-				subTaskAnswersIA == null ||
-				subTaskAnswersIA.length < responseLimitation.from
-			)
-				return;
-		} else {
-			for (const answer of subTaskAnswersRB) {
-				if (answer.optionId == null) return;
-			}
-		}
+    dispatch(setIsNextBtnClicked(true));
 
-		if (currentSubTaskIndex === maxOpenedSubTaskIndex) {
-			if (maxOpenedSubTaskIndex < subTaskLength) {
-				dispatch(setIsNextBtnClicked(false));
-				dispatch(setMaxOpenedSubTaskIndex(maxOpenedSubTaskIndex + 1));
-				dispatch(setCurrentSubTaskIndex(currentSubTaskIndex + 1));
-			} else {
-				// go to next task
-				dispatch(setNextTaskId(currentResultIndex));
-				// console.log("ia poshel na sledushee zadanie");
-			}
-		} else {
-			dispatch(setCurrentSubTaskIndex(currentSubTaskIndex + 1));
-		}
-	};
+    if (taskType === ILLUSTRATIONS_ANSWERS) {
+      if (
+        subTaskAnswersIA == null ||
+        subTaskAnswersIA.length < responseLimitation.from
+      )
+        return;
+    } else {
+      for (const answer of subTaskAnswersRB) {
+        if (answer.optionId == null) return;
+      }
+    }
+
+    if (currentSubTaskIndex === maxOpenedSubTaskIndex) {
+      if (maxOpenedSubTaskIndex < subTaskLength) {
+        dispatch(setIsNextBtnClicked(false));
+        dispatch(setMaxOpenedSubTaskIndex(maxOpenedSubTaskIndex + 1));
+        dispatch(setCurrentSubTaskIndex(currentSubTaskIndex + 1));
+      } else {
+        // go to next task
+        dispatch(setNextTaskId(currentResultIndex));
+        // console.log("ia poshel na sledushee zadanie");
+      }
+    } else {
+      dispatch(setCurrentSubTaskIndex(currentSubTaskIndex + 1));
+    }
+  };
 };
 
 export default nextButtonHadler;

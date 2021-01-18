@@ -14,55 +14,63 @@ import RadioButtonAnswers from "./RadioButtonAnswers/RadioButtonAnswers";
 import TextAreaSettings from "./TextAreaSettings/TextAreaSettings";
 
 function SideContainer() {
-	const dispatch = useDispatch();
-	const task = useSelector((state) => state.testStorage.currentTask);
-	const title = task.name;
-	const description = task.description;
-	const radioButtonTaskList = task.data?.radioButtonTaskList;
+  const dispatch = useDispatch();
 
-	const responseLimitation = useGetResponseLimitation();
-	const currentResultIndex = useGetResultIndex();
+  const currentTestId = useSelector((state) => state.testStorage.currentTestId);
+  const currentTaskIndex = useSelector(
+    (state) => state?.testStorage?.[currentTestId]?.currentTaskIndex
+  );
 
-	const nextButtonClickedHandle = () => {
-		dispatch(nextButtonHadler(currentResultIndex, responseLimitation));
-	};
+  const task = useSelector(
+    (state) => state.testStorage[currentTestId]?.taskList?.[currentTaskIndex]
+  );
+  const title = task.name;
+  const description = task.description;
+  const radioButtonTaskList = task.data?.radioButtonTaskList;
 
-	const getSideTaskView = () => {
-		if (task.type === ILLUSTRATIONS_ANSWERS) {
-			return <TextAreaSettings />;
-		} else {
-			return radioButtonTaskList?.map((radioButtonTask, key) => {
-				return (
-					<RadioButtonAnswers
-						key={key}
-						index={key}
-						radioButtonTask={radioButtonTask}
-					/>
-				);
-			});
-		}
-	};
+  const responseLimitation = useGetResponseLimitation();
+  const currentResultIndex = useGetResultIndex();
 
-	return (
-		<div className={styles.contentWrapper}>
-			<TaskInformation />
+  const nextButtonClickedHandle = () => {
+    dispatch(nextButtonHadler(currentResultIndex, responseLimitation));
+  };
 
-			<div className={styles.contentWrapper__body}>
-				<article className={styles.container}>
-					<h2>{title}</h2>
-					<p>{description}</p>
-				</article>
-				<div className={styles.contentWrapper__body__answersField}>
-					{getSideTaskView()}
-				</div>
-			</div>
-			<Button
-				color="white"
-				label="Продолжить"
-				onClick={nextButtonClickedHandle}
-			/>
-		</div>
-	);
+  const getSideTaskView = () => {
+    if (task.type === ILLUSTRATIONS_ANSWERS) {
+      return <TextAreaSettings />;
+    } else {
+      return radioButtonTaskList?.map((radioButtonTask, key) => {
+        return (
+          <RadioButtonAnswers
+            key={key}
+            index={key}
+            radioButtonTask={radioButtonTask}
+          />
+        );
+      });
+    }
+  };
+
+  return (
+    <div className={styles.contentWrapper}>
+      <TaskInformation />
+
+      <div className={styles.contentWrapper__body}>
+        <article className={styles.container}>
+          <h2>{title}</h2>
+          <p>{description}</p>
+        </article>
+        <div className={styles.contentWrapper__body__answersField}>
+          {getSideTaskView()}
+        </div>
+      </div>
+      <Button
+        color="white"
+        label="Продолжить"
+        onClick={nextButtonClickedHandle}
+      />
+    </div>
+  );
 }
 
 export default SideContainer;
