@@ -1,75 +1,43 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "6ccdc92c36fd2260276333900a15074c",
+    "revision": "2e16abbbf24bfaab3835ec536b8a7aea",
     "url": "/index.html"
   },
   {
-    "revision": "437cb9874e79681555f0",
-    "url": "/static/css/main.f68279da.chunk.css"
+    "revision": "3ecd50c62791b733640e",
+    "url": "/static/css/main.19570487.chunk.css"
   },
   {
-    "revision": "45c4d24caa7b065a8c34",
-    "url": "/static/js/2.7e871f39.chunk.js"
+    "revision": "4bd00fb45ae3a561e9de",
+    "url": "/static/js/2.96e2155d.chunk.js"
   },
   {
     "revision": "4188741b4aa7f08c502a78e46dabcf11",
-    "url": "/static/js/2.7e871f39.chunk.js.LICENSE.txt"
+    "url": "/static/js/2.96e2155d.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "437cb9874e79681555f0",
-    "url": "/static/js/main.af4ff709.chunk.js"
+    "revision": "3ecd50c62791b733640e",
+    "url": "/static/js/main.d94e2378.chunk.js"
   },
   {
     "revision": "e9d4fbf4d918a0ee6ff3",
     "url": "/static/js/runtime-main.b192f3f6.js"
   },
   {
-    "revision": "0491433efb8ee797d8e32cee26c91018",
-    "url": "/static/media/Golostextbold.0491433e.woff2"
+    "revision": "58e37dc6336a59141c293a4974959020",
+    "url": "/static/media/Golostextbold.58e37dc6.ttf"
   },
   {
-    "revision": "53f7e3aea8e106427a090b527f3330b5",
-    "url": "/static/media/Golostextbold.53f7e3ae.ttf"
+    "revision": "5ad93e3225cbf4fcddbba8266a1d66f9",
+    "url": "/static/media/Golostextdemibold.5ad93e32.ttf"
   },
   {
-    "revision": "f17ed7692dac97b41bdc7db6d23ea783",
-    "url": "/static/media/Golostextbold.f17ed769.woff"
+    "revision": "c2580dc780318fc523ba5e22a51a4a9a",
+    "url": "/static/media/Golostextmedium.c2580dc7.ttf"
   },
   {
-    "revision": "398c9475a03a18da035b48f6e8f0bbb7",
-    "url": "/static/media/Golostextdemibold.398c9475.woff2"
-  },
-  {
-    "revision": "5aecee0cd8c45daf963bdac3f0e6ffbc",
-    "url": "/static/media/Golostextdemibold.5aecee0c.ttf"
-  },
-  {
-    "revision": "6d2a7dd9e0448045fe2f866858d55183",
-    "url": "/static/media/Golostextdemibold.6d2a7dd9.woff"
-  },
-  {
-    "revision": "45aa0b708a4164f4bba537d0dcfb90cb",
-    "url": "/static/media/Golostextmedium.45aa0b70.woff"
-  },
-  {
-    "revision": "bbd0c1591190846d6515b22e35d5f8f1",
-    "url": "/static/media/Golostextmedium.bbd0c159.ttf"
-  },
-  {
-    "revision": "cc63482700811f0ac10ba0c538aaaf5a",
-    "url": "/static/media/Golostextmedium.cc634827.woff2"
-  },
-  {
-    "revision": "4fc2566412083a5a0f859d125436cae9",
-    "url": "/static/media/Golostextregular.4fc25664.woff2"
-  },
-  {
-    "revision": "5e4dce8b1c3a4657dd85ae00b22a745c",
-    "url": "/static/media/Golostextregular.5e4dce8b.ttf"
-  },
-  {
-    "revision": "fb12b14c21e31555933dc0b2639a7656",
-    "url": "/static/media/Golostextregular.fb12b14c.woff"
+    "revision": "015c6bdc449e4231f053e74bdea97858",
+    "url": "/static/media/Golostextregular.015c6bdc.ttf"
   },
   {
     "revision": "c7ccb32b9ddb2b139cc42eff13e00772",
