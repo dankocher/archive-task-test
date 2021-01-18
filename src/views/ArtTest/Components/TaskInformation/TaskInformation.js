@@ -12,13 +12,14 @@ function TaskInformation() {
 
   const currentTest = useSelector((state) => state.testStorage[currentTestId]);
 
-  const lastTaskNumber = currentTest.lastTaskNumber;
+  const tasksCounter = currentTest.tasksCounter;
 
-  const currentTaskNumber = currentTest.taskList?.[currentTaskIndex].task_number;
+  const currentTaskNumber =
+    currentTest.taskList?.[currentTaskIndex].task_number;
 
   return (
     <div className={styles.container}>
-      <span>{`Задание  ${currentTaskNumber} из ${lastTaskNumber}`}</span>
+      <span>{`Задание  ${currentTaskNumber} из ${tasksCounter}`}</span>
       <Timer />
     </div>
   );
