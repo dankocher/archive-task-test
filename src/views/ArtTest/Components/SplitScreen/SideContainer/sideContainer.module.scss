@@ -11,7 +11,6 @@
 
     .container {
       margin-bottom: $px40;
-      color: $neutral-6;
 
       & :first-child {
         margin-bottom: $px24;
@@ -22,12 +21,14 @@
         font-size: 24px;
         line-height: 28px;
         letter-spacing: 0.4px;
+        color: $neutral-900;
       }
 
       p {
         font-family: "Golos-Regular";
         font-size: 16px;
         line-height: 22px;
+        color: $neutral-800;
       }
     }
   }

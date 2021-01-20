@@ -1,7 +1,7 @@
 @import "../../../../assets/styles/foundations.scss";
 
 .btn {
-  height: $px61;
+  height: $px52;
   width: 20.25rem; //new
   border-radius: $px5;
   outline: none;
@@ -10,31 +10,31 @@
 
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-  font-family: "Golos-Medium";
-  font-size: 20px;
+  font-family: "Roboto-Medium";
   font-weight: 500;
-  line-height: 24px;
+  font-size: 20px;
+  line-height: 28px;
 }
 
 .black {
-  background: $neutral-5;
+  background: $neutral-800;
   color: $white;
   transition: $transitionS;
 
   &:hover {
-    background-color: $neutral-6;
+    background-color: $neutral-900;
   }
 }
 
-.white {
-  border: $px1 solid $neutral-5;
-  background: $white;
-  color: $neutral-5;
-  transition: $transitionS;
+// .white {
+//   border: $px1 solid $neutral-5;
+//   background: $white;
+//   color: $neutral-5;
+//   transition: $transitionS;
 
-  &:hover {
-    border: none;
-    background: $neutral-5;
-    color: $white;
-  }
-}
+//   &:hover {
+//     border: none;
+//     background: $neutral-5;
+//     color: $white;
+//   }
+// }

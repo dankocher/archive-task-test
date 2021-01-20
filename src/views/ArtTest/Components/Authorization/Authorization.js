@@ -51,12 +51,6 @@ function Authorization() {
     setLocalName(value);
   };
 
-  // const onBlureNameHandler = () => {
-  // 	if (onBlured) return;
-  // 	setOnBlured(true);
-  // 	setIsNameValid(isName(name));
-  // };
-
   const onChangeEmailHandler = (event) => {
     const value = event.target.value;
 
@@ -65,12 +59,6 @@ function Authorization() {
 
     setLocalEmail(value);
   };
-
-  // const onBlureEmailHandler = () => {
-  // 	if (onBlured) return;
-  // 	setOnBlured(true);
-  // 	setIsEmailValid(isEmail(email));
-  // };
 
   return (
     <div className={styles.container}>
@@ -86,9 +74,6 @@ function Authorization() {
               className={!isNameValid ? styles.error : null}
               value={name}
               onChange={onChangeNameHandler}
-
-              // onBlur={onBlureNameHandler}
-              // pattern="^[a-zA-Z\s]*$"
             />
             {!isNameValid ? (
               <div className={styles.wrapper__field__errorMessage}>
@@ -104,7 +89,6 @@ function Authorization() {
               className={!isEmailValid ? styles.error : null}
               value={email}
               onChange={onChangeEmailHandler}
-              // onBlur={onBlureEmailHandler}
             />
             {!isEmailValid ? (
               <div className={styles.wrapper__field__errorMessage}>

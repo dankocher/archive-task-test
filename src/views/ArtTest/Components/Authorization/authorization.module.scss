@@ -30,11 +30,11 @@
     width: 20.25rem; //new
 
     & > :first-child {
-      margin-bottom: $px28;
+      margin-bottom: $px24;
     }
 
     & > :last-child {
-      margin-top: $px64;
+      margin-top: $px44;
     }
 
     &__field {
@@ -43,13 +43,13 @@
       width: 100%;
 
       & > :first-child {
-        margin-bottom: $px8;
+        margin-bottom: $px4;
       }
 
       input {
-        font-family: "Golos-Regular";
-        font-size: 16px;
-        line-height: 28px;
+        font-family: "NotoSans-Regular";
+        font-size: 14px;
+        line-height: 20px;
       }
 
       position: relative;
@@ -60,7 +60,7 @@
         position: absolute;
         display: flex;
         align-items: center;
-        top: 93px;
+        top: 82px;
 
         i {
           display: contents;
@@ -69,31 +69,32 @@
         span {
           padding-left: $px4;
 
-          font-family: "Golos-Regular";
-          font-size: 14px;
-          line-height: 18px;
+          font-family: "Roboto-Regular";
+          font-size: 13px;
+          line-height: 17px;
           color: $red;
         }
       }
 
       input {
-        height: $px60;
+        height: $px52;
         border: $borderDefault;
         border-radius: $radius;
         outline: none !important;
-        padding: $px16;
+        padding: $px16 $px14;
 
         &:focus:not(.error) {
-          padding: $px16 $px15;
+          padding: $px16 $px13;
           border: $borderFocus;
         }
       }
 
       label {
-        font-family: "Golos-Medium";
-        font-size: 18px;
-        line-height: 21px;
-        color: $neutral-6;
+        font-family: "Roboto-Medium";
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 22px;
+        color: $neutral-800;
       }
 
       .error {

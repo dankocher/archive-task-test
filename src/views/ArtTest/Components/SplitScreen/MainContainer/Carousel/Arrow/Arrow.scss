@@ -24,24 +24,24 @@
 
 .light--carouselArrow {
   rect {
-    fill: $neutral-2;
+    fill: $neutral-300;
   }
 }
 
 .light--carouselArrow:hover {
   rect {
-    fill: $neutral-4;
+    fill: $neutral-200;
   }
 }
 
-.dark--carouselArrow {
-  rect {
-    fill: $neutral-4;
-  }
-}
+// .dark--carouselArrow {
+//   rect {
+//     fill: $neutral-4;
+//   }
+// }
 
-.dark--carouselArrow:hover {
-  rect {
-    fill: $neutral-5;
-  }
-}
+// .dark--carouselArrow:hover {
+//   rect {
+//     fill: $neutral-5;
+//   }
+// }

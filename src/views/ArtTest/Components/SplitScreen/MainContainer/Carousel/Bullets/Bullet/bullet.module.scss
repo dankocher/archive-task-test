@@ -15,7 +15,7 @@
     height: $px10;
     width: $px10;
 
-    background-color: $neutral-4;
+    background-color: $neutral-700;
     box-shadow: 0px 0px 1px rgba(255, 255, 255, 0.5);
   }
 
@@ -23,11 +23,11 @@
     height: $px6;
     width: $px6;
 
-    background-color: $neutral-1;
+    background-color: $neutral-300;
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
-    
+
     &:hover {
-      background-color: $neutral-4;
+      background-color: $neutral-700;
     }
   }
 }

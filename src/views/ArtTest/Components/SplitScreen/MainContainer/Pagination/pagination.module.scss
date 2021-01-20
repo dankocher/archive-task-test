@@ -19,13 +19,13 @@
 
     &:hover {
       path {
-        fill: $neutral-6;
+        fill: $neutral-800;
       }
     }
 
     &:disabled {
       path {
-        fill: $neutral-2;
+        fill: $neutral-900;
       }
     }
   }
@@ -34,7 +34,7 @@
     font-family: "Golos-Regular";
     font-size: 18px;
     line-height: 22px;
-    color: $neutral-6;
+    color: $neutral-900;
     margin: 0 $px12;
   }
 

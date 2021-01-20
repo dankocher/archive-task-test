@@ -36,7 +36,7 @@
       transition: background-color $transitionS;
 
       &:hover {
-        background-color: $neutral-5;
+        background-color: $neutral-800;
       }
     }
   }
@@ -96,7 +96,7 @@
       top: 0;
       left: calc(100vw - 50%);
       transform: translateX(-50%);
-      background-color: $neutral-4;
+      background-color: $neutral-700;
       border-radius: $radius;
 
       & > :first-child {
