@@ -28,6 +28,7 @@ import { deleteTest } from "../../../../redux/actions/testActions";
 import {
   getTaskIdListFromServer,
   saveResults,
+  getCurrentTime,
 } from "../../helpers/workWithApi";
 
 const getPage = (taskType) => {
@@ -65,6 +66,7 @@ function Loader() {
   const resultStorage = useSelector(
     (state) => state.resultStorage[currentTestId]
   );
+
   const endDate = resultStorage?.end_date;
 
   useEffect(() => {

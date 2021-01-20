@@ -6,6 +6,7 @@ import {
   SET_MAX_OPENED_SUBTASK_INDEX,
   SESSION_START,
   DELETE_TEST,
+  SET_CURRENT_TIME,
 } from "../actions/testActions";
 
 import { sessionStart } from "../reducerHelpers";
@@ -58,8 +59,16 @@ function testStorage(state = initialState, action) {
         },
       });
 
+    case SET_CURRENT_TIME:
+      return update(state, {
+        currentTime: {
+          $set: action.payload,
+        },
+      });
+
     case DELETE_TEST:
       return initialState;
+
     default:
       return state;
   }

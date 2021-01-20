@@ -12,6 +12,7 @@ function Timer({ type }) {
   const [currentTimerMS, setCurrentTimerMS] = useState(undefined);
   const [currentTimer, setCurrentTimer] = useState(undefined);
 
+  const currentTime = useSelector((state) => state.testStorage.currentTime);
   const currentTestId = useSelector((state) => state.testStorage.currentTestId);
   const currentTaskIndex = useSelector(
     (state) => state.testStorage?.[currentTestId]?.currentTaskIndex
@@ -29,24 +30,25 @@ function Timer({ type }) {
     (state) => state.testStorage[currentTestId]?.taskList?.[currentTaskIndex]
   );
 
-  const isTimeConsidered = task.isTimeConsidered;
+  const isTimeDisplay = task.isTimeDisplayForUser;
 
   useEffect(() => {
-    if ((type === "test" && testStart == null) || taskStart == null) return;
+    let startDate;
+    if (type === "test") {
+      if (testStart == null || currentTimerMS != null) return;
+      startDate = testStart;
+    } else if (taskStart == null) return;
+    else startDate = taskStart;
 
-    const startDate = type === "test" ? testStart : taskStart;
+    if (currentTime < startDate) return;
 
-    getCurrentTime().then((time) => {
-      setCurrentTimerMS(time - startDate);
-    });
-  }, [testStart, taskStart]);
+    setCurrentTimerMS(currentTime - startDate);
+  }, [currentTime, taskStart]);
 
   const tick = () => {
     if (currentTimerMS == null) return;
 
     setCurrentTimerMS((timer) => timer + 1000);
-
-    // if (currentTimerMS < 0) return;
 
     const timerInSeconds = currentTimerMS / 1000;
     const seconds = Math.floor(timerInSeconds % 60);
@@ -54,9 +56,7 @@ function Timer({ type }) {
     const timerInMinutes = timerInSeconds / 60;
     const minutes = Math.floor(timerInMinutes % 60);
 
-    const hours = Math.floor((timerInMinutes / 60) % 24);
-
-    // const days = Math.floor(hours / 24);
+    const hours = Math.floor(timerInMinutes / 60);
 
     let parsedTimer;
 
@@ -78,18 +78,22 @@ function Timer({ type }) {
   };
 
   useEffect(() => {
-    if (type !== "test" && !isTimeConsidered) return;
+    if (!isTimeDisplay) return;
+
+    if (currentTimer == null) {
+      tick();
+    }
 
     const interval = setInterval(tick, 1000);
 
     return () => {
       clearInterval(interval);
     };
-  }, [taskStart, isTimeConsidered, currentTimerMS]);
+  }, [taskStart, isTimeDisplay, currentTimerMS, currentTime]);
 
   return (
     <>
-      <span className="font-timer">{currentTimer || ""}</span>
+      <span className="font-timer">{currentTimer}</span>
     </>
   );
 }

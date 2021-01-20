@@ -31,7 +31,7 @@ function BigTextMainContainer() {
     dispatch(
       startTaskThunk(taskId, resultIndex, wordList, radioButtonTaskList)
     );
-  }, []);
+  }, [currentTaskIndex]);
 
   return (
     <div className={styles.container}>
