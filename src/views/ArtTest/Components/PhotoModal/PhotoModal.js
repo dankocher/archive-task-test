@@ -39,8 +39,6 @@ function PhotoModal({
       zoomOut={{ step: 7.5 }}
       defaultPositionX={0}
       defaultPositionY={0}
-      // positionX={0}
-      // positionY={0}
     >
       {({
         setScale,
@@ -52,14 +50,12 @@ function PhotoModal({
       }) => (
         <React.Fragment>
           <div className={styles.container}>
-            <div className={styles.container__wrapperRelative}>
-              <button
-                onClick={(event) => handlerCloseButton(event, resetTransform)}
-                className={`hidden-button ${styles.container__wrapperRelative__closeBtn}`}
-              >
-                <i>{closeIcon}</i>
-              </button>
-            </div>
+            <button
+              onClick={(event) => handlerCloseButton(event, resetTransform)}
+              className={`hidden-button ${styles.container__closeBtn}`}
+            >
+              <i>{closeIcon}</i>
+            </button>
 
             {isLeftArrowVisible() ? null : (
               <div className={styles.container__leftArrow}>
@@ -83,15 +79,13 @@ function PhotoModal({
               </div>
             )}
 
-            <div className={styles.container__zoomWrapper}>
-              <div className={styles.container__zoomWrapper__zoomContainer}>
-                <ZoomController
-                  zoomIn={zoomIn}
-                  zoomOut={zoomOut}
-                  resetTransform={resetTransform}
-                  maxScaleCounter={MAX_SCALE_COUNTER}
-                />
-              </div>
+            <div className={styles.container__zoomContainer}>
+              <ZoomController
+                zoomIn={zoomIn}
+                zoomOut={zoomOut}
+                resetTransform={resetTransform}
+                maxScaleCounter={MAX_SCALE_COUNTER}
+              />
             </div>
           </div>
         </React.Fragment>
