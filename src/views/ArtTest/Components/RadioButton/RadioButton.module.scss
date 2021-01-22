@@ -6,7 +6,7 @@ input[type="radio"] {
 
 .container {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   cursor: pointer;
 
   * {
@@ -15,6 +15,7 @@ input[type="radio"] {
 
   & > :first-child {
     margin-right: $px20;
+    margin-top: $px1;
   }
 
   transition: $transitionS;

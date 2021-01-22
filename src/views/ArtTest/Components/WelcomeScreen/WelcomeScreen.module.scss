@@ -33,25 +33,26 @@
     // user-select: none; /* Standard */
 
     & > :first-child {
-      margin-bottom: $px40;
+      margin-bottom: $px28;
     }
 
     & > :last-child {
-      margin-top: $px40;
+      margin-top: $px64;
     }
 
     h1 {
-      font-family: "Golos-Bold";
-      font-size: 74px;
-      line-height: 74px;
-      letter-spacing: 1px;
+      font-family: "Roboto-Medium";
+      font-weight: 500;
+      font-size: 48px;
+      line-height: 56px;
+      letter-spacing: -0.005em;
       color: $neutral-900;
     }
 
     p {
-      font-family: "Golos-Regular";
+      font-family: "Roboto-Regular";
       font-size: 24px;
-      line-height: 29px;
+      line-height: 32px;
       color: $neutral-800;
     }
   }
@@ -85,12 +86,14 @@
 
 @media screen and (max-width: 2442px) {
   .contentContainer__sideContainer h1 {
-    font-size: 48px;
-    line-height: 50px;
+    font-size: 34px;
+    line-height: 40px;
+    letter-spacing: 0.0025em;
   }
 
   .contentContainer__sideContainer p {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 22px;
+    letter-spacing: 0.0015em;
   }
 }

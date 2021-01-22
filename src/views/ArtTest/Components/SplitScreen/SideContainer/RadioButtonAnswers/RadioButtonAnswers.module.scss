@@ -1,24 +1,28 @@
 @import "../../../../../../assets/styles/foundations.scss";
 
 .title {
-  margin-bottom: $px24;
+  margin-bottom: $px20;
 
-  font-family: "Golos-DemiBold";
-  font-weight: 600;
+  font-family: "Roboto-Medium";
+  font-weight: 500;
   font-size: 20px;
-  line-height: 20px;
+  line-height: 28px;
+  letter-spacing: 0.0015em;
 }
 
 .container {
-  margin-bottom: $px36;
+  margin-bottom: $px32;
 
   & > label {
     padding: $px4 0;
   }
 
   label {
-    font-family: "Golos-Regular";
+    font-family: "Roboto-Regular";
+    font-weight: 400;
     font-size: 16px;
     line-height: 22px;
+    letter-spacing: 0.0015em;
+    color: $neutral-800;
   }
 }

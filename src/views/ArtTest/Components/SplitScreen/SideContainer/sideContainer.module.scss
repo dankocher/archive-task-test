@@ -7,27 +7,28 @@
   box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.1);
 
   &__body {
-    margin: $px48 0;
+    margin: $px50 0 $px64;
 
     .container {
       margin-bottom: $px40;
 
       & :first-child {
-        margin-bottom: $px24;
+        margin-bottom: $px20;
       }
 
       h2 {
-        font-family: "Golos-Bold";
+        font-family: "Roboto-Regular";
         font-size: 24px;
-        line-height: 28px;
-        letter-spacing: 0.4px;
+        line-height: 32px;
+        font-weight: 400;
         color: $neutral-900;
       }
 
       p {
-        font-family: "Golos-Regular";
+        font-family: "Roboto-Regular";
         font-size: 16px;
         line-height: 22px;
+        letter-spacing: 0.0015em;
         color: $neutral-800;
       }
     }

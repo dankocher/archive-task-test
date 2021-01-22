@@ -10,76 +10,76 @@ import { setAnswerOfWordsRadioButtons } from "../../../../../../redux/actions/re
 import { useGetResultIndex } from "../../../../helpers/customHooks/getResultIndex";
 
 function RadioButtonAnswers(props) {
-	const { index, radioButtonTask } = props;
+  const { index, radioButtonTask } = props;
 
-	const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-	// const [checkedValue, setCheckedValue] = useState("");
+  // const [checkedValue, setCheckedValue] = useState("");
 
-	const resultIndex = useGetResultIndex();
+  const resultIndex = useGetResultIndex();
 
-	const currentTestId = useSelector((state) => state.testStorage.currentTestId);
+  const currentTestId = useSelector((state) => state.testStorage.currentTestId);
 
-	const currentSubTaskIndex = useSelector(
-		(state) => state.testStorage[currentTestId].currentSubTaskIndex
-	);
-	const checkedValue = useSelector(
-		(state) =>
-			state.resultStorage[currentTestId]?.results[resultIndex]?.data[
-				currentSubTaskIndex
-			]?.answers[index]?.optionId
-	);
+  const currentSubTaskIndex = useSelector(
+    (state) => state.testStorage[currentTestId].currentSubTaskIndex
+  );
+  const checkedValue = useSelector(
+    (state) =>
+      state.resultStorage[currentTestId]?.results[resultIndex]?.data[
+        currentSubTaskIndex
+      ]?.answers[index]?.optionId
+  );
 
-	const isNextBtnClicked = useSelector(
-		(state) => state.testStorage[currentTestId].isNextBtnClicked
-	);
+  const isNextBtnClicked = useSelector(
+    (state) => state.testStorage[currentTestId].isNextBtnClicked
+  );
 
-	const chooseOption = (event) => {
-		const value = parseInt(event.target.value);
-		dispatch(
-			setAnswerOfWordsRadioButtons(
-				currentTestId,
-				value,
-				resultIndex,
-				currentSubTaskIndex,
-				index
-			)
-		);
-	};
+  const chooseOption = (event) => {
+    const value = parseInt(event.target.value);
+    dispatch(
+      setAnswerOfWordsRadioButtons(
+        currentTestId,
+        value,
+        resultIndex,
+        currentSubTaskIndex,
+        index
+      )
+    );
+  };
 
-	const isValid = () => {
-		if (!isNextBtnClicked) return true;
-		if (checkedValue != null) return true;
-		return false;
-	};
+  const isValid = () => {
+    if (!isNextBtnClicked) return true;
+    if (checkedValue != null) return true;
+    return false;
+  };
 
-	const chooseColor = () => {
-		return isValid() ? "#323232" : "#EB5757";
-	};
+  const chooseColor = () => {
+    return isValid() ? "#212121" : "#da1414";
+  };
 
-	return (
-		<>
-			<h3 style={{ color: chooseColor() }} className={styles.title}>
-				{radioButtonTask.question}
-			</h3>
-			<div className={styles.container}>
-				{radioButtonTask.radioButtonOptionList.map((element, key) => {
-					return (
-						<RadioButton
-							key={key}
-							id={`${element.option}-${index}-${key + element.id}`}
-							name={`${radioButtonTask.question}-${index}`}
-							color={chooseColor()}
-							value={`${element.id}`}
-							label={element.option}
-							onChange={chooseOption}
-							checkedValue={`${checkedValue}`}
-						/>
-					);
-				})}
-			</div>
-		</>
-	);
+  return (
+    <>
+      <h3 style={{ color: chooseColor() }} className={styles.title}>
+        {radioButtonTask.question}
+      </h3>
+      <div className={styles.container}>
+        {radioButtonTask.radioButtonOptionList.map((element, key) => {
+          return (
+            <RadioButton
+              key={key}
+              id={`${element.option}-${index}-${key + element.id}`}
+              name={`${radioButtonTask.question}-${index}`}
+              color={chooseColor()}
+              value={`${element.id}`}
+              label={element.option}
+              onChange={chooseOption}
+              checkedValue={`${checkedValue}`}
+            />
+          );
+        })}
+      </div>
+    </>
+  );
 }
 
 export default RadioButtonAnswers;

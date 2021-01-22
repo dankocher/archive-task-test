@@ -31,11 +31,14 @@
   }
 
   &__paginationInfo {
-    font-family: "Golos-Regular";
-    font-size: 18px;
-    line-height: 22px;
-    color: $neutral-900;
     margin: 0 $px12;
+
+    font-family: "Roboto-Regular";
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 400;
+    letter-spacing: 0.0015em;
+    color: $neutral-900;
   }
 
   &__rightArrow {

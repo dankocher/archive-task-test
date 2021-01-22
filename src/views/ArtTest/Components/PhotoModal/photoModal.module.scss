@@ -93,7 +93,7 @@
     &__zoomContainer {
       position: absolute;
       display: flex;
-      top: 0;
+      bottom: $px20;
       left: calc(100vw - 50%);
       transform: translateX(-50%);
       background-color: $neutral-700;

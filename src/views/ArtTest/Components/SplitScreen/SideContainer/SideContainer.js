@@ -65,7 +65,7 @@ function SideContainer() {
         </div>
       </div>
       <Button
-        color="white"
+        color="black"
         label="Продолжить"
         onClick={nextButtonClickedHandle}
       />

@@ -5,9 +5,9 @@
   border: $borderDefault;
   border-radius: $radius;
 
-  font-family: "Golos-Regular";
-  font-size: 16px;
-  line-height: 22px;
+  // font-family: "Roboto-Regular";
+  // font-size: 16px;
+  // line-height: 22px;
 
   & > :first-child {
     margin-bottom: $px8;
@@ -18,12 +18,19 @@
   }
 
   &__question {
-    font-family: "Golos-Medium";
+    font-family: "Roboto-Medium";
     font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: 0.0015em;
     color: $neutral-900;
   }
 
   &__description {
+    font-family: "Roboto-Regular";
+    font-size: 13px;
+    line-height: 17px;
+    letter-spacing: 0.004em;
     color: $neutral-700;
   }
 }
@@ -43,15 +50,19 @@
     }
 
     span {
-      font-family: "Golos-Regular";
       padding-left: $px4;
-      font-size: 14px;
-      line-height: 18px;
+
+      font-family: "Roboto-Regular";
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 17px;
+      letter-spacing: 0.004em;
       color: $red;
     }
   }
 }
 
 .error {
+  padding: $px43 $px38;
   border: $borderError;
 }

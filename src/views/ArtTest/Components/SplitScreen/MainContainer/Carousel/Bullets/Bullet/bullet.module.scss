@@ -26,6 +26,8 @@
     background-color: $neutral-300;
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
 
+    transition: background-color $transitionS;
+
     &:hover {
       background-color: $neutral-700;
     }

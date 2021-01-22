@@ -122,7 +122,7 @@ function QuestionPage() {
             })}
           </div>
 
-          <Button color="white" label="Продолжить" onClick={toNextTask} />
+          <Button color="black" label="Продолжить" onClick={toNextTask} />
         </div>
       </div>
     </>

@@ -52,15 +52,15 @@ function ArtTest() {
   // }, [currentTime]);
 
   const checkWindowSize = () => {
-    if (windowSize.width < 1366 || windowSize.height < 625) {
-      return <DeviceError />;
-    } else {
-      return (
-        <div className="mainContainer">
-          {currentTime != null && isRehydrated ? <Loader /> : null}
-        </div>
-      );
-    }
+    // if (windowSize.width < 1366 || windowSize.height < 625) {
+    //   return <DeviceError />;
+    // } else {
+    return (
+      <div className="mainContainer">
+        {currentTime != null && isRehydrated ? <Loader /> : null}
+      </div>
+    );
+    // }
   };
 
   return <>{checkWindowSize()}</>;

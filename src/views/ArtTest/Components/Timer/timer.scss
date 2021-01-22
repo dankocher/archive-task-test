@@ -1,8 +1,10 @@
 @import "../../../../assets/styles/foundations.scss";
 
 .font-timer {
-  font-family: "Golos-Regular";
-  font-size: 18px;
+  font-family: "Roboto-Regular";
+  font-weight: 400;
+  font-size: 16px;
   line-height: 22px;
+  letter-spacing: 0.0015em;
   color: $neutral-900;
 }
