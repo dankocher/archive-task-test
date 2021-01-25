@@ -1,38 +1,41 @@
 @import "../../../../../../../assets/styles/foundations.scss";
 
-.arrowIcon-left {
+.carouselArrow-left {
   transform: rotate(180deg);
 }
 
 .carouselArrow-left,
 .carouselArrow-right {
   display: flex;
-  height: $px48;
-  width: $px48;
+  // height: $px48;
+  // width: $px48;
   border-radius: $px4;
-
-  rect {
-    transition: fill $transitionS;
-  }
 
   i {
     height: inherit;
     width: inherit;
     display: block;
+
+    color: $neutral-300;
+    font-size: 60px;
+    text-shadow: 0px 0px 2px #212121;
+
+    transition: color $transitionS, text-shadow $transitionS;
+
+    &:hover {
+      color: $neutral-200;
+      text-shadow: 0px 0px 5px #000000;
+    }
   }
 }
 
-.light--carouselArrow {
-  rect {
-    fill: $neutral-300;
-  }
-}
+// .arrow_shadowing {
+//   text-shadow: 2px 2px 2px #ff0000;
+// }
 
-.light--carouselArrow:hover {
-  rect {
-    fill: $neutral-200;
-  }
-}
+// .light--carouselArrow {
+
+// }
 
 // .dark--carouselArrow {
 //   rect {

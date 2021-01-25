@@ -1,25 +1,29 @@
 @import "../assets/fonts/Roboto/roboto.css";
 
+html {
+  overflow: auto;
+}
+
 body {
   margin: 0;
   font-family: "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
     "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /*font-family: Roboto;*/
-  font-style: normal;
-  // font-weight: 300;
-  font-size: 13px;
+
+  overflow-y: scroll;
+  overflow-x: hidden;
 
   ::-webkit-scrollbar {
     width: 10px;
     background: #eeeeee;
-    border-radius: 0 4px 4px 0;
+
+    // overflow-y: overlay;
   }
 
   ::-webkit-scrollbar-thumb {
-    width: 100%;
     background: #999;
+    -webkit-border-radius: 6px;
     border-radius: 6px;
   }
 }
@@ -34,6 +38,5 @@ body,
 #root {
   min-width: 100%;
   height: 100%;
-  overflow-y: overlay !important;
-  // overflow-x: hidden !important;
+  // overflow-y: hidden !important;
 }
