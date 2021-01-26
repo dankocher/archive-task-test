@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, Children } from "react";
+import Linkify from "react-linkify";
 
 import styles from "./textArea.module.scss";
 
@@ -66,7 +67,9 @@ function TextArea(props) {
       className={props.className != null ? props.className : defaultStyles}
       onChange={onChangeHandler}
       onBlur={() => onBlur(text)}
-    />
+    >
+      <Linkify>{Children}</Linkify>
+    </textarea>
   );
 }
 

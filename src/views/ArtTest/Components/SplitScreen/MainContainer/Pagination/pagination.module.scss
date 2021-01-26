@@ -8,6 +8,7 @@
   button {
     height: $px40;
     cursor: pointer;
+    border-radius: $radius;
 
     i {
       display: block;
@@ -17,10 +18,14 @@
       transition: fill $transitionS;
     }
 
+    transition: background $transitionS;
+
     &:hover {
       path {
         fill: $neutral-900;
       }
+
+      background: $neutral-200;
     }
   }
 

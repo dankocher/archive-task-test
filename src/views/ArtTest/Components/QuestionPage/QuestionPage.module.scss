@@ -23,7 +23,6 @@
     }
 
     h2 {
-      padding-left: $px40;
       margin-bottom: $px38;
 
       font-family: "Roboto-Medium";
@@ -35,7 +34,7 @@
     }
 
     &__body {
-      margin-bottom: $px36;
+      margin-bottom: $px64;
 
       & > :not(:last-child) {
         margin-bottom: $px27;

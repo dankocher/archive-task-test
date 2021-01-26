@@ -10,7 +10,7 @@
   // line-height: 22px;
 
   & > :first-child {
-    margin-bottom: $px8;
+    margin-bottom: $px12;
   }
 
   & > :nth-child(2) {
@@ -18,19 +18,18 @@
   }
 
   &__question {
-    font-family: "Roboto-Medium";
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 28px;
-    letter-spacing: 0.0015em;
+    font-family: "Roboto-Regular";
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
     color: $neutral-900;
   }
 
   &__description {
     font-family: "Roboto-Regular";
-    font-size: 13px;
-    line-height: 17px;
-    letter-spacing: 0.004em;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.0015em;
     color: $neutral-700;
   }
 }
