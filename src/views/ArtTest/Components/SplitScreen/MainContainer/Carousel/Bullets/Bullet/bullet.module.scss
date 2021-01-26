@@ -4,6 +4,13 @@
   display: flex;
   height: $px12;
   width: $px12;
+  cursor: pointer;
+
+  &:hover {
+    .default {
+      background-color: $neutral-700;
+    }
+  }
 
   .active,
   .default {
@@ -28,8 +35,8 @@
 
     transition: background-color $transitionS;
 
-    &:hover {
-      background-color: $neutral-700;
-    }
+    // &:hover {
+    //   background-color: $neutral-700;
+    // }
   }
 }

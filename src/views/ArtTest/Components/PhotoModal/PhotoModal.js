@@ -1,5 +1,5 @@
 import styles from "./photoModal.module.scss";
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import {
@@ -22,6 +22,8 @@ function PhotoModal({
   isRightArrowVisible,
 }) {
   const dispatch = useDispatch();
+
+  const [isImgLoaded, setIsImgLoaded] = useState(false);
 
   const handlerCloseButton = (event) => {
     event.stopPropagation();
@@ -69,7 +71,12 @@ function PhotoModal({
 
             <div className={styles.container__imgContainer}>
               <TransformComponent>
-                <img src={currentImgUrl} alt={""} />
+                {isImgLoaded ? null : <div />}
+                <img
+                  src={currentImgUrl}
+                  style={isImgLoaded ? {} : { display: "none" }}
+                  onLoad={() => setIsImgLoaded(true)}
+                />
               </TransformComponent>
             </div>
 

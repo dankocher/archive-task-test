@@ -31,9 +31,6 @@
 
   &__leftArrow,
   &__rightArrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
     visibility: hidden;
   }
 }

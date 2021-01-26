@@ -2,49 +2,41 @@
 
 .carouselArrow-left {
   transform: rotate(180deg);
+  left: 0;
+}
+
+.carouselArrow-right {
+  right: 0;
 }
 
 .carouselArrow-left,
 .carouselArrow-right {
+  position: absolute;
   display: flex;
-  // height: $px48;
-  // width: $px48;
-  border-radius: $px4;
+
+  height: 100%;
+  width: 100px;
+
+  padding: 0 $px20;
+
+  &:hover {
+    i {
+      color: $neutral-200;
+      text-shadow: 0px 0px 5px #000000;
+    }
+  }
 
   i {
-    height: inherit;
-    width: inherit;
+    position: absolute;
     display: block;
+
+    top: 50%;
+    transform: translateY(-50%);
 
     color: $neutral-300;
     font-size: 60px;
     text-shadow: 0px 0px 2px #212121;
 
     transition: color $transitionS, text-shadow $transitionS;
-
-    &:hover {
-      color: $neutral-200;
-      text-shadow: 0px 0px 5px #000000;
-    }
   }
 }
-
-// .arrow_shadowing {
-//   text-shadow: 2px 2px 2px #ff0000;
-// }
-
-// .light--carouselArrow {
-
-// }
-
-// .dark--carouselArrow {
-//   rect {
-//     fill: $neutral-4;
-//   }
-// }
-
-// .dark--carouselArrow:hover {
-//   rect {
-//     fill: $neutral-5;
-//   }
-// }

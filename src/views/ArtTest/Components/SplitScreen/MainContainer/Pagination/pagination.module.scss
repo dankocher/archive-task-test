@@ -19,12 +19,6 @@
 
     &:hover {
       path {
-        fill: $neutral-800;
-      }
-    }
-
-    &:disabled {
-      path {
         fill: $neutral-900;
       }
     }

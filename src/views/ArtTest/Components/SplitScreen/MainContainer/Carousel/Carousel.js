@@ -21,6 +21,8 @@ function Carousel() {
 
   const resultIndex = useGetResultIndex();
 
+  const [isImgLoaded, setIsImgLoaded] = useState(false);
+
   const currentImageIndex = useSelector(
     (state) => state.caruselReducer.current
   );
@@ -99,15 +101,23 @@ function Carousel() {
             <Arrow isToLeft={true} isDark={true} />
           </div>
         )}
+
+        {isImgLoaded ? null : <div />}
         <img
           onClick={handleImgOnClick}
-          style={isHiddenPhotoModal ? {} : { visibility: "hidden" }}
+          style={
+            isHiddenPhotoModal
+              ? isImgLoaded
+                ? {}
+                : { display: "none" }
+              : { visibility: "hidden" }
+          }
           src={currentImgUrl}
-          alt={""}
+          onLoad={() => setIsImgLoaded(true)}
         />
         {isRightArrowVisible() ? null : (
           <div className={styles.container__rightArrow}>
-            <Arrow isDark={true} />
+            <Arrow />
           </div>
         )}
 

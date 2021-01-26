@@ -1,5 +1,5 @@
 import styles from "./WelcomeScreen.module.scss";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getImgPath } from "../../helpers/getImgPath";
@@ -19,6 +19,8 @@ function WelcomeScreen() {
   const dispatch = useDispatch();
 
   const resultIndex = useGetResultIndex();
+
+  const [isImgLoaded, setIsImgLoaded] = useState(false);
 
   const currentTestId = useSelector((state) => state.testStorage.currentTestId);
   const currentTaskIndex = useSelector(
@@ -74,7 +76,12 @@ function WelcomeScreen() {
         </div>
         {img != null ? (
           <div className={styles.contentContainer__imgContainer}>
-            <img src={imgUrl} />
+            {isImgLoaded ? null : <div />}
+            <img
+              src={imgUrl}
+              style={isImgLoaded ? {} : { display: "none" }}
+              onLoad={() => setIsImgLoaded(true)}
+            />
           </div>
         ) : null}
       </div>
