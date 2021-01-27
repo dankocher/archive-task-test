@@ -1,5 +1,5 @@
 import styles from "./carousel.module.scss";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import {
@@ -18,12 +18,12 @@ import PhotoModal from "../../../PhotoModal/PhotoModal";
 
 function Carousel() {
   const dispatch = useDispatch();
-  const imgRef = useRef(0);
 
   const resultIndex = useGetResultIndex();
 
   const [isImgLoaded, setIsImgLoaded] = useState(false);
-  const imgDisplay = imgRef.current.style?.display;
+  const [isImgVisible, setIsImgVisible] = useState(true);
+  const [imageList, setImageList] = useState([]);
 
   const currentImageIndex = useSelector(
     (state) => state.caruselReducer.current
@@ -47,22 +47,19 @@ function Carousel() {
   );
   const radioButtonTaskList = task.data.radioButtonTaskList;
 
-  const imageList = imgGrid[currentSubTaskIndex]?.imgColumnList;
-
   useEffect(() => {
-    imgRef.current.style.display = "none";
-    setIsImgLoaded(false);
+    setImageList(imgGrid[currentSubTaskIndex]?.imgColumnList);
+
+    if (!isImgLoaded) return;
+    setIsImgVisible(false);
   }, [currentSubTaskIndex]);
 
   useEffect(() => {
-    if (!isImgLoaded) return;
-    imgRef.current.style.display = "block";
-  }, [isImgLoaded]);
+    if (isImgVisible) return;
 
-  const currentImgUrl =
-    imageList == null || imageList.length === 0
-      ? require("../../../../utils/img/noImgBig.png")
-      : getImgPath(imageList[currentImageIndex]?.name);
+    setIsImgVisible(true);
+    setIsImgLoaded(false);
+  }, [isImgVisible]);
 
   useEffect(() => {
     if (radioButtonTaskList == null) {
@@ -96,6 +93,11 @@ function Carousel() {
     return isOneImg() || currentImageIndex >= imageList.length - 1;
   };
 
+  const currentImgUrl =
+    imageList == null || imageList.length === 0
+      ? require("../../../../utils/img/noImgBig.png")
+      : getImgPath(imageList[currentImageIndex]?.name);
+
   return (
     <>
       {!isHiddenPhotoModal ? (
@@ -116,17 +118,15 @@ function Carousel() {
 
         {/* {isImgLoaded ? null : <div />} */}
         <img
-          ref={imgRef}
           onClick={handleImgOnClick}
           style={
-            isHiddenPhotoModal
-              ? {}
-              : // ? isImgLoaded
-                //   ? {}
-                //   : { display: "none" }
-                { visibility: "hidden" }
+            isImgLoaded
+              ? isHiddenPhotoModal
+                ? {}
+                : { visibility: "hidden" }
+              : { display: "none" }
           }
-          src={imgDisplay === "none" ? currentImgUrl : ""}
+          src={isImgVisible ? currentImgUrl : ""}
           onLoad={() => setIsImgLoaded(true)}
         />
         {isRightArrowVisible() ? null : (
