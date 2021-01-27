@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 
 const FROM = 1;
-const TO = 2000;
+const TO = 9999;
 
 export const useGetResponseLimitation = () => {
   const currentTestId = useSelector((state) => state.testStorage.currentTestId);
