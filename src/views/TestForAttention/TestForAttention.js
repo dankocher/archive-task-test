@@ -33,6 +33,7 @@ class TestForAttention extends React.Component {
         const {excluded_tasks} = this.props;
         this.setState({excluded_tasks})
         let [__empty__, test_id, uid] = window.location.pathname.split('/');
+        this.setState({test_id})
         //console.log(uid)
         if((uid || '').trim() !== "") {
             this.getUser(uid)
@@ -77,9 +78,11 @@ class TestForAttention extends React.Component {
     };
 
     save = async user => {
+        const {test_id} = this.state;
         user = {
             ...this.state.user,
-            ...user
+            ...user,
+            test_id
         };
 
         if (user.tasks.length === 8 && !user.end_time) {
