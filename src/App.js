@@ -48,9 +48,10 @@ class App extends React.Component {
 
     showTest = () => {
         const { type, excluded_tasks } = this.state;
+        const testType = type === 2 ? 0 : type
         //console.log(type)
 
-        switch (type) {
+        switch (testType) {
             case 0:
                 return <TestForAttention excluded_tasks={excluded_tasks}/>
             case 1:
