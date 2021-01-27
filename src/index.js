@@ -26,4 +26,5 @@ ReactDOM.render(
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
+//6011346590d50e99ab9b0b42
 serviceWorker.unregister();

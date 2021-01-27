@@ -30,7 +30,8 @@ class TestForAttention extends React.Component {
     }
 
     componentDidMount() {
-
+        const {excluded_tasks} = this.props;
+        this.setState({excluded_tasks})
         let [__empty__, test_id, uid] = window.location.pathname.split('/');
         //console.log(uid)
         if((uid || '').trim() !== "") {
@@ -42,6 +43,7 @@ class TestForAttention extends React.Component {
 
     getUser = async (ttuid) => {
         let res = await ajax(api.tt_user, {ttuid});
+
         if (res.ok) {
             this.setState({s_user: res.tUser, loaded: true})
         } else {
@@ -111,7 +113,7 @@ class TestForAttention extends React.Component {
     }
 
     render() {
-        const {loaded, user, s_user, test_enabled} = this.state;
+        const {loaded, user, s_user, test_enabled, excluded_tasks} = this.state;
 
         return <div className="App">
             {
@@ -124,7 +126,7 @@ class TestForAttention extends React.Component {
                             <Results user={s_user}/>
                             :
                             user ?
-                                <TTasks user={user} save={this.save}/>
+                                <TTasks excluded_tasks={excluded_tasks} user={user} save={this.save}/>
                                 :
                                 <Loader/>
             }

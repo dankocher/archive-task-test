@@ -82,6 +82,7 @@ class TTasks extends React.Component {
     };
 
     save = async () => {
+        const {excluded_tasks} = this.props;
         let {user, currentTask, completedTask} = this.state;
 
         if (!completedTask) {
@@ -95,7 +96,16 @@ class TTasks extends React.Component {
         user.tasks[currentTask].end_time = new Date().getTime();
         if (currentTask < 7) {
             currentTask++;
+
+            if (excluded_tasks?.includes(currentTask-2)) {
+                for (let i = currentTask; excluded_tasks?.includes(i-2); i++) {
+                    currentTask++
+                }
+            }
             user.tasks[currentTask] = { start_time: new Date().getTime(), id: currentTask, result: {} }
+
+            // currentTask++;
+            // user.tasks[currentTask] = { start_time: new Date().getTime(), id: currentTask, result: {} }
         }
         if (currentTask === 1) {
             user.start_time = new Date().getTime();
@@ -149,6 +159,7 @@ class TTasks extends React.Component {
     };
 
     getTask = () => {
+        const {excluded_tasks} = this.props;
         const {user, currentTask, timeOut, recheck} = this.state;
         const id = currentTask;
         // const id = 5;
