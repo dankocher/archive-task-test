@@ -11,6 +11,8 @@
     font-weight: 500;
     font-size: calc(12.292rem + (1vw - 0.452rem));
     color: $neutral-900;
+
+    animation: $showAnimation;
   }
 }
 

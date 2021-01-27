@@ -14,7 +14,7 @@ import setNextTaskId from "../../thunks/setNextTaskId";
 import { useGetResultIndex } from "../../helpers/customHooks/getResultIndex";
 
 const FROM = 1;
-const TO = 2000;
+const TO = 9999;
 
 function QuestionPage() {
   const dispatch = useDispatch();

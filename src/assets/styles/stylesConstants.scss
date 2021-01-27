@@ -8,3 +8,15 @@ $radius: $px4;
 $borderDefault: $px1 solid $neutral-300;
 $borderFocus: $px2 solid $blue;
 $borderError: $px2 solid $red;
+
+// Animation
+@keyframes fadeImage {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+$showAnimation: fadeImage 350ms ease-in forwards;
