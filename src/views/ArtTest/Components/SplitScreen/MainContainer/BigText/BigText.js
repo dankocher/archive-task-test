@@ -1,5 +1,5 @@
 import styles from "./bigText.module.scss";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { useGetResultIndex } from "../../../../helpers/customHooks/getResultIndex";
@@ -7,6 +7,9 @@ import startTaskThunk from "../../../../thunks/startTaskThunk";
 
 function BigTextMainContainer() {
   const dispatch = useDispatch();
+  const wordRef = useRef(0);
+
+  let wordDisplay = wordRef.current.style?.display;
 
   const resultIndex = useGetResultIndex();
 
@@ -27,6 +30,23 @@ function BigTextMainContainer() {
 
   const word = wordList[currentSubTaskIndex]?.word;
 
+  // useEffect(() => {
+  //   console.log("ODIN");
+  //   console.log(wordDisplay);
+
+  //   wordRef.current.style.display = "none";
+  //   console.log(wordRef.current.style.display);
+  // }, [currentSubTaskIndex]);
+
+  // useEffect(() => {
+  //   console.log("DVA");
+  //   console.log(wordRef.current.style.display);
+
+  //   // if (wordDisplay === "block") return;
+  //   wordRef.current.style.display = "block";
+  //   console.log(wordRef.current.style.display);
+  // }, [wordDisplay]);
+
   useEffect(() => {
     dispatch(
       startTaskThunk(taskId, resultIndex, wordList, radioButtonTaskList)
@@ -35,7 +55,9 @@ function BigTextMainContainer() {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.container__bigText}>{word}</h1>
+      <h1 ref={wordRef} className={styles.container__bigText}>
+        {word}
+      </h1>
     </div>
   );
 }
