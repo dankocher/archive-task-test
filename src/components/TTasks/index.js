@@ -170,7 +170,7 @@ class TTasks extends React.Component {
             user.tasks[id] = task;
         }
         switch (id) {
-            case 0: return <Task0 result={user} onChange={data => this.onChangeTask(id, data)} screen={id} recheck={recheck}/>;
+            case 0: return <Task0 result={user} onChange={data => this.onChangeTask(id, data)} screen={id} recheck={recheck} type={this.props.type}/>;
             case 1: return <Task0 result={user} onChange={data => this.onChangeTask(id, data)} screen={id}/>;
 
             case 2: return <Task1_1 result={task.result} onChange={data => this.onChangeTask(id, data)}/>;

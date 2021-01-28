@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import t from "./language";
 import {TextField} from "@material-ui/core";
+import textViewer from "../../../../utils/textViewer";
 
 class Task0 extends React.Component {
 
@@ -68,7 +69,7 @@ class Task0 extends React.Component {
 
     render() {
         const {email, name, nameBlurred, emailBlurred} = this.state;
-        const {screen} = this.props;
+        const {screen, type} = this.props;
 
         const nameError = nameBlurred && !this.validateName();
         const emailError = emailBlurred && !this.validateEmail();
@@ -92,7 +93,7 @@ class Task0 extends React.Component {
                                            onBlur={() => this.setState({emailBlurred: true})}
                                 />
                             </div>
-                            <div className="t-section">{t.description_end}</div>
+                            <div className="t-section">{textViewer(t.description_end, {time: type === 0 ? '60-90' : '15-30'})}</div>
                         </form>
                         :
                         <div className="t-section">{t.tasks_description}</div>

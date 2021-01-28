@@ -38,9 +38,14 @@ class App extends React.Component {
 
     getTest = async (tt_id) => {
         const res = await ajax(api.td_get_tasks, { tt_id });
-
+        console.log(res)
         if (res.ok && (res.ttask || {}).enabled) {
             this.setState({ type: res.ttask.id, loaded: true, excluded_tasks: res.ttask.excluded_tasks })
+            let title = document.getElementById('test-title')
+            if (title) {
+                title.innerText = res.ttask.name
+                //console.log([title])
+            }
         } else {
             this.setState({ loaded: true, test_enabled: false })
         }
@@ -53,7 +58,7 @@ class App extends React.Component {
 
         switch (testType) {
             case 0:
-                return <TestForAttention excluded_tasks={excluded_tasks}/>
+                return <TestForAttention excluded_tasks={excluded_tasks} type={type}/>
             case 1:
                 return <ArtTest/>
             default:
