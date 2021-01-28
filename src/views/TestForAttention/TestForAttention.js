@@ -129,7 +129,7 @@ class TestForAttention extends React.Component {
                             <Results user={s_user}/>
                             :
                             user ?
-                                <TTasks excluded_tasks={excluded_tasks} user={user} save={this.save}/>
+                                <TTasks excluded_tasks={excluded_tasks} user={user} save={this.save} type={this.props.type}/>
                                 :
                                 <Loader/>
             }
