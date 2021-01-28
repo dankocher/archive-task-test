@@ -7,9 +7,6 @@ import startTaskThunk from "../../../../thunks/startTaskThunk";
 
 function BigTextMainContainer() {
   const dispatch = useDispatch();
-  // const wordRef = useRef(0);
-
-  // let wordDisplay = wordRef.current.style?.display;
 
   const [isWordVisible, setIsWordVisible] = useState(true);
   const [word, setWord] = useState(true);
@@ -32,14 +29,18 @@ function BigTextMainContainer() {
   );
 
   useEffect(() => {
-    console.log("asd");
-    setIsWordVisible(false);
     setWord(wordList[currentSubTaskIndex]?.word);
+
+    if (!isWordVisible) return;
+    setIsWordVisible(false);
   }, [currentSubTaskIndex]);
 
   useEffect(() => {
     if (isWordVisible) return;
-    setIsWordVisible(true);
+
+    setTimeout(() => {
+      setIsWordVisible(true);
+    }, 50);
   }, [isWordVisible]);
 
   useEffect(() => {
@@ -51,8 +52,7 @@ function BigTextMainContainer() {
   return (
     <div className={styles.container}>
       <h1
-        style={!isWordVisible ? { display: "none" } : {}}
-        // ref={wordRef}
+        style={isWordVisible ? {} : { display: "none" }}
         className={styles.container__bigText}
       >
         {word}
