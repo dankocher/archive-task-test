@@ -1,5 +1,7 @@
 @import "../../../../assets/styles/foundations.scss";
 
+$paddings: $px64;
+
 .container {
   position: fixed;
   top: 0;
@@ -33,18 +35,25 @@
 
   &__leftArrow,
   &__rightArrow {
+    height: calc(100% - #{$paddings} * 2);
+    width: 12.75rem;
+
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 100;
+    top: $paddings;
+
+    & > :first-child {
+      padding: 0 $px72;
+    }
+
+    z-index: 150;
   }
 
   &__leftArrow {
-    left: $px48;
+    left: 0;
   }
 
   &__rightArrow {
-    right: $px48;
+    right: 0;
   }
 
   &__imgContainer {
@@ -61,14 +70,12 @@
       & > :first-child {
         height: 100%;
         width: 100%;
-        padding: $px64 0;
+        padding: $paddings 0;
 
         img {
           max-width: 100%;
           max-height: 100%;
           margin: auto;
-
-          // box-shadow: 0px 0px 25px 7px rgba(50, 50, 50, 0.15);
         }
       }
     }

@@ -10,12 +10,7 @@ import {
 
 const classNames = require("classnames");
 
-function Arrow({
-  // isDark = false,
-  isToLeft = false,
-  // isHidden = false,
-  resetTransform,
-}) {
+function Arrow({ isToLeft = false, resetTransform }) {
   const dispatch = useDispatch();
 
   const scaleCounter = useSelector(
@@ -46,8 +41,6 @@ function Arrow({
   const arrowClass = classNames("hidden-button", {
     "carouselArrow-left": isToLeft,
     "carouselArrow-right": !isToLeft,
-    // "dark--carouselArrow": isDark,
-    // "light--carouselArrow": !isDark,
   });
 
   return (

@@ -1,7 +1,7 @@
 @import "../../../../../../../assets/styles/foundations.scss";
 
 .carouselArrow-left {
-  transform: rotate(180deg);
+  transform: scale(-1, 1);
   left: 0;
 }
 
@@ -11,13 +11,10 @@
 
 .carouselArrow-left,
 .carouselArrow-right {
-  position: absolute;
   display: flex;
 
   height: 100%;
-  width: 100px;
-
-  padding: 0 $px20;
+  width: inherit;
 
   &:hover {
     i {

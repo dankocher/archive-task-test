@@ -103,45 +103,40 @@ function Carousel() {
       {!isHiddenPhotoModal ? (
         <PhotoModal
           currentImgUrl={currentImgUrl}
-          isOneImg={isOneImg}
           isLeftArrowVisible={isLeftArrowVisible}
           isRightArrowVisible={isRightArrowVisible}
         />
       ) : null}
 
-      <div className={styles.container}>
-        {isLeftArrowVisible() ? null : (
-          <div className={styles.container__leftArrow}>
-            <Arrow isToLeft={true} isDark={true} />
-          </div>
-        )}
+      {isHiddenPhotoModal ? (
+        <div className={styles.container}>
+          {isLeftArrowVisible() ? null : (
+            <div className={styles.container__leftArrow}>
+              <Arrow isToLeft={true} />
+            </div>
+          )}
 
-        {/* {isImgLoaded ? null : <div />} */}
-        <img
-          onClick={handleImgOnClick}
-          style={
-            isImgLoaded
-              ? isHiddenPhotoModal
-                ? {}
-                : { visibility: "hidden" }
-              : { display: "none" }
-          }
-          src={isImgVisible ? currentImgUrl : ""}
-          onLoad={() => setIsImgLoaded(true)}
-        />
-        {isRightArrowVisible() ? null : (
-          <div className={styles.container__rightArrow}>
-            <Arrow />
-          </div>
-        )}
-
-        {isOneImg() ? null : (
-          <Bullets
-            arrOfImages={imageList}
-            currentImageIndex={currentImageIndex}
+          {/* {isImgLoaded ? null : <div />} */}
+          <img
+            onClick={handleImgOnClick}
+            style={isImgLoaded ? {} : { display: "none" }}
+            src={isImgVisible ? currentImgUrl : ""}
+            onLoad={() => setIsImgLoaded(true)}
           />
-        )}
-      </div>
+          {isRightArrowVisible() ? null : (
+            <div className={styles.container__rightArrow}>
+              <Arrow />
+            </div>
+          )}
+
+          {isOneImg() ? null : (
+            <Bullets
+              arrOfImages={imageList}
+              currentImageIndex={currentImageIndex}
+            />
+          )}
+        </div>
+      ) : null}
     </>
   );
 }

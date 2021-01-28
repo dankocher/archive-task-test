@@ -17,7 +17,6 @@ const MAX_SCALE_COUNTER = 3;
 
 function PhotoModal({
   currentImgUrl,
-  isOneImg,
   isLeftArrowVisible,
   isRightArrowVisible,
 }) {
@@ -61,11 +60,7 @@ function PhotoModal({
 
             {isLeftArrowVisible() ? null : (
               <div className={styles.container__leftArrow}>
-                <Arrow
-                  isDark={true}
-                  isToLeft={true}
-                  resetTransform={setDefaultState}
-                />
+                <Arrow isToLeft={true} resetTransform={setDefaultState} />
               </div>
             )}
 
@@ -82,7 +77,7 @@ function PhotoModal({
 
             {isRightArrowVisible() ? null : (
               <div className={styles.container__rightArrow}>
-                <Arrow isDark={true} resetTransform={setDefaultState} />
+                <Arrow resetTransform={setDefaultState} />
               </div>
             )}
 

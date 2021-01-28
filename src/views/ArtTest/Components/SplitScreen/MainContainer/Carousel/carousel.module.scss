@@ -24,15 +24,23 @@
   }
 
   &__leftArrow {
-    left: $px20;
+    left: 0;
   }
 
   &__rightArrow {
-    right: $px20;
+    right: 0;
   }
 
   &__leftArrow,
   &__rightArrow {
+    position: absolute;
     visibility: hidden;
+    height: 100%;
+    width: 6.25rem;
+    z-index: 150;
+
+    & > :first-child {
+      padding: 0 $px20;
+    }
   }
 }
