@@ -1,5 +1,5 @@
 import styles from "./bigText.module.scss";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { useGetResultIndex } from "../../../../helpers/customHooks/getResultIndex";
@@ -7,9 +7,12 @@ import startTaskThunk from "../../../../thunks/startTaskThunk";
 
 function BigTextMainContainer() {
   const dispatch = useDispatch();
-  const wordRef = useRef(0);
+  // const wordRef = useRef(0);
 
-  let wordDisplay = wordRef.current.style?.display;
+  // let wordDisplay = wordRef.current.style?.display;
+
+  const [isWordVisible, setIsWordVisible] = useState(true);
+  const [word, setWord] = useState(true);
 
   const resultIndex = useGetResultIndex();
 
@@ -28,24 +31,16 @@ function BigTextMainContainer() {
     (state) => state.testStorage[currentTestId].currentSubTaskIndex
   );
 
-  const word = wordList[currentSubTaskIndex]?.word;
+  useEffect(() => {
+    console.log("asd");
+    setIsWordVisible(false);
+    setWord(wordList[currentSubTaskIndex]?.word);
+  }, [currentSubTaskIndex]);
 
-  // useEffect(() => {
-  //   console.log("ODIN");
-  //   console.log(wordDisplay);
-
-  //   wordRef.current.style.display = "none";
-  //   console.log(wordRef.current.style.display);
-  // }, [currentSubTaskIndex]);
-
-  // useEffect(() => {
-  //   console.log("DVA");
-  //   console.log(wordRef.current.style.display);
-
-  //   // if (wordDisplay === "block") return;
-  //   wordRef.current.style.display = "block";
-  //   console.log(wordRef.current.style.display);
-  // }, [wordDisplay]);
+  useEffect(() => {
+    if (isWordVisible) return;
+    setIsWordVisible(true);
+  }, [isWordVisible]);
 
   useEffect(() => {
     dispatch(
@@ -55,7 +50,11 @@ function BigTextMainContainer() {
 
   return (
     <div className={styles.container}>
-      <h1 ref={wordRef} className={styles.container__bigText}>
+      <h1
+        style={!isWordVisible ? { display: "none" } : {}}
+        // ref={wordRef}
+        className={styles.container__bigText}
+      >
         {word}
       </h1>
     </div>
