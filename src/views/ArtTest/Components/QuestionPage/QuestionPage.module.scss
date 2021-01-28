@@ -23,17 +23,25 @@
     }
 
     h2 {
-      margin-bottom: $px38;
-
-      font-family: "Roboto-Medium";
-      font-weight: 500;
-      font-size: 36px;
-      line-height: 48px;
-      letter-spacing: 0.0025em;
+      font-family: "Roboto-Regular";
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 32px;
       color: $neutral-900;
     }
 
+    & > p {
+      margin-top: $px20;
+
+      font-family: "Roboto-Regular";
+      font-size: 16px;
+      line-height: 22px;
+      letter-spacing: 0.0015em;
+      color: $neutral-800;
+    }
+
     &__body {
+      margin-top: $px40;
       margin-bottom: $px64;
 
       & > :not(:last-child) {

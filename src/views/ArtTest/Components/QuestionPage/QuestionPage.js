@@ -34,6 +34,7 @@ function QuestionPage() {
     (state) => state.testStorage[currentTestId]?.taskList?.[currentTaskIndex]
   );
   const taskId = task._id;
+  const name = task.name;
   const description = task.description;
   const isAnswerSizeLimited = task.data.isAnswerSizeLimited;
   const QAList = task.data.questionAnswerList;
@@ -105,7 +106,11 @@ function QuestionPage() {
       </div>
       <div className={styles.centredWrapper}>
         <div className={styles.centredWrapper__container}>
-          <h2>{description}</h2>
+          <h2>{name}</h2>
+          {description == null || description.trim() === "" ? null : (
+            <p>{description}</p>
+          )}
+
           <div className={styles.centredWrapper__container__body}>
             {QAList.map((element, key) => {
               return (
