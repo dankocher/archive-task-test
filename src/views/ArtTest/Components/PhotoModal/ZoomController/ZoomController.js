@@ -1,5 +1,5 @@
 import "./ZoomController.scss";
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { setScaleCounter } from "../../../../../redux/actions/caruselActions";
@@ -11,85 +11,85 @@ import zoomInIcon from "../../../helpers/icons/zoom-in-icon";
 const classNames = require("classnames");
 
 function ZoomController({
-	resetTransform,
-	zoomOut,
-	zoomIn,
-	maxScaleCounter = 3,
+  resetTransform,
+  zoomOut,
+  zoomIn,
+  maxScaleCounter = 3,
 }) {
-	const dispatch = useDispatch();
-	const scaleCounter = useSelector(
-		(state) => state.caruselReducer.scaleCounter
-	);
-	const getIsZoomed = () => scaleCounter !== 0;
-	const getIsMaxZoomed = () => scaleCounter === maxScaleCounter;
+  const dispatch = useDispatch();
+  const scaleCounter = useSelector(
+    (state) => state.caruselReducer.scaleCounter
+  );
+  const getIsZoomed = () => scaleCounter !== 0;
+  const getIsMaxZoomed = () => scaleCounter === maxScaleCounter;
 
-	const zoomOutClass = classNames({
-		activeColor: getIsZoomed(),
-	});
+  const zoomOutClass = classNames({
+    activeColor: getIsZoomed(),
+  });
 
-	const resetZoomClass = classNames({
-		activeColor: getIsZoomed(),
-	});
+  const resetZoomClass = classNames({
+    activeColor: getIsZoomed(),
+  });
 
-	const zoomInClass = classNames({
-		activeColor: !getIsMaxZoomed(),
-	});
+  const zoomInClass = classNames({
+    activeColor: !getIsMaxZoomed(),
+  });
 
-	const handlerZoomOutButton = async (event) => {
-		event.stopPropagation();
-		if (!getIsZoomed()) {
-			return;
-		}
+  const handlerZoomOutButton = async (event) => {
+    event.stopPropagation();
+    if (!getIsZoomed()) {
+      return;
+    }
 
-		await dispatch(setScaleCounter(scaleCounter - 1));
-		zoomOut(event);
-	};
+    await dispatch(setScaleCounter(scaleCounter - 1));
+    zoomOut(event);
+  };
 
-	const handlerResetZoomButton = async (event) => {
-		event.stopPropagation();
-		if (!getIsZoomed()) {
-			return;
-		}
+  const handlerResetZoomButton = async (event) => {
+    event.stopPropagation();
+    if (!getIsZoomed()) {
+      return;
+    }
 
-		await dispatch(setScaleCounter(0));
-		resetTransform();
-	};
+    await dispatch(setScaleCounter(0));
+    resetTransform();
+  };
 
-	const handlerZoomInButton = async (event) => {
-		event.stopPropagation();
-		if (getIsMaxZoomed()) {
-			return;
-		}
+  const handlerZoomInButton = async (event) => {
+    event.stopPropagation();
+    if (getIsMaxZoomed()) {
+      return;
+    }
 
-		await dispatch(setScaleCounter(scaleCounter + 1));
-		zoomIn(event);
-	};
+    await dispatch(setScaleCounter(scaleCounter + 1));
+    zoomIn(event);
+  };
 
-	return (
-		<>
-			<button
-				disabled={!getIsZoomed()}
-				onClick={handlerZoomOutButton}
-				className="hidden-button zoom-controller-button"
-			>
-				<i className={zoomOutClass}>{zoomOutIcon}</i>
-			</button>
-			<button
-				disabled={!getIsZoomed()}
-				onClick={handlerResetZoomButton}
-				className="hidden-button zoom-controller-button"
-			>
-				<i className={resetZoomClass}>{resetZoomIcon}</i>
-			</button>
-			<button
-				disabled={getIsMaxZoomed()}
-				onClick={handlerZoomInButton}
-				className="hidden-button zoom-controller-button"
-			>
-				<i className={zoomInClass}>{zoomInIcon}</i>
-			</button>
-		</>
-	);
+  return (
+    <>
+      <button
+        disabled={!getIsZoomed()}
+        onClick={handlerZoomOutButton}
+        className="hidden-button zoom-controller-button"
+      >
+        <i className={zoomOutClass}>{zoomOutIcon}</i>
+      </button>
+      <button
+        disabled={!getIsZoomed()}
+        onClick={handlerResetZoomButton}
+        className="hidden-button zoom-controller-button"
+      >
+        <i className={resetZoomClass}>{resetZoomIcon}</i>
+      </button>
+      <button
+        disabled={getIsMaxZoomed()}
+        onClick={handlerZoomInButton}
+        className="hidden-button zoom-controller-button"
+      >
+        <i className={zoomInClass}>{zoomInIcon}</i>
+      </button>
+    </>
+  );
 }
 
 export default ZoomController;

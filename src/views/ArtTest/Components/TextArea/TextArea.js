@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef, Children } from "react";
-import Linkify from "react-linkify";
+import React, { useState, useEffect, useRef } from "react";
 
 import styles from "./textArea.module.scss";
 
@@ -19,7 +18,6 @@ function TextArea(props) {
   } = props;
 
   const textAreaRef = useRef(null);
-  // const [text, setText] = useState("");
   const [textAreaHeight, setTextAreaHeight] = useState("auto");
 
   const maxLength = props.maxLength ? props.maxLength : 240;
@@ -34,7 +32,6 @@ function TextArea(props) {
   }, [defaultValue]);
 
   useEffect(() => {
-    // console.log(textAreaRef.current.scrollHeight);
     setTextAreaHeight(`${textAreaRef.current.scrollHeight}px`);
   }, [text]);
 
@@ -58,18 +55,13 @@ function TextArea(props) {
       rows={rows ? rows : 1}
       style={{
         height: textAreaHeight,
-        // parseInt(textAreaHeight.replace("px", "")) < 26
-        //   ? "26px"
-        // : textAreaHeight,
         overflow: "hidden",
       }}
       value={text}
       className={props.className != null ? props.className : defaultStyles}
       onChange={onChangeHandler}
       onBlur={() => onBlur(text)}
-    >
-      <Linkify>{Children}</Linkify>
-    </textarea>
+    ></textarea>
   );
 }
 
