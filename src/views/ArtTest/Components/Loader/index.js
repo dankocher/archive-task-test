@@ -20,7 +20,8 @@ import SplitScreen from "../SplitScreen/SplitScreen";
 import BigTextMainContainer from "../SplitScreen/MainContainer/BigText/BigText";
 import Carousel from "../SplitScreen/MainContainer/Carousel/Carousel";
 
-import { sesionStart } from "../../../../redux/actions/testActions";
+// import { sesionStart } from "../../../../redux/actions/testActions";
+import integrityCheckThunk from "../../thunks/integrityCheckThunk";
 
 import { deleteResult } from "../../../../redux/actions/resultActions";
 import { deleteTest } from "../../../../redux/actions/testActions";
@@ -51,7 +52,7 @@ const getPage = (taskType) => {
 
 function Loader() {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state);
+  // const state = useSelector((state) => state);
 
   const currentTestId = useSelector((state) => state.testStorage.currentTestId);
   const currentTaskIndex = useSelector(
@@ -76,7 +77,9 @@ function Loader() {
 
     getTaskIdListFromServer().then((res) => {
       //{ tasksCounter, currentTestId, taskList }
-      dispatch(sesionStart(res.ttask.tasksCounter, res.ttask._id, res.tasks));
+      dispatch(
+        integrityCheckThunk(res.ttask.tasksCounter, res.ttask._id, res.tasks)
+      );
     });
   }, [currentTestId]);
 

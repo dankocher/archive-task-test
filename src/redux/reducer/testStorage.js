@@ -7,6 +7,7 @@ import {
   SESSION_START,
   DELETE_TEST,
   SET_CURRENT_TIME,
+  SET_CURRENT_TEST_ID,
 } from "../actions/testActions";
 
 import { sessionStart } from "../reducerHelpers";
@@ -26,7 +27,17 @@ const initialState = {
 function testStorage(state = initialState, action) {
   switch (action.type) {
     case SESSION_START:
-      return sessionStart(state, action);
+      const { tasksCounter, currentTestId, taskList } = action.payload;
+      return {
+        ...state,
+        currentTestId,
+        [currentTestId]: { taskList, tasksCounter, isNextBtnClicked: false },
+      };
+    case SET_CURRENT_TEST_ID:
+      return {
+        ...state,
+        currentTestId: action.currentTestId,
+      };
 
     case SET_CURRENT_TASK_INDEX:
       return update(state, {

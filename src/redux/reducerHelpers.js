@@ -105,24 +105,18 @@ const setAnswers = (state, resultIndex, radioButtonTaskList, currentTestId) => {
 
 export const sessionStart = (state, action) => {
   const { tasksCounter, currentTestId, taskList } = action.payload;
-  if (currentTestId in state) {
+  if (
+    currentTestId in state &&
+    taskList in state[currentTestId] &&
+    tasksCounter in state[currentTestId]
+  ) {
     state = {
       ...state,
       currentTestId,
     };
-    // state = update(state, {
-    //   taskList: { $set: taskList },
-    //   currentTestId: { $set: currentTestId },
-    //   [currentTestId]: {
-    //     lastTaskNumber: {
-    //       $set: lastTaskNumber,
-    //     },
-    //   },
-    // });
   } else {
     state = {
       ...state,
-      // taskList,
       currentTestId,
       [currentTestId]: { taskList, tasksCounter, isNextBtnClicked: false },
     };

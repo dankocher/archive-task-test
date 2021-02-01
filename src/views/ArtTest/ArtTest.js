@@ -11,7 +11,7 @@ import { getCurrentTime } from "./helpers/workWithApi";
 import Loader from "./Components/Loader";
 import DeviceError from "./Components/DeviceError/DeviceError";
 
-const MAX_TEST_DURATION = 720000000; //200 hours
+const MAX_TEST_DURATION = 172800000; //24 hours
 
 function ArtTest() {
   const dispatch = useDispatch();
