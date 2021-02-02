@@ -45,7 +45,7 @@ export const setLastTaskNumber = (number) => ({
 
 export const deleteTest = (currentTestId) => ({
   type: DELETE_TEST,
-  currentTestId,
+  payload: currentTestId,
 });
 
 export const setCurrentTime = (currentTime) => ({

@@ -13,8 +13,8 @@ const integrityCheckThunk = (tasksCounter, currentTestId, taskList) => {
 
     if (currentTestId in testStorage) {
       if (
-        taskList in state[currentTestId] &&
-        tasksCounter in state[currentTestId]
+        taskList in testStorage[currentTestId] &&
+        tasksCounter in testStorage[currentTestId]
       ) {
         dispatch(setCurrentTestId(currentTestId));
       } else {

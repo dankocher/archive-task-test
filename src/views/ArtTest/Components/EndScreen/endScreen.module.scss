@@ -1,0 +1,60 @@
+@import "../../../../assets/styles/foundations.scss";
+
+.container {
+  height: 100vh;
+  display: grid;
+
+  grid-template: minmax($px48, 10.5rem) //new
+    minmax(33rem, 62.75rem) //new
+    minmax(3.0625rem, 10.5rem) / //new
+    minmax(26.25rem, 46.375rem) //new
+    minmax(32.8125rem, 66.625rem) //new
+    minmax(26.3125rem, 46.375rem);
+}
+
+.contantContainer {
+  height: 100%;
+  grid-area: 2/2/3/3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  p {
+    font-style: "Roboto-Medium";
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 48px;
+    letter-spacing: 0.0025em;
+    color: $neutral-900;
+  }
+
+  span {
+    font-style: "Roboto-Regular";
+    font-weight: 400;
+
+    font-size: 24px;
+    line-height: 32px;
+    color: $neutral-600;
+  }
+
+  & > :first-child {
+    margin-bottom: $px12;
+  }
+
+  & > :last-child {
+    margin-top: $px16;
+  }
+
+  &__imgContainer {
+    display: flex;
+    height: 100%;
+
+    img {
+      margin: auto;
+
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+}

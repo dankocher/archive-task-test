@@ -80,5 +80,5 @@ export const setTestEndDate = (currentTestId, endDate) => ({
 
 export const deleteResult = (currentTestId) => ({
   type: DELETE_RESULT,
-  currentTestId,
+  payload: currentTestId,
 });

@@ -1,5 +1,5 @@
 import "./index.scss";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useWindowSize } from "./helpers/customHooks/getWindowSize";
 
@@ -16,6 +16,8 @@ const MAX_TEST_DURATION = 172800000; //24 hours
 function ArtTest() {
   const dispatch = useDispatch();
   const windowSize = useWindowSize();
+
+  const [isTestEnded, setIsTestEnded] = useState(false);
 
   const currentTestId = useSelector((state) => state.testStorage.currentTestId);
   const currentTaskIndex = useSelector(
@@ -47,17 +49,15 @@ function ArtTest() {
     (state) => state.rehydrateStorage.isRehydrated
   );
 
-  // useEffect(() => {
-  //   console.log("LODERcurrentTime: " + currentTime);
-  // }, [currentTime]);
-
   const checkWindowSize = () => {
     if (windowSize.width < 1366 || windowSize.height < 625) {
       return <DeviceError />;
     } else {
       return (
         <div className="mainContainer">
-          {currentTime != null && isRehydrated ? <Loader /> : null}
+          {currentTime != null && isRehydrated ? (
+            <Loader setIsTestEnded={setIsTestEnded} isTestEnded={isTestEnded} />
+          ) : null}
         </div>
       );
     }

@@ -78,7 +78,9 @@ function testStorage(state = initialState, action) {
       });
 
     case DELETE_TEST:
-      return initialState;
+      const currentTestIdLocal = action.payload;
+      const { [currentTestIdLocal]: value, ...newState } = state;
+      return { ...newState, currentTestId: undefined };
 
     default:
       return state;

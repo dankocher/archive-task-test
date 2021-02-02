@@ -62,43 +62,48 @@ function Authorization() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.container__imgContainer}>
-        <img src={require("../../utils/img/rectangle.png")} />
-      </div>
-      <div className={styles.container__centeredContainer}>
-        <div className={styles.wrapper}>
-          <div className={styles.wrapper__field}>
-            <label>{labels.nameLabel}</label>
+      <div className={styles.contentContainer}>
+        <div className={styles.contentContainer__imgContainer}>
+          <img src={require("../../../../assets/img/testStart.jpg")} />
+        </div>
+        <div className={styles.contentContainer__centeredContainer}>
+          <div className={styles.wrapper}>
+            <div className={styles.wrapper__field}>
+              <label>{labels.nameLabel}</label>
 
-            <input
-              className={!isNameValid ? styles.error : null}
-              value={name}
-              onChange={onChangeNameHandler}
+              <input
+                className={!isNameValid ? styles.error : null}
+                value={name}
+                onChange={onChangeNameHandler}
+              />
+              {!isNameValid ? (
+                <div className={styles.wrapper__field__errorMessage}>
+                  <i>{errorIcon}</i>
+                  <span>Неверое имя</span>
+                </div>
+              ) : null}
+            </div>
+            <div className={styles.wrapper__field}>
+              <label>{labels.mailLabel}</label>
+
+              <input
+                className={!isEmailValid ? styles.error : null}
+                value={email}
+                onChange={onChangeEmailHandler}
+              />
+              {!isEmailValid ? (
+                <div className={styles.wrapper__field__errorMessage}>
+                  <i>{errorIcon}</i>
+                  <span>Неверная почта</span>
+                </div>
+              ) : null}
+            </div>
+
+            <Button
+              label={labels.buttonLabelStart}
+              onClick={startTestHandler}
             />
-            {!isNameValid ? (
-              <div className={styles.wrapper__field__errorMessage}>
-                <i>{errorIcon}</i>
-                <span>Неверое имя</span>
-              </div>
-            ) : null}
           </div>
-          <div className={styles.wrapper__field}>
-            <label>{labels.mailLabel}</label>
-
-            <input
-              className={!isEmailValid ? styles.error : null}
-              value={email}
-              onChange={onChangeEmailHandler}
-            />
-            {!isEmailValid ? (
-              <div className={styles.wrapper__field__errorMessage}>
-                <i>{errorIcon}</i>
-                <span>Неверная почта</span>
-              </div>
-            ) : null}
-          </div>
-
-          <Button label={labels.buttonLabelStart} onClick={startTestHandler} />
         </div>
       </div>
     </div>

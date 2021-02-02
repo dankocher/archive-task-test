@@ -1,6 +1,6 @@
 import "./index.scss";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getUrlId } from "../../helpers/getUrlId";
@@ -19,8 +19,8 @@ import QuestionPage from "../QuestionPage/QuestionPage";
 import SplitScreen from "../SplitScreen/SplitScreen";
 import BigTextMainContainer from "../SplitScreen/MainContainer/BigText/BigText";
 import Carousel from "../SplitScreen/MainContainer/Carousel/Carousel";
+import EndScreen from "../EndScreen/EndScreen";
 
-// import { sesionStart } from "../../../../redux/actions/testActions";
 import integrityCheckThunk from "../../thunks/integrityCheckThunk";
 
 import { deleteResult } from "../../../../redux/actions/resultActions";
@@ -29,7 +29,6 @@ import { deleteTest } from "../../../../redux/actions/testActions";
 import {
   getTaskIdListFromServer,
   saveResults,
-  getCurrentTime,
 } from "../../helpers/workWithApi";
 
 const getPage = (taskType) => {
@@ -50,7 +49,7 @@ const getPage = (taskType) => {
   }
 };
 
-function Loader() {
+function Loader({ setIsTestEnded, isTestEnded }) {
   const dispatch = useDispatch();
   // const state = useSelector((state) => state);
 
@@ -89,13 +88,29 @@ function Loader() {
 
     saveResults(resultStorage).then((res) => {
       if (!res.ok) return;
+
+      // debugger;
       dispatch(deleteTest(currentTestId));
       dispatch(deleteResult(currentTestId));
+      console.log("SDELAL");
+      setIsTestEnded(true);
     });
   }, [endDate]);
 
+  useEffect(() => {
+    console.log(isTestEnded);
+  }, [isTestEnded]);
+
   return (
-    <>{currentTaskIndex != null ? getPage(taskType) : <Authorization />}</>
+    <>
+      {currentTaskIndex != null ? (
+        getPage(taskType)
+      ) : isTestEnded ? (
+        <EndScreen />
+      ) : (
+        <Authorization />
+      )}
+    </>
   );
 }
 

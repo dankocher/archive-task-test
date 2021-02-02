@@ -1,107 +1,126 @@
 @import "../../../../assets/styles/foundations.scss";
 
 .container {
-  display: flex;
+  height: 100vh;
+  display: grid;
 
-  &__centeredContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 50%;
-  }
+  grid-template: minmax($px48, 8.5rem) //new
+    minmax(33.0625rem, 66.75rem) //new
+    minmax($px48, 8.5rem) / //new
+    minmax(6.5rem, 11.75rem) //new
+    minmax(72rem, 129.75rem) //new
+    minmax(6.875rem, 18.5rem);
 
-  &__imgContainer {
-    width: 50%;
-    height: 100vh;
+  .contentContainer {
+    width: 100%;
+    height: 100%;
+    grid-area: 2/2/3/3;
     // display: flex;
+    display: grid;
+    grid-template-columns: minmax(44.875rem, 91rem) //new
+      minmax(6.875rem, 18.5rem) //new
+      20.25rem; //new
+    grid-template-rows: 100%;
 
-    img {
-      // margin: auto;
-      object-fit: cover;
-      height: 100%;
-      width: 100%;
-      // max-width: 100%;
-      // max-height: 100%;
-    }
-  }
-
-  .wrapper {
-    width: 20.25rem; //new
-
-    & > :first-child {
-      margin-bottom: $px24;
-    }
-
-    & > :last-child {
-      margin-top: $px44;
-    }
-
-    &__field {
+    &__centeredContainer {
+      grid-area: 1/3/2/4;
       display: flex;
-      flex-direction: column;
-      width: 100%;
+      justify-content: flex-end;
+      align-items: center;
+      // height: 100vh;
+      // width: 50%;
+    }
+
+    &__imgContainer {
+      grid-area: 1/1/2/2;
+      height: 100%;
+      display: flex;
+
+      img {
+        margin: auto;
+
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+
+    .wrapper {
+      width: 20.25rem; //new
 
       & > :first-child {
-        margin-bottom: $px4;
+        margin-bottom: $px24;
       }
 
-      input {
-        font-family: "NotoSans-Regular";
-        font-size: 14px;
-        line-height: 20px;
-        color: $neutral-800;
+      & > :last-child {
+        margin-top: $px44;
       }
 
-      position: relative;
-      display: flex;
-      flex-direction: column;
-
-      &__errorMessage {
-        position: absolute;
+      &__field {
         display: flex;
-        align-items: center;
-        top: 82px;
+        flex-direction: column;
+        width: 100%;
 
-        i {
-          display: contents;
+        & > :first-child {
+          margin-bottom: $px4;
         }
 
-        span {
-          padding-left: $px4;
-
-          font-family: "Roboto-Regular";
-          font-size: 13px;
-          line-height: 17px;
-          color: $red;
+        input {
+          font-family: "NotoSans-Regular";
+          font-size: 14px;
+          line-height: 20px;
+          color: $neutral-800;
         }
-      }
 
-      input {
-        height: $px52;
-        border: $borderDefault;
-        border-radius: $radius;
-        outline: none !important;
-        padding: $px16 $px14;
+        position: relative;
+        display: flex;
+        flex-direction: column;
 
-        &:focus:not(.error) {
-          padding: $px16 $px13;
-          border: $borderFocus;
+        &__errorMessage {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          top: 82px;
+
+          i {
+            display: contents;
+          }
+
+          span {
+            padding-left: $px4;
+
+            font-family: "Roboto-Regular";
+            font-size: 13px;
+            line-height: 17px;
+            color: $red;
+          }
         }
-      }
 
-      label {
-        font-family: "Roboto-Medium";
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 22px;
-        color: $neutral-800;
-        font-display: fallback;
-      }
+        input {
+          height: $px52;
+          border: $borderDefault;
+          border-radius: $radius;
+          outline: none !important;
+          padding: $px16 $px14;
 
-      .error {
-        padding: $px16 $px15;
-        border: $borderError;
+          &:focus:not(.error) {
+            padding: $px16 $px13;
+            border: $borderFocus;
+          }
+        }
+
+        label {
+          font-family: "Roboto-Medium";
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 22px;
+          color: $neutral-800;
+          font-display: fallback;
+        }
+
+        .error {
+          padding: $px16 $px15;
+          border: $borderError;
+        }
       }
     }
   }

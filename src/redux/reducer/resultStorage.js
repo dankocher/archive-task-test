@@ -89,8 +89,10 @@ function resultStorage(state = initialState, action) {
       });
     // return { ...state, end_date: action.payload };
     case DELETE_RESULT:
-      delete state[action.currentTestId];
-      return state;
+      const currentTestIdLocal = action.payload;
+      const { [currentTestIdLocal]: value, ...newState } = state;
+      return newState;
+
     default:
       return state;
   }
