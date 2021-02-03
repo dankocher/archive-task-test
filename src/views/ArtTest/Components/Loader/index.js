@@ -59,7 +59,7 @@ function Loader({ setIsTestEnded, isTestEnded }) {
   );
 
   const task = useSelector(
-    (state) => state.testStorage[currentTestId]?.taskList[currentTaskIndex]
+    (state) => state.testStorage?.[currentTestId]?.taskList?.[currentTaskIndex]
   );
   const taskType = task?.type;
 
@@ -72,7 +72,7 @@ function Loader({ setIsTestEnded, isTestEnded }) {
   useEffect(() => {
     const testId = getUrlId();
 
-    if (testId === currentTestId) return;
+    if (testId === currentTestId && currentTaskIndex != null) return;
 
     getTaskIdListFromServer().then((res) => {
       //{ tasksCounter, currentTestId, taskList }
@@ -92,14 +92,9 @@ function Loader({ setIsTestEnded, isTestEnded }) {
       // debugger;
       dispatch(deleteTest(currentTestId));
       dispatch(deleteResult(currentTestId));
-      console.log("SDELAL");
       setIsTestEnded(true);
     });
   }, [endDate]);
-
-  useEffect(() => {
-    console.log(isTestEnded);
-  }, [isTestEnded]);
 
   return (
     <>

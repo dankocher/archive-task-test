@@ -12,7 +12,9 @@ const integrityCheckThunk = (tasksCounter, currentTestId, taskList) => {
     const testStorage = state.testStorage;
 
     if (currentTestId in testStorage) {
-      if (
+      if (testStorage[currentTestId].currentTaskIndex == null) {
+        dispatch(sesionStart(tasksCounter, currentTestId, taskList));
+      } else if (
         taskList in testStorage[currentTestId] &&
         tasksCounter in testStorage[currentTestId]
       ) {
