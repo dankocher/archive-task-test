@@ -103,26 +103,26 @@ const setAnswers = (state, resultIndex, radioButtonTaskList, currentTestId) => {
   return state;
 };
 
-export const sessionStart = (state, action) => {
-  const { tasksCounter, currentTestId, taskList } = action.payload;
-  if (
-    currentTestId in state &&
-    taskList in state[currentTestId] &&
-    tasksCounter in state[currentTestId]
-  ) {
-    state = {
-      ...state,
-      currentTestId,
-    };
-  } else {
-    state = {
-      ...state,
-      currentTestId,
-      [currentTestId]: { taskList, tasksCounter, isNextBtnClicked: false },
-    };
-  }
-  return state;
-};
+// export const sessionStart = (state, action) => {
+//   const { tasksCounter, currentTestId, taskList } = action.payload;
+//   if (
+//     currentTestId in state &&
+//     taskList in state[currentTestId] &&
+//     tasksCounter in state[currentTestId]
+//   ) {
+//     state = {
+//       ...state,
+//       currentTestId,
+//     };
+//   } else {
+//     state = {
+//       ...state,
+//       currentTestId,
+//       [currentTestId]: { taskList, tasksCounter, isNextBtnClicked: false },
+//     };
+//   }
+//   return state;
+// };
 
 export const login = (state, action) => {
   const { name, email, currentTestId, startDate } = action.payload;

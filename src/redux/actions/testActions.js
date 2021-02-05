@@ -7,6 +7,7 @@ export const SET_LAST_TASK_NUMBER = "SET_LAST_TASK_NUMBER";
 export const SESSION_START = "SESSION_START";
 export const DELETE_TEST = "DELETE_TEST";
 export const SET_CURRENT_TIME = "SET_CURRENT_TIME";
+export const SET_IS_LOADING = "SET_IS_LOADING";
 
 export const sesionStart = (tasksCounter, currentTestId, taskList) => ({
   type: SESSION_START,
@@ -51,4 +52,9 @@ export const deleteTest = (currentTestId) => ({
 export const setCurrentTime = (currentTime) => ({
   type: SET_CURRENT_TIME,
   payload: currentTime,
+});
+
+export const setIsLoading = (isLoading) => ({
+  type: SET_IS_LOADING,
+  payload: isLoading,
 });

@@ -71,6 +71,7 @@ function WelcomeScreen() {
 
           <Button
             label={staticText.buttonLabelNext}
+            isDisabled={true}
             onClick={nextTaskHandler}
           />
         </div>

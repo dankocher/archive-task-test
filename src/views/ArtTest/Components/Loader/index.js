@@ -24,7 +24,10 @@ import EndScreen from "../EndScreen/EndScreen";
 import integrityCheckThunk from "../../thunks/integrityCheckThunk";
 
 import { deleteResult } from "../../../../redux/actions/resultActions";
-import { deleteTest } from "../../../../redux/actions/testActions";
+import {
+  deleteTest,
+  setIsLoading,
+} from "../../../../redux/actions/testActions";
 
 import {
   getTaskIdListFromServer,
@@ -93,6 +96,7 @@ function Loader({ setIsTestEnded, isTestEnded }) {
       dispatch(deleteTest(currentTestId));
       dispatch(deleteResult(currentTestId));
       setIsTestEnded(true);
+      dispatch(setIsLoading(false));
     });
   }, [endDate]);
 

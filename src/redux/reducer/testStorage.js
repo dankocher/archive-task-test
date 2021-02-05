@@ -8,9 +8,8 @@ import {
   DELETE_TEST,
   SET_CURRENT_TIME,
   SET_CURRENT_TEST_ID,
+  SET_IS_LOADING,
 } from "../actions/testActions";
-
-import { sessionStart } from "../reducerHelpers";
 
 const initialState = {
   // taskList: [],
@@ -33,6 +32,7 @@ function testStorage(state = initialState, action) {
         currentTestId,
         [currentTestId]: { taskList, tasksCounter, isNextBtnClicked: false },
       };
+
     case SET_CURRENT_TEST_ID:
       return {
         ...state,
@@ -45,9 +45,6 @@ function testStorage(state = initialState, action) {
           currentTaskIndex: { $set: action.payload },
         },
       });
-
-    // case SET_CURRENT_TASK:
-    //   return { ...state, currentTask: action.payload };
 
     case SET_IS_NEXT_BUTTON_CLICKED:
       return update(state, {
@@ -82,6 +79,8 @@ function testStorage(state = initialState, action) {
       const { [currentTestIdLocal]: value, ...newState } = state;
       return { ...newState, currentTestId: undefined };
 
+    case SET_IS_LOADING:
+      return { ...state, isLoading: action.payload };
     default:
       return state;
   }

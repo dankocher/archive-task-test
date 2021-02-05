@@ -1,25 +1,46 @@
-import React from "react";
 import styles from "./button.module.scss";
 
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+
 import { isFunction } from "../../utils/validators/isFunction";
+import { useNetwork } from "../../helpers/customHooks/getIsOnline";
 
-const classNames = require("classnames");
+import errorIcon from "../../helpers/icons/error-icon";
 
-function Button(props) {
-	const btn = classNames(styles.btn, {
-		[styles.white]: props.color === "white",
-		[styles.black]: props.color !== "white",
-	});
+function Button({ onClick, label }) {
+  const isOnline = useNetwork();
 
-	const onClick = isFunction(props.onClick)
-		? props.onClick
-		: () => console.log("Is not a function");
+  const [isNextBtnClicked, setIsNextBtnClicked] = useState(false);
 
-	return (
-		<button onClick={() => onClick()} className={btn}>
-			{props.label}
-		</button>
-	);
+  const isLoading = useSelector((state) => state.testStorage.isLoading);
+
+  const onClickHandler = isFunction(onClick)
+    ? () => {
+        setIsNextBtnClicked(true);
+
+        if (!isOnline || isLoading) return;
+        onClick();
+      }
+    : () => console.log("Is not a function");
+
+  return (
+    <div className={styles.container}>
+      <button
+        onClick={() => onClickHandler()}
+        disabled={!isOnline && isNextBtnClicked}
+      >
+        {label}
+      </button>
+
+      {!isOnline && isNextBtnClicked ? (
+        <div className={styles.errorMessage}>
+          <i>{errorIcon}</i>
+          <span>Возникла проблема с интернетом.</span>
+        </div>
+      ) : null}
+    </div>
+  );
 }
 
 export default Button;

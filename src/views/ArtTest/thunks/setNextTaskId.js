@@ -1,6 +1,7 @@
 import {
   setCurrentTaskIndex,
   setIsNextBtnClicked,
+  setIsLoading,
 } from "../../../redux/actions/testActions";
 import {
   setTaskEndDate,
@@ -36,6 +37,9 @@ const setNextTaskId = (currentResultIndex) => {
 
     if (nextIndex >= taskList.length) {
       //Set test end_date // end of test
+
+      dispatch(setIsLoading(true));
+
       getCurrentTime().then((endDate) => {
         dispatch(setTestEndDate(currentTestId, endDate));
       });

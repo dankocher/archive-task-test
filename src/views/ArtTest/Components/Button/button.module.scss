@@ -1,40 +1,58 @@
 @import "../../../../assets/styles/foundations.scss";
 
-.btn {
-  height: $px52;
-  width: 20.25rem; //new
-  border-radius: $px5;
-  outline: none;
-  border: none;
-  cursor: pointer;
+$heightButton: $px52;
 
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+.container {
+  position: relative;
 
-  font-family: "Roboto-Medium";
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 28px;
-}
+  button {
+    height: $heightButton;
+    width: 20.25rem; //new
+    border-radius: $radius;
+    outline: none;
+    border: none;
+    cursor: pointer;
 
-.black {
-  background: $neutral-800;
-  color: $white;
-  transition: $transitionS;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-  &:hover {
-    background-color: $neutral-900;
+    background: $neutral-800;
+    color: $white;
+    transition: $transitionS;
+
+    &:hover {
+      background-color: $neutral-900;
+    }
+
+    &:disabled {
+      background-color: $neutral-300;
+      color: $neutral-200;
+    }
+
+    font-family: "Roboto-Medium";
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .errorMessage {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: $heightButton + $px4;
+
+    i {
+      display: contents;
+    }
+
+    span {
+      padding-left: $px4;
+
+      font-family: "Roboto-Regular";
+      font-size: 13px;
+      line-height: 17px;
+      width: 400;
+      letter-spacing: 0.004em;
+      color: $red;
+    }
   }
 }
-
-// .white {
-//   border: $px1 solid $neutral-5;
-//   background: $white;
-//   color: $neutral-5;
-//   transition: $transitionS;
-
-//   &:hover {
-//     border: none;
-//     background: $neutral-5;
-//     color: $white;
-//   }
-// }
