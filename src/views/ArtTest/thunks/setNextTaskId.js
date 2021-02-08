@@ -19,10 +19,6 @@ const setNextTaskId = (currentResultIndex) => {
 
     const taskList = state.testStorage[currentTestId].taskList;
 
-    const task = taskList?.[currentTaskIndex];
-
-    const isTimeConsidered = task.isTimeConsidered;
-
     dispatch(setIsNextBtnClicked(false));
 
     //Save end_date
