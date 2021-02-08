@@ -13,7 +13,8 @@ const nextButtonHadler = (currentResultIndex, responseLimitation) => {
     const state = getState();
 
     const currentTestId = state.testStorage.currentTestId;
-    const currentTaskIndex = state.testStorage?.[currentTestId]?.currentTaskIndex;
+    const currentTaskIndex =
+      state.testStorage?.[currentTestId]?.currentTaskIndex;
 
     const currentSubTaskIndex =
       state.testStorage[currentTestId].currentSubTaskIndex;
@@ -60,7 +61,6 @@ const nextButtonHadler = (currentResultIndex, responseLimitation) => {
       } else {
         // go to next task
         dispatch(setNextTaskId(currentResultIndex));
-        // console.log("ia poshel na sledushee zadanie");
       }
     } else {
       dispatch(setCurrentSubTaskIndex(currentSubTaskIndex + 1));

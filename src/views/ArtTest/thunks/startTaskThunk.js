@@ -12,11 +12,11 @@ const startTaskThunk = (taskId, resultIndex, taskList, radioButtonTaskList) => {
     const state = getState();
 
     const currentTestId = state.testStorage.currentTestId;
-    const currentTaskIndex = state.testStorage?.[currentTestId]?.currentTaskIndex;
+    const currentTaskIndex =
+      state.testStorage?.[currentTestId]?.currentTaskIndex;
 
     const task = state.testStorage[currentTestId]?.taskList?.[currentTaskIndex];
 
-    const isTimeConsidered = task.isTimeConsidered;
     const taskType = task.type;
 
     if (resultIndex !== -1) return;
@@ -26,31 +26,18 @@ const startTaskThunk = (taskId, resultIndex, taskList, radioButtonTaskList) => {
       dispatch(setMaxOpenedSubTaskIndex(0));
     }
 
-    if (isTimeConsidered) {
-      getCurrentTime().then((startDate) => {
-        dispatch(
-          startTask(
-            currentTestId,
-            taskId,
-            startDate,
-            taskList,
-            task,
-            radioButtonTaskList
-          )
-        );
-      });
-    } else {
+    getCurrentTime().then((startDate) => {
       dispatch(
         startTask(
           currentTestId,
           taskId,
-          undefined,
+          startDate,
           taskList,
           task,
           radioButtonTaskList
         )
       );
-    }
+    });
   };
 };
 

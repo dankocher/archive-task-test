@@ -57,13 +57,9 @@ function QuestionPage() {
 
     // const startDate = task.isTimeConsidered ? new Date().getTime() : undefined;
 
-    if (task.isTimeConsidered) {
-      getCurrentTime().then((startDate) => {
-        dispatch(startTask(currentTestId, taskId, startDate, QAList, task));
-      });
-    } else {
-      dispatch(startTask(currentTestId, taskId, undefined, QAList, task));
-    }
+    getCurrentTime().then((startDate) => {
+      dispatch(startTask(currentTestId, taskId, startDate, QAList, task));
+    });
 
     if (!isAnswerSizeLimited) return;
     setLocalResponseLimitation({

@@ -41,13 +41,9 @@ function WelcomeScreen() {
   useEffect(() => {
     if (resultIndex !== -1) return;
 
-    if (isTimeConsidered) {
-      getCurrentTime().then((startDate) => {
-        dispatch(addWelcomePage(currentTestId, taskId, startDate));
-      });
-    } else {
-      dispatch(addWelcomePage(currentTestId, taskId, undefined));
-    }
+    getCurrentTime().then((startDate) => {
+      dispatch(addWelcomePage(currentTestId, taskId, startDate));
+    });
   }, []);
 
   const contentContainer = classNames(styles.contentContainer, {

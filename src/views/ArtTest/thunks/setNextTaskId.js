@@ -26,11 +26,10 @@ const setNextTaskId = (currentResultIndex) => {
     dispatch(setIsNextBtnClicked(false));
 
     //Save end_date
-    if (isTimeConsidered) {
-      getCurrentTime().then((endDate) => {
-        dispatch(setTaskEndDate(currentTestId, endDate, currentResultIndex));
-      });
-    }
+
+    getCurrentTime().then((endDate) => {
+      dispatch(setTaskEndDate(currentTestId, endDate, currentResultIndex));
+    });
 
     if (currentTaskIndex == null) return;
     const nextIndex = currentTaskIndex + 1;
