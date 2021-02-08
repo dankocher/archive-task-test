@@ -54,7 +54,7 @@ function RadioButtonAnswers(props) {
   };
 
   const chooseColor = () => {
-    return isValid() ? "#212121" : "#da1414";
+    return isValid() ? "#424242" : "#da1414";
   };
 
   return (
