@@ -11,7 +11,7 @@ import { getCurrentTime } from "./helpers/workWithApi";
 import Loader from "./Components/Loader";
 import DeviceError from "./Components/DeviceError/DeviceError";
 
-const MAX_TEST_DURATION = 172800000; //24 hours
+const MAX_TEST_DURATION = 345600000; //96 hours
 
 function ArtTest() {
   const dispatch = useDispatch();
@@ -35,7 +35,7 @@ function ArtTest() {
     }
 
     getCurrentTime().then((time) => {
-      //If the test runs for more than 200 hours, then it is deleted
+      //If the test runs for more than N hours, then it is deleted
       if (testStart != null && time - testStart >= MAX_TEST_DURATION) {
         dispatch(deleteTest(currentTestId));
         dispatch(deleteResult(currentTestId));

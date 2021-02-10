@@ -6,60 +6,123 @@ input[type="radio"] {
   display: none;
 }
 
-.container {
+.hoverWrapper {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  cursor: pointer;
+  width: calc(100% + #{$px16});
+  padding: 0 $px8;
+  left: -$px8;
+  border-radius: $radius * 4;
+  overflow: hidden;
 
-  &:hover {
-    .container__radioButton__checked {
-      border-color: $neutral-200;
-    }
-    .hoveredContainer {
-      background-color: $neutral-200;
-    }
-  }
-
-  * {
-    cursor: pointer;
-  }
-
-  .hoveredContainer {
-    position: relative;
-    left: -$shadowSize/6;
-    height: $shadowSize;
-    width: $shadowSize;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    margin-right: $px15;
-    background-color: transparent;
-  }
+  background-color: transparent;
 
   transition: all $transitionS;
 
-  & > label {
-    position: relative;
-    left: -$shadowSize/6;
-  }
+  .container {
+    // position: relative;
+    margin: $px4 0;
 
-  &__radioButton {
     display: flex;
-    height: $px20;
-    width: $px20;
-    border: $px1 solid;
-    border-radius: 50%;
-    background: transparent;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
 
-    &__checked {
-      display: inline-block;
-      height: $px18;
-      width: $px18;
-      border: $px2 solid #ffffff;
+    * {
+      cursor: pointer;
+    }
+
+    & > :first-child {
+      margin-right: $px12;
+    }
+    &:hover {
+      .container__radioButton__checked {
+        border-color: $neutral-200;
+      }
+    }
+
+    &__radioButton {
+      display: flex;
+      height: $px20;
+      width: $px20;
+      border: $px1 solid;
       border-radius: 50%;
+      background: transparent;
+
+      &__checked {
+        display: inline-block;
+        height: $px18;
+        width: $px18;
+        border: $px2 solid #ffffff;
+        border-radius: 50%;
+      }
     }
   }
 }
+
+.hovered {
+  background-color: $neutral-200;
+}
+
+// Circle Hover
+
+// input[type="radio"] {
+//   display: none;
+// }
+
+// .container {
+//   position: relative;
+//   display: flex;
+//   align-items: center;
+//   justify-content: flex-start;
+//   cursor: pointer;
+
+//   &:hover {
+//     .container__radioButton__checked {
+//       border-color: $neutral-200;
+//     }
+//     .hoveredContainer {
+//       background-color: $neutral-200;
+//     }
+//   }
+
+//   * {
+//     cursor: pointer;
+//   }
+
+//   .hoveredContainer {
+//     position: relative;
+//     left: -$shadowSize/6;
+//     height: $shadowSize;
+//     width: $shadowSize;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     border-radius: 50%;
+//     margin-right: $px15;
+//     background-color: transparent;
+//   }
+
+//   transition: all $transitionS;
+
+//   & > label {
+//     position: relative;
+//     left: -$shadowSize/6;
+//   }
+
+//   &__radioButton {
+//     display: flex;
+//     height: $px20;
+//     width: $px20;
+//     border: $px1 solid;
+//     border-radius: 50%;
+//     background: transparent;
+
+//     &__checked {
+//       display: inline-block;
+//       height: $px18;
+//       width: $px18;
+//       border: $px2 solid #ffffff;
+//       border-radius: 50%;
+//     }
+//   }
+// }

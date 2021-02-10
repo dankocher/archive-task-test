@@ -64,7 +64,7 @@ function Authorization() {
     <div className={styles.container}>
       <div className={styles.contentContainer}>
         <div className={styles.contentContainer__imgContainer}>
-          <img src={require("../../../../assets/img/testStart.jpg")} />
+          <img src={require("../../../../assets/img/testStart.png")} />
         </div>
         <div className={styles.contentContainer__centeredContainer}>
           <div className={styles.wrapper}>

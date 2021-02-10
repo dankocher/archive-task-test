@@ -9,6 +9,8 @@
     minmax(6.5rem, 11.75rem) //new
     minmax(74.875rem, 141.25rem) //new
     minmax($px64, 7rem);
+
+  animation: $showAnimation;
 }
 
 .contentContainer {
