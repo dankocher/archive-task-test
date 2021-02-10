@@ -6,7 +6,7 @@ import { isFunction } from "../../utils/validators/isFunction";
 function RadioButton(props) {
   const color = props.color ? props.color : "#000000";
 
-  const [isHovered, setIsHovered] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
 
   const onChange = isFunction(props.onChange)
     ? props.onChange
@@ -25,8 +25,8 @@ function RadioButton(props) {
       <label
         className={styles.container}
         htmlFor={props.id}
-        onMouseEnter={() => setIsHovered(false)}
-        onMouseLeave={() => setIsHovered(true)}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
         <div className={styles.hoveredContainer}>
           <label

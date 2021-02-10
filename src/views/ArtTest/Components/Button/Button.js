@@ -1,6 +1,6 @@
 import styles from "./button.module.scss";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
 import { isFunction } from "../../utils/validators/isFunction";
@@ -15,6 +15,12 @@ function Button({ onClick, label }) {
 
   const isLoading = useSelector((state) => state.testStorage.isLoading);
 
+  const currentTestId = useSelector((state) => state.testStorage.currentTestId);
+
+  const currentSubTaskIndex = useSelector(
+    (state) => state.testStorage?.[currentTestId]?.currentSubTaskIndex
+  );
+
   const onClickHandler = isFunction(onClick)
     ? () => {
         setIsNextBtnClicked(true);
@@ -23,6 +29,10 @@ function Button({ onClick, label }) {
         onClick();
       }
     : () => console.log("Is not a function");
+
+  useEffect(() => {
+    setIsNextBtnClicked(false);
+  }, [currentSubTaskIndex]);
 
   return (
     <div className={styles.container}>
