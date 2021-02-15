@@ -6,10 +6,9 @@ function EndScreen() {
     <div className={styles.container}>
       <div className={styles.contantContainer}>
         <p>Спасибо за выполнение теста!</p>
-        <span>Мы свяжемся с вами, после его проверки.</span>
+        <span>Мы свяжемся с вами после его проверки.</span>
         <div className={styles.contantContainer__imgContainer}>
-        <img src={require("../../../../assets/img/testEnd.jpg")} />
-
+          <img src={require("../../../../assets/img/testEnd.jpg")} />
         </div>
       </div>
     </div>
