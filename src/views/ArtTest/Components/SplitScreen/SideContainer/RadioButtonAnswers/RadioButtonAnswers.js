@@ -1,31 +1,29 @@
 import styles from "./RadioButtonAnswers.module.scss";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-
-// import { uid } from "uid";
 
 import RadioButton from "../../../RadioButton/RadioButton";
 
 import { setAnswerOfWordsRadioButtons } from "../../../../../../redux/actions/resultActions";
-import { useGetResultIndex } from "../../../../helpers/customHooks/getResultIndex";
 
 function RadioButtonAnswers(props) {
   const { index, radioButtonTask } = props;
 
   const dispatch = useDispatch();
 
-  // const [checkedValue, setCheckedValue] = useState("");
-
-  const resultIndex = useGetResultIndex();
-
   const currentTestId = useSelector((state) => state.testStorage.currentTestId);
 
   const currentSubTaskIndex = useSelector(
     (state) => state.testStorage[currentTestId].currentSubTaskIndex
   );
+
+  const currentTaskIndex = useSelector(
+    (state) => state.testStorage?.[currentTestId]?.currentTaskIndex
+  );
+
   const checkedValue = useSelector(
     (state) =>
-      state.resultStorage[currentTestId]?.results[resultIndex]?.data[
+      state.resultStorage[currentTestId]?.results[currentTaskIndex]?.data[
         currentSubTaskIndex
       ]?.answers[index]?.optionId
   );
@@ -40,7 +38,7 @@ function RadioButtonAnswers(props) {
       setAnswerOfWordsRadioButtons(
         currentTestId,
         value,
-        resultIndex,
+        currentTaskIndex,
         currentSubTaskIndex,
         index
       )

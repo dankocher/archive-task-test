@@ -9,6 +9,8 @@ export const useGetResultIndex = () => {
 
   const currentTaskId = currentTest.taskList[currentTaskIndex]._id;
 
+  console.log(currentTaskId);
+
   return useSelector((state) => {
     const results = state.resultStorage[currentTestId].results;
 

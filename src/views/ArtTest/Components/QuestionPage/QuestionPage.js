@@ -7,11 +7,9 @@ import TaskInformation from "../TaskInformation/TaskInformation";
 import Button from "../Button/Button";
 import QATask from "./QATask/QATask";
 
-import { getCurrentTime } from "../../helpers/workWithApi";
-import { startTask } from "../../../../redux/actions/resultActions";
 import { setIsNextBtnClicked } from "../../../../redux/actions/testActions";
 import setNextTaskId from "../../thunks/setNextTaskId";
-import { useGetResultIndex } from "../../helpers/customHooks/getResultIndex";
+import startTaskThunk from "../../thunks/startTaskThunk";
 
 const FROM = 1;
 const TO = 9999;
@@ -40,10 +38,9 @@ function QuestionPage() {
   const QAList = task.data.questionAnswerList;
   const responseLimitation = task.data.responseLimitation;
 
-  const resultIndex = useGetResultIndex();
-
   const results = useSelector(
-    (state) => state.resultStorage[currentTestId].results[resultIndex]?.data
+    (state) =>
+      state.resultStorage[currentTestId].results[currentTaskIndex]?.data
   );
 
   useEffect(() => {
@@ -53,25 +50,18 @@ function QuestionPage() {
   }, []);
 
   useEffect(() => {
-    if (resultIndex !== -1) return;
-
-    // const startDate = task.isTimeConsidered ? new Date().getTime() : undefined;
-
-    getCurrentTime().then((startDate) => {
-      dispatch(startTask(currentTestId, taskId, startDate, QAList, task));
-    });
+    dispatch(startTaskThunk(taskId, QAList));
 
     if (!isAnswerSizeLimited) return;
     setLocalResponseLimitation({
       from: responseLimitation?.from || FROM,
       to: responseLimitation?.to || TO,
     });
-  }, []);
+  }, [currentTaskIndex]);
 
   const toNextTask = () => {
     dispatch(setIsNextBtnClicked(true));
     for (const [index, result] of results.entries()) {
-      // if (result.answer == null || result.answer == "") return;
       if (
         result.answer?.length < localResponseLimitation.from ||
         result.answer == null
@@ -90,8 +80,7 @@ function QuestionPage() {
       }
     }
 
-    dispatch(setIsNextBtnClicked(false));
-    dispatch(setNextTaskId(resultIndex));
+    dispatch(setNextTaskId(currentTaskIndex));
   };
 
   return (
@@ -116,14 +105,18 @@ function QuestionPage() {
                   index={key}
                   itemsRef={itemsRef}
                   data={element}
-                  resultIndex={resultIndex}
+                  resultIndex={currentTaskIndex}
                   responseLimitation={localResponseLimitation}
                 />
               );
             })}
           </div>
 
-          <Button color="black" label="Продолжить" onClick={toNextTask} />
+          <Button
+            color="black"
+            label="Продолжить"
+            onClick={() => toNextTask()}
+          />
         </div>
       </div>
     </>

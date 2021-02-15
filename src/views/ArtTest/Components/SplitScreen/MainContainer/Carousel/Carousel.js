@@ -10,7 +10,6 @@ import {
 
 import { getImgPath } from "../../../../helpers/getImgPath";
 import startTaskThunk from "../../../../thunks/startTaskThunk";
-import { useGetResultIndex } from "../../../../helpers/customHooks/getResultIndex";
 
 import Arrow from "./Arrow/Arrow";
 import Bullets from "./Bullets/Bullets";
@@ -18,8 +17,6 @@ import PhotoModal from "../../../PhotoModal/PhotoModal";
 
 function Carousel() {
   const dispatch = useDispatch();
-
-  const resultIndex = useGetResultIndex();
 
   const [isImgLoaded, setIsImgLoaded] = useState(false);
   const [isImgVisible, setIsImgVisible] = useState(true);
@@ -63,13 +60,11 @@ function Carousel() {
 
   useEffect(() => {
     if (radioButtonTaskList == null) {
-      dispatch(startTaskThunk(taskId, resultIndex, imgGrid));
+      dispatch(startTaskThunk(taskId, imgGrid));
     } else {
-      dispatch(
-        startTaskThunk(taskId, resultIndex, imgGrid, radioButtonTaskList)
-      );
+      dispatch(startTaskThunk(taskId, imgGrid, radioButtonTaskList));
     }
-  }, [task]);
+  }, [currentTaskIndex]);
 
   useEffect(() => {
     if (imageList == null) return;

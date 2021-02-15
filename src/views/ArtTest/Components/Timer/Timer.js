@@ -2,13 +2,7 @@ import "./timer.scss";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-import { useGetResultIndex } from "../../helpers/customHooks/getResultIndex";
-import { getCurrentTime } from "../../helpers/workWithApi";
-
 function Timer({ type }) {
-  const resultIndex = useGetResultIndex();
-
-  // const [startTime, setStartTime] = useState(undefined);
   const [currentTimerMS, setCurrentTimerMS] = useState(undefined);
   const [currentTimer, setCurrentTimer] = useState(undefined);
 
@@ -23,7 +17,7 @@ function Timer({ type }) {
   );
   const taskStart = useSelector(
     (state) =>
-      state.resultStorage[currentTestId].results[resultIndex]?.start_date
+      state.resultStorage[currentTestId].results[currentTaskIndex]?.start_date
   );
 
   const task = useSelector(

@@ -2,7 +2,6 @@ import styles from "./bigText.module.scss";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { useGetResultIndex } from "../../../../helpers/customHooks/getResultIndex";
 import startTaskThunk from "../../../../thunks/startTaskThunk";
 
 function BigTextMainContainer() {
@@ -10,8 +9,6 @@ function BigTextMainContainer() {
 
   const [isWordVisible, setIsWordVisible] = useState(true);
   const [word, setWord] = useState(true);
-
-  const resultIndex = useGetResultIndex();
 
   const currentTestId = useSelector((state) => state.testStorage.currentTestId);
   const currentTaskIndex = useSelector(
@@ -44,9 +41,7 @@ function BigTextMainContainer() {
   }, [isWordVisible]);
 
   useEffect(() => {
-    dispatch(
-      startTaskThunk(taskId, resultIndex, wordList, radioButtonTaskList)
-    );
+    dispatch(startTaskThunk(taskId, wordList, radioButtonTaskList));
   }, [currentTaskIndex]);
 
   return (

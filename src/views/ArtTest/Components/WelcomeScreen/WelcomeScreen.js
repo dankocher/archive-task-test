@@ -3,11 +3,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getImgPath } from "../../helpers/getImgPath";
-import { useGetResultIndex } from "../../helpers/customHooks/getResultIndex";
-import setNextTaskId from "../../thunks/setNextTaskId";
-import { addWelcomePage } from "../../../../redux/actions/resultActions";
+import startTaskThunk from "../../thunks/startTaskThunk";
 
-import { getCurrentTime } from "../../helpers/workWithApi";
+import setNextTaskId from "../../thunks/setNextTaskId";
 
 import staticText from "../../utils/labelText/lable.json";
 
@@ -17,8 +15,6 @@ const classNames = require("classnames");
 
 function WelcomeScreen() {
   const dispatch = useDispatch();
-
-  const resultIndex = useGetResultIndex();
 
   const [isImgLoaded, setIsImgLoaded] = useState(false);
 
@@ -31,7 +27,6 @@ function WelcomeScreen() {
     (state) => state.testStorage[currentTestId]?.taskList?.[currentTaskIndex]
   );
   const taskId = task._id;
-  const isTimeConsidered = task.isTimeConsidered;
 
   const header = task?.name;
   const description = task?.description;
@@ -39,12 +34,8 @@ function WelcomeScreen() {
   const imgUrl = getImgPath(img);
 
   useEffect(() => {
-    if (resultIndex !== -1) return;
-
-    getCurrentTime().then((startDate) => {
-      dispatch(addWelcomePage(currentTestId, taskId, startDate));
-    });
-  }, []);
+    dispatch(startTaskThunk(taskId));
+  }, [currentTaskIndex]);
 
   const contentContainer = classNames(styles.contentContainer, {
     [styles.containerOneContent]: img == null || img === "",
@@ -55,7 +46,7 @@ function WelcomeScreen() {
   });
 
   const nextTaskHandler = () => {
-    dispatch(setNextTaskId(resultIndex));
+    dispatch(setNextTaskId(currentTaskIndex));
   };
 
   return (

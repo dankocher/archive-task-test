@@ -3,7 +3,6 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { useGetResponseLimitation } from "../../../../helpers/customHooks/getResponseLimitation";
-import { useGetResultIndex } from "../../../../helpers/customHooks/getResultIndex";
 
 import subTaskArrow from "../../../../helpers/icons/subTask-arrow";
 
@@ -15,20 +14,18 @@ function Pagination() {
 
   const currentTestId = useSelector((state) => state.testStorage.currentTestId);
 
-  const currentSubTaskIndex = useSelector(
-    (state) => state.testStorage[currentTestId].currentSubTaskIndex
-  );
-  const maxOpenedSubTaskIndex = useSelector(
-    (state) => state.testStorage[currentTestId].maxOpenedSubTaskIndex
-  );
+  const currentTest = useSelector((state) => state.testStorage[currentTestId]);
 
-  const currentResultIndex = useGetResultIndex();
+  const currentSubTaskIndex = currentTest.currentSubTaskIndex;
+  const maxOpenedSubTaskIndex = currentTest.maxOpenedSubTaskIndex;
+
+  const currentTaskIndex = currentTest?.currentTaskIndex;
+
   const responseLimitation = useGetResponseLimitation();
 
   const subTaskLength = useSelector(
     (state) =>
-      state.resultStorage[currentTestId].results[currentResultIndex]?.data
-        .length
+      state.resultStorage[currentTestId].results[currentTaskIndex]?.data.length
   );
 
   const getIsUnvisibleLefftArrow = () => {
@@ -43,7 +40,7 @@ function Pagination() {
   };
 
   const setNextSubTask = () => {
-    dispatch(setNextSubTaskThunk(currentResultIndex, responseLimitation));
+    dispatch(setNextSubTaskThunk(currentTaskIndex, responseLimitation));
   };
 
   const setPreveusSubTask = () => {
