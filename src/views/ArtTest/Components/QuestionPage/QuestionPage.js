@@ -18,6 +18,8 @@ function QuestionPage() {
   const dispatch = useDispatch();
   const itemsRef = useRef([]);
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const currentTestId = useSelector((state) => state.testStorage.currentTestId);
   const currentTaskIndex = useSelector(
     (state) => state?.testStorage?.[currentTestId]?.currentTaskIndex
@@ -43,6 +45,11 @@ function QuestionPage() {
       state.resultStorage[currentTestId].results[currentTaskIndex]?.data
   );
 
+  const startDate = useSelector(
+    (state) =>
+      state.resultStorage[currentTestId].results[currentTaskIndex]?.start_date
+  );
+
   useEffect(() => {
     Array(QAList.length)
       .fill()
@@ -50,6 +57,9 @@ function QuestionPage() {
   }, []);
 
   useEffect(() => {
+    if (isLoading) return;
+    setIsLoading(true);
+
     dispatch(startTaskThunk(taskId, QAList));
 
     if (!isAnswerSizeLimited) return;
@@ -57,7 +67,13 @@ function QuestionPage() {
       from: responseLimitation?.from || FROM,
       to: responseLimitation?.to || TO,
     });
-  }, [currentTaskIndex]);
+  }, [currentTaskIndex, isLoading]);
+
+  useEffect(() => {
+    if (startDate == null) return;
+
+    setIsLoading(false);
+  }, [startDate]);
 
   const toNextTask = () => {
     dispatch(setIsNextBtnClicked(true));
