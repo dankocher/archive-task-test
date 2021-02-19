@@ -1,4 +1,4 @@
-export const SET_CURRENT_TASK_INDEX = "SET_CURRENT_TASK_INDEX";
+export const GO_TO_NEXT_TASK = "GO_TO_NEXT_TASK";
 export const SET_CURRENT_TEST_ID = "SET_CURRENT_TEST_ID";
 export const SET_IS_NEXT_BUTTON_CLICKED = "SET_IS_NEXT_BUTTON_CLICKED";
 export const SET_CURRENT_SUBTASK_INDEX = "SET_CURRENT_SUBTASK_INDEX";
@@ -19,8 +19,8 @@ export const setCurrentTestId = (currentTestId) => ({
   payload: currentTestId,
 });
 
-export const setCurrentTaskIndex = (currentTaskIndex) => ({
-  type: SET_CURRENT_TASK_INDEX,
+export const goToNextTask = (currentTaskIndex) => ({
+  type: GO_TO_NEXT_TASK,
   payload: currentTaskIndex,
 });
 

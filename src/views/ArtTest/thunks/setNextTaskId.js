@@ -1,11 +1,11 @@
 import {
-  setCurrentTaskIndex,
+  goToNextTask,
   setIsNextBtnClicked,
   setIsLoading,
 } from "../../../redux/actions/testActions";
 import {
   setTaskEndDate,
-  setTestEndDate,
+  finishTest,
 } from "../../../redux/actions/resultActions";
 
 import { getCurrentTime } from "../helpers/workWithApi";
@@ -21,27 +21,26 @@ const setNextTaskId = (currentResultIndex) => {
 
     dispatch(setIsNextBtnClicked(false));
 
-    //Save end_date
-
-    getCurrentTime().then((endDate) => {
-      dispatch(setTaskEndDate(currentTestId, endDate, currentResultIndex));
-    });
-
     if (currentTaskIndex == null) return;
     const nextIndex = currentTaskIndex + 1;
 
-    if (nextIndex >= taskList.length) {
-      //Set test end_date // end of test
+    //Save end_date
 
-      dispatch(setIsLoading(true));
+    getCurrentTime().then((endDate) => {
+      if (nextIndex >= taskList.length) {
+        //Set test end_date // end of test
+        dispatch(setIsLoading(true)); //after that effect call save data to server
+        dispatch(finishTest(currentTestId, endDate, currentResultIndex));
 
-      getCurrentTime().then((endDate) => {
-        dispatch(setTestEndDate(currentTestId, endDate));
-      });
-      return;
-    }
+        return;
+      }
 
-    dispatch(setCurrentTaskIndex(nextIndex));
+      //Set task end_date // end of task
+      dispatch(setTaskEndDate(currentTestId, endDate, currentResultIndex));
+    });
+
+    //After dispatch call effect change task
+    dispatch(goToNextTask(nextIndex));
   };
 };
 

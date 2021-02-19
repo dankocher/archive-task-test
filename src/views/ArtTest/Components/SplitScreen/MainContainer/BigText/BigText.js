@@ -42,7 +42,7 @@ function BigTextMainContainer() {
 
   useEffect(() => {
     dispatch(startTaskThunk(taskId, wordList, radioButtonTaskList));
-  }, [currentTaskIndex]);
+  }, []);
 
   return (
     <div className={styles.container}>

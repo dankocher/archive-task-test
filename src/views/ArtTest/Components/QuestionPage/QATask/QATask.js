@@ -11,67 +11,67 @@ import { setTextAreaAnswer } from "../../../../../redux/actions/resultActions";
 const classNames = require("classnames");
 
 function QATask(props) {
-	const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-	const { data, responseLimitation, index, resultIndex, itemsRef } = props;
-	const { question, description } = data;
-	// console.log(itemsRef);
-	const [localAnswer, setLocalAnswer] = useState("");
+  const { data, responseLimitation, index, resultIndex, itemsRef } = props;
+  const { question, description } = data;
 
-	const currentTestId = useSelector((state) => state.testStorage.currentTestId);
+  const [localAnswer, setLocalAnswer] = useState("");
 
-	const isNextBtnClicked = useSelector(
-		(state) => state.testStorage[currentTestId].isNextBtnClicked
-	);
+  const currentTestId = useSelector((state) => state.testStorage.currentTestId);
 
-	const answer = useSelector(
-		(state) =>
-			state.resultStorage[currentTestId].results[resultIndex]?.data[index]
-				.answer
-	);
+  const isNextBtnClicked = useSelector(
+    (state) => state.testStorage[currentTestId].isNextBtnClicked
+  );
 
-	const saveAnswer = (localAnswer) => {
-		if (answer === localAnswer) return;
-		dispatch(setTextAreaAnswer(currentTestId, localAnswer, resultIndex, index));
-	};
+  const answer = useSelector(
+    (state) =>
+      state.resultStorage[currentTestId].results[resultIndex]?.data[index]
+        .answer
+  );
 
-	const validationAnswer = () => {
-		if (!isNextBtnClicked) return true;
+  const saveAnswer = (localAnswer) => {
+    if (answer === localAnswer) return;
+    dispatch(setTextAreaAnswer(currentTestId, localAnswer, resultIndex, index));
+  };
 
-		if (localAnswer == null) return false;
-		if (localAnswer.length < responseLimitation.from) return false;
-		return true;
-	};
+  const validationAnswer = () => {
+    if (!isNextBtnClicked) return true;
 
-	const container = classNames(styles.container, {
-		[styles.error]: !validationAnswer(),
-	});
+    if (localAnswer == null) return false;
+    if (localAnswer.length < responseLimitation.from) return false;
+    return true;
+  };
 
-	return (
-		<div ref={(el) => (itemsRef.current[index] = el)} className={container}>
-			<p className={styles.container__question}>{question}</p>
-			<p className={styles.container__description}>{description}</p>
+  const container = classNames(styles.container, {
+    [styles.error]: !validationAnswer(),
+  });
 
-			<TextArea
-				defaultValue={answer}
-				text={localAnswer}
-				setText={setLocalAnswer}
-				onBlur={saveAnswer}
-				maxLength={responseLimitation.to}
-				defaultHeight={"2.6rem"}
-				placeholder={"Текст..."}
-				error={!validationAnswer()}
-			/>
-			{!validationAnswer() ? (
-				<div className={styles.errorWrapper}>
-					<div className={styles.errorWrapper__errorMessage}>
-						<i>{errorIcon}</i>
-						<span>{`Минимальное кол-во символов ${responseLimitation.from}`}</span>
-					</div>
-				</div>
-			) : null}
-		</div>
-	);
+  return (
+    <div ref={(el) => (itemsRef.current[index] = el)} className={container}>
+      <p className={styles.container__question}>{question}</p>
+      <p className={styles.container__description}>{description}</p>
+
+      <TextArea
+        defaultValue={answer}
+        text={localAnswer}
+        setText={setLocalAnswer}
+        onBlur={saveAnswer}
+        maxLength={responseLimitation.to}
+        defaultHeight={"2.6rem"}
+        placeholder={"Текст..."}
+        error={!validationAnswer()}
+      />
+      {!validationAnswer() ? (
+        <div className={styles.errorWrapper}>
+          <div className={styles.errorWrapper__errorMessage}>
+            <i>{errorIcon}</i>
+            <span>{`Минимальное кол-во символов ${responseLimitation.from}`}</span>
+          </div>
+        </div>
+      ) : null}
+    </div>
+  );
 }
 
 export default QATask;

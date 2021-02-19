@@ -30,10 +30,6 @@ function ArtTest() {
   );
 
   useEffect(() => {
-    if (currentTime != null) {
-      dispatch(setCurrentTime(undefined));
-    }
-
     getCurrentTime().then((time) => {
       //If the test runs for more than N hours, then it is deleted
       if (testStart != null && time - testStart >= MAX_TEST_DURATION) {

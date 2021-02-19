@@ -8,7 +8,7 @@ import {
   SET_WORD_ANSWER,
   SET_TASK_END_DATE,
   ADD_WELCOME_PAGE,
-  SET_TEST_END_DATE,
+  FINISH_TEST,
   DELETE_RESULT,
 } from "../actions/resultActions";
 
@@ -81,9 +81,16 @@ function resultStorage(state = initialState, action) {
           },
         },
       });
-    case SET_TEST_END_DATE:
+    case FINISH_TEST:
       return update(state, {
         [action.currentTestId]: {
+          results: {
+            [action.resultIndex]: {
+              end_date: {
+                $set: action.payload,
+              },
+            },
+          },
           end_date: { $set: action.payload },
         },
       });

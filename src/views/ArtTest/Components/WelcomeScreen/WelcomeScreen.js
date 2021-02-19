@@ -35,7 +35,7 @@ function WelcomeScreen() {
 
   useEffect(() => {
     dispatch(startTaskThunk(taskId));
-  }, [currentTaskIndex]);
+  }, []);
 
   const contentContainer = classNames(styles.contentContainer, {
     [styles.containerOneContent]: img == null || img === "",

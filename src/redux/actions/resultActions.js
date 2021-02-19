@@ -4,7 +4,7 @@ export const SET_TEXT_AREA_DATA = "SET_TEXT_AREA_DATA";
 export const SET_WORD_ANSWER = "SET_WORD_ANSWER";
 export const SET_TASK_END_DATE = "SET_TASK_END_DATE";
 export const ADD_WELCOME_PAGE = "ADD_WELCOME_PAGE";
-export const SET_TEST_END_DATE = "SET_TEST_END_DATE";
+export const FINISH_TEST = "FINISH_TEST";
 export const DELETE_RESULT = "DELETE_RESULT";
 
 export const login = (name, email, currentTestId, startDate) => ({
@@ -65,17 +65,18 @@ export const setAnswerOfWordsRadioButtons = (
   currentTestId,
 });
 
-export const setTaskEndDate = (currentTestId, date, resultIndex) => ({
+export const setTaskEndDate = (currentTestId, endDate, resultIndex) => ({
   type: SET_TASK_END_DATE,
-  payload: date,
+  payload: endDate,
   resultIndex,
   currentTestId,
 });
 
-export const setTestEndDate = (currentTestId, endDate) => ({
-  type: SET_TEST_END_DATE,
+export const finishTest = (currentTestId, endDate, resultIndex) => ({
+  type: FINISH_TEST,
   payload: endDate,
   currentTestId,
+  resultIndex,
 });
 
 export const deleteResult = (currentTestId) => ({

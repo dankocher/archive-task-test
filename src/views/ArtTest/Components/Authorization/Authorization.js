@@ -2,7 +2,7 @@ import styles from "./authorization.module.scss";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { setCurrentTaskIndex } from "../../../../redux/actions/testActions";
+import { goToNextTask } from "../../../../redux/actions/testActions";
 import { login } from "../../../../redux/actions/resultActions";
 import { getCurrentTime } from "../../helpers/workWithApi";
 
@@ -38,7 +38,7 @@ function Authorization() {
 
     getCurrentTime().then((startDate) => {
       dispatch(login(name, email, currentTestId, startDate));
-      dispatch(setCurrentTaskIndex(0));
+      dispatch(goToNextTask(0));
     });
   };
 

@@ -1,6 +1,6 @@
 import update from "react-addons-update";
 import {
-  SET_CURRENT_TASK_INDEX,
+  GO_TO_NEXT_TASK,
   SET_IS_NEXT_BUTTON_CLICKED,
   SET_CURRENT_SUBTASK_INDEX,
   SET_MAX_OPENED_SUBTASK_INDEX,
@@ -39,8 +39,11 @@ function testStorage(state = initialState, action) {
         currentTestId: action.currentTestId,
       };
 
-    case SET_CURRENT_TASK_INDEX:
+    case GO_TO_NEXT_TASK:
       return update(state, {
+        currentTime: {
+          $set: undefined,
+        },
         [state.currentTestId]: {
           currentTaskIndex: { $set: action.payload },
         },

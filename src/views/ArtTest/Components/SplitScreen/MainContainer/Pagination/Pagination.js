@@ -25,7 +25,7 @@ function Pagination() {
 
   const subTaskLength = useSelector(
     (state) =>
-      state.resultStorage[currentTestId].results[currentTaskIndex]?.data.length
+      state.resultStorage[currentTestId]?.results[currentTaskIndex]?.data?.length
   );
 
   const getIsUnvisibleLefftArrow = () => {

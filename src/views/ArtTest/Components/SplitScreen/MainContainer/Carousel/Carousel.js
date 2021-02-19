@@ -64,7 +64,7 @@ function Carousel() {
     } else {
       dispatch(startTaskThunk(taskId, imgGrid, radioButtonTaskList));
     }
-  }, [currentTaskIndex]);
+  }, []);
 
   useEffect(() => {
     if (imageList == null) return;
