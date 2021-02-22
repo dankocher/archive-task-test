@@ -23,6 +23,9 @@ function Authorization() {
   const [isEmailValid, setIsEmailValid] = useState(true);
 
   const currentTestId = useSelector((state) => state.testStorage.currentTestId);
+  const testName = useSelector(
+    (state) => state.testStorage?.[currentTestId].testName
+  );
 
   const startTestHandler = () => {
     if (!onBlured) {
@@ -67,6 +70,9 @@ function Authorization() {
           <img src={require("../../../../assets/img/testStart.png")} />
         </div>
         <div className={styles.contentContainer__centeredContainer}>
+          <div className={styles.contentContainer__centeredContainer__header}>
+            {testName}
+          </div>
           <div className={styles.wrapper}>
             <div className={styles.wrapper__field}>
               <label>{labels.nameLabel}</label>

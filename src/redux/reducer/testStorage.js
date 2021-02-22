@@ -26,11 +26,21 @@ const initialState = {
 function testStorage(state = initialState, action) {
   switch (action.type) {
     case SESSION_START:
-      const { tasksCounter, currentTestId, taskList } = action.payload;
+      const {
+        tasksCounter,
+        currentTestId,
+        taskList,
+        testName,
+      } = action.payload;
       return {
         ...state,
         currentTestId,
-        [currentTestId]: { taskList, tasksCounter, isNextBtnClicked: false },
+        [currentTestId]: {
+          taskList,
+          tasksCounter,
+          testName,
+          isNextBtnClicked: false,
+        },
       };
 
     case SET_CURRENT_TEST_ID:

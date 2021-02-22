@@ -78,9 +78,15 @@ function Loader({ setIsTestEnded, isTestEnded }) {
     if (testId === currentTestId && currentTaskIndex != null) return;
 
     getTaskIdListFromServer().then((res) => {
-      //{ tasksCounter, currentTestId, taskList }
+      //{ tasksCounter, currentTestId, taskList, testName }
+
       dispatch(
-        integrityCheckThunk(res.ttask.tasksCounter, res.ttask._id, res.tasks)
+        integrityCheckThunk(
+          res.ttask.tasksCounter,
+          res.ttask._id,
+          res.tasks,
+          res.ttask.name
+        )
       );
     });
   }, [currentTestId]);

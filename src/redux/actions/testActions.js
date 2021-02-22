@@ -9,9 +9,14 @@ export const DELETE_TEST = "DELETE_TEST";
 export const SET_CURRENT_TIME = "SET_CURRENT_TIME";
 export const SET_IS_LOADING = "SET_IS_LOADING";
 
-export const sesionStart = (tasksCounter, currentTestId, taskList) => ({
+export const sesionStart = (
+  tasksCounter,
+  currentTestId,
+  taskList,
+  testName
+) => ({
   type: SESSION_START,
-  payload: { tasksCounter, currentTestId, taskList },
+  payload: { tasksCounter, currentTestId, taskList, testName },
 });
 
 export const setCurrentTestId = (currentTestId) => ({
