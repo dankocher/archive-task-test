@@ -24,7 +24,7 @@ function Authorization() {
 
   const currentTestId = useSelector((state) => state.testStorage.currentTestId);
   const testName = useSelector(
-    (state) => state.testStorage?.[currentTestId].testName
+    (state) => state.testStorage?.[currentTestId]?.testName
   );
 
   const startTestHandler = () => {
